@@ -1,0 +1,18 @@
+<section id="projects">
+<div class="container">
+  <h3>Papers</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+    <!-- TODO: break out paper date/year into separate field -->
+	{% for paper in site.data.papers %}
+		<h6>
+			<strong><a href="{{ paper.url }}">{{ paper.title }}</a></strong><br/>
+			{{ paper.authors }}. {{ paper.publisher }}.
+		</h6>
+	{% endfor %}
+
+    </div>
+  </div>
+</div>
+</section>

@@ -1,0 +1,36 @@
+# top level stuff you probably don't need to touch
+highlighter: rouge
+markdown: kramdown
+rdiscount:
+  extensions: [smart]
+permalink: /:title.html
+paginate: 5
+plugins: [jekyll-paginate]
+port: 3000
+safe: true
+
+
+# edit here to achieve your personal greatness
+url: https://traviswp.github.io/
+baseurl: 
+title: Travis Peters
+author: Travis Peters
+description: All things work and play
+avatar: profile.png
+email: traviswp@cs.dartmouth.edu
+linkedin: travis-peters-3513512a
+github: traviswp
+twitter: traviswpeters
+facebook: travis.peters.144
+instagram: the.travisaurus.rex
+strava: traviswpeters
+gitlab: traviswpeters
+# stackoverflow: username   #e.g: users/2735833/proton1h1
+
+#Comment out if you don't want disqus 
+#disqus: username
+
+#google_analytics: UA-69391421-1
+
+# needed for travis-ci build
+exclude: [vendor]

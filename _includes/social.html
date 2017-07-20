@@ -1,0 +1,40 @@
+<div class="social">
+<!-- TODO: Add others? 
+fa-quora
+fa-slack
+fa-bitbucket 
+-->
+	<h4>
+    {% if site.email %}
+      <a href="mailto:{{ site.email }}"><i class="fa fa-envelope"></i></a>
+    {% endif %}
+    {% if site.linkedin %}
+      <a href="https://linkedin.com/in/{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a>
+    {% endif %}
+    {% if site.github %}
+      <a href="https://github.com/{{ site.github }}"><i class="fa fa-github"></i></a>
+    {% endif %}
+<!--
+    {% if site.gitlab %}
+      <a href="https://www.gitlab.cs.dartmouth.edu/{{ site.gitlab }}"><i class="fa fa-gitlab" aria-hidden="true"></i></a>
+    {% endif %}
+ -->
+    {% if site.twitter %}
+	  <a href="https://twitter.com/{{ site.twitter }}"><i class="fa fa-twitter"></i></a>
+    {% endif %}
+    {% if site.facebook %}
+      <a href="https://www.facebook.com/{{ site.facebook }}"><i class="fa fa-facebook-square"></i></a>
+    {% endif %}
+    {% if site.instagram %}
+      <a href="https://www.instagram.com/{{ site.instagram }}"><i class="fa fa-instagram"></i></a>
+    {% endif %}
+    {% if site.strava %}
+      <a href="https://www.strava.com/athletes/{{ site.strava }}"><i class="fa fa-road"></i></a> <!-- using road icon as hack since no strava icon exists in the fa icon set -->
+    {% endif %}
+<!-- 
+    {% if site.stackoverflow %}
+      <a href="http://stackoverflow.com/{{ site.stackoverflow }}"><i class="fa fa-stack-overflow"></i></a>
+    {% endif %}
+ -->
+	</h4>
+</div>
