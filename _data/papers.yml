@@ -19,23 +19,23 @@
 - title: "Amulet: A Secure Architecture for mHealth Applications for Low-power Wearable Devices"
   authors: Andres Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun, Bhargav Golla, Kevin Freeman, Travis Peters, Jacob Sorber, Ryan Halter, David Kotz
   publisher: Workshop on Mobile Medical Applications - Design and Development (WMMADD), SenSys 2014
-  url: http://www.cs.dartmouth.edu/~traviswp/papers/published/wmmadd2014.pdf
+  url: https://traviswp.github.io/papers/wmmadd2014.pdf
   type: workshop
 
 - title: "MobiSys 2014"
   authors: Travis Peters, Puneet Jain
   publisher: IEEE Pervasive Computing 2014
-  url: http://www.cs.dartmouth.edu/~traviswp/papers/published/mobisysConfReport2014.pdf
+  url: https://traviswp.github.io/papers/mobisysConfReport2014.pdf
   type: journal
 
 - title: "An Assessment of Single-Channel EMG Sensing for Gestural Input"
   authors: Travis Peters
   publisher: Dartmouth Tech Report series 2014
-  url: http://www.cs.dartmouth.edu/~traviswp/papers/TR/peters_emg_14.pdf
+  url: http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/
   type: techreport
 
 - title: "Computing Along the Big Long River"
   authors: Chip Jackson, Lucas Bourne, Travis Peters
   publisher: The UMAP Journal for Undergraduate Mathematics & Research 2012
-  url: http://www.cs.dartmouth.edu/~traviswp/papers/published/umap2012.pdf
+  url: https://traviswp.github.io/papers/umap2012.pdf
   type: journal

@@ -6,7 +6,7 @@
   date: January 2017
   show: true
 
-- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted to appear in The ACM Conference on Embedded Networked Sensor Systems (SenSys 2016). ([paper](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet.pdf))"
+- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted to appear in The ACM Conference on Embedded Networked Sensor Systems (SenSys 2016). ([paper](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet.pdf)) ([demo](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet-demo.pdf))"
   date: July 2016
   show: true
 
@@ -46,11 +46,11 @@
   date: January 2015
   show: true
 
-- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys. ([paper](https://amuletproject.files.wordpress.com/2014/10/molina-markham-wmmadd.pdf))"
+- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys. ([paper](https://traviswp.github.io/papers/wmmadd2014.pdf))"
   date: November 2014
   show: true
 
-- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out! ([paper](http://www.computer.org/csdl/mags/pc/2014/04/mpc2014040093.pdf))
+- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out! ([paper](https://traviswp.github.io/papers/mobisysConfReport2014.pdf))
   date: October 2014
   show: true
 
