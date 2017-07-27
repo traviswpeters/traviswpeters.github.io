@@ -9,8 +9,7 @@ plugins: [jekyll-paginate]
 port: 3000
 safe: true
 
-
-# edit here to achieve your personal greatness
+# personal stuff
 url: https://traviswp.github.io/
 baseurl: 
 title: Travis Peters
@@ -27,9 +26,8 @@ strava: traviswpeters
 gitlab: traviswpeters
 # stackoverflow: username   #e.g: users/2735833/proton1h1
 
-#Comment out if you don't want disqus 
-#disqus: username
-
+# extra page stuff
+#disqus: username  #Comment out if you don't want disqus 
 #google_analytics: UA-69391421-1
 
 # needed for travis-ci build
