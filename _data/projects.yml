@@ -19,6 +19,20 @@
   video: 
   documentation: 
 
+- title: "Yalnix"
+  desc: 
+  url: 
+  paper: 
+  video: 
+  documentation: 
+
+- title: "Study of the Security of the Android Binder Interface"
+  desc: 
+  url: 
+  paper: 
+  video: 
+  documentation: 
+
 - title: "SEMAT (Smart Ecological Momentary Assessment Tool)"
   desc: "SEMAT is a joint-effort project between researchers in the mHealth Security and Privacy lab at Dartmouth College and researchers at the Center for Technology and Behavioral Health (CTBH). The project aims to study the the electrodermal activity (EDA)1 of a person to determine if the bodys skin conductance can be indicative of impending nicotine cravings. If successful, some form of intervention may be possible; for example, if oncoming craving were detected, the wearer of the appropriate sensor could be alerted via their smartphone which could then help them avoid a potentially challenging situation where they may be tempted to smoke."
   url: https://gitlab.cs.dartmouth.edu/kotzgroup/project-semat
