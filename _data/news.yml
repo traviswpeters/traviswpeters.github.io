@@ -1,4 +1,4 @@
-- descr: My survey on trustworthy computing technologies for mobile and wearable systems was released as a Technical Report. ([paper](http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/))
+- descr: My survey on trustworthy computing technologies for mobile and wearable systems was released as a Technical Report. [[PDF](http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/)]
   date: May 2017
   show:  true
 
@@ -6,7 +6,7 @@
   date: January 2017
   show: true
 
-- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted to appear in The ACM Conference on Embedded Networked Sensor Systems (SenSys 2016). ([paper](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet.pdf)) ([demo](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet-demo.pdf))"
+- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted to appear in The ACM Conference on Embedded Networked Sensor Systems (SenSys 2016). [[PDF](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet.pdf)] ([demo](http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet-demo.pdf))"
   date: July 2016
   show: true
 
@@ -42,15 +42,15 @@
   date: January 2015
   show: true
 
-- descr: Some of my summer work on gesture recognition using single-channel EMG was released as a Technical Report. ([paper](http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/))
+- descr: Some of my summer work on gesture recognition using single-channel EMG was released as a Technical Report. [[PDF](http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/)]
   date: January 2015
   show: true
 
-- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys. ([paper](https://traviswp.github.io/papers/wmmadd2014.pdf))"
+- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys. [[PDF](https://traviswp.github.io/papers/wmmadd2014.pdf)]"
   date: November 2014
   show: true
 
-- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out! ([paper](https://traviswp.github.io/papers/mobisysConfReport2014.pdf))
+- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out! [[PDF](https://traviswp.github.io/papers/mobisysConfReport2014.pdf)]
   date: October 2014
   show: true
 
