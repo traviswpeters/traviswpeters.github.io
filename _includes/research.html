@@ -9,6 +9,10 @@
 		<h6>
 			<strong><a href="{{ paper.url }}">{{ paper.title }}</a></strong><br/>
 			{{ paper.authors }}. {{ paper.publisher }}.
+            {% if paper.note %}
+            <br/>
+            <i>{{ paper.note }}</i>
+            {% endif %}
 		</h6>
 	{% endfor %}
 
