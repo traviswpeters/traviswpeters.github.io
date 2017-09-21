@@ -55,8 +55,13 @@ Request here: [https://www.annualcreditreport.com](https://www.annualcreditrepor
 I checked all three but you should at least check one. 
 It is free to request your credit report through the Annual Credit Report website once per year. 
 I recommend checking one report every four months (i.e., Equifax in September, TransUnion in January, Experian in May).
-2. **Freeze your credit.** This blocks lenders from accessing your credit information without you explicitly lifting the freeze. 
+> If you find that your identity has been compromised, the FTC has [a page dedicated to the topic of identity theft](https://identitytheft.gov/), helping people report it and make a plan to recover from it.
+
+2. **Freeze your credit.** 
+This blocks lenders from accessing your credit information without you explicitly lifting the freeze. 
 Thus, thieves cannot use your information to open new accounts. 
+> The Public Interest Research Group (PIRG) has [a page dedicated to the topic of credit freezing](http://www.uspirg.org/resources/usp/protect-yourself-against-new-account-id-theft) and how it is the only real way to ***prevent*** new account ID theft.
+
     * Equifax: 
         * Phone: 1-800-349-9960 
         * Website: [https://www.freeze.equifax.com/Freeze/jsp/SFF_PersonalIDInfo.jsp](https://www.freeze.equifax.com/Freeze/jsp/SFF_PersonalIDInfo.jsp)
