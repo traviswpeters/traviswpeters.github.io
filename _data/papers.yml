@@ -14,19 +14,19 @@
 - title: "Amulet: An Energy-Efficient, Multi-Application Wearable Platform"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
   publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys), November 2016
-  url: http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet.pdf
+  url: papers/hester-amulet-sensys2016.pdf
   type: conference
 
 - title: "The Amulet Wearable Platform: Demo Abstract"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
   publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys), November 2016
-  url: http://www.cs.dartmouth.edu/~dfk/papers/hester-amulet-demo.pdf
+  url: papers/hester-amulet-demo-sensys2016.pdf
   type: demo
 
 - title: "Amulet: A secure architecture for mHealth applications for low-power wearable devices"
   authors: Andres Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun, Bhargav Golla, Kevin Freeman, Travis Peters, Jacob Sorber, Ryan Halter, David Kotz
   publisher: In Proceedings of the Workshop on Mobile Medical Applications - Design and Development (WMMADD), November 2014
-  url: papers/wmmadd2014.pdf
+  url: papers/molina-markham-wmmadd2014.pdf
   type: workshop
 
 - title: "MobiSys 2014"
@@ -45,5 +45,5 @@
 - title: "Computing Along the Big Long River"
   authors: Chip Jackson, Lucas Bourne, Travis Peters. Advised by Edoh Amiran
   publisher: In the UMAP Journal for Undergraduate Mathematics & Research, 2012
-  url: papers/umap2012.pdf
+  url: papers/peters-umap2012.pdf
   type: journal
