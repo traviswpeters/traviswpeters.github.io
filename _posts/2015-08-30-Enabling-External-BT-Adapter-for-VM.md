@@ -3,7 +3,14 @@ layout: post
 title: Enabling an External Bluetooth Adapter for VirtualBox VM
 ---
 
-Start by checking which Bluetooth kernel extensions (kexts) are currently loaded by running `kextstat` and filtering on bluetooth related kexts:
+To use an external Bluetooth adapter (i.e., a Bluetooth dongle) from within a VM, 
+    it is first necessary to disable the built-in Bluetooth adapter. 
+In this post we will review how to accomplish this. 
+I review how to configure the VM itself in another post (["Configuring a VirtualBox VM to use an External Bluetooth Adapter."](Configuring-a-VM-External-BT-Adapter.html)).
+In my case the host machine is a MacBook Pro running OS X 10.10, and the guest VM is running Kali Linux 
+    (various other Linux distros should work fine as well). 
+
+Start by checking which Bluetooth kernel extensions (kexts) are currently loaded by running `kextstat` and filtering on Bluetooth-related kexts:
 
 {% highlight bash %}
 $ kextstat | grep -i bluetooth
@@ -23,7 +30,7 @@ We can verify that the kexts were successfully unloaded by running the command f
 $ kextstat | grep -i bluetooth
 {% endhighlight %}
 
-***TODO:*** *instructions for configuring the VM.*
+> Instructions for configuring the VM to use the external Bluetoth adapter can be found in ["Configuring a VirtualBox VM to use an External Bluetooth Adapter."](Configuring-a-VM-External-BT-Adapter.html)
 
 When complete with any Bluetooth-related work on the VM, we want to reload the kexts that we unloaded previously so that the Bluetooth service can work on the host machine again. To reload the kernel modules that were unloaded earlier we can simply use the `kextload` command --- loading the unloaded modules in reverse order due to dependencies:
 
@@ -33,7 +40,7 @@ $ sudo kextload -b com.apple.iokit.CSRBluetoothHostControllerUSBTransport
 $ sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport
 {% endhighlight %}
 
-And then, as before, we can confirm that the local Bluetooth Controller and Bluetooth service is back up:
+As before, we can confirm that the local Bluetooth Controller and Bluetooth service is back up:
 
 {% highlight bash %}
 $ kextstat | grep -i bluetooth
