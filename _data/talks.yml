@@ -1,0 +1,29 @@
+- title: "Physical Emanations and Potential Applications" 
+  date: September 2017
+  venue: THaW annual workshop
+  location: University of Illinois at Urbana-Champaign 
+  abstract: "..."
+  note: 
+
+- title: "...." 
+  date: September 2016
+  venue: Intel Intern Tech Talk Series
+  location: Intel Labs in Hillsboro, Oregon
+  abstract: "..."
+  note: 
+
+- title: "...." 
+  date: September 2015
+  venue: Intel Intern Tech Talk Series
+  location: Intel Labs in Hillsboro, Oregon
+  abstract: "..."
+  note: 
+
+# Guest Lectures?
+# CS50 - Debugging with GDB and Valgrind, April 17, 2017
+# CS50 - Debugging with GDB and Valgrind, April 2016
+# ...others?
+#    pointers and dynamic memory management (malloc, free, etc.)?
+#    git?
+#    introduction to pebble development (for project)?
+

@@ -1,0 +1,35 @@
+# My go-to tools.
+
+- name: "Dropbox" 
+  desc: ""
+  url: 
+
+- name: "Evernote" 
+  desc: ""
+  url: 
+
+- name: "Flux" 
+  desc: ""
+  url: 
+
+- name: "Hex Fiend" 
+  desc: "Hex Fiend is a fast and clever hex editor for macOS."
+  url: http://ridiculousfish.com/hexfiend/
+  github: https://github.com/ridiculousfish/HexFiend/
+
+- name: "Homebrew" 
+  desc: "The missing package manage for OS X."
+  url: https://brew.sh/
+
+- name: "iTerm" 
+  desc: ""
+  url: 
+
+- name: "Zotero" 
+  desc: ""
+  url: 
+
+#template
+# - name: "" 
+#   desc: ""
+#   url: 
