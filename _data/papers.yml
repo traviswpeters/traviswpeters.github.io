@@ -1,10 +1,10 @@
-- title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments" 
+- title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
   publisher: In Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings), November 2017
   url: papers/kotz-safethings2017.pdf
   type: workshop
 
-- title: "A Survey of Trustworthy Computing on Mobile & Wearable Systems" 
+- title: "A Survey of Trustworthy Computing on Mobile & Wearable Systems"
   authors: Travis Peters
   publisher: Technical Report TR2017-823, Dartmouth College Computer Science Technical Report series, May 2017
   url: papers/peters-trusted-comp-tr2017.pdf
