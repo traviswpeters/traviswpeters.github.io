@@ -1,11 +1,32 @@
-Personal site built with [Bootstrap](http://getbootstrap.com/), 
-powered by [Jekyll](http://jekyllrb.com/) and [Sustain](https://biomadeira.github.io/sustain), 
+Personal website built on [Jekyll](http://jekyllrb.com/),
+inspired by the [Much-Worse](http://jekyllthemes.org/themes/much-worse/) and [Lagrange](https://lenpaul.github.io/Lagrange/) Jekyll themes,
 and freely hosted in [Github pages](https://pages.github.com/).
 
-## How to use it
+## Quick-Start Guide
 
 Simply clone/fork this repository, and then run `jekyll serve` inside the directory.
-Edit the site attributes in *_config.yml* and edit the various entries in *_includes/* and *_posts/*.
+Note that to work on the files locally, you'll need to have this repo stored locally on your machine.
+Your site should be up and running locally at [http://localhost:4000](http://localhost:4000).
+
+After you've verified that you can serve the website locally,
+edit the site attributes in `_config.yml` and edit the various entries in `_data/`, `_includes/`, and `_posts/` to your liking.
+If you push to github, your website should be ready immediately at 'http://USERNAME.github.io'.
+
+In the `_posts` directory you'll find some of my posts as well as good reference posts that I've kept around from the themes that inspired my site.
+You can simply just duplicate the template post and start adding your own content.
+
+### Everything Else
+
+Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll.
+File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+If are interested in other themes, check out [Jekyll Themes][jekyll-themes].
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+[jekyll-talk]: https://talk.jekyllrb.com/
+[jekyll-themes]: http://jekyllthemes.org/
 
 ## Copyright & License
 

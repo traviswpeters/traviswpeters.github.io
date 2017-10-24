@@ -1,16 +1,7 @@
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
-    </div>
-    <div id="navbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ site.baseurl }}research.html">RESEARCH</a></li>
-        <li><a href="{{ site.baseurl }}news.html">NEWS</a></li>
-        <!-- <li><a href="http://biomadeira.github.io/vitae">CV</a></li> -->
-        <li><a href="{{ site.baseurl }}vita.pdf">CV</a></li>
-        <li><a href="{{ site.baseurl }}blog.html">BLOG</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<header class="masthead">
+  <h3 class="masthead-title">
+    <a href="{{ site.github.url }}/">{{ site.data.settings.title }}</a>
+    <small class="masthead-subtitle">{{ site.data.settings.tagline }}</small>
+    {% include menu.html %}
+  </h3>
+</header>

@@ -1,34 +1,17 @@
-# top level stuff you probably don't need to touch
-highlighter: rouge
-markdown: kramdown
-rdiscount:
-  extensions: [smart]
-permalink: /:title.html
-paginate: 5
-plugins: [jekyll-paginate]
-port: 3000
-safe: true
+# Site Settings
 
-# personal stuff
-url: https://traviswp.github.io/
-baseurl: 
-title: Travis Peters
-author: Travis Peters
-description: All things work and play
-avatar: profile.png
-email: traviswp@cs.dartmouth.edu
-linkedin: travis-peters-3513512a
-github: traviswp
-twitter: traviswpeters
-facebook: travis.peters.144
-instagram: the.travisaurus.rex
-strava: traviswpeters
-gitlab: traviswpeters
-# stackoverflow: username   #e.g: users/2735833/proton1h1
+# paginate:            5
 
-# extra page stuff
-#disqus: username  #Comment out if you don't want disqus 
-#google_analytics: UA-69391421-1
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed]
 
-# needed for travis-ci build
-exclude: [vendor]
+# Customise feed settings (uncommenting following two fields to customise feed title and description)
+#title:		     "Lagrange-Custom"
+#description:	     "a minimalist Jekyll theme-Custom"
+
+# RSS 2.0 can be used instead of Atom by uncommenting following two lines
+#feed:
+#   path:	     rss-feed.xml

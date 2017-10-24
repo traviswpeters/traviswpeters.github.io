@@ -2,9 +2,11 @@
 layout: post
 title: GNU Radio on OS X
 published: true
-tags:
-- Software
-- Research
+tags: [software, research]
+image:
+  feature: gnuradio.png
+  teaser: gnuradio.png
+  credit: Wikipedia - GNURadio
 ---
 
 > Specifically this post speaks to installing GNU Radio and the GNU Radio Companion on OS X 10.13 (High Sierra).

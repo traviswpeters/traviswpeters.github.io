@@ -2,8 +2,11 @@
 layout: post
 title: "Family & Friends: The Equifax Data Breach and What You Should Do"
 published: true
-tags:
-- News
+tags: [news]
+image:
+  feature: equifax.png
+  teaser: equifax-teaser.png
+  credit: Bodar.net
 ---
 
 > *This is a slightly modified version of a message that was originally sent out to friends and family on September 15th, 2017.

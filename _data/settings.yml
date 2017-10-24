@@ -11,15 +11,17 @@ baseurl:
 avatar: profile.png
 email: traviswp@cs.dartmouth.edu
 
-# github: traviswp
-# linkedin: travis-peters-3513512a
-# twitter: traviswpeters
-# facebook: travis.peters.144
-# instagram: the.travisaurus.rex
-# strava: traviswpeters
-# gitlab: traviswpeters
-# stackoverflow: username   #e.g: users/2735833/proton1h1
+handles:
+  github: traviswp
+  linkedin: travis-peters-3513512a
+  twitter: traviswpeters
+  facebook: travis.peters.144
+  instagram: the.travisaurus.rex
+  strava: traviswpeters
+  gitlab: traviswpeters
+  stackoverflow: username   #e.g: users/2735833/proton1h1
 
+#TODO: can we use the handles above to fill in links below? Otherwise, there is redundancy...
 social:
 - {icon: 'envelope', link: 'mailto:traviswp@cs.dartmouth.edu'}
 - {icon: 'github', link: 'https://www.github.com/traviswp'}
@@ -28,7 +30,7 @@ social:
 - {icon: 'facebook-square', link: 'https://www.facebook.com/travis.peters.144'}
 - {icon: 'instagram', link: 'https://www.instagram.com/the.travisaurus.rex'}
 - {icon: 'road', link: 'https://www.strava.com/athletes/traviswpeters'}
-- {icon: 'gitlab', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
+#- {icon: 'gitlab', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 #- {icon: 'rss-square', link: 'feed.xml'}
 # -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
 
@@ -36,11 +38,12 @@ social:
 # Site Menus
 #
 menu:
-- {name: 'About', path: 'menu', url: 'about.html'}
 - {name: 'Research', path: 'menu', url: 'research.html'}
 - {name: 'CV', path: 'menu', url: 'cv.html'}
-- {name: 'News', path: 'menu', url: 'news.html'}
 - {name: 'Writing', path: 'menu', url: 'writing.html'} #Blog
+- {name: 'News', path: 'menu', url: 'news.html'}
+# - {name: 'About', path: 'menu', url: 'about.html'}
+# - {name: 'Writing*', path: 'menu', url: 'writing-compact.html'} #Blog
 
 #
 # Change to true for Disqus comments
