@@ -38,12 +38,10 @@ social:
 # Site Menus
 #
 menu:
-- {name: 'Research', path: 'menu', url: 'research.html'}
-- {name: 'CV', path: 'menu', url: 'cv.html'}
-- {name: 'Writing', path: 'menu', url: 'writing.html'} #Blog
-- {name: 'News', path: 'menu', url: 'news.html'}
-# - {name: 'About', path: 'menu', url: 'about.html'}
-# - {name: 'Writing*', path: 'menu', url: 'writing-compact.html'} #Blog
+- {name: 'Research', url: 'research.html'}
+- {name: 'CV', url: 'cv.html'}
+- {name: 'Writing', url: 'writing.html'} #Blog
+- {name: 'News', url: 'news.html'}
 
 #
 # Change to true for Disqus comments
