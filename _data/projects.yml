@@ -46,10 +46,21 @@
 - title: "PEARL"
   desc:
   url:
+  pdf: papers/classes/cs169-peters-azmat-ashfaw-pearl-fall2015.pdf
   paper:
   video:
   documentation:
   show: false
+
+- title: "A Compendium of Essays on Wireless Topics"
+  desc:
+  url:
+  pdf: papers/classes/cs169-peters-wireless-essays-fall2015.pdf
+  paper:
+  video:
+  documentation:
+  show: true
+
 
 - title: "Yalnix"
   desc: (private repository; available upon request)
@@ -61,6 +72,7 @@
 
 - title: "Study of the Security of the Android Binder Interface"
   desc:
+  pdf: papers/classes/cs258-peters-stab-fuzzing-final-winter2016.pdf
   url:
   paper:
   video:
@@ -80,27 +92,27 @@
 - title: "DTutor (Android app & server-side scripts)"
   desc: "DTutor is a specialty smartphone app designed by students for students. The primary goal of this application is to help students of all disciplines find tutors to help them with their courses. We accomplish this by providing a friendly interface that allows tutors and tutees to specify information about themselves and what they are looking for, search for and connect with others, as well as reserve a space for their tutor/tutee sessions."
   url: https://github.com/traviswp/dtutor
-  pdf: papers/Peters_Syed_Kumaran_Final_Spring_2014_Report.pdf
+  pdf: papers/classes/cs165-peters-syed-kumaran-dtutor-final-spring2014.pdf
   show: true
 
 - title: "Electromyography-based Gesture Recognition"
   desc: (private repository; available upon request)
-  url: papers/Peters_EMG_Gestures_Sept_2014_Submit.pdf
+  url: papers/peters-emg-gestures-2014-submit.pdf
   show: true
 
 - title: "Facial Recognition"
   desc: "FaceID is a Computer Vision project done in the Fall of 2013 for Computer Science 183 @ Dartmouth College."
   url: https://github.com/traviswp/FaceID
-  doc: papers/Syed_Peters_Facial_Recognition_Fall_2013_Final.docx
-  pdf: papers/Syed_Peters_Facial_Recognition_Fall_2013_Final.pdf
+  doc: papers/classes/cs183-syed-peters-facial-recognition-final-fall2013.docx
+  pdf: papers/classes/cs183-syed-peters-facial-recognition-final-fall2013.pdf
   show: true
   # old repo: https://github.com/traviswp/face_id
 
 - title: "Protein Loop Structure Prediction"
   desc:
   url:
-  doc: papers/Amos_Peters_Liu_LSP_Fall_2013_Final.docx
-  pdf: papers/Amos_Peters_Liu_LSP_Fall_2013_Final.pdf
+  doc: papers/classes/cs175-amos-peters-liu-lsp-final-fall2013.docx
+  pdf: papers/classes/cs175-amos-peters-liu-lsp-final-fall2013.pdf
   show: true
 
 #
@@ -129,25 +141,25 @@
 #
 
 - title: "What’s the Key? An Exploration of Historical Security Approaches & Public Key Encryption"
-  doc: papers/419_Term_Paper_Final.docx
-  pdf: papers/419_Term_Paper_Final.pdf
+  doc: papers/classes/math419-term-paper-final.docx
+  pdf: papers/classes/math419-term-paper-final.pdf
   show: true
 # desc: "A Term Paper on Historical and Mathematical Aspects of Public Key Encryption"  (Math 419: Historical Perspectives of Mathematics).
 
 - title: "Principles & Problems: A comparison of the significance and conceptual mathematics of Cavalieri’s Principle & Buffon's Needle Problem"
-  doc: papers/419_Comparison_of_Conceptual_Math.docx
-  pdf: papers/419_Comparison_of_Conceptual_Math.pdf
-  show: false
+  doc: papers/classes/math419-comparison-of-conceptual-math.docx
+  pdf: papers/classes/math419-comparison-of-conceptual-math.pdf
+  show: true
 # desc: "A Comparison of Coceptual Mathematics"  (Math 419: Historical Perspectives of Mathematics)
 
 - title: "Cissoid of Diocles"
-  doc: papers/419_Eponymic_Curve_Paper.docx
-  pdf: papers/419_Eponymic_Curve_Paper.pdf
-  show: false
+  doc: papers/classes/math419-eponymic-curve-paper.docx
+  pdf: papers/classes/math419-eponymic-curve-paper.pdf
+  show: true
 # desc: "Eponymic Curve Paper  Math 419: Historical Perspectives of Mathematics"
 
 - title: "Mathematical Reflection"
-  doc: papers/419_Mathematics_Reflection.docx
-  pdf: papers/419_Mathematics_Reflection.pdf
-  show: false
+  doc: papers/classes/math419-mathematics-reflection.docx
+  pdf: papers/classes/math419-mathematics-reflection.pdf
+  show: true
 # desc: "This is a fun paper! The task was to write a paragraph, giving my interpretation of a claim. This was essentially a writing sample for a mathematics course at Western Washington University (Math 419: Historical Perspectives of Mathematics)."
