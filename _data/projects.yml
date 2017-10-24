@@ -1,114 +1,153 @@
+# Template Entry. Uncomment and populate with appropriate information.
+#
+# - title: ""
+#   desc: ""
+#   url:
+#   paper:
+#   doc:
+#   pdf:
+#   video:
+#   documentation:
+#   show:
+
+#
+# Personal
+#
+
 - title: "traviswp.github.io"
   desc: "A personal site dedicated to professional and non-professional stuff. 'All things work and play.'"
   url: https://github.com/traviswp/traviswp.github.io
-  paper: 
-  video: 
-  documentation: 
+  show: true
 
 - title: "Vita"
   desc: "My résumé / curriculum vitae on github."
   url: https://github.com/traviswp/resume
-  paper: 
-  video: 
-  documentation: 
+  pdf: https://github.com/traviswp/resume/blob/master/resume.pdf
+  show: true
+
+#
+# Dartmouth
+#
 
 - title: "Amulet"
-  desc: "The Amulet Project envisions computational jewelry, in the form of a bracelet or pendant, that provide the properties essential for successful body-area mHealth networks. These devices coordinate the activity of the body-area network and provide a discreet means for communicating with their wearer. Such devices complement the capabilities of a smartphone, bridging the gap between the type of pervasive computing possible with a mobile phone and that enabled by wearable computing."
+  desc: "The Amulet Project envisions computational jewelry, in the form of a bracelet or pendant, that provide the properties essential for successful body-area mHealth networks. These devices coordinate the activity of the body-area network and provide a discreet means for communicating with their wearer. Such devices complement the capabilities of a smartphone, bridging the gap between the type of pervasive computing possible with a mobile phone and that enabled by wearable computing. For more information, see our papers above."
   url: https://gitlab.cs.dartmouth.edu/amulet/amulet-dev
-  paper: 
-  video: 
   documentation: https://gitlab.cs.dartmouth.edu/amulet/amulet-docs
+  show: true
 
 - title: "Mission Incomputable"
-  desc: 
-  url: 
-  paper: 
-  video: 
-  documentation: 
+  desc:
+  url:
+  paper:
+  video:
+  documentation:
+  show: false
 
 - title: "PEARL"
-  desc: 
-  url: 
-  paper: 
-  video: 
-  documentation: 
+  desc:
+  url:
+  paper:
+  video:
+  documentation:
+  show: false
 
 - title: "Yalnix"
-  desc: 
-  url: (private repository; available upon request)
-  paper: 
-  video: 
-  documentation: 
+  desc: (private repository; available upon request)
+  url:
+  paper:
+  video:
+  documentation:
+  show: false
 
 - title: "Study of the Security of the Android Binder Interface"
-  desc: 
-  url: 
-  paper: 
-  video: 
-  documentation: 
+  desc:
+  url:
+  paper:
+  video:
+  documentation:
+  show: false
 
 - title: "PyBluez"
-  desc: "Python extension module allowing access to system Bluetooth resources. I only helped out on this project for a little while. I helped in adding support for PyBluez on osx."
+  desc: "Python extension module allowing access to system Bluetooth resources. I only helped out on this project for a little while. I helped in adding support for PyBluez on OS X."
   url: https://github.com/traviswp/pybluez
-  paper: 
-  video: 
-  documentation: 
+  show: true
 
 - title: "SEMAT (Smart Ecological Momentary Assessment Tool)"
-  desc: "SEMAT is a joint-effort project between researchers in the mHealth Security and Privacy lab at Dartmouth College and researchers at the Center for Technology and Behavioral Health (CTBH). The project aims to study the the electrodermal activity (EDA)1 of a person to determine if the bodys skin conductance can be indicative of impending nicotine cravings. If successful, some form of intervention may be possible; for example, if oncoming craving were detected, the wearer of the appropriate sensor could be alerted via their smartphone which could then help them avoid a potentially challenging situation where they may be tempted to smoke."
+  desc: "SEMAT is a joint-effort project between researchers in the mHealth Security and Privacy lab at Dartmouth College and researchers at the Center for Technology and Behavioral Health (CTBH). The project aims to study the electrodermal activity (EDA) of a person to determine if the body's skin conductance is indicative of impending nicotine cravings. If successful, some form of intervention may be possible; for example, if oncoming craving were detected, the wearer of the appropriate sensor could be alerted via their smartphone which could then help them avoid a potentially challenging situation where they may be tempted to smoke."
   url: https://gitlab.cs.dartmouth.edu/kotzgroup/project-semat
-  paper: 
-  video: 
-  documentation: 
+  show: true
 
 - title: "DTutor (Android app & server-side scripts)"
   desc: "DTutor is a specialty smartphone app designed by students for students. The primary goal of this application is to help students of all disciplines find tutors to help them with their courses. We accomplish this by providing a friendly interface that allows tutors and tutees to specify information about themselves and what they are looking for, search for and connect with others, as well as reserve a space for their tutor/tutee sessions."
   url: https://github.com/traviswp/dtutor
-  paper: 
-  video: 
-  documentation: 
+  pdf: papers/Peters_Syed_Kumaran_Final_Spring_2014_Report.pdf
+  show: true
 
 - title: "Electromyography-based Gesture Recognition"
-  desc: 
-  url: (private repository; available upon request)
-  paper: 
-  video: 
-  documentation: 
+  desc: (private repository; available upon request)
+  url: papers/Peters_EMG_Gestures_Sept_2014_Submit.pdf
+  show: true
 
 - title: "Facial Recognition"
   desc: "FaceID is a Computer Vision project done in the Fall of 2013 for Computer Science 183 @ Dartmouth College."
   url: https://github.com/traviswp/FaceID
-  paper: 
-  video: 
-  documentation: 
+  doc: papers/Syed_Peters_Facial_Recognition_Fall_2013_Final.docx
+  pdf: papers/Syed_Peters_Facial_Recognition_Fall_2013_Final.pdf
+  show: true
   # old repo: https://github.com/traviswp/face_id
 
 - title: "Protein Loop Structure Prediction"
-  desc: 
-  url: 
-  paper: 
-  video: 
-  documentation: 
+  desc:
+  url:
+  doc: papers/Amos_Peters_Liu_LSP_Fall_2013_Final.docx
+  pdf: papers/Amos_Peters_Liu_LSP_Fall_2013_Final.pdf
+  show: true
+
+#
+# Western
+#
 
 - title: "Computing Along the Big Long River: A River Rafting Simulator"
-  desc: 
-  url: (private repository; available upon request)
-  paper: 
-  video: 
-  documentation: 
+  desc: (private repository; available upon request)
+  url: papers/peters-umap2012.pdf
+  show: true
+#TODO: there is code. post it, link to it in url, and change the url link to be the pdf link.
 
 - title: "Simple Integrated Development Environemnt for C++ (SIDE++)"
   desc: "The project is not entirely complete but is (was?) a functional and useful tool for introductory students that are trying to learn the C++ programming language. The intention of the project was to create a simple development environment for introductory programming students so that they could focus on learning the intricacies of the language, rather than getting hung-up in more complex development environments like Visual Studio, but still providing helpful tools such as project management guidance, basic text editor features, syntax highlighting, etc... The project was originally proposed by other students and later picked up by Travis Peters, Michael McAallister, and Christopher Proteau in CSCI 493 (Software Implementation) in the Fall of 2012 at Western Washington University."
   url: https://github.com/traviswp/CS493_adagide
-  paper: 
-  video: 
   documentation: https://github.com/traviswp/CS493_adagide/blob/master/design-doc.txt
+  show: true
 
 - title: "Terminal-based UNO game"
   desc: "This is a networked implementation of the game UNO. This was done for the Computer Science 367 class (Computer Networking) at Western Washington University in which a class of 35 or so students had to design a specification for how to pass messages to and from client/server applications to play UNO. The goal at the end of the course was to try and play our servers/clients against other people's servers/clients."
   url: https://github.com/traviswp/net-onu
-  paper: 
-  video: 
-  documentation: 
+  show: true
 
+#
+# Math 419 Papers
+#
 
+- title: "What’s the Key? An Exploration of Historical Security Approaches & Public Key Encryption"
+  doc: papers/419_Term_Paper_Final.docx
+  pdf: papers/419_Term_Paper_Final.pdf
+  show: true
+# desc: "A Term Paper on Historical and Mathematical Aspects of Public Key Encryption"  (Math 419: Historical Perspectives of Mathematics).
+
+- title: "Principles & Problems: A comparison of the significance and conceptual mathematics of Cavalieri’s Principle & Buffon's Needle Problem"
+  doc: papers/419_Comparison_of_Conceptual_Math.docx
+  pdf: papers/419_Comparison_of_Conceptual_Math.pdf
+  show: false
+# desc: "A Comparison of Coceptual Mathematics"  (Math 419: Historical Perspectives of Mathematics)
+
+- title: "Cissoid of Diocles"
+  doc: papers/419_Eponymic_Curve_Paper.docx
+  pdf: papers/419_Eponymic_Curve_Paper.pdf
+  show: false
+# desc: "Eponymic Curve Paper  Math 419: Historical Perspectives of Mathematics"
+
+- title: "Mathematical Reflection"
+  doc: papers/419_Mathematics_Reflection.docx
+  pdf: papers/419_Mathematics_Reflection.pdf
+  show: false
+# desc: "This is a fun paper! The task was to write a paragraph, giving my interpretation of a claim. This was essentially a writing sample for a mathematics course at Western Washington University (Math 419: Historical Perspectives of Mathematics)."
