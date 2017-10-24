@@ -3,7 +3,7 @@ layout: page
 title: Writing
 ---
 
-*You can also view a more compact version of this page here: <a href="{{ site.github.url }}/menu/writing-compact.html">compact view.</a>*
+*You can also view a more compact version of this page here: <a href="{{ site.github.url }}/writing-compact.html">compact view.</a>*
 
 {% for post in site.posts %}
 <div class="posts">
