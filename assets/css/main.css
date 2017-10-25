@@ -3,7 +3,7 @@
 */
 
 body {
-  font-family: "Quattrocento Sans", Georgia, "Times New Roman", serif;
+  font-family: "Quattrocento Sans", "Georgia", "Times New Roman", sans-serif;
   font-weight:400;
   font-style:normal;
   font-size: 14px;
@@ -278,8 +278,7 @@ code {
     font-size: 0.8rem;
     border-radius: 3px;
     background-color: #f5f5f5;
-    font-family: "Andale Mono";
-    /*font-family: "Source Code Pro";*/
+    font-family: "Andale Mono", "Source Code Pro", sans-serif;
 }
 
 code {
