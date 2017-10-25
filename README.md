@@ -2,10 +2,19 @@ Personal website built on [Jekyll](http://jekyllrb.com/),
 inspired by the [Much-Worse](http://jekyllthemes.org/themes/much-worse/) and [Lagrange](https://lenpaul.github.io/Lagrange/) Jekyll themes,
 and freely hosted in [Github pages](https://pages.github.com/).
 
+It turns out I'm not easily satisfied with these themes so often try new ones out.
+I like this one :)
+
+To ease the burden of switching themes I keep most of *my* data in the `_data/` directory, formatted in YAML files.
+I also generally have personal text written in some of the HTML files in the `_includes/` directory (e.g., `about.html`)
+and in the markdown files in the root level of this repository (e.g., `research.md`).
+
 ## Quick-Start Guide
 
-Simply clone/fork this repository, and then run `jekyll serve` inside the directory.
-Note that to work on the files locally, you'll need to have this repo stored locally on your machine.
+If you'd like to use this project as a starting point for your own website,
+you are reading in the right section!
+Simply fork/clone this repository (or download a zip), and then run `jekyll serve` inside the directory.
+This assumes you have Jekyll installed and the files stored locally.
 Your site should be up and running locally at [http://localhost:4000](http://localhost:4000).
 
 After you've verified that you can serve the website locally,
@@ -13,7 +22,7 @@ edit the site attributes in `_config.yml` and edit the various entries in `_data
 If you push to github, your website should be ready immediately at 'http://USERNAME.github.io'.
 
 In the `_posts` directory you'll find some of my posts as well as good reference posts that I've kept around from the themes that inspired my site.
-You can simply just duplicate the template post and start adding your own content.
+You can simply duplicate the template post and start adding your own content.
 
 ### Everything Else
 
