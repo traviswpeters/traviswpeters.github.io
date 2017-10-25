@@ -86,6 +86,12 @@
   documentation:
   show: true
 
+# TODO: grab pictures and code...
+- title: "Raspberry Pi hacking (IoT Workshop)"
+  desc: "TODO"
+  url:
+  show: false
+
 - title: "Yalnix"
   desc: 'In a operating systems class project, I worked with Jianfu Zhou and Shahrzad Haddadan to build a small kernal named "Yalnix."
          In building Yalnix we implemented important features such as memory management, process scheduling, traps and some of the more important syscalls, context switching, and basic I/O.

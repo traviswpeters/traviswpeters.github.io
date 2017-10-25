@@ -13,23 +13,26 @@ email: traviswp@cs.dartmouth.edu
 
 handles:
   github: traviswp
-  linkedin: travis-peters-3513512a
+  linkedin: traviswpeters # old: travis-peters-3513512a
   twitter: traviswpeters
   facebook: travis.peters.144
   instagram: the.travisaurus.rex
   strava: traviswpeters
   gitlab: traviswpeters
-  stackoverflow: username   #e.g: users/2735833/proton1h1
+  # TODO: quora: QuroraUsername
+  # TODO: stackoverflow: username   #e.g: users/2735833/proton1h1
+
 
 #TODO: can we use the handles above to fill in links below? Otherwise, there is redundancy...
 social:
 - {icon: 'envelope', link: 'mailto:traviswp@cs.dartmouth.edu'}
 - {icon: 'github', link: 'https://www.github.com/traviswp'}
-- {icon: 'linkedin', link: 'http://www.linkedin.com/in/travis-peters-3513512a'}
+- {icon: 'linkedin', link: 'https://www.linkedin.com/in/traviswpeters'}
 - {icon: 'twitter', link: 'https://twitter.com/traviswpeters'}
 - {icon: 'facebook-square', link: 'https://www.facebook.com/travis.peters.144'}
 - {icon: 'instagram', link: 'https://www.instagram.com/the.travisaurus.rex'}
 - {icon: 'road', link: 'https://www.strava.com/athletes/traviswpeters'}
+# - {icon: '', link: ''}
 #- {icon: 'gitlab', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 #- {icon: 'rss-square', link: 'feed.xml'}
 # -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
