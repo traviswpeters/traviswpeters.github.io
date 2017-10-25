@@ -63,7 +63,7 @@
   pdf: papers/classes/cs169-peters-azmat-ashfaw-pearl-fall2015.pdf
   video:
   documentation:
-  show: false
+  show: true
 
 - title: "A Compendium of Essays on Wireless Topics"
   desc: "The PEARL project (above) was a class project for CS 169: All Things Wireless, at Dartmouth.
@@ -84,7 +84,7 @@
   paper:
   video:
   documentation:
-  show: false
+  show: true
 
 - title: "Yalnix"
   desc: 'In a operating systems class project, I worked with Jianfu Zhou and Shahrzad Haddadan to build a small kernal named "Yalnix."
@@ -94,15 +94,21 @@
   paper:
   video:
   documentation:
-  show: false
+  show: true
 
 - title: "PyBluez"
   desc: "Python extension module allowing access to system Bluetooth resources.
          The project was originally intended to create Python wrappers for Bluez, the Linux Bluetoth subsystem.
          Since its genesis, the project has been updated to support Python wrappers for the underlying Bluetooth resources on Windows and OS X.
-         When I began, there was not support of OS X - I contributed to this project by helping to add support for PyBluez on OS X."
+         When I began, there was not support for OS X - I contributed to this project by helping to add support for PyBluez on OS X."
   url: https://github.com/traviswp/pybluez
   show: true
+
+# TODO: grab cs10 site and link here...
+- title: "CS 10 @ Dartmouth: Problem Solving via Object Oriented Programming"
+  desc: "TODO"
+  url:
+  show: false
 
 - title: "SEMAT (Smart Ecological Momentary Assessment Tool)"
   desc: "SEMAT is a joint-effort project between researchers in the mHealth Security and Privacy lab at Dartmouth College and researchers at the Center for Technology and Behavioral Health (CTBH).
@@ -170,11 +176,23 @@
 # Western
 #
 
+# TODO: there is code. post it, link to it in url, and change the url link to be the pdf link.
 - title: "Computing Along the Big Long River: A River Rafting Simulator"
-  desc: (private repository; available upon request)
+  desc: "While I was taking a mathematical modeling class, Chip Jackson, Lucas Bourne, and myself formed a team (advised by Dr. Edoh Amiran) to compete in a the Mathematical Contest in Modeling.
+         In our submission, we develop a model to schedule trips down the Big Long River.
+         The goal is to optimally plan boat trips of varying duration and propulsion so as to maximize the number of trips over the six-month season.
+         We model the process by which groups travel from campsite to campsite.
+         Subject to the given constraints, our algorithm outputs the optimal daily schedule for each group on the river.
+         By studying the algorithm’s long-term behavior, we can compute a maximum number of trips, which we define as the river’s carrying capacity.
+         We apply our algorithm to a case study of the Grand Canyon, which has many attributes in common with the Big Long River.
+         Finally, we examine the carrying capacity’s sensitivity to changes in the distribution of propulsion methods, distribution of trip duration, and the number of campsites on the river.
+         In this contest students are challenged to clarify, analyze, and propose solutions to open-ended problems.
+         To our surprise, our paper was selected as an Outstanding Winner in the competition, and we received the Frank Giordano award.
+         The contest included over 3,600 teams from 17 countries around the world.
+         Only 10 teams are selected as Outstanding Winners of the contest.
+         (private repository; available upon request)."
   url: papers/peters-umap2012.pdf
   show: true
-#TODO: there is code. post it, link to it in url, and change the url link to be the pdf link.
 
 - title: "Simple Integrated Development Environemnt for C++ (SIDE++)"
   desc: "The project is not entirely complete but is (was?) a functional and useful tool for introductory students that are trying to learn the C++ programming language.
@@ -192,35 +210,52 @@
   url: https://github.com/traviswp/net-onu
   show: true
 
-- title: "Minishell"
-  desc: (private repository; available upon request)
+- title: "Mini-shell"
+  desc: "In a UNIX software development class project we built parts of a shell - aptly named the 'mini-shell.'
+         In this project we built a shell that could
+         handle argument processing and using execve() and fork() to run other commands from our mini-shell,
+         handling all sorts of conditions with quoting and shell variable expansions when processing arguments,
+         implementing shell built-ins (e.g., exit, echo, setting and unsetting environment variables, shifting and unshifting arguments, stat-like features, read, conditional logic like if-statements and while statements),
+         handling signaling,
+         as well as support redirection and pipes.
+         Throughout the class we also learned to utilize Makefiles for building our projects, CVS for version control, and various tools for demonstrating testing of our assignments.
+         (private repository; available upon request)."
   url:
   show: true
+# https://facultyweb.cs.wwu.edu/~phil/classes/s17/352/
 
 #
 # Math 419 Papers
 #
 
 - title: "What’s the Key? An Exploration of Historical Security Approaches & Public Key Encryption"
+  desc: "In one of my favorite mathematics classes at Western Washington University - Historical Perspectives of Mathematics - we had a chance to explore the interesting history of mathematics and practice our writing skills (which young mathematicians aren’t necessarily known for).
+         In my term paper I wrote about Public key cryptology and discussed the never-ending pursuit of security (dubbed the 'cycle of problem and solution’).
+         In the paper I argue that our effots towards solving security problems, which often result directly from developments in mathematics and computing technologies, will inevitably equip attackers with both the tools and knowledge necessary to overcome the solutions we work so hard to realize.
+         In turn, I posit, a vicious cycle is created that will eternally prevent the advent of truly dependable security of information."
   doc: papers/classes/math419-term-paper-final.docx
   pdf: papers/classes/math419-term-paper-final.pdf
   show: true
-# desc: "A Term Paper on Historical and Mathematical Aspects of Public Key Encryption"  (Math 419: Historical Perspectives of Mathematics).
 
-- title: "Principles & Problems: A comparison of the significance and conceptual mathematics of Cavalieri’s Principle & Buffon's Needle Problem"
+- title: "Principles & Problems: A comparison of Cavalieri's Principle & Buffon's Needle Problem"
+  desc: "In one of my favorite mathematics classes at Western Washington University - Historical Perspectives of Mathematics - we had a chance to explore the interesting history of mathematics and practice our writing skills (which young mathematicians aren’t necessarily known for).
+         This paper discusses two interesting mathematical concepts: Cavalieri’s Principle and Buffon’s Needle Problem.
+         These concepts are explained and then I (try to) make an argument for which of the two ideas is more important (whatever that means)."
   doc: papers/classes/math419-comparison-of-conceptual-math.docx
   pdf: papers/classes/math419-comparison-of-conceptual-math.pdf
   show: true
-# desc: "A Comparison of Coceptual Mathematics"  (Math 419: Historical Perspectives of Mathematics)
 
 - title: "Cissoid of Diocles"
+  desc: "In one of my favorite mathematics classes at Western Washington University - Historical Perspectives of Mathematics - we had a chance to explore the interesting history of mathematics and practice our writing skills (which young mathematicians aren’t necessarily known for).
+         This is a paper on the Cissoid of Diocles and its application to solving the ‘double the cube’ problem - one of the three most famous geometric problems from classical mathematics that cannot be solved with the Euclidean tools of a compass and straightedge."
   doc: papers/classes/math419-eponymic-curve-paper.docx
   pdf: papers/classes/math419-eponymic-curve-paper.pdf
   show: true
-# desc: "Eponymic Curve Paper  Math 419: Historical Perspectives of Mathematics"
 
 - title: "Mathematical Reflection"
+  desc: "In one of my favorite mathematics classes at Western Washington University - Historical Perspectives of Mathematics - we had a chance to explore the interesting history of mathematics and practice our writing skills (which young mathematicians aren’t necessarily known for).
+         In a first assignment of the course we were asked to interpret a claim and provide a (short) writing sample.
+         It was fun so I’ve chosen to share the paper here."
   doc: papers/classes/math419-mathematics-reflection.docx
   pdf: papers/classes/math419-mathematics-reflection.pdf
   show: true
-# desc: "This is a fun paper! The task was to write a paragraph, giving my interpretation of a claim. This was essentially a writing sample for a mathematics course at Western Washington University (Math 419: Historical Perspectives of Mathematics)."

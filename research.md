@@ -49,6 +49,7 @@ Trustworthy Infrastructure, Protecting User Data, and Malicious and Deceptive So
 ## Select Projects
 
 {% for pub in site.data.projects %}
+{% if pub.show %}
 
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
@@ -59,4 +60,5 @@ Trustworthy Infrastructure, Protecting User Data, and Malicious and Deceptive So
 {% if pub.url %}[**{{pub.title}}**]({% if pub.internal %}{{pub.url | prepend: site.baseurl}}{% else %}{{pub.url}}{% endif %}) <br/>{% else if pub.pdf %}[**{{pub.title}}**]({{pub.pdf}}) <br/>{% else %}**{{pub.title}}** <br/>{% endif %}
 {{pub.desc}}{% if pub.pdf %} [[pdf]({{pub.pdf}})]{% endif %} {% if pub.doc %}[[doc]({{pub.doc}})]{% endif %}
 
+{% endif %}
 {% endfor %}
