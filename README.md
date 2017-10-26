@@ -6,8 +6,10 @@ It turns out I'm not easily satisfied with these themes so often try new ones ou
 I like this one :)
 
 To ease the burden of switching themes I keep most of *my* data in the `_data/` directory, formatted in YAML files.
-I also generally have personal text written in some of the HTML files in the `_includes/` directory (e.g., `about.html`)
-and in the markdown files in the root level of this repository (e.g., `research.md`).
+I also generally have personal text written in some of the HTML files in the `_includes/` directory
+(e.g., `about.html`, `news.html`, `projects.html`, `publications.html`)
+and in the markdown files in the root level of this repository
+(e.g., `./research.md`, `./projects.md`).
 
 ## Quick-Start Guide
 
