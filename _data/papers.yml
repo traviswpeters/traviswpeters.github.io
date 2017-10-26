@@ -3,12 +3,14 @@
   publisher: In Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings), November 2017
   url: papers/kotz-safethings2017.pdf
   type: workshop
+  internal: true
 
 - title: "A Survey of Trustworthy Computing on Mobile & Wearable Systems"
   authors: Travis Peters
   publisher: Technical Report TR2017-823, Dartmouth College Computer Science Technical Report series, May 2017
   url: papers/peters-trusted-comp-tr2017.pdf
   type: techreport
+  internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/
 
 - title: "Amulet: An Energy-Efficient, Multi-Application Wearable Platform"
@@ -16,30 +18,35 @@
   publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys), November 2016
   url: papers/hester-amulet-sensys2016.pdf
   type: conference
+  internal: true
 
 - title: "The Amulet Wearable Platform: Demo Abstract"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
   publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys), November 2016
   url: papers/hester-amulet-demo-sensys2016.pdf
   type: demo
+  internal: true
 
 - title: "Amulet: A secure architecture for mHealth applications for low-power wearable devices"
   authors: Andres Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun, Bhargav Golla, Kevin Freeman, Travis Peters, Jacob Sorber, Ryan Halter, David Kotz
   publisher: In Proceedings of the Workshop on Mobile Medical Applications - Design and Development (WMMADD), November 2014
   url: papers/molina-markham-wmmadd2014.pdf
   type: workshop
+  internal: true
 
 - title: "MobiSys 2014"
   authors: Travis Peters, Puneet Jain
   publisher: IEEE Pervasive Computing, 2014
   url: papers/peters-mobisys2014.pdf
   type: journal
+  internal: true
 
 - title: "An Assessment of Single-Channel EMG Sensing for Gestural Input"
   authors: Travis Peters
   publisher: Technical Report TR2015-767, Dartmouth College Computer Science Technical Report series, September 2014
   url: papers/peters-emg-tr2014.pdf
   type: techreport
+  internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/
 
 - title: "Computing Along the Big Long River"
@@ -47,3 +54,4 @@
   publisher: In the UMAP Journal for Undergraduate Mathematics & Research, 2012
   url: papers/peters-umap2012.pdf
   type: journal
+  internal: true

@@ -41,7 +41,9 @@ social:
 # Site Menus
 #
 menu:
+- {name: 'Home', url: ''}
 - {name: 'Research', url: 'research.html'}
+- {name: 'Projects', url: 'projects.html'}
 - {name: 'CV', url: 'cv.html'}
 - {name: 'Writing', url: 'writing.html'} #Blog
 - {name: 'News', url: 'news.html'}

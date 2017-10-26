@@ -1,0 +1,14 @@
+{% for pub in site.data.projects %}
+{% if pub.show %}
+
+{% if pub.image %}
+{% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
+{% endif %}
+<!-- URL links to project repo; PDF links to paper -->
+<!-- No URL; Make title link to same destination as the PDF -->
+<!-- No URL; No PDF; Just diplay the title -->
+{% if pub.url %}[**{{ pub.title }}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{ pub.url }}{% endif %}) <br/>{% else if pub.pdf %}[**{{ pub.title }}**]({{ pub.pdf | relative_url }}) <br/>{% else %}**{{ pub.title }}** <br/>{% endif %}
+{{ pub.desc }}{% if pub.pdf %} {% if pub.internal %} [[pdf]]({{ pub.pdf | relative_url }}) {% else %} [[pdf]]({{ pub.pdf }}) {% endif %}{% endif %} {% if pub.doc %}[[doc]({{ pub.doc | relative_url }})]{% endif %}
+
+{% endif %}
+{% endfor %}

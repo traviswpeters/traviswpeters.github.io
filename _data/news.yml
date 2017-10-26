@@ -1,17 +1,24 @@
-- descr: "Our paper *Challenges to ensuring human safety throughout the life-cycle of Smart Environments* with David Kotz and Travis Peters has been accepted and will appear in the Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings 2017). [[pdf](papers/kotz-safethings2017.pdf)]"
+- descr: "Our paper *Challenges to ensuring human safety throughout the life-cycle of Smart Environments* with David Kotz and Travis Peters has been accepted and will appear in the Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings 2017)."
   date: November 2017
+  pdf: papers/kotz-safethings2017.pdf
+  internal: true
   show: true
 
-- descr: My survey on trustworthy computing technologies for mobile and wearable systems was released as a Technical Report. [[pdf](papers/peters-trusted-comp-tr2017.pdf)]
+- descr: My survey on trustworthy computing technologies for mobile and wearable systems was released as a Technical Report.
   date: May 2017
+  pdf: papers/peters-trusted-comp-tr2017.pdf
+  internal: true
   show:  true
 
 - descr: I'll be coaching the middle- and long-distance runners again as an assistant track coach for the Hanover High School Track team alongside my wife, Mary, this Winter and Spring (January-June 2017).
   date: January 2017
   show: true
 
-- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted and will appear in Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys 2016). [[pdf](papers/hester-amulet-sensys2016.pdf)] ([demo](papers/hester-amulet-demo-sensys2016.pdf))"
+- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted and will appear in Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys 2016)."
   date: July 2016
+  pdf: papers/hester-amulet-sensys2016.pdf
+  demo: papers/hester-amulet-demo-sensys2016.pdf
+  internal: true
   show: true
 
 - descr: I'll be returning to Oregon for the summer for a second internship in the Security & Privacy Research group @ Intel Labs.
@@ -47,16 +54,22 @@
   date: January 2015
   show: true
 
-- descr: Some of my summer work on gesture recognition using single-channel EMG was released as a Technical Report. [[pdf](papers/peters-emg-tr2014.pdf)]
+- descr: Some of my summer work on gesture recognition using single-channel EMG was released as a Technical Report.
   date: January 2015
+  pdf: papers/peters-emg-tr2014.pdf
+  internal: true
   show: true
 
-- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys. [[pdf](papers/molina-markham-wmmadd2014.pdf)]"
+- descr: "Our new workshop paper, Amulet: A secure architecture for mHealth applications for low-power wearable devices, was presented at the Workshop on Mobile Medical Applications – Design and Development (WMMADD) @ SenSys."
   date: November 2014
+  pdf: papers/molina-markham-wmmadd2014.pdf
+  internal: true
   show: true
 
-- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out! [[pdf](papers/peters-mobisys2014.pdf)]
+- descr: Our conference report on MobiSys 2014, featured in IEEE Pervasive Computing, is out!
   date: October 2014
+  pdf: papers/peters-mobisys2014.pdf
+  internal: true
   show: true
 
 - descr: "Accepted an offer to teach <i>COSC 10: Problem Solving via Object Oriented Programming</i> in Winter 2015."
