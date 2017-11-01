@@ -68,7 +68,7 @@ $ egrep -r  'pass|leviathan' ~
 ./.backup/bookmarks.html:<DT><A HREF="http://leviathan.labs.overthewire.org/passwordus.html | This will be fixed later, the password for leviathan1 is rioGegei8m" ADD_DATE="1155384634" LAST_CHARSET="ISO-8859-1" ID="rdf:#$2wIU71">password to leviathan1</A>
 ```
 
-Here, `egrep` allowed me to recursively search the user's home directory using a regular expression;
+Here, `egrep` allowed me to recursively (`-r`) search the user's home directory (`~`) using a regular expression;
     in this case, it will reveal any files (and file content) where "pass" and "leviathan" are found.
 
 **Takeaway:**
@@ -137,7 +137,7 @@ It can also intercept and print the system calls executed by the program"* (quot
 
 Thus, I invoked `check` with `ltrace`.
 When `check` was running I simply typed “abc” as the password.
-As `ltrace` runs, you’ll see that a `strcmp()` is invoked,
+As `ltrace` runs the `check` program, you’ll see that a `strcmp()` is invoked,
 comparing the password you entered with the expected password.
 Again, we can see the password in plaintext here.
 (**Note for the reader:** I commented out the output here because it was messing with my markdown rendered :D)
@@ -236,8 +236,8 @@ ssh leviathan3@leviathan.labs.overthewire.org -p 2223 #password=Ahdiemoo1j
 As before, we `ls` on the home directory and reveal an executable.
 Now with `ltrace` in our bag of tricks, this level seems redundant and too easy.
 When invoking `level3` with `ltrace`, again we must enter a password.
-This time it seems there is a `strcmp` *before* the password entry.
-If we enter a password, we see *another* `strcmp`, this time it is comparing the password I entered with the string "snlprintf".
+This time it seems there is a `strcmp` *before* the password entry; it appears to return -1 but then the program continues.
+If we enter any password at the password prompt, we see *another* `strcmp`, this time it is comparing the password I entered with the string "snlprintf".
 
 ```bash
 $ ltrace ./level3
@@ -261,9 +261,199 @@ $ cat /etc/leviathan_pass/leviathan4
 vuH0coox6m
 ```
 
+Cool...?
+
 # Level 4
 
 ```bash
 #login
 ssh leviathan4@leviathan.labs.overthewire.org -p 2223 #password=vuH0coox6m
+```
+
+This level appears somewhat unremarkable upon logging in.
+There doesn't appear to be anything that screams "look at me" but there is a `.trash` and `.cache` directory.
+I used `egrep` to search for the usual suspects:
+
+```bash
+egrep -r 'level4|pass|leviathan' ~
+Binary file /home/leviathan4/.trash/bin matches
+```
+
+Let's dig a little deeper into this `bin` file in `~/.trash/` where we found a match to our `egrep`.
+
+```bash
+$ cd .trash/
+$ ls -al bin
+-r-sr-x--- 1 leviathan5 leviathan4 7433 Oct 30 04:16 bin
+$ ./bin
+01010100 01101001 01110100 01101000 00110100 01100011 01101111 01101011 01100101 01101001 00001010
+```
+
+Odd. The `bin` program seems be display *something* though to the untrained eye it may not mean very much.
+If you immediately recognize this output as binary encoded data, great! You're correct!
+But what data could it be encoding?
+A password? The name of some other file that contains a password? Some sort of hint?
+Let us once again turn to our friend, `ltrace`.
+
+```bash
+$ ltrace ./bin
+# __libc_start_main(0x80484cd, 1, 0xffffd7c4, 0x80485c0 <unfinished ...>
+# fopen("/etc/leviathan_pass/leviathan5", "r")                                                                                                                                                                   = 0
+# +++ exited (status 255) +++
+```
+
+From the `ltrace` ourput we can see that the `bin` program appears to be open a file from which to read (`fopen` with the `r` flag): `/etc/leviathan_pass/leviathan5`.
+Unsurprisingly, we don't have permission to read the file.
+
+```bash
+$ cat /etc/leviathan_pass/leviathan5
+```
+
+Recall that we logged in as user leviathan4, so in reality we *shouldn't* have access to leviathan5's files (without being given access).
+We can verify why this makes sense by using `id` to check our real and effective user and group IDs, as well as examining the permissions of the file in question.
+
+```bash
+$ id
+uid=12004(leviathan4) gid=12004(leviathan4) groups=12004(leviathan4)
+$ ls -al /etc/leviathan_pass/leviathan5
+-r-------- 1 leviathan5 leviathan5 11 Oct 30 04:15 /etc/leviathan_pass/leviathan5
+```
+
+Did you notice anything interesting about the `bin` file earlier?
+Let's look at it again.
+
+```bash
+$ ls -al bin
+-r-sr-x--- 1 leviathan5 leviathan4 7433 Oct 30 04:16 bin
+```
+
+What does all of this mean? Let's break it down and identify the important and interesting stuff.
+
+Unix file permissions are represented in either *symbolic* or *octal* notation.
+Depicted above is the permissions for `bin` in symbolic notation.
+The first `-` speaks to the file type (in this case `-` indicates that `bin` is just a "normal file");
+this is not relevant to our examination of permissions so suffice it to say that we can ignore this for now.
+
+The first grouping `r-s` identifies the user's (owner's) permissions with respect to the file.
+The `r` indicates that the file is readable,
+    the `-` indicates that the file is not writable, and lastly,
+    the `s` indicates that the file is executable (and has the "setuid" attribute set).
+The setuid attribute allow users to run an executable with the permissions of the executable's owner or group, respectively.
+You can read more about this at the [`setuid` wiki](https://en.wikipedia.org/wiki/Setuid).
+The wiki specifically notes that the setuid attribute is
+*"used to allow users on a computer system to run programs with temporarily elevated privileges in order to perform a specific task.
+While the assumed user id or group id privileges provided are not always elevated, at a minimum they are specific."*
+
+The next grouping `r-x` identifies the group's permissions with respect to the file.
+Again,
+    the `r` indicates that the file is readable,
+    the `-` indicates that the file is not writable, and lastly,
+    the `x` indicates that the file is executable.
+The final grouping `---` identifies the permissions of "others" with respect to the file; in this case, no permissions are granted.
+
+You'll also want to note that the file is owned by the user "leviathan5" and that "leviathan4" is the associated group for the file.
+
+#### So what did we learn from this?
+
+Well, we learned the the setuid attribute is set which will all users to run an executable with the permissions of the executable's owner (leviathan5).
+We also learned that the file is associated with the group leviathan4 (a group to which we, as the leviathan4 user, belong),
+    and that members of the file's associated group have permission to read and execute `bin`.
+Thus, we (leviathn4) can execute `bin` which will assume the permissions of leviathan5 as it runs.
+
+From this, we know that when `bin` reads the file `/etc/leviathan_pass/leviathan5`, it has permission to read the file.
+If you were paying attention, you would have noted that our `ltrace` output did indeed indicate that the call to `fopen` succeeded with return value 0.
+Thus, we have strong evidence pointing towards the fact that the output from `bin` may in fact be the contents of the leviathan5 password file, but encoded in binary format.
+
+All that is left to do at this point is figure out how to convert the binary data to ASCII (the form we expect our password to be in).
+There are surely many ways to do this.
+I found a nice one-liner using perl (see the [StackExchange post](https://unix.stackexchange.com/a/98949)).
+This solution is nice because it handles the existence of spaces in the binary data.
+
+```bash
+$ ./bin | perl -lape '$_=pack"(B8)*",@F'
+Tith4cokei
+```
+
+And there we have it!
+Did we need to know all of this?
+Not really. You may have seen the output from `bin`, recognized that it was binary
+    (heck, maybe you can read binary as if its normal english, in which case you were probably done in a matter of seconds!)
+    converted it to ASCII (assuming it was the password),
+    and Bob's your uncle.  
+But isn't it more fun to *really understand* what is going on? I think so.
+
+This has been an interesting challenge because we didn't see a call to `setuid` in the executable itself.
+Observing such a call in the `ltrace` output surely would have alerted us to the fact that the executable was running with elevated privileges
+    and that the file read would surely succeed, and therefore `bin`'s output surely is related to the password.  
+Rather, the file permissions were set in such a way that, when the executable was run, it executed with elevated privileges.
+And we got to use our knowledge of file permissions to figure all that out!
+
+If you are curious (or rusty) and want to learn more, [here is a brief tutorial on Unix file permissions](http://www.lianamonique.com/notes/unixpermission.htm).
+
+# Level 5
+
+```bash
+#login
+ssh leviathan5@leviathan.labs.overthewire.org -p 2223 #password=Tith4cokei
+```
+
+*Coming soon...*
+
+# Level 6
+
+```bash
+#login
+ssh leviathan6@leviathan.labs.overthewire.org -p 2223 #password=
+```
+
+*Coming soon...*
+
+# Level 7
+
+```bash
+#login
+ssh leviathan7@leviathan.labs.overthewire.org -p 2223 #password=
+```
+
+*Coming soon...*
+
+# Wrapping up
+
+If you've completed these challenges you've surely added some cruft to your `~/.known_hosts` file.
+I looked around to see how others manage their `known_hosts` file and found the following script.
+Simply copy-paste the following script into a file named `ssh_known_host_cleanup.sh` and make it executable (`chmod +x ssh_known_host_cleanup.sh`).
+
+```bash
+#!/bin/bash
+#
+# A simple shell script to clean (delete)  ~/.known_hosts file hostname entry.
+# -------------------------------------------------------------------------
+# Copyright (c) 2007 nixCraft project <http://cyberciti.biz/fb/>
+# This script is licensed under GNU GPL version 2.0 or above
+# -------------------------------------------------------------------------
+# This script is part of nixCraft shell script collection (NSSC)
+# Visit http://bash.cyberciti.biz/ for more information.
+# -------------------------------------------------------------------------
+#
+# Examples:
+# ./ssh_known_host_cleanup.sh www-03.nixcraft.net.in
+# ./ssh_known_host_cleanup.sh [leviathan.labs.overthewire.org]:2223
+#
+host="$1"
+
+[[ $# -eq 0 ]] && { echo "Usage: $0 host.name.com"; exit 1;}
+
+ips=$(host "$host" | awk -F'address' '{ print $2}' | sed -e 's/^ //g')
+ssh-keygen -R "$host"
+for i in $ips
+do
+    ssh-keygen -R "$i"
+done
+```
+
+I updated the script's comments but I don't think I had to touch anything else (citation information in the comments).
+You can read the comments to see examples of how I use the script, or you can just enter:
+
+```bash
+./ssh_known_host_cleanup.sh [leviathan.labs.overthewire.org]:2223
 ```
