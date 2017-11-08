@@ -5,6 +5,10 @@ title: Writing
 
 *You can also view a more compact version of this page here: <a href="{{ site.github.url }}/writing-compact.html">compact view.</a>*
 
+*I'm still in the process of porting old notes/posts to this site. Check back soon!*
+
+<br/>
+
 {% for post in site.posts %}
 <div class="posts">
   <h1>
