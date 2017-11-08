@@ -519,7 +519,7 @@ done
 ```
 
 After our script finishes, we have a file with all of our guesses and the result.
-The format of the file is: 
+The format of the file is:
 
 ```
 Testing: 0000
@@ -531,14 +531,14 @@ Wrong
 ...
 ```
 
-and so on and so forth. 
+and so on and so forth.
 
-Thus, if we pipe the output of our file to `paste` (which can merge corresponding lines), 
+Thus, if we pipe the output of our file to `paste` (which can merge corresponding lines),
     then we will get a single line that says "Testing: GUESS Wrong" on all lines except one:
-    the line where there is no "Wrong" output. 
+    the line where there is no "Wrong" output.
 In this case, we get a line that reads "Testing: GUESS Testing: NEXT-GUESS"
-While this is kind of hacky, 
-    we can then just run an inverted `grep` (i.e., using the `-v` flag) to look for lines that do *not* contain the word "Wrong" on them to find the guess that was correct. 
+While this is kind of hacky,
+    we can then just run an inverted `grep` (i.e., using the `-v` flag) to look for lines that do *not* contain the word "Wrong" on them to find the guess that was correct.
 Sure enough:
 
 ```bash
@@ -546,38 +546,38 @@ $ cat test.txt  | paste -d ' ' - - | grep -v "Wrong"
 Testing: 7123 Testing: 7124
 ```
 
-Now we can try `7123` with confidence that this is the expected 4-digit code. 
+Now we can try `7123` with confidence that this is the expected 4-digit code.
 
-Next, I'll describe an alternative approach that exercises a bit more finesse. 
+Next, I'll describe an alternative approach that exercises a bit more finesse.
 
 ### Binary inspection approach
 
-An alternative approach is to go in and examine the executable using tools that can give us insight into how the code runs and what values are used in the execution of the program. 
+An alternative approach is to go in and examine the executable using tools that can give us insight into how the code runs and what values are used in the execution of the program.
 
-Let's start by running the `leviathan6` executable with `ltrace`. 
-Be sure to invoke with a 4-digit code guess to exercise a more interesting code path. 
+Let's start by running the `leviathan6` executable with `ltrace`.
+Be sure to invoke with a 4-digit code guess to exercise a more interesting code path.
 
 ```bash
 $ ltrace ./leviathan6 1234
-__libc_start_main(0x804850d, 2, 0xffffd7c4, 0x8048590 <unfinished ...>
-atoi(0xffffd8f9, 0xffffd7c4, 0xffffd7d0, 0xf7e5519d)                                                                                                                             = 1234
-puts("Wrong"Wrong
-)                                                                                                                                                                    = 6
-+++ exited (status 6) +++
+# __libc_start_main(0x804850d, 2, 0xffffd7c4, 0x8048590 <unfinished ...>
+# atoi(0xffffd8f9, 0xffffd7c4, 0xffffd7d0, 0xf7e5519d)                                                                                                                             = 1234
+# puts("Wrong"Wrong
+# )                                                                                                                                                                    = 6
+# +++ exited (status 6) +++
 ```
 
-We see things like `atoi` being called. 
-It must be the case that `atoi` is called to convert our guess to an integer value which is subsequently compared to the value of the expected 4-digit code. 
-Perhaps we can learn what this value is by examining the comparison that takes place as the program exectures. 
+We see things like `atoi` being called.
+It must be the case that `atoi` is called to convert our guess to an integer value which is subsequently compared to the value of the expected 4-digit code.
+Perhaps we can learn what this value is by examining the comparison that takes place as the program exectures.
 
-For this, let's turn to `gdb` to get a closer look at what is happening under the hood. 
-We'll start by invoking `gdb` with the `leviathan6` executable. 
+For this, let's turn to `gdb` to get a closer look at what is happening under the hood.
+We'll start by invoking `gdb` with the `leviathan6` executable.
 (The `-q` flag simply suppresses the annoying banner information).
 We can then use `disas main` to disassemble the main function in the executable and see what it is doing.
-A high-level look shows us that various functions are called: `printf`, `exit`, `atoi`, `seteuid`, etc (note: these are the lines with the `call` instruction). 
+A high-level look shows us that various functions are called: `printf`, `exit`, `atoi`, `seteuid`, etc (note: these are the lines with the `call` instruction).
 
-```
-$ gdb -q leviathan6 
+```bash
+$ gdb -q leviathan6
 Reading symbols from leviathan6...(no debugging symbols found)...done.
 (gdb) disas main
 Dump of assembler code for function main:
@@ -614,13 +614,13 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-We are most interested in code concerned with `atoi` and subsequent comparisons. 
-Sure enough, right after the line where `atoi` is called, there is a comparison (see the `cmp` instruction?). 
-At that point, the contents of the `%eax` register are compared with some value that is offset from the stack pointer. 
-We can examine all of this by setting a break point at the line where the comparison happens. 
-Note that to set such a break point we use the name of the function (`main`) and the specified offset (`+72`). 
+We are most interested in code concerned with `atoi` and subsequent comparisons.
+Sure enough, right after the line where `atoi` is called, there is a comparison (see the `cmp` instruction?).
+At that point, the contents of the `%eax` register are compared with some value that is offset from the stack pointer.
+We can examine all of this by setting a break point at the line where the comparison happens.
+Note that to set such a break point we use the name of the function (`main`) and the specified offset (`+72`).
 
-We can then run the program and it will hit our break point, allowing us to examine registers and stack contents. 
+We can then run the program and it will hit our break point, allowing us to examine registers and stack contents.
 
 ```bash
 (gdb) b *main+72
@@ -631,11 +631,11 @@ Starting program: /home/leviathan6/leviathan6 1212
 Breakpoint 1, 0x08048555 in main ()
 ```
 
-Great, now onto our examination. 
-While we don't *need* all the information, I like to see *all* of the registers. 
-The comparison we identified above leads me to believe we are only interested in the `eax` and `esp` registers. 
-In `eax` we see the value we input to the program, `1212`. 
-In `esp` we see an address. 
+Great, now onto our examination.
+While we don't *need* all the information, I like to see *all* of the registers.
+The comparison we identified above leads me to believe we are only interested in the `eax` and `esp` registers.
+In `eax` we see the value we input to the program, `1212`.
+In `esp` we see an address.
 
 ```bash
 (gdb) info registers
@@ -657,20 +657,20 @@ fs             0x0  0
 gs             0x63 99
 ```
 
-In the comparison we are inspecting, we are interested in some offset from this address`esp` - specifically, `$esp+0x1c` - not just `esp` itself. 
-This must be where the value lives which is compared to our guess. 
+In the comparison we are inspecting, we are interested in some offset from this address`esp` - specifically, `$esp+0x1c` - not just `esp` itself.
+This must be where the value lives which is compared to our guess.
 
-We can directly address `esp` by using the address `0xffffd6d0` or use the variable `$esp`. 
-I'll use the latter here, but either way works. 
-If we examine the memory contents at that address we see: 
+We can directly address `esp` by using the address `0xffffd6d0` or use the variable `$esp`.
+I'll use the latter here, but either way works.
+If we examine the memory contents at that address we see:
 
 ```bash
 (gdb) print *((int)$esp+0x1c)
 $1 = 7123
 ```
 
-All we've done here is identify the memory address we are interested in, cast it to an `int` (i.e., interpret the contents at this address as an integer), and dereference it. 
-As a result we see the value `7123`. 
+All we've done here is identify the memory address we are interested in, cast it to an `int` (i.e., interpret the contents at this address as an integer), and dereference it.
+As a result we see the value `7123`.
 
 ### Finishing the level
 
@@ -684,8 +684,8 @@ $ cat /etc/leviathan_pass/leviathan7
 ahy7MaeBo9
 ```
 
-Sure enough, we were dropped into a new shell. 
-Assuming that we have obtained elevated privileges (you can verify for yourself), we can read leviathan7's password file. 
+Sure enough, we were dropped into a new shell.
+Assuming that we have obtained elevated privileges (you can verify for yourself), we can read leviathan7's password file.
 Done!
 
 # Level 7
@@ -695,7 +695,27 @@ Done!
 ssh leviathan7@leviathan.labs.overthewire.org -p 2223 #password=ahy7MaeBo9
 ```
 
-*Coming soon...*
+Hmmm. Level 7 doesn't appear to be much of a level at all.
+I guess we have arrived?
+
+In the home directory there is a file named `CONGRATULATIONS`.
+
+```bash
+$ cat CONGRATULATIONS
+Well Done, you seem to have used a *nix system before, now try something more serious.
+(Please dont post writeups, solutions or spoilers about the games on the web. Thank you!)
+```
+
+Ooops. I posted my solutions already.
+Let's be honest though - I'm hardly the first.
+The solutions are out there.
+And to be honest, write-ups are useful - there are some things that we can't figure out or that we *kind of* figure out.
+And at that point, it is helpful to learn from others and their experience.
+That was my hope - that my write-ups would provide insights that you the reader might not have had initially.
+I hope that there was *something* you found useful - perhaps you learned a new tool or a new trick or a new way of thinking about how to solve a problem.
+If you have comments for me, feel free to send me a message ([my home page](https://traviswp.github.io/) makes various communication options apparent).
+
+Onto more challenges!
 
 # Wrapping up
 
