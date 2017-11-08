@@ -226,7 +226,7 @@ I got a little help with the insight from the
 [DEMUX blog](https://rundata.wordpress.com/2013/03/27/overthewire-leviathan-wargame-solution-2/).
 I found there explanation...lacking, however, which is why I provided a more detailed explanation here.
 
-# Level 3
+## Level 3
 
 ```bash
 #login
@@ -263,7 +263,7 @@ vuH0coox6m
 
 Cool...?
 
-# Level 4
+## Level 4
 
 ```bash
 #login
@@ -391,7 +391,7 @@ And we got to use our knowledge of file permissions to figure all that out!
 
 If you are curious (or rusty) and want to learn more, [here is a brief tutorial on Unix file permissions](http://www.lianamonique.com/notes/unixpermission.htm).
 
-# Level 5
+## Level 5
 
 ```bash
 #login
@@ -447,7 +447,7 @@ And I'd rather go play the next levels so I probably won't do so for now :D
 
 <!-- TODO: Why does the read not succeed when leviathan5 is run by ltrace? -->
 
-# Level 6
+## Level 6
 
 ```bash
 #login
@@ -464,7 +464,7 @@ $ ./leviathan6
 usage: ./leviathan6 <4 digit code>
 ```
 
-### Brute-force approach
+#### Brute-force approach
 
 A program that expects a 4-digit code just screams "brute force me"!
 So we can try this approach.
@@ -550,7 +550,7 @@ Now we can try `7123` with confidence that this is the expected 4-digit code.
 
 Next, I'll describe an alternative approach that exercises a bit more finesse.
 
-### Binary inspection approach
+#### Binary inspection approach
 
 An alternative approach is to go in and examine the executable using tools that can give us insight into how the code runs and what values are used in the execution of the program.
 
@@ -672,7 +672,7 @@ $1 = 7123
 All we've done here is identify the memory address we are interested in, cast it to an `int` (i.e., interpret the contents at this address as an integer), and dereference it.
 As a result we see the value `7123`.
 
-### Finishing the level
+#### Finishing the level
 
 Regardless of how we get there (brute-force vs. binary inspection vs. something else), we've got a 4-digit code which we believe to be correct.
 Let's try it...
@@ -688,7 +688,7 @@ Sure enough, we were dropped into a new shell.
 Assuming that we have obtained elevated privileges (you can verify for yourself), we can read leviathan7's password file.
 Done!
 
-# Level 7
+## Level 7
 
 ```bash
 #login
@@ -717,7 +717,7 @@ If you have comments for me, feel free to send me a message ([my home page](http
 
 Onto more challenges!
 
-# Wrapping up
+## Wrapping up
 
 If you've completed these challenges you've surely added some cruft to your `~/.known_hosts` file.
 I looked around to see how others manage their `known_hosts` file and found the following script.
