@@ -300,11 +300,17 @@ Lots of stuff going on here...
 First, I looked at the page and then looked around in the source.
 The source revealed a few comments and poorly hidden page text with (potentially?) relevant information.
 Things like
-`  ^^^^^^^^^^ Change domain, add "22332" at the end, reach it and then get hold of ... ^^^^^^^^^^ `
+```
+^^^^^^^^^^ Change domain, add "22332" at the end, reach it and then get hold of ... ^^^^^^^^^^
+```
 and
-`<!--    Look above and right   //--> `
+```
+<!--    Look above and right   //-->
+```
 and
-`<!-- ... the admin panel of it and then go from there or be lost forever -->`
+```
+<!-- ... the admin panel of it and then go from there or be lost forever -->
+```
 
 Also, since base64 is a common encoding, I tried to decode the string that was displayed in text on the page.
 NOTE: I did *not* try to type out the hex from [http://www.hackertest.net/images/hex.gif](http://www.hackertest.net/images/hex.gif).
