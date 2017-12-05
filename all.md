@@ -12,10 +12,11 @@ title: All
 ## News
 {% include news.html %}
 
-<!-- see: _includes/research.html -->
-## Publications
+<!-- see: _includes/publications.html -->
 {% include publications.html %}
 
+<!-- see: _includes/presentations.html -->
+{% include presentations.html %}
+
 <!-- see: _includes/projects.html -->
-## Select Projects
 {% include projects.html %}

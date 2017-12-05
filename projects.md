@@ -13,5 +13,4 @@ therefore, I didn't want to post solutions online.
 If you are curious about any code (and aren't taking a relevant class), get in touch and I can most likely share some code.
 
 <!-- see: _includes/projects.html -->
-## Select Projects
 {% include projects.html %}
