@@ -38,7 +38,7 @@
     grid-template-rows: 50px 350px 50px;
     grid-template-areas:
         ". . h h h . ."
-        ". c c c c c ."
+        ". . c c c . ."
         ". . f f f . .";
 }
 
