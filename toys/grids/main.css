@@ -1,0 +1,75 @@
+/*
+    Resources:
+    - https://medium.freecodecamp.org/how-to-prototype-websites-quickly-with-css-grid-ffc9cba08583
+*/
+
+/*html, body { padding: 0; margin: 0; height: 100%; }*/
+
+#fake_body { width: 100%; height: 100%; background: #000; }
+
+/* ---------------------------------------------------------------- */
+
+.container {
+    display: grid;
+    grid-gap: 5px;    
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 50px 350px 50px;
+    grid-template-areas:
+        ". . h h h h h h h h . ."
+        ". m m c c c c c c c c ."
+        ". . f f f f f f f f . .";
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+        grid-template-areas:
+            "m m m m m m h h h h h h"
+            "c c c c c c c c c c c c"
+            "f f f f f f f f f f f f";
+    }
+}
+
+/* ---------------------------------------------------------------- */
+
+.container2 {
+    display: grid;
+    grid-gap: 5px;    
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 50px 350px 50px;
+    grid-template-areas:
+        ". . h h h . ."
+        ". c c c c c ."
+        ". . f f f . .";
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+        grid-template-areas:
+            "m m m m m m h h h h h h"
+            "c c c c c c c c c c c c"
+            "f f f f f f f f f f f f";
+    }
+}
+
+/* ---------------------------------------------------------------- */
+
+div {
+    border-radius: 5px; /* standards-compliant: (IE) */ 
+    padding: 5px; 
+}
+
+.header {
+    grid-area: h;
+}
+
+.menu {
+    grid-area: m;
+}
+
+.content {
+    grid-area: c;
+}
+
+.footer {
+   grid-area: f;
+}
