@@ -33,10 +33,10 @@
 
 - title: "Dot Files (private repository currently; available upon request)"
   desc: "A collection of dot files.
-         For those that don't know, generally speaking, 'dot files' are simply configuration files with a file name that starts with a '.') 
-         and scripts I use for customizing environments (typical OS X) to my liking and setting up the software development tools I use on a day-to-day basis. 
-         I've also made *some* attempt at making these play nice on Linux, 
-         but sometimes there is software in one environment that doesn't exist in the other and I haven't covered all the bases just yet. 
+         For those that don't know, generally speaking, 'dot files' are simply configuration files with a file name that starts with a '.')
+         and scripts I use for customizing environments (typically OS X) to my liking and setting up the software development tools I use on a day-to-day basis.
+         I've also made *some* attempt at making these play nice on Linux,
+         but sometimes there is software in one environment that doesn't exist in the other and I haven't covered all the bases just yet.
          Needless to say, it is a never-ending work-in-progress."
   url: https://github.com/traviswp/dot-files
   show: true

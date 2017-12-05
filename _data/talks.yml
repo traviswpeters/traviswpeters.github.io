@@ -1,23 +1,30 @@
-- title: "Physical Emanations and Potential Applications" 
+- title: "Physical Emanations and Potential Applications"
   date: September 2017
   venue: THaW annual workshop
-  location: University of Illinois at Urbana-Champaign 
-  abstract: "..."
-  note: 
+  location: University of Illinois at Urbana-Champaign
+  # abstract: ""
+  # note: ""
 
-- title: "...." 
+- title: "An IoT Survey: Security, Privacy, and Safety in the Future of IoT"
   date: September 2016
   venue: Intel Intern Tech Talk Series
-  location: Intel Labs in Hillsboro, Oregon
-  abstract: "..."
-  note: 
+  location: Intel Labs (Hillsboro, Oregon)
+  # abstract: ""
+  # note: ""
 
-- title: "...." 
+- title: "Fitbit data project and security & privacy awareness"
+  date: May 2015
+  venue: Statistics Class
+  location: Hanover High School (Hanover, New Hampshire)
+  # abstract: ""
+  # note: ""
+
+- title: "Delivering Secure Bluetooth Device Input to a TEE"
   date: September 2015
   venue: Intel Intern Tech Talk Series
-  location: Intel Labs in Hillsboro, Oregon
-  abstract: "..."
-  note: 
+  location: Intel Labs (Hillsboro, Oregon)
+  # abstract: ""
+  # note: ""
 
 # Guest Lectures?
 # CS50 - Debugging with GDB and Valgrind, April 17, 2017
@@ -26,4 +33,3 @@
 #    pointers and dynamic memory management (malloc, free, etc.)?
 #    git?
 #    introduction to pebble development (for project)?
-

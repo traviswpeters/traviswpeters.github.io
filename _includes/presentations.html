@@ -1,0 +1,5 @@
+## Talks
+{% for talk in site.data.talks %}
+[**{{talk.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %}) <br />
+*{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
+{% endfor %}

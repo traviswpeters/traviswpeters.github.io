@@ -1,14 +1,37 @@
 {% assign thumbnail="left" %}
 
+## Publications
+
 {% for pub in site.data.papers %}
+{% if pub.type == "conference" or pub.type == "journal" or pub.type == "workshop" or pub.type == "techreport" %}
+
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
 {% endif %}
 [**{{pub.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %})<br />
-*{{pub.publisher}}* <br />
+*{{pub.publisher}}, {{pub.date}}* <br />
 {{pub.authors}}<br />
 {% if pub.note %} *({{pub.note}})*{% endif %}
 {% if pub.year %}*{{pub.year}}*{% endif %}
 {% if pub.doi %}[[doi]({{pub.doi}})]{% endif %}
 {% if pub.media %}<br />Media: {% for article in pub.media %}[[{{article.name}}]({{article.url}})]{% endfor %}{% endif %}
+
+{% endif %}
+{% endfor %}
+
+## Posters, Demos, Work In Progress, etc.
+
+{% for pub in site.data.papers %}
+{% if pub.type == "poster" or pub.type == "demo" or pub.type == "poster/demo" %}
+
+{% if pub.image %}
+{% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
+{% endif %}
+[**{{pub.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %})<br />
+{% if pub.publisher %}*{{pub.publisher}}, {{pub.date}}* <br />{% endif %}
+{{pub.authors}}<br />
+{% if pub.doi %}[[doi]({{pub.doi}})]{% endif %}
+{% if pub.media %}<br />Media: {% for article in pub.media %}[[{{article.name}}]({{article.url}})]{% endfor %}{% endif %}
+
+{% endif %}
 {% endfor %}

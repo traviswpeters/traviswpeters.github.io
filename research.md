@@ -5,7 +5,7 @@ title: Research
 
 <!--
 Broadly speaking, I'm interested in ....
-More specifically, I'm intersted in ...
+More specifically, I'm interested in ...
  -->
 
 I’m interested in (in)security, particularly at the lower levels of systems and wireless communications.
@@ -29,6 +29,8 @@ Trustworthy Infrastructure, Protecting User Data, and Malicious and Deceptive So
 <!-- <h4>I also <a href="{{ site.baseurl }}blog.html">write about miscellaneous stuff</a> at times.</h4>
 <h4>If you want to chat, reach out!</h4> -->
 
-<!-- see: _includes/research.html -->
-## Publications
+<!-- see: _includes/publications.html -->
 {% include publications.html %}
+
+<!-- see: _includes/presentations.html -->
+{% include presentations.html %}
