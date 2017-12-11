@@ -4,11 +4,13 @@ layout: default
 
 # Todo App
 
+This document details the creation of a simple Todo App.
+
 <center>
 <b><a href="./v11/">[LIVE VERSION (Todo App v11)]</a></b>
 </center>
 
-This document details the creation of a simple Todo App.
+The demo shown at the beginning of the course suggests we will build something like [TodoMVC](http://todomvc.com/examples/vanillajs/).
 This app was built while following along with the Watch and Code Javascript Series: [https://watchandcode.com/courses/practical-javascript/](https://watchandcode.com/courses/practical-javascript/).
 A *big* shout out to [Gordon Zhu](https://medium.com/@gordon_zhu) --- he is an extremely gifted teacher.
 His descriptions of ideas are intuitive and insightful.
@@ -1245,6 +1247,10 @@ view.setUpEventListeners();
 
 ## V11 Requirements (Destroy all for loops)
 
+<center>
+<b><a href="./v11/">[LIVE VERSION (Todo App v11)]</a></b>
+</center>
+
 Now that we've studied higher order functions and matured the app quite a bit,
     there are yet more opportunities to apply some of our lessons-learned to further improve the app.
 Specifically, our requirements for this version of the app are as follows:
@@ -1489,7 +1495,7 @@ var view = {
 view.setUpEventListeners();
 ```
 
-## Interlude - Understanding `this`
+## Interlude - Understanding *this*
 
 The `this` keyword is an important on in Javascript.
 Thus, Gordon has been nice enough to provide
