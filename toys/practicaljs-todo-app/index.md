@@ -4,7 +4,9 @@ layout: default
 
 # Todo App
 
-[LIVE VERSION](./app.html)
+<center>
+<b><a href="./v11/">[LIVE VERSION (Todo App v11)]</a></b>
+</center>
 
 This document details the creation of a simple Todo App.
 This app was built while following along with the Watch and Code Javascript Series: [https://watchandcode.com/courses/practical-javascript/](https://watchandcode.com/courses/practical-javascript/).
@@ -15,6 +17,7 @@ I'm definitely looking forward to more of his courses.
 Useful resources brought up in this series:
 
 * [How to be great at asking coding questions](https://medium.com/@gordon_zhu/how-to-be-great-at-asking-questions-e37be04d0603)
+* [cheatsheet-js](https:github.com/gordonmzhu/cheatsheet-js)
 
 ## V1 Requirements (Arrays)
 
@@ -1499,6 +1502,6 @@ A general takeaway is that you have to look at a higher order function
 
 ## Until Next Time...
 
-Unfortunately the tutorial stops rather abruptly.
-It appears to continue in the [premium version](https://watchandcode.com/p/premium),
+Unfortunately the tutorial stops rather abruptly with V11 of the app.
+There appears to to be more content in the [premium version](https://watchandcode.com/p/premium),
     though it isn't clear whether or not the Todo app is wrapped up there.
