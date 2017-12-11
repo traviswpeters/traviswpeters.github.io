@@ -1,0 +1,19 @@
+body {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+/* Apply a gradient over the top of an image (in this case, specified by a URL) */
+
+.hero {
+    background:
+    linear-gradient(to right, rgba(75, 123, 211, 0.5), rgba(22, 215, 177, 0.3)), url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/gradient-bg.jpg);
+    /*
+    https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/gradient-bg.jpg
+    https://traviswp.github.io/assets/img/me.png
+    */
+    width: 100vw;
+    height: 100vh;
+    /*background-repeat: no-repeat;  */
+    background-size: cover;
+}

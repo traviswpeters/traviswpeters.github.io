@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Practical Todos</title>
+    <link id="favicon" rel="icon" href="https://hyperdev.com/favicon.ico" type="image/x-icon">
+  </head>
+
+  <body>
+    <h1>Todo List</h1>
+
+    <div>
+      <button onclick="handlers.toggleAll()">Toggle All</button>
+    </div>
+
+    <!-- Todo input -->
+    <div>
+      <button onclick="handlers.addTodo()">Add</button>
+      <input id="addTodoTextInput" type="text">
+    </div>
+
+    <!-- Change a todo -->
+    <div>
+      <button onclick="handlers.changeTodo()">Change Todo</button>
+      <input id="changeTodoPositionInput" type="number">
+      <input id="changeTodoTextInput" type="text">
+    </div>
+
+    <!-- Toggle completed for a todo -->
+    <div>
+      <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+      <input id="toggleCompletedPositionInput" type="number">
+    </div>
+
+    <!-- The unordered list where the todos will be rendered -->
+    <ul>
+    </ul>
+
+    <!-- We move the script reference down here so that the HTML page "loads" before our javascript is run. -->
+    <script src="./client.js"></script>
+  </body>
+
+</html>
