@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Death to Stock"
+published: false
 author: "Paul Le"
 categories: journal
 tags: [documentation,sample]

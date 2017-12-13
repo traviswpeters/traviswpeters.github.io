@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Welcome to Lagrange!"
+published: false
 author: "Paul Le"
 categories: journal
 tags: [documentation,sample]

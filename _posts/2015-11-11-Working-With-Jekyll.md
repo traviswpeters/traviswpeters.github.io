@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Working With Jekyll"
+published: false
 author: "Paul Le"
 categories: journal
 tags: [documentation,sample]

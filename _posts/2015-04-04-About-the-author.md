@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "About the Author"
+published: false
 author: "Paul Le"
 categories: journal
 tags: [documentation,sample]
