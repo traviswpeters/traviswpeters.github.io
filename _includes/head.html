@@ -3,10 +3,12 @@
   <title>
     {% if page.title == "Home" %}
       {{ site.data.settings.title }} | {{ site.data.settings.tagline }}
-    {% else if page.title == "All" %}
-      {{ site.data.settings.title }} (all) | {{ site.data.settings.tagline }}
     {% else %}
-      {{ page.title }} | {{ site.data.settings.title }}
+      {% if page.title == "All" %}
+        {{ site.data.settings.title }} (all) | {{ site.data.settings.tagline }}
+      {% else %}
+        {{ page.title }} | {{ site.data.settings.title }}
+      {% endif %}
     {% endif %}
   </title>
 

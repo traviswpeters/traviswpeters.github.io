@@ -26,6 +26,17 @@ If you push to github, your website should be ready immediately at 'http://USERN
 In the `_posts` directory you'll find some of my posts as well as good reference posts that I've kept around from the themes that inspired my site.
 You can simply duplicate the template post and start adding your own content.
 
+### Debugging
+
+When in doubt a quick and easy way to debug liquid variables is to pipe it into `jsonify` and render the result on the page.
+Special thanks to this StackOverflow post (["jekyll debug or print all variables"](https://stackoverflow.com/a/41668125) ) for the suggestion.
+
+```
+{{ my.site.variable | jsonify }}
+```
+
+where `my.site.variable` is substituted with the variable of interest. 
+
 ### Everything Else
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll.
