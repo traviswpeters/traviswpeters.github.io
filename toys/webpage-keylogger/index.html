@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>WPKL</title>
+    </head>
+
+    <body>
+    <form>
+        <h1>Signup Form (webpage keylogger PoC...)</h1>
+        <p>
+            <label for="username">Username</label>:
+            <input type="text" name="username" id="username" required>
+            <span id="usernameHelp"></span>
+        </p>
+        <p>
+            <label for="password">Password</label>:
+            <input type="password" name="password" id="password" required>
+            <span id="passwordHelp"></span>
+        </p>
+        <p>
+            <label for="emailAddress">Email address</label>:
+            <input type="email" name="emailAddress" id="emailAddress" required placeholder="user@domain">
+            <span id="emailHelp"></span>
+        </p>
+        <p>
+            <input type="checkbox" name="confirmation" id="confirmation">
+            <label for="confirmation">Send me a confirmation email</label>
+        </p>
+        <p>
+            <input type="radio" name="subscription" id="newsroom" value="newspromo">
+            <label for="newsroom">Subscribe me to newsletters and promotions</label>
+            <br>
+            <input type="radio" name="subscription" id="news" value="news">
+            <label for="news">Subscribe me only to the newsletter</label>
+            <br>
+            <input type="radio" name="subscription" id="no" value="no" checked>
+            <label for="no">No subscriptions</label>
+            <br>
+        </p>
+        <p>
+            <label for="nationality">Nationality</label>:
+            <select name="nationality" id="nationality">
+            <option value="US" selected>American</option>
+            <option value="FR">French</option>
+            <option value="ES">Spanish</option>
+            <option value="XX">Other</option>
+            </select>
+        </p>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Cancel">
+    </form>
+
+    <p>
+        NOTE:
+        Even though the password field shows "dots" in place of the characters you type, the javascript running on this page is logging each key press.
+        It is easy to reduce the "noise" on the webpage and only log the keys that are typed when the user clicks into the password input field.
+    </p>
+
+    <!-- We move the script reference down here so that the HTML page "loads" before our javascript is run. -->
+    <script src="./script.js"></script>
+    </body>
+
+</html>
