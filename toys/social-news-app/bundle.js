@@ -1,10 +1,79 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
 ////////////////////////////////////////////////////////////////////////////////
 // DATA STRUCTURES /////////////////////////////////////////////////////////////
 
-var Link = require('./link.js');
+var Link = __webpack_require__(1);
 // Example: const newlink = new Link(title, url, author);
 
-const linkList = require("./linklist.js");
+const linkList = __webpack_require__(2);
 // Example: linkList.links;
 // Example: linkList.add(newLink);
 
@@ -169,3 +238,83 @@ fetch("http://localhost:3000/api/news")
 
         // console.error(`ERROR: ${err.message}`);
     });
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+////////////////////////////////////////////////////////////////////////////////
+// LINK OBJECT /////////////////////////////////////////////////////////////////
+
+module.exports = class Link {
+
+    constructor(title, url, author) {
+        this.title = title;
+        this.url = this.standardizeURL(url);
+        this.author = author; // "submitter"
+    }
+
+    // Return the URL with http:// or https:// (default: http://)
+    standardizeURL(url) {
+        const defaultPrefix = 'http://';
+        const isHTTP = url.startsWith("http://");
+        const isHTTPS = url.startsWith("https://");
+        if (isHTTP || isHTTPS) {
+            return url;
+        } else {
+            return defaultPrefix+url;
+        }
+    }
+
+    // This HTML is only that which resides *within* its containing `div` element.
+    getHTML() {
+        var html = '';
+        html += `<h4 class="linkHeadline"><a class="linkTitle" href="${this.url}">${this.title}</a> <span class="linkUrl">${this.url}</span></h4>`;
+        html += `<span class="linkAuthor">Submitted by ${this.author}</span>`;
+        return html;
+    }
+
+    // A debug string of the Link object
+    logStr() {
+        return `- ${this.title} - ${this.url} (submitted by ${this.author})`;
+    }
+
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+////////////////////////////////////////////////////////////////////////////////
+// LINK LIST OBJECT (STORAGE) //////////////////////////////////////////////////
+
+// var Link = require('./link.js');
+
+var linkList = {
+
+    links: [],
+
+    addLinkToTop: function(link) {
+        this.links.unshift(link);
+    },
+
+    addLink: function(link) {
+        this.links.push(link);
+    },
+
+    dump: function() {
+        this.links.forEach(link => {
+            console.log(link.logStr());
+        })
+    }
+
+};
+
+// Export the factory function
+module.exports = linkList;
+
+
+/***/ })
+/******/ ]);
