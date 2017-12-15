@@ -1,4 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
 // LINK OBJECT /////////////////////////////////////////////////////////////////
+
 class Link {
 
     constructor(title, url, author) {
@@ -27,95 +29,140 @@ class Link {
         return html;
     }
 
-    // DEBUG: simple log format for Link object.
-    log() {
-        console.log(`${this.title} - ${this.url} - ${this.author}`);
-    }
 }
-// PULL FIELDS FROM INPUT FORM AND CREATE NEW LINK OBJECT
-// const newLink = new Link(inputTitle, inputURL, inputAuthor);
 
-// STORE & UPDATE //////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// LINK LIST OBJECT (STORAGE) //////////////////////////////////////////////////
 
-const links = [];
-links.push(new Link("Wikipedia", "http://wikipedia.org", "Sophie"));
-links.push(new Link("Hacker News", "https://news.ycombinator.com", "Baptiste"));
-links.push(new Link("Reddit", "https://reddit.com", "Thomas"));
-links.push(new Link("Boing Boing", "https://boingboing.net", "Daniel"));
-display();
+var linkList = {
+
+    // the actual list holding todos
+    links: [],
+
+    addLink: function(linkObj) {
+        this.links.unshift(linkObj);
+        view.displayLinks();
+    },
+
+    // for batched adds
+    addLinkNoDisplay: function(linkObj) {
+        this.links.unshift(linkObj);
+    }
+
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// UPDATE //////////////////////////////////////////////////////////////////////
 
 // Renders a form to enter a new Link for the webpage.
 let isLinkFormShown = false;
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener("click", e => {
+
+    // If the Link Form is already shown, no further work should be done.
     if (isLinkFormShown) {
         return;
+    } else { // No Link Form is currently being displayed; render one!
+        isLinkFormShown = true;
+        submitButton.disabled = true;
     }
-    // No Link Form is currently being displayed; render one!
-    isLinkFormShown = true;
-    submitButton.disabled = true;
 
-    // create form
-    const addLinkForm = document.createElement("form");
-    addLinkForm.id = 'linkForm';
-    addLinkForm.className = 'linkForm';
-    addLinkFormHTML =
-        '<input type="text" id="author" required placeholder="Your Name"> \
+    /*
+     * Render the form.
+     * -> Here we create the new Link form text (HTML) +
+     *  insert the form as the first "thing" within the content `div` before any links.
+     */
+
+    var addLinkFormHTML =
+        '<form class="linkForm"> \
+         <input type="text" id="author" required placeholder="Your Name"> \
          <input type="text" id="title" required placeholder="Page Title"> \
          <input type="text" id="url" required placeholder="URL"> \
-         <input id="addLinkButton" type="submit" value="Add Link">';
-    addLinkForm.innerHTML = addLinkFormHTML;
+         <input id="addLinkButton" type="submit" value="Add Link"> \
+         </form>';
+    document.getElementById('content').insertAdjacentHTML("afterBegin", addLinkFormHTML);
 
-    // add form *before* "content" in the "body" of the page
-    document.getElementById('mainContainer').insertBefore(addLinkForm, document.getElementById('content'));
+    /*
+     * Form-handling.
+     */
 
     // Shows all user input and cancels form data sending
     const formElement = document.querySelector("form");
     formElement.addEventListener("submit", e => {
-        // extract data from the form
+        // extract data from the form & add to list of Link objects
         const author = e.target.elements.author.value;
         const title = e.target.elements.title.value;
         const url = e.target.elements.url.value;
-        console.log(`author: ${author}, title: ${title}, url: ${url}`);
 
-        // add to list of Link objects and render the list
-        links.unshift(new Link(title, url, author));
-        display();
+        // NOTE: Adding the new Link:
+        //   (1) causes the list to be re-rendered
+        //   (2) and as a result, automatically "deletes" the `form` element
+        linkList.addLink(new Link(title, url, author));
 
         // remove the form itself & update page controls (i.e., re-enable submit button)
-        const mainContainer = document.getElementById('mainContainer');
-        mainContainer.removeChild(document.getElementById("linkForm"));
         isLinkFormShown = false;
         submitButton.disabled = false;
 
-        // display "success" text; clear it in 2 seconds.
+        // user feedback: display "success" text & setup timer to clear it in 2 seconds.
         const resultElement = document.createElement("div");
         resultElement.id = 'resultElement';
         resultElement.className = 'link';
         resultElement.innerHTML = `Success! The link '${title}' has been successfully added!`;
-        document.getElementById('mainContainer').insertBefore(resultElement, document.getElementById('content'));
-
+        document.getElementById('content').insertAdjacentHTML("afterBegin", resultElement.outerHTML);
         setTimeout(() => {
-            const mainContainer = document.getElementById('mainContainer');
-            mainContainer.removeChild(document.getElementById("resultElement"));
+            document.getElementById('content').removeChild(document.getElementById("resultElement"));
         }, 2000);
 
         // prevent sending off to a server; add link to the page
         e.preventDefault(); // Cancel form data sending
     });
-
 }, this);
 
+////////////////////////////////////////////////////////////////////////////////
 // DISPLAY /////////////////////////////////////////////////////////////////////
-function display() {
-    const content = document.getElementById("content");
-    content.innerHTML = '';
 
-    links.forEach((current, index, inputArray) => {
-        const linkdiv = document.createElement("div"); // Create an "li" element
-        linkdiv.id = index;
-        linkdiv.className = 'link';
-        linkdiv.innerHTML = current.getHTML();
-        content.appendChild(linkdiv);
+// An object for UI-related methods
+var view = {
+    displayLinks: function() {
+        const content = document.getElementById("content");
+        content.innerHTML = '';
+
+        linkList.links.forEach((current, index, inputArray) => {
+            const linkdiv = document.createElement("div"); // Create an "li" element
+            linkdiv.id = index;
+            linkdiv.className = 'link';
+            linkdiv.innerHTML = current.getHTML();
+            content.appendChild(linkdiv);
+        });
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// MAIN ////////////////////////////////////////////////////////////////////////
+
+/*
+ * Add a few default Links (works even if our webserver is not "up")
+ */
+
+// linkList.addLink(new Link("Wikipedia", "http://wikipedia.org", "Sophie"));
+// linkList.addLink(new Link("Hacker News", "https://news.ycombinator.com", "Baptiste"));
+// linkList.addLink(new Link("Reddit", "https://reddit.com", "Thomas"));
+// linkList.addLink(new Link("Boing Boing", "https://boingboing.net", "Daniel"));
+
+/*
+ * Add a few default Links - Fetch from our webserver API (works only if our webserver is "up")
+ */
+
+fetch("http://localhost:3000/api/news")
+    .then(response => response.json()) // Translate JSON into JavaScript
+    .then(links => {
+        // console.log(links);
+        links.forEach(link => {
+            linkList.addLink(new Link(link.title, link.url, link.author));
+            // addLinkNoDisplay(new Link(link.title, link.url, link.author));
+        });
+        // view.displayLinks();
+    })
+    .catch(err => {
+        console.error(`ERROR: ${err.message}`);
     });
-}
