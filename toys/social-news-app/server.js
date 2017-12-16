@@ -43,10 +43,12 @@ linkList.addLink(new Link("Boing Boing", "https://boingboing.net", "Daniel"));
 ////////////////////////////////////////////////////////////////////////////////
 // ROUTES //////////////////////////////////////////////////////////////////////
 
+// Serve content of the "public" subfolder directly
+app.use(express.static("public"));
+
 // Return a string for requests to the root URL ("/")
 app.get("/", (request, response) => {
-    // TODO: SEND THE MAIN HTML PAGE
-    response.send("Hello from Social News!");
+    response.sendFile(`${__dirname}/views/index.html`);
 });
 
 // Return a list of Link objects in JSON format
