@@ -1,0 +1,63 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #ffeead;
+    border-radius: 5px;
+    background-color: #96ceb4;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    color: #96ceb4;
+    /* color: #ffeead; */
+    border-radius: 5px;
+    /* background-color: #ffcc5c; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 2em;
+    color: #ffeead;
+    border-radius: 5px;
+
+    position: relative; /* this is needed in the parent of the below anchor styling to enable a "clickable" div */
+}
+.container > div > a { /* make the entire div that contains this anchor tag "clickable" */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* No underlines on the link */
+}
+
+html, body {
+    background-color: #ffeead;
+    margin: 10px;
+}
+
+.container > div:nth-child(1n) {
+    background-color: #96ceb4;
+}
+
+.container > div:nth-child(3n) {
+    background-color: #88d8b0;
+}
+
+.container > div:nth-child(2n) {
+    background-color: #ff6f69;
+}
+
+.container > div:nth-child(4n) {
+    background-color: #ffcc5c;
+}
