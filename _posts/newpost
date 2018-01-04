@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+file=`date "+%Y-%m-%d%n"`-"${1:-NO-TITLE}"-draft.md
+echo "creating new post '${file}'..."
+cp template.md ${file}
