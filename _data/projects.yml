@@ -46,6 +46,12 @@
   url: https://github.com/traviswp/scripts
   show: true
 
+# TODO: Finish description....
+- title: "Grammar Effects (Gfx)"
+  desc: "Grammar Effects is a website for learning and practicing accurate reading, skillful writing, and reliable paraphrasing."
+  url: https://github.com/srogersact/srogersact.github.io
+  show: false
+
 #
 # Dartmouth
 #
@@ -59,6 +65,7 @@
   documentation: https://gitlab.cs.dartmouth.edu/amulet/amulet-docs
   show: true
 
+# TODO: Finish description....
 - title: "Mission Incomputable"
   desc: "TODO"
   url:
@@ -146,6 +153,12 @@
   url: https://github.com/traviswp/dtutor
   pdf: papers/classes/cs165-peters-syed-kumaran-dtutor-final-spring2014.pdf
   show: true
+
+# TODO: Finish description....
+- title: "MyRuns (Android fitness tracking app)"
+  desc: "TODO: In a smartphone programming class project, I..."
+  url:
+  show: false
 
 - title: "Electromyography-based Gesture Recognition"
   desc: "Wearable devices of all kinds are becoming increasingly popular.

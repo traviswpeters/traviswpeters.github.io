@@ -1,4 +1,23 @@
 # Papers, posters, demos, etc.
+# - Types: conference, journal, workshop, techreport, poster, demo, poster/demo, wip (work in progress)
+
+- title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
+  authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
+  publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
+  date: December 2017
+  type: conference
+  internal: true
+  inSubmission: true
+  # url: papers/...
+
+- title: "A Generalized Framework for Trusted I/O"
+  authors: Travis Peters, Reshma Lal, Pradeep Pappachan, Srikanth Varadarajan, David Kotz
+  type: wip # work-in-progress
+  # note: 
+  # date: ...
+  # internal: true
+  # publisher: ...
+  # url: papers/...
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters

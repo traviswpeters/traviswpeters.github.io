@@ -1,7 +1,7 @@
-- descr: "Our paper *Challenges to ensuring human safety throughout the life-cycle of Smart Environments* with David Kotz and Travis Peters has been accepted and will appear in the Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings 2017)."
-  date: November 2017
-  pdf: papers/kotz-safethings2017.pdf
-  internal: true
+# TODO: TOPO
+
+- descr: "Mary and I were accepted as 2018 Topo Ambassadors!"
+  date: January 2018
   show: true
 
 - descr: My survey on trustworthy computing technologies for mobile and wearable systems was released as a Technical Report.

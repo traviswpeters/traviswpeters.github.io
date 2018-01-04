@@ -2,7 +2,7 @@
 layout: page
 permalink: /research/
 title: Research
-pubs:
+pubs: 
 
     - title:   "Paper title in 3-7 words that sound like Clingon"
       author:  "M. McFly, D. Kirk, L. Skywalker, H.J. Potter, I. Jones, H. Houdini"
