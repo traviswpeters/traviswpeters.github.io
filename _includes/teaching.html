@@ -1,0 +1,72 @@
+<!-- My classes (Instructor), TA classes (Teaching Assistant), Guest Lectures (Guest Lecturer), etc. -->
+
+I strongly believe that teaching doesn't just happen in the classroom.
+Teaching is really about connecting with people and meeting them where they are at.
+Over the years I've had opportunities to lead, teach, coach, and mentor in a multitude of capacities, including:
+
+* Coaching distance runners for a local high school Track & Field team,
+* Organizing workshops to engage graduate students and teach them about teaching and mentoring undergraduates,
+* Teaching sunday school classes with kids ranging from pre-school through middle school,
+* Volunteering at tech recycling facilities and training other volunteers about computer components, assembly, cleaning, and basic diagnostic testing,
+* Leading small discussion groups for my church, and
+* Mentoring elementary-aged kids as a Big Brother.
+
+Throughout my time at Western and Dartmouth I have also pursued (and greatly enjoyed!)
+    more traditional academic teaching and mentoring opportunities.
+
+## Teaching Experience
+
+### Teaching
+
+Problem Solving via Object-Oriented Programming (COSC 10), *Dartmouth College*. <br/>
+Instructor, Winter 2015
+
+### Teaching Assistantships
+
+Software Design & Implementation (COSC 50), *Dartmouth College*. <br/>
+Teaching Assistant, Spring 2016
+
+Introduction to Programming & Computing (COSC 1), *Dartmouth College*. <br/>
+Teaching Assistant, Spring 2014
+
+Problem Solving via Object-Oriented Programming (COSC 10), *Dartmouth College*. <br/>
+Teaching Assistant, Winter 2014
+
+Introduction to Programming & Computing (COSC 1), *Dartmouth College*. <br/>
+Teaching Assistant, Fall 2013
+
+Programming Fundamentals in C++ (CSCI 140), *Western Washington University*. <br/>
+Teaching Assistant, Fall 2012
+
+Teaching Assistant, *Family House Academy*. <br/>
+Teaching Assistant, Summer 2009
+
+<!--
+### Undergraduate Mentoring
+George, Emily
+-->
+
+### Guest Lectures
+
+{% for talk in site.data.talks %}
+{% if talk.type == "guest-lecture" %}
+[**{{talk.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %}) <br />
+*{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
+{% else %}
+{% endif %}
+{% endfor %}
+<!-- NOTE: don't show non-guest lecture talks here - those are shown in "talks" on the research page. -->
+
+## Teaching Awards
+
+**Best Teaching Assistant Award**, 2014-2015 <br/>
+Awarded through Dartmouth College Department of Computer Science. <br/>
+Nominated by faculty.
+
+**Outstanding Graduate Student Teacher**, April 2015 <br/>
+Awarded through the Dartmouth Center for the Advancement of Learning (DCAL). <br/>
+Nominated by students.
+
+**Graduate Student Teaching Award**, 2013-2014 <br/>
+Awarded through Dartmouth College. A campus-wide award. <br/>
+Nominated by faculty.

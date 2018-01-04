@@ -22,7 +22,6 @@ handles:
   # TODO: quora: QuroraUsername
   # TODO: stackoverflow: username   #e.g: users/2735833/proton1h1
 
-
 #TODO: can we use the handles above to fill in links below? Otherwise, there is redundancy...
 social:
 - {icon: 'envelope', link: 'mailto:traviswp@cs.dartmouth.edu'}
@@ -42,11 +41,12 @@ social:
 #
 menu:
 - {name: 'Home', url: ''}
+- {name: 'Teaching', url: 'teaching.html'}
 - {name: 'Research', url: 'research.html'}
 - {name: 'Projects', url: 'projects.html'}
 - {name: 'CV', url: 'cv.html'}
-# - {name: 'Writing', url: 'writing.html'} #Blog
 - {name: 'News', url: 'news.html'}
+# - {name: 'Writing', url: 'writing.html'} #Blog
 
 #
 # Change to true for Disqus comments
