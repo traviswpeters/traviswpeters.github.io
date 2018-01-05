@@ -26,11 +26,11 @@
   # abstract: ""
   # note: ""
 
-- title: "Debugging with GDB and Valgrind"
-  date: January, 2018
-  venue: CS50 Guest Lecture
-  location: Dartmouth College (Hanover, New Hampshire)
-  type: guest-lecture
+# - title: "Debugging with GDB and Valgrind"
+#   date: January, 2018
+#   venue: CS50 Guest Lecture
+#   location: Dartmouth College (Hanover, New Hampshire)
+#   type: guest-lecture
 
 - title: "Debugging with GDB and Valgrind"
   date: April 17, 2017
