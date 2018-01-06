@@ -46,11 +46,15 @@
   url: https://github.com/traviswp/scripts
   show: true
 
-# TODO: Finish description....
 - title: "Grammar Effects (Gfx)"
-  desc: "Grammar Effects is a website for learning and practicing accurate reading, skillful writing, and reliable paraphrasing."
+  desc: "Grammar Effects is a website for learning and practicing accurate reading, skillful writing, and reliable paraphrasing.
+        My father-in-law is a 6th grade teacher and has been particularly invested in designing lessons and exercises that help kids become better readers and writers.
+        What started as a collection of Excel Worksheets has turned into his Grammer Effects website.
+        Many of the lessons and activities today are oriented towards sentence joining.
+        Given directions, students try to compose sentences which are compared to a pre-crafted set of correct sentences.
+        Helpful feedback is provided to students to guide them towards correct sentence composition."
   url: https://github.com/srogersact/srogersact.github.io
-  show: false
+  show: true
 
 #
 # Dartmouth
