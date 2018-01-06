@@ -35,7 +35,33 @@ Special thanks to this StackOverflow post (["jekyll debug or print all variables
 {{ my.site.variable | jsonify }}
 ```
 
-where `my.site.variable` is substituted with the variable of interest. 
+where `my.site.variable` is substituted with the variable of interest.
+
+**Site Variables & Beyond:**
+
+While many variables are explicitly defined, such as those found in `_config.yml` and all of the `*.yml` files in `_data/`,
+    Jekyll maintains a great deal of variables without your explicit instruction.
+A complete list of "site" and "page" related variables can be found here: [https://jekyllrb.com/docs/variables/](https://jekyllrb.com/docs/variables/).
+
+For a time a experimented with having a single debug page that would dump *all* of the variables.
+It turns out this puts quite a load on the site generation though!
+Thus, I've resorted to just keeping little snippets handy so I can copy them and paste them into pages that I'm debugging when developing content locally.
+Some snippets that are useful:
+
+```yml
+site.time: {{ site.time | inspect }}
+site.url: {{ site.url | inspect }}
+site.posts: {{ site.posts | inspect }}
+site.related_posts: {{ site.related_posts | inspect }}
+site.static_files: {{ site.static_files | inspect }}
+site.html_pages: {{ site.html_pages | inspect }}
+site.html_files: {{ site.html_files | inspect }}
+site.collections: {{ site.collections | inspect }}
+site.data: {{ site.data | inspect }} # <<< you can just look at _data/*.yml
+site.documents: {{ site.documents | inspect }}
+site.categories: {{ site.categories | inspect }}
+site.tags: {{ site.tags | inspect }}
+```
 
 ### Everything Else
 
