@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "The No-Nonsense Guide to App Deployment"
+title: "The No-Nonsense Guide to Deploying an App"
 published: true
 tags: [dev]
 image:
-  feature: mcm2017.jpg
-  teaser: mcm2017-teaser.jpg
-  credit: Maine Coast Marathon
+  feature:
+  teaser:
+  credit:
 ---
+
+Specifically, I'll show just how easy and quickly we can deploy a Node.js web application.
 
 ## Prerequisites
 
@@ -21,6 +23,31 @@ Install [Node](https://nodejs.org/en/) & [Node Package Manager (NPM)](https://ww
 
 ```bash
 brew install node # installs node and npm
+```
+
+Install [MongoDB](https://www.mongodb.com/):
+
+```bash
+brew install mongodb
+sudo mkdir -p /data/db         # (one time setup step) create the default directory that mongod uses
+sudo chown `id -u` /data/db    # (one time setup step) set permissions so that mongod can access the folder
+```
+
+(Optional) Do a little testing with MongoDB to ensure it is configured correctly:
+
+```bash
+mongod                         # this should start mongod; verify that everything is working and then quit w/ ctrl^C
+#and
+mongo --host 127.0.0.1:27017   # connect to the data base running on localhost (127.0.0.1), port 27017 (default port)
+```
+
+(Optional) Install helpful development tools locally:
+
+```bash
+npm i -g node-dev            # smarter dev server
+npm i -g node-static         # simple static (file) server
+npm i -g express-generator   # express scaffolding framework
+npm i -g mongoui             # browser-based UI for interacting w/ local mongo database
 ```
 
 Sign up for accounts...
@@ -44,12 +71,12 @@ git push heroku master                                         # 5. push your re
 heroku open                                                    # 6. open the heroku-assigned url for your app in your browser
 ```
 
-There are more details in the project [README](https://github.com/traviswp/social-news-webapp).
+There are more details in the project [README](https://github.com/traviswp/social-news-webapp/blob/master/README.md).
 This should be all that you need to do to deploy an app!
 That's it!
 
 In general:
-1. get the code,
+1. get (or write) the code,
 2. get the dependencies
 3. create a heroku app
 4. push your code
