@@ -2,7 +2,12 @@
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-auto-rows: 100px;
+
+    /* This means automatically created rows will be a minimum of 100 pixels tall,
+     * and a maximum of auto. Using auto means that the size will look at the content size
+     * and will stretch to give space for the tallest item in a cell, in this row.
+     */
+    grid-auto-rows: minmax(100px, auto);
     grid-auto-flow: dense;
 }
 

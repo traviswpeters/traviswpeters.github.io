@@ -61,3 +61,8 @@ html, body {
 .container > div:nth-child(4n) {
     background-color: #ffcc5c;
 }
+
+p {
+    font-size: 11px;
+    font-style: italic;
+}
