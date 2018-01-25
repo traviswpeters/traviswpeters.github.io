@@ -70,7 +70,7 @@
   show: true
 
 - title: "Mission Incomputable"
-  desc: "As a Teaching Assistant for CS 50 at Dartmouth I co-designed the class's culiminating project with Professor David Kotz. \
+  desc: "As a Teaching Assistant for CS 50 at Dartmouth I co-designed the class's culminating project with Professor David Kotz. \
          I also built the 'backbone' architecture that helped Pebble devices communicate with game servers \
          (i.e., a series of smartphone and linux-server proxies enabled a Bluetooth-connected Pebble smartwatch to communicate via a smartphone to a proxy server and ultimately to a team's 'game server.'). \
          The objective of the game was to have students ('agents') locate and 'neutralize' geo-targets while avoiding capture (a sort of geo-location game mixed with tag). \
