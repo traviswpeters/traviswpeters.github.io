@@ -69,15 +69,18 @@
   documentation: https://gitlab.cs.dartmouth.edu/amulet/amulet-docs
   show: true
 
-# TODO: Finish description....
 - title: "Mission Incomputable"
-  desc: "TODO"
-  url:
+  desc: "As a Teaching Assistant for CS 50 at Dartmouth I co-designed the class's culiminating project with Professor David Kotz. \
+         I also built the 'backbone' architecture that helped Pebble devices communicate with game servers \
+         (i.e., a series of smartphone and linux-server proxies enabled a Bluetooth-connected Pebble smartwatch to communicate via a smartphone to a proxy server and ultimately to a team's 'game server.'). \
+         The objective of the game was to have students ('agents') locate and 'neutralize' geo-targets while avoiding capture (a sort of geo-location game mixed with tag). \
+         Students were asked to work in teams to develop user-facing software for Pebble devices as well as a game server and back-end helper ('guide') that allowed many clients to connect and play a game."
+  url: classes/pebble-project-intro/specs-2016/
   paper:
   pdf:
   video:
   documentation:
-  show: false
+  show: true
 
 - title: "PEARL: Peer-to-peer Effective Audio, Radio, and visible Light communication"
   desc: "In advanced wireless technologies class project, I worked with Ayan Azmat and Suleman Ashfaq to build a proof-of-concept implementation and evaluation of
