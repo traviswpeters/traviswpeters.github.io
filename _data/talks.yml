@@ -62,6 +62,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
+  notes-url: classes/memory/
   abstract: "To truly understand C, and in particular, the use of pointers, you need to understand how C programs use memory. These same concepts underly nearly all procedural languages, though some languages cover up the details."
 # Professor David Kotz
   # Goals:

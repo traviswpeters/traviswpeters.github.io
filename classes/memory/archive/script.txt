@@ -1,0 +1,1170 @@
+Last login: Mon Apr 10 12:18:53 2017 from 64.222.220.245
+[cs50@flume ~]$ cd private/
+[cs50@flume ~/private]$ ls
+solutions/
+[cs50@flume ~/private]$ cd solutions/
+[cs50@flume ~/private/solutions]$ ls
+chill/	histo/	README.md  regress/  words/
+[cs50@flume ~/private/solutions]$ cd chill/
+[cs50@flume ~/private/solutions/chill]$ ls
+chill*	chill.c  Makefile  Makefile~  README  TESTING
+[cs50@flume ~/private/solutions/chill]$ ./chill 
+  Temp   Wind  Chill
+ -----  -----  -----
+ -10.0    5.0  -22.3
+ -10.0   10.0  -28.3
+ -10.0   15.0  -32.2
+
+   0.0    5.0  -10.5
+   0.0   10.0  -15.9
+   0.0   15.0  -19.4
+
+  10.0    5.0    1.2
+  10.0   10.0   -3.5
+  10.0   15.0   -6.6
+
+  20.0    5.0   13.0
+  20.0   10.0    8.9
+  20.0   15.0    6.2
+
+  30.0    5.0   24.7
+  30.0   10.0   21.2
+  30.0   15.0   19.0
+
+  40.0    5.0   36.5
+  40.0   10.0   33.6
+  40.0   15.0   31.8
+
+[cs50@flume ~/private/solutions/chill]$ ./chill 34
+  Temp   Wind  Chill
+ -----  -----  -----
+  34.0    5.0   29.4
+  34.0   10.0   26.2
+  34.0   15.0   24.2
+
+[cs50@flume ~/private/solutions/chill]$ ./chill 34 4
+  Temp   Wind  Chill
+ -----  -----  -----
+  34.0    4.0   30.4
+
+[cs50@flume ~/private/solutions/chill]$ ./chill 34 4 dfss
+usage: ./chill [temp [velocity]]
+[cs50@flume ~/private/solutions/chill]$ ./chill 34 dd
+./chill invalid velocity 'dd'
+[cs50@flume ~/private/solutions/chill]$ ./chill dd
+./chill invalid temp 'dd'
+[cs50@flume ~/private/solutions/chill]$ ./chill 34 0
+./chill: Wind velocity must be greater than or equal to 0.5 MPH
+[cs50@flume ~/private/solutions/chill]$ ./chill 60 0
+./chill: Temperature must be less than or equal to 50.0 degrees Fahrenheit
+[cs50@flume ~/private/solutions/chill]$ cd ../regress/
+[cs50@flume ~/private/solutions/regress]$ ls
+README	regress.sh*  testdir/  TESTING
+[cs50@flume ~/private/solutions/regress]$ cd testdir/
+[cs50@flume ~/private/solutions/regress/testdir]$ ls
+shake.sh*  test0  test1  test2	test3  test4
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh 
+usage: regress.sh dirname testfilename...
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh outputdir
+usage: regress.sh dirname testfilename...
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh outputdir test0
+20170410.141447
+saved test results in outputdir
+[cs50@flume ~/private/solutions/regress/testdir]$ ls
+outputdir/  shake.sh*  test0  test1  test2  test3  test4
+[cs50@flume ~/private/solutions/regress/testdir]$ ls
+outputdir/  shake.sh*  test0  test1  test2  test3  test4
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh outputdir test0
+20170410.141506
+comparing 20170410.141506 with outputdir...
+no differences.
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh outputdir test0 test1
+20170410.141522
+comparing 20170410.141522 with outputdir...
+Only in 20170410.141522: test1.status
+Only in 20170410.141522: test1.stderr
+Only in 20170410.141522: test1.stdout
+Only in 20170410.141522: test1.test
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh outputdir test?
+20170410.141539
+comparing 20170410.141539 with outputdir...
+Only in 20170410.141539: test1.status
+Only in 20170410.141539: test1.stderr
+Only in 20170410.141539: test1.stdout
+Only in 20170410.141539: test1.test
+Only in 20170410.141539: test2.status
+Only in 20170410.141539: test2.stderr
+Only in 20170410.141539: test2.stdout
+Only in 20170410.141539: test2.test
+Only in 20170410.141539: test3.status
+Only in 20170410.141539: test3.stderr
+Only in 20170410.141539: test3.stdout
+Only in 20170410.141539: test3.test
+Only in 20170410.141539: test4.status
+Only in 20170410.141539: test4.stderr
+Only in 20170410.141539: test4.stdout
+Only in 20170410.141539: test4.test
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh base test?
+20170410.141555
+saved test results in base
+[cs50@flume ~/private/solutions/regress/testdir]$ ls
+20170410.141506/  20170410.141539/  outputdir/	test0  test2  test4
+20170410.141522/  base/		    shake.sh*	test1  test3
+[cs50@flume ~/private/solutions/regress/testdir]$ ../regress.sh base test?
+20170410.141611
+comparing 20170410.141611 with base...
+no differences.
+[cs50@flume ~/private/solutions/regress/testdir]$ cd ..
+[cs50@flume ~/private/solutions/regress]$ ls
+README	regress.sh*  testdir/  TESTING
+[cs50@flume ~/private/solutions/regress]$ cd ..
+[cs50@flume ~/private/solutions]$ ls
+chill/	histo/	README.md  regress/  words/
+[cs50@flume ~/private/solutions]$ cd histo/
+[cs50@flume ~/private/solutions/histo]$ ls
+data1  data2  data3  data4  histo*  histo.c  Makefile  README  TESTING
+[cs50@flume ~/private/solutions/histo]$ more data1
+1
+2
+3
+-3
+4
+-5
+0
+7
+8
+10
+14
+12
+14
+15
+0
+19
+30
+25
+78
+45
+90
+37
+3
+12
+77
+end
+1223342
+[cs50@flume ~/private/solutions/histo]$ ./histo < data1
+16 bins of size 1 for range [0,16)
+16 bins of size 2 for range [0,32)
+16 bins of size 4 for range [0,64)
+16 bins of size 8 for range [0,128)
+[  0:  7] ********
+[  8: 15] *******
+[ 16: 23] *
+[ 24: 31] **
+[ 32: 39] *
+[ 40: 47] *
+[ 48: 55] 
+[ 56: 63] 
+[ 64: 71] 
+[ 72: 79] **
+[ 80: 87] 
+[ 88: 95] *
+[ 96:103] 
+[104:111] 
+[112:119] 
+[120:127] 
+[cs50@flume ~/private/solutions/histo]$ more data2
+                 18                                     18                                  19               
+                   19                                   20                            19                     
+            19                               19                                  19                          
+             19                                    18                                       19               
+               20                             19                                  18                         
+         20                            19                                 18                               20
+                            19                            20                                                 
+       20                                 18                              19                              18 
+                                 19                             19                               18          
+                    20                                 19                                19                  
+           19                                20                              19                              
+ 19                               18                                   19                                 19 
+                                18                               19                              20          
+                                                                20                               19          
+               19                                   19                                  19                   
+             20                                   19                                   19                    
+          19                                  19                                      20                     
+      18                             20                                                                   19 
+                                20                                       19                                 1
+9                                  17                           18                                19         
+                      18                                19                           20                      
+     20                             19                              19                            20         
+                17                
+[cs50@flume ~/private/solutions/histo]$ ./histo < data2
+16 bins of size 1 for range [0,16)
+16 bins of size 2 for range [0,32)
+[ 0: 1] 
+[ 2: 3] 
+[ 4: 5] 
+[ 6: 7] 
+[ 8: 9] 
+[10:11] 
+[12:13] 
+[14:15] 
+[16:17] **
+[18:19] **************************************************
+[20:21] *****************
+[22:23] 
+[24:25] 
+[26:27] 
+[28:29] 
+[30:31] 
+[cs50@flume ~/private/solutions/histo]$ more data3
+92
+11
+12
+04
+06
+16
+07
+83
+55
+07
+73
+87
+97
+85
+93
+92
+02
+62
+15
+05
+81
+04
+90
+00
+72
+12
+91
+53
+10
+03
+00
+07
+95
+86
+08
+11
+06
+06
+09
+81
+95
+03
+81
+80
+78
+82
+00
+89
+02
+15
+18
+07
+13
+17
+14
+16
+77
+02
+87
+85
+13
+07
+84
+78
+81
+90
+56
+06
+06
+95
+05
+11
+94
+13
+09
+11
+91
+14
+92
+89
+84
+02
+91
+01
+14
+08
+04
+05
+08
+16
+09
+49
+08
+10
+17
+83
+09
+07
+15
+84
+79
+14
+16
+14
+81
+83
+98
+00
+15
+82
+82
+98
+87
+07
+85
+92
+05
+16
+16
+02
+54
+94
+92
+82
+02
+01
+92
+12
+08
+11
+92
+10
+57
+84
+80
+06
+16
+05
+12
+84
+71
+00
+16
+04
+76
+13
+16
+66
+66
+84
+85
+13
+12
+07
+08
+08
+65
+13
+13
+82
+91
+55
+10
+05
+06
+78
+85
+08
+95
+94
+70
+03
+86
+12
+12
+04
+77
+78
+11
+02
+67
+14
+98
+13
+89
+85
+00
+15
+76
+14
+74
+04
+16
+06
+85
+12
+86
+02
+15
+74
+78
+88
+91
+00
+15
+13
+06
+71
+71
+96
+04
+81
+98
+82
+15
+03
+02
+10
+13
+00
+64
+11
+02
+82
+07
+09
+17
+08
+85
+85
+87
+84
+07
+15
+09
+98
+07
+05
+09
+14
+16
+03
+14
+06
+14
+03
+87
+09
+66
+03
+82
+99
+11
+11
+89
+88
+75
+80
+92
+18
+86
+86
+15
+85
+01
+02
+81
+10
+10
+16
+14
+87
+03
+69
+81
+15
+88
+75
+91
+83
+87
+87
+59
+02
+85
+14
+99
+86
+08
+14
+98
+78
+99
+10
+08
+15
+84
+09
+16
+10
+07
+09
+05
+14
+15
+69
+82
+85
+87
+07
+06
+18
+02
+14
+13
+15
+13
+04
+16
+91
+12
+06
+04
+83
+13
+17
+11
+13
+14
+13
+18
+91
+64
+17
+57
+84
+74
+11
+12
+16
+13
+97
+60
+93
+13
+04
+14
+12
+09
+90
+15
+12
+97
+14
+13
+66
+98
+12
+80
+12
+08
+07
+01
+11
+06
+72
+90
+99
+68
+08
+05
+58
+05
+72
+86
+09
+14
+74
+86
+14
+14
+68
+78
+17
+85
+93
+05
+82
+92
+07
+[cs50@flume ~/private/solutions/histo]$ wc data3
+ 440  439 1318 data3
+[cs50@flume ~/private/solutions/histo]$ ./histo <  data3
+16 bins of size 1 for range [0,16)
+16 bins of size 2 for range [0,32)
+16 bins of size 4 for range [0,64)
+16 bins of size 8 for range [0,128)
+[  0:  7] *****************************************************************************************
+[  8: 15] *************************************************************************************************************************
+[ 16: 23] *****************************
+[ 24: 31] 
+[ 32: 39] 
+[ 40: 47] 
+[ 48: 55] ******
+[ 56: 63] *******
+[ 64: 71] *******************
+[ 72: 79] **********************************
+[ 80: 87] *************************************************************************
+[ 88: 95] *******************************************
+[ 96:103] ******************
+[104:111] 
+[112:119] 
+[120:127] 
+[cs50@flume ~/private/solutions/histo]$ more data4
+1992
+2011
+2012
+2004
+2006
+2016
+2007
+1983
+1955
+2007
+1973
+1987
+1997
+1985
+1993
+1992
+2002
+1962
+2015
+2005
+1981
+2004
+1990
+2000
+1972
+2012
+1991
+1953
+2010
+2003
+[cs50@flume ~/private/solutions/histo]$ ./histo < data4
+16 bins of size 1 for range [0,16)
+16 bins of size 2 for range [0,32)
+16 bins of size 4 for range [0,64)
+16 bins of size 8 for range [0,128)
+16 bins of size 16 for range [0,256)
+16 bins of size 32 for range [0,512)
+16 bins of size 64 for range [0,1024)
+16 bins of size 128 for range [0,2048)
+[   0: 127] 
+[ 128: 255] 
+[ 256: 383] 
+[ 384: 511] 
+[ 512: 639] 
+[ 640: 767] 
+[ 768: 895] 
+[ 896:1023] 
+[1024:1151] 
+[1152:1279] 
+[1280:1407] 
+[1408:1535] 
+[1536:1663] 
+[1664:1791] 
+[1792:1919] 
+[1920:2047] ********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+[cs50@flume ~/private/solutions/histo]$ ls
+data1  data2  data3  data4  histo*  histo.c  Makefile  README  TESTING
+[cs50@flume ~/private/solutions/histo]$ ./histo
+16 bins of size 1 for range [0,16)
+45
+16 bins of size 2 for range [0,32)
+16 bins of size 4 for range [0,64)
+23 5 
+6
+[ 0: 3] 
+[ 4: 7] **
+[ 8:11] 
+[12:15] 
+[16:19] 
+[20:23] *
+[24:27] 
+[28:31] 
+[32:35] 
+[36:39] 
+[40:43] 
+[44:47] *
+[48:51] 
+[52:55] 
+[56:59] 
+[60:63] 
+[cs50@flume ~/private/solutions/histo]$ cd ..
+[cs50@flume ~/private/solutions]$ ls
+chill/	histo/	README.md  regress/  words/
+[cs50@flume ~/private/solutions]$ cd words/
+[cs50@flume ~/private/solutions/words]$ ls
+Makefile  README.md  TESTING.md  words*  words.c
+[cs50@flume ~/private/solutions/words]$ ./words 
+type a sentence here/
+type
+a
+sentence
+here
+[cs50@flume ~/private/solutions/words]$ echo hello class! | ./words
+hello
+class
+[cs50@flume ~/private/solutions/words]$ ls
+Makefile  README.md  TESTING.md  words*  words.c
+[cs50@flume ~/private/solutions/words]$ ./words < Makefile 
+students
+are
+not
+expected
+to
+provide
+a
+Makefile
+words
+words
+c
+gcc
+Wall
+pedantic
+std
+c
+ggdb
+words
+c
+o
+words
+clean
+rm
+rf
+words
+words
+o
+words
+dSYM
+rm
+f
+[cs50@flume ~/private/solutions/words]$ ./words
+hello class
+hello
+class
+what happens
+what
+happens
+yep, on the fly
+yep
+on
+the
+fly
+[cs50@flume ~/private/solutions/words]$ cd ../histo/
+[cs50@flume ~/private/solutions/histo]$ ./histo 
+16 bins of size 1 for range [0,16)
+5q
+[ 0: 0] 
+[ 1: 1] 
+[ 2: 2] 
+[ 3: 3] 
+[ 4: 4] 
+[ 5: 5] *
+[ 6: 6] 
+[ 7: 7] 
+[ 8: 8] 
+[ 9: 9] 
+[10:10] 
+[11:11] 
+[12:12] 
+[13:13] 
+[14:14] 
+[15:15] 
+[cs50@flume ~/private/solutions/histo]$ ./histo 
+16 bins of size 1 for range [0,16)
+5
+q
+[ 0: 0] 
+[ 1: 1] 
+[ 2: 2] 
+[ 3: 3] 
+[ 4: 4] 
+[ 5: 5] *
+[ 6: 6] 
+[ 7: 7] 
+[ 8: 8] 
+[ 9: 9] 
+[10:10] 
+[11:11] 
+[12:12] 
+[13:13] 
+[14:14] 
+[15:15] 
+[cs50@flume ~/private/solutions/histo]$ cd
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+names.txt  students.txt
+[cs50@flume ~/demo]$ cp ~/examples/pointer[01234].c .
+l[cs50@flume ~/demo]$ ls
+names.txt  pointer0.c  pointer1.c  pointer2.c  pointer3.c  students.txt
+[cs50@flume ~/demo]$ mygcc pointer0.c 
+pointer0.c: In function ‘main’:
+pointer0.c:19:19: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘char **’ -Wformat=]
+   printf("pp = %12p, *pp = %12p, **pp = '%c'\n", pp, *pp, **pp);
+                   ^
+[cs50@flume ~/demo]$ ./a.out 
+c  = 'x'
+p  = 0x7ffe58e6dc07, *p = 'x'
+pp = 0x7ffe58e6dbf8, *pp = 0x7ffe58e6dc07, **pp = 'x'
+[cs50@flume ~/demo]$ more pointer1.c 
+/* 
+ * pointer1 - a short program to demonstrate pointers.
+ * 
+ * David Kotz, April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *CS = "Computer Science";
+
+int main()
+{
+  printf(" CS = %12p, *CS = '%c', CS as string = '%s'\n", CS, *CS, CS);
+
+  for (char *p = CS; *p != '\0'; p++) {
+    printf(" p = %12p, *p = '%c'\n", p, *p);
+  }
+
+  return 0;
+}
+[cs50@flume ~/demo]$ gcc pointer1.c ; ./a.out
+ CS =     0x400630, *CS = 'C', CS as string = 'Computer Science'
+ p =     0x400630, *p = 'C'
+ p =     0x400631, *p = 'o'
+ p =     0x400632, *p = 'm'
+ p =     0x400633, *p = 'p'
+ p =     0x400634, *p = 'u'
+ p =     0x400635, *p = 't'
+ p =     0x400636, *p = 'e'
+ p =     0x400637, *p = 'r'
+ p =     0x400638, *p = ' '
+ p =     0x400639, *p = 'S'
+ p =     0x40063a, *p = 'c'
+ p =     0x40063b, *p = 'i'
+ p =     0x40063c, *p = 'e'
+ p =     0x40063d, *p = 'n'
+ p =     0x40063e, *p = 'c'
+ p =     0x40063f, *p = 'e'
+[cs50@flume ~/demo]$ emacs pointer1.c 
+[cs50@flume ~/demo]$ emacs pointer1.c 
+[cs50@flume ~/demo]$ gcc pointer1.c ; ./a.out
+ CS =     0x400640, *CS = 'r', CS as string = 'Computer Science'
+ p =     0x400640, *p = 'C'
+ p =     0x400641, *p = 'o'
+ p =     0x400642, *p = 'm'
+ p =     0x400643, *p = 'p'
+ p =     0x400644, *p = 'u'
+ p =     0x400645, *p = 't'
+ p =     0x400646, *p = 'e'
+ p =     0x400647, *p = 'r'
+ p =     0x400648, *p = ' '
+ p =     0x400649, *p = 'S'
+ p =     0x40064a, *p = 'c'
+ p =     0x40064b, *p = 'i'
+ p =     0x40064c, *p = 'e'
+ p =     0x40064d, *p = 'n'
+ p =     0x40064e, *p = 'c'
+ p =     0x40064f, *p = 'e'
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ !em
+emacs pointer1.c 
+[cs50@flume ~/demo]$ gcc pointer1.c ; ./a.out
+ CS =     0x400640, CS[7] = 'r', CS as string = 'Computer Science'
+ p =     0x400640, *p = 'C'
+ p =     0x400641, *p = 'o'
+ p =     0x400642, *p = 'm'
+ p =     0x400643, *p = 'p'
+ p =     0x400644, *p = 'u'
+ p =     0x400645, *p = 't'
+ p =     0x400646, *p = 'e'
+ p =     0x400647, *p = 'r'
+ p =     0x400648, *p = ' '
+ p =     0x400649, *p = 'S'
+ p =     0x40064a, *p = 'c'
+ p =     0x40064b, *p = 'i'
+ p =     0x40064c, *p = 'e'
+ p =     0x40064d, *p = 'n'
+ p =     0x40064e, *p = 'c'
+ p =     0x40064f, *p = 'e'
+[cs50@flume ~/demo]$ gcc pointer1.c ; ./a.out
+ CS =     0x400640, CS[7] = 'r', CS as string = 'Computer Science'
+ p =     0x400640, *p = 'C'
+ p =     0x400641, *p = 'o'
+ p =     0x400642, *p = 'm'
+ p =     0x400643, *p = 'p'
+ p =     0x400644, *p = 'u'
+ p =     0x400645, *p = 't'
+ p =     0x400646, *p = 'e'
+ p =     0x400647, *p = 'r'
+ p =     0x400648, *p = ' '
+ p =     0x400649, *p = 'S'
+ p =     0x40064a, *p = 'c'
+ p =     0x40064b, *p = 'i'
+ p =     0x40064c, *p = 'e'
+ p =     0x40064d, *p = 'n'
+ p =     0x40064e, *p = 'c'
+ p =     0x40064f, *p = 'e'
+[cs50@flume ~/demo]$ emacs pointer1.c 
+
+[1]+  Stopped                 emacs pointer1.c
+[cs50@flume ~/demo]$ fg
+emacs pointer1.c
+
+[1]+  Stopped                 emacs pointer1.c
+[cs50@flume ~/demo]$ gcc pointer1.c ; ./a.out
+ CS =     0x400640, CS[-7] = '', CS as string = 'Computer Science'
+ p =     0x400640, *p = 'C'
+ p =     0x400641, *p = 'o'
+ p =     0x400642, *p = 'm'
+ p =     0x400643, *p = 'p'
+ p =     0x400644, *p = 'u'
+ p =     0x400645, *p = 't'
+ p =     0x400646, *p = 'e'
+ p =     0x400647, *p = 'r'
+ p =     0x400648, *p = ' '
+ p =     0x400649, *p = 'S'
+ p =     0x40064a, *p = 'c'
+ p =     0x40064b, *p = 'i'
+ p =     0x40064c, *p = 'e'
+ p =     0x40064d, *p = 'n'
+ p =     0x40064e, *p = 'c'
+ p =     0x40064f, *p = 'e'
+[cs50@flume ~/demo]$ more pointer2.c 
+/* 
+ * pointer2 - a short program to demonstrate memory addresses.
+ * 
+ * David Kotz, April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// global variables
+const int fifteen = 15;
+
+void change(int *a, int b);
+
+int main()
+{
+  // local variables are on the stack
+  int x = 2, y = 5;
+
+  // global variables; note they are in low memory addresses
+  printf("globals\n");
+  printf(" fifteen @ %12p has value %d\n", &fifteen, fifteen);
+
+  // main() is a function, and its code is at an address too!
+  printf("main @ %12p\n", main);
+
+  // local variables are on the stack
+  printf(" x @ %12p has value %d\n", &x, x);
+  printf(" y @ %12p has value %d\n", &y, y);
+
+  // pass x by reference, y by value
+  change(&x,y);
+
+  // see whether those changed
+  printf("main @ %12p\n", main);
+  printf(" x @ %12p has value %d\n", &x, x);
+  printf(" y @ %12p has value %d\n", &y, y);
+
+  return 0;
+[cs50@flume ~/demo]$ gcc pointer2.c ; ./a.out 
+globals
+ fifteen @     0x400750 has value 15
+main @     0x400566
+ x @ 0x7ffffeac962c has value 2
+ y @ 0x7ffffeac9628 has value 5
+change @     0x400645
+ a @ 0x7ffffeac9608 has value 2 at 0x7ffffeac962c
+ b @ 0x7ffffeac9604 has value 5
+main @     0x400566
+ x @ 0x7ffffeac962c has value 99
+ y @ 0x7ffffeac9628 has value 5
+[cs50@flume ~/demo]$ more pointer2.c 
+/* 
+ * pointer2 - a short program to demonstrate memory addresses.
+ * 
+ * David Kotz, April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// global variables
+const int fifteen = 15;
+
+void change(int *a, int b);
+
+int main()
+{
+  // local variables are on the stack
+  int x = 2, y = 5;
+
+  // global variables; note they are in low memory addresses
+  printf("globals\n");
+  printf(" fifteen @ %12p has value %d\n", &fifteen, fifteen);
+
+  // main() is a function, and its code is at an address too!
+  printf("main @ %12p\n", main);
+
+  // local variables are on the stack
+  printf(" x @ %12p has value %d\n", &x, x);
+  printf(" y @ %12p has value %d\n", &y, y);
+
+  // pass x by reference, y by value
+  change(&x,y);
+
+  // see whether those changed
+  printf("main @ %12p\n", main);
+  printf(" x @ %12p has value %d\n", &x, x);
+  printf(" y @ %12p has value %d\n", &y, y);
+
+  return 0;
+}
+
+void change(int *a, int b)
+{
+  // as above, change() is a function, and its parameters and local variables are on the stack
+  printf("change @ %12p\n", change);  
+  printf(" a @ %12p has value %d at %12p\n", &a, *a, a);
+  printf(" b @ %12p has value %d\n", &b, b);
+  // attempt to change the values
+  *a = 99;
+  b = 99;
+}
+[cs50@flume ~/demo]$ gcc pointer2.c ; ./a.out 
+globals
+ fifteen @     0x400750 has value 15
+main @     0x400566
+ x @ 0x7ffcabd51c1c has value 2
+ y @ 0x7ffcabd51c18 has value 5
+change @     0x400645
+ a @ 0x7ffcabd51bf8 has value 2 at 0x7ffcabd51c1c
+ b @ 0x7ffcabd51bf4 has value 5
+main @     0x400566
+ x @ 0x7ffcabd51c1c has value 99
+ y @ 0x7ffcabd51c18 has value 5
+[cs50@flume ~/demo]$ more pointer3.c 
+/* 
+ * pointer3 - a short program to demonstrate memory addresses.
+ * 
+ * David Kotz, April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+  char *hello = "hello world!";
+  char buf[15];
+
+  strcpy(buf, "something"); // initialize buf
+
+  // local variables are on the stack
+  printf(" hello @ %12p has value '%s', which resides at %12p\n", &hello, hello, hello);
+  printf(" buf @ %12p has value '%s', which resides at %12p\n", &buf, buf, buf);
+
+  // malloc allocates space on the heap
+  hello = (char *)malloc(10);
+  strcpy(hello, "new stuff");
+  printf(" now hello @ %12p has value '%s', which resides at %12p\n", &hello, hello, hello);
+  // free lets the heap re-use that space
+  free(hello);
+  printf(" note hello @ %12p still points to %12p\n", &hello, hello);
+  
+  return 0;
+}
+[cs50@flume ~/demo]$ gcc pointer3.c ; ./a.out 
+ hello @ 0x7ffc397647b8 has value 'hello world!', which resides at     0x400720
+ buf @ 0x7ffc397647a0 has value 'something', which resides at 0x7ffc397647a0
+ now hello @ 0x7ffc397647b8 has value 'new stuff', which resides at     0xdfc420
+ note hello @ 0x7ffc397647b8 still points to     0xdfc420
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ ls
+a.out*	names.txt  pointer0.c  pointer1.c  pointer1.c~	pointer2.c  pointer3.c	students.txt
+[cs50@flume ~/demo]$ cd
+[cs50@flume ~]$ cd website
+-bash: cd: website: No such file or directory
+[cs50@flume ~]$ cd
+[cs50@flume ~]$ cd examples/
+[cs50@flume ~/examples]$ emacs stringcopy.c 
+[cs50@flume ~/examples]$ mygcc !$
+mygcc stringcopy.c
+[cs50@flume ~/examples]$ ./a.out 
+src  = 'Computer Science 50'
+dest = 'Computer Science 50'
+[cs50@flume ~/examples]$ fg
+emacs pointer1.c	(wd: ~/demo)
+[cs50@flume ~/examples]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/examples]$ emacs stringcopy.c 
+[cs50@flume ~/examples]$ mygcc !$
+mygcc stringcopy.c
+[cs50@flume ~/examples]$ ./a.out 
+src  = 'Computer Science 50'
+dest = 'Computer Science 50'
+[cs50@flume ~/examples]$ cat stringcopy.c 
+/* 
+ * stringcopy - a naive implementation, and buggy call
+ *
+ * David Kotz, April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void stringcopy(char *sp, char *dp);
+
+int main()
+{
+  char *src = "Computer Science 50";
+  char *dest = malloc(100);
+
+  // copy src to dest and print them out
+  stringcopy(src, dest);
+  printf("src  = '%s'\n", src);
+  printf("dest = '%s'\n", dest);
+  return 0;
+}
+
+/* stringcopy - copy string from source sp to destination dp */
+void stringcopy(char *sp, char *dp)
+{
+  while (*sp != '\0') {
+    *dp++ = *sp++;
+  }
+  *dp = '\0';
+}
+[cs50@flume ~/examples]$ !em
+emacs stringcopy.c 
+[cs50@flume ~/examples]$ mygcc stringcopy.c
+[cs50@flume ~/examples]$ 
