@@ -26,29 +26,36 @@
   # abstract: ""
   # note: ""
 
-# - title: "Debugging with GDB and Valgrind"
-#   date: January, 2018
-#   venue: CS50 Guest Lecture
-#   location: Dartmouth College (Hanover, New Hampshire)
-#   type: guest-lecture
+- title: "Debugging with GDB and Valgrind"
+  date: January, 2018
+  venue: CS50 Guest Lecture
+  location: Dartmouth College (Hanover, New Hampshire)
+  type: guest-lecture
+  notes-url: classes/debugging-gdb-valgrind/
+# Professor Gevorg Gregorian
 
 - title: "Debugging with GDB and Valgrind"
   date: April 17, 2017
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
+  notes-url: classes/debugging-gdb-valgrind/
+# Professor David Kotz
 
-- title: "Introduction to Pebbel Development"
+- title: "Introduction to Pebble Development"
   date: May 13, 2016 # TODO: verify... May 13, 2016 (friday) or May 16, 2016 (monday)?
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
+# Professor David Kotz
 
 - title: "Debugging with GDB and Valgrind"
   date: April 26, 2016
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
+  notes-url: classes/debugging-gdb-valgrind/
+# Professor David Kotz
 
 - title: "Three Kinds of Memory"
   date: April 15, 2016
@@ -56,6 +63,7 @@
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
   abstract: "To truly understand C, and in particular, the use of pointers, you need to understand how C programs use memory. These same concepts underly nearly all procedural languages, though some languages cover up the details."
+# Professor David Kotz
   # Goals:
   # 1. to recognize that all data is stored in memory, that memory is a linear sequence of bytes, and that every byte has a numeric address.
   # 2. to understand that C stores all data in one of three areas of memory, each managed differently.

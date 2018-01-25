@@ -5,7 +5,7 @@
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
-permalink:           none
+permalink:           /blog/:title.html #none
 plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed]
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines

@@ -51,7 +51,7 @@ George, Emily
 
 {% for talk in site.data.talks %}
 {% if talk.type == "guest-lecture" %}
-**{{talk.title}}** <br />
+**{{talk.title}}** {% if talk.notes-url %}[[notes]({{talk.notes-url}})]{% endif %}<br />
 *{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
 {% else %}
 {% endif %}
