@@ -1,0 +1,599 @@
+Last login: Mon Apr 17 14:02:54 2017 from 10.31.177.1
+[cs50@flume ~]$ cd demo/
+[cs50@flume ~/demo]$ ls
+Makefile  names9.c  password.c	readlinep.c  readlinep.h
+[cs50@flume ~/demo]$ vim password.c 
+[cs50@flume ~/demo]$ mygcc password.c -o password
+[cs50@flume ~/demo]$ ./password 
+password: cs50
+success!
+[cs50@flume ~/demo]$ ./password 
+password: password
+incorrect. try again. (attempt 1)
+password: abc123
+incorrect. try again. (attempt 2)
+password: lk;ajsldkjhfjkhaskdjhfakjsdf
+Segmentation fault (core dumped)
+[cs50@flume ~/demo]$ gdb password 
+GNU gdb (GDB) Fedora 7.11.1-86.fc24
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from password...done.
+(gdb) Quit
+(gdb) quit
+[cs50@flume ~/demo]$ gdb -q password
+Reading symbols from password...done.
+(gdb) quit
+[cs50@flume ~/demo]$ alias mygcc
+alias mygcc='gcc -Wall -pedantic -std=c11 -ggdb'
+[cs50@flume ~/demo]$ gdb -q  password
+Reading symbols from password...done.
+(gdb) help
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+password: cs50
+success!
+[Inferior 1 (process 1380) exited normally]
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+password: password
+incorrect. try again. (attempt 1)
+password: asdf
+incorrect. try again. (attempt 2)
+password: kjhasdfa;jkhsdfkjhasdf
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400826 in main (argc=<error reading variable: Cannot access memory at address 0x666473616856>, 
+    argv=<error reading variable: Cannot access memory at address 0x66647361684a>) at password.c:50
+50	        result = check_password();
+(gdb) whereis
+Undefined command: "whereis".  Try "help".
+(gdb) which
+Undefined command: "which".  Try "help".
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /net/class/cs50/demo/password 
+password: ^C
+Program received signal SIGINT, Interrupt.
+0x00007ffff7b0a1b0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	T_PSEUDO (SYSCALL_SYMBOL, SYSCALL_NAME, SYSCALL_NARGS)
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 1509] will be killed.
+
+Quit anyway? (y or n) y
+[cs50@flume ~/demo]$ gdb
+GNU gdb (GDB) Fedora 7.11.1-86.fc24
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+(gdb) break main
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) Quit
+(gdb) Quit
+(gdb) Quit
+(gdb) quit
+[cs50@flume ~/demo]$ gdb password 
+GNU gdb (GDB) Fedora 7.11.1-86.fc24
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from password...done.
+(gdb) break main
+Breakpoint 1 at 0x4007e5: file password.c, line 38.
+(gdb) break check_password 
+Breakpoint 2 at 0x400891: file password.c, line 70.
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) print n_guesses 
+$1 = 0
+(gdb) print PASSWORD
+$2 = "cs50"
+(gdb) step
+41	    if (argc != 1) {
+(gdb) 
+49	    while (n_guesses < MAX_NUM_GUESSES) {
+(gdb) 
+50	        result = check_password();
+(gdb) 
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) print guess 
+$3 = "\001\000\000\000\000\000\000\000\235\t"
+(gdb) step
+73	    printf("password: ");
+(gdb) step
+__printf (format=0x400a67 "password: ") at printf.c:28
+28	{
+(gdb) step
+32	  va_start (arg, format);
+(gdb) step
+33	  done = vfprintf (stdout, format, arg);
+(gdb) step
+32	  va_start (arg, format);
+(gdb) 
+33	  done = vfprintf (stdout, format, arg);
+(gdb) finish
+Run till exit from #0  __printf (format=0x400a67 "password: ") at printf.c:33
+check_password () at password.c:74
+74	    if (fgets(guess, 50, stdin) == NULL)
+Value returned is $4 = 10
+(gdb) step
+_IO_fgets (buf=0x7fffffffdf60 "\001", n=50, fp=0x7ffff7dd38c0 <_IO_2_1_stdin_>) at iofgets.c:37
+37	  if (n <= 0)
+(gdb) finish
+Run till exit from #0  _IO_fgets (buf=0x7fffffffdf60 "\001", n=50, fp=0x7ffff7dd38c0 <_IO_2_1_stdin_>)
+    at iofgets.c:37
+password: kljal;ksjdf
+0x00000000004008bf in check_password () at password.c:74
+74	    if (fgets(guess, 50, stdin) == NULL)
+Value returned is $5 = 0x7fffffffdf60 "kljal;ksjdf\n"
+(gdb) bt
+#0  0x00000000004008bf in check_password () at password.c:74
+#1  0x0000000000400826 in main (argc=1, argv=0x7fffffffe088) at password.c:50
+(gdb) backtrace 
+#0  0x00000000004008bf in check_password () at password.c:74
+#1  0x0000000000400826 in main (argc=1, argv=0x7fffffffe088) at password.c:50
+(gdb) list
+69	    char guess[10];          // char. buffer for holding the password guess.
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+71	
+72	    // if fgets encounters an error, or EOF after no input, it returns NULL.
+73	    printf("password: ");
+74	    if (fgets(guess, 50, stdin) == NULL)
+75	        return authenticated;
+76	
+77	    // this should not happen, but I want to protect the subscript below
+78	    if (strlen(guess) == 0)
+(gdb) step
+78	    if (strlen(guess) == 0)
+(gdb) step
+84	    if (guess[strlen(guess)-1] != '\n') {
+(gdb) step
+strlen () at ../sysdeps/x86_64/strlen.S:66
+66		pxor	%xmm0, %xmm0
+(gdb) bt
+#0  strlen () at ../sysdeps/x86_64/strlen.S:66
+#1  0x00000000004008e8 in check_password () at password.c:84
+#2  0x0000000000400826 in main (argc=1, argv=0x7fffffffe088) at password.c:50
+(gdb) step
+67		pxor	%xmm1, %xmm1
+(gdb) finish
+Run till exit from #0  strlen () at ../sysdeps/x86_64/strlen.S:67
+0x00000000004008e8 in check_password () at password.c:84
+84	    if (guess[strlen(guess)-1] != '\n') {
+(gdb) step
+91	        guess[strlen(guess)-1] = 0;
+(gdb) next
+95	    if (strcmp(PASSWORD, guess) == 0)
+(gdb) 
+98	    return authenticated;
+(gdb) continue 
+Continuing.
+incorrect. try again. (attempt 1)
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007e5 in main at password.c:38
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400891 in check_password at password.c:70
+	breakpoint already hit 2 times
+(gdb) disable 2
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007e5 in main at password.c:38
+	breakpoint already hit 1 time
+2       breakpoint     keep n   0x0000000000400891 in check_password at password.c:70
+	breakpoint already hit 2 times
+(gdb) continue 
+Continuing.
+password: lkajhsdf
+incorrect. try again. (attempt 2)
+password: ;kahjsdf
+incorrect. try again. (attempt 3)
+you've exceeded the max. number of attempts. try again later.
+[Inferior 1 (process 1627) exited with code 02]
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007e5 in main at password.c:38
+	breakpoint already hit 1 time
+2       breakpoint     keep n   0x0000000000400891 in check_password at password.c:70
+	breakpoint already hit 2 times
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) continue 
+Continuing.
+password: jyfg
+incorrect. try again. (attempt 1)
+password: asdf
+incorrect. try again. (attempt 2)
+password: asdf
+incorrect. try again. (attempt 3)
+you've exceeded the max. number of attempts. try again later.
+[Inferior 1 (process 2543) exited with code 02]
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) enable 2
+(gdb) info breakpoints 
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007e5 in main at password.c:38
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400891 in check_password at password.c:70
+(gdb) continue 
+Continuing.
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) info locals 
+guess = "\001\000\000\000\000\000\000\000\235\t"
+authenticated = 0
+(gdb) step
+73	    printf("password: ");
+(gdb) next
+74	    if (fgets(guess, 50, stdin) == NULL)
+(gdb) next
+password: password
+78	    if (strlen(guess) == 0)
+(gdb) info locals 
+guess = "password\n"
+authenticated = 0
+(gdb) continue 
+Continuing.
+incorrect. try again. (attempt 1)
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) next
+73	    printf("password: ");
+(gdb) 
+74	    if (fgets(guess, 50, stdin) == NULL)
+(gdb) 
+password: cs50
+78	    if (strlen(guess) == 0)
+(gdb) next
+84	    if (guess[strlen(guess)-1] != '\n') {
+(gdb) info locals
+guess = "cs50\n\000rd\000"
+authenticated = 0
+(gdb) continue 
+Continuing.
+success!
+[Inferior 1 (process 2707) exited normally]
+(gdb) strlen(PASSWORD)
+Undefined command: "strlen".  Try "help".
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) strlen(PASSWORD)
+Undefined command: "strlen".  Try "help".
+(gdb) print strlen(PASSWORD)
+$6 = 4
+(gdb) print check_password()
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+The program being debugged stopped while in a function called from GDB.
+Evaluation of the expression containing the function
+(check_password) will be abandoned.
+When the function is done executing, GDB will silently stop.
+(gdb) 
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+The program being debugged stopped while in a function called from GDB.
+Evaluation of the expression containing the function
+(check_password) will be abandoned.
+When the function is done executing, GDB will silently stop.
+(gdb) asdf
+Undefined command: "asdf".  Try "help".
+(gdb) 
+Undefined command: "asdf".  Try "help".
+(gdb) 
+Undefined command: "asdf".  Try "help".
+(gdb) 
+Undefined command: "asdf".  Try "help".
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 3240] will be killed.
+
+Quit anyway? (y or n) ()
+Please answer y or n.
+A debugging session is active.
+
+	Inferior 1 [process 3240] will be killed.
+
+Quit anyway? (y or n) n
+Not confirmed.
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007e5 in main at password.c:38
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400891 in check_password at password.c:70
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) list
+33	/*
+34	 * Main loop - ask for a guess, quit when it matches the answer or when guesses 
+35	 * exceeds MAX_NUM_GUESSES.
+36	 */
+37	int main(const int argc, const char *argv[]) {
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+39	
+40	    // interpret arguments
+41	    if (argc != 1) {
+42	        // incorrect number of args
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe088) at password.c:38
+38	    int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) continue 
+Continuing.
+
+Breakpoint 2, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) bt full
+#0  check_password () at password.c:70
+        guess = "\001\000\000\000\000\000\000\000\235\t"
+        authenticated = 0
+#1  0x0000000000400826 in main (argc=1, argv=0x7fffffffe088) at password.c:50
+        n_guesses = 0
+        result = 0
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 3490] will be killed.
+
+Quit anyway? (y or n) y
+[cs50@flume ~/demo]$ ls
+Makefile  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ ls
+Makefile  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ mygcc names9.c readlinep.c -o names
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ myvalgrind names
+==7456== Memcheck, a memory error detector
+==7456== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==7456== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==7456== Command: names
+==7456== 
+travis
+bill
+joe
+3 names:
+{joe, bill, travis, }
+==7456== 
+==7456== HEAP SUMMARY:
+==7456==     in use at exit: 299 bytes in 7 blocks
+==7456==   total heap usage: 10 allocs, 3 frees, 2,428 bytes allocated
+==7456== 
+==7456== 48 bytes in 3 blocks are indirectly lost in loss record 1 of 3
+==7456==    at 0x4C2BBAD: malloc (vg_replace_malloc.c:299)
+==7456==    by 0x40091E: bagnode_new (names9.c:114)
+==7456==    by 0x4008CE: bag_insert (names9.c:92)
+==7456==    by 0x400833: main (names9.c:51)
+==7456== 
+==7456== 243 bytes in 3 blocks are indirectly lost in loss record 2 of 3
+==7456==    at 0x4C2DA60: calloc (vg_replace_malloc.c:711)
+==7456==    by 0x400A70: freadlinep (readlinep.c:23)
+==7456==    by 0x4007B8: readlinep (readlinep.h:22)
+==7456==    by 0x400815: main (names9.c:49)
+==7456== 
+==7456== 299 (8 direct, 291 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==7456==    at 0x4C2BBAD: malloc (vg_replace_malloc.c:299)
+==7456==    by 0x400896: bag_new (names9.c:77)
+==7456==    by 0x4007FB: main (names9.c:43)
+==7456== 
+==7456== LEAK SUMMARY:
+==7456==    definitely lost: 8 bytes in 1 blocks
+==7456==    indirectly lost: 291 bytes in 6 blocks
+==7456==      possibly lost: 0 bytes in 0 blocks
+==7456==    still reachable: 0 bytes in 0 blocks
+==7456==         suppressed: 0 bytes in 0 blocks
+==7456== 
+==7456== For counts of detected and suppressed errors, rerun with: -v
+==7456== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ ./password 
+password: ^C
+[cs50@flume ~/demo]$ gdb password
+GNU gdb (GDB) Fedora 7.11.1-86.fc24
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from password...done.
+(gdb) b check_password 
+Breakpoint 1 at 0x400891: file password.c, line 70.
+(gdb) run
+Starting program: /net/class/cs50/demo/password 
+
+Breakpoint 1, check_password () at password.c:70
+70	    int authenticated = 0;   // "flag" that determines if the user successfully authenticated. 
+(gdb) n
+73	    printf("password: ");
+(gdb) n
+74	    if (fgets(guess, 50, stdin) == NULL)
+(gdb) n
+password: fasdjfklasdjflksadjfadlskjfadslkjfdsalkjfdsalkjfadlskjfdsalkjfasdlkjfdsalkj
+78	    if (strlen(guess) == 0)
+(gdb) p strlen(guess)
+$1 = 49
+(gdb) i local
+guess = "fasdjfklas"
+authenticated = 1936419942
+(gdb) ls
+Undefined command: "ls".  Try "help".
+(gdb) ls
+Undefined command: "ls".  Try "help".
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 8365] will be killed.
+
+Quit anyway? (y or n) y
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ alias myvalgrind
+alias myvalgrind='valgrind --leak-check=full --show-leak-kinds=all'
+[cs50@flume ~/demo]$ myvalgrind ./names
+==8828== Memcheck, a memory error detector
+==8828== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8828== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8828== Command: ./names
+==8828== 
+john
+travis
+mary
+bill
+bob
+joe
+ok
+7 names:
+{ok, joe, bob, bill, mary, travis, john, }
+==8828== 
+==8828== HEAP SUMMARY:
+==8828==     in use at exit: 687 bytes in 15 blocks
+==8828==   total heap usage: 18 allocs, 3 frees, 2,816 bytes allocated
+==8828== 
+==8828== 112 bytes in 7 blocks are indirectly lost in loss record 1 of 3
+==8828==    at 0x4C2BBAD: malloc (vg_replace_malloc.c:299)
+==8828==    by 0x40091E: bagnode_new (names9.c:114)
+==8828==    by 0x4008CE: bag_insert (names9.c:92)
+==8828==    by 0x400833: main (names9.c:51)
+==8828== 
+==8828== 567 bytes in 7 blocks are indirectly lost in loss record 2 of 3
+==8828==    at 0x4C2DA60: calloc (vg_replace_malloc.c:711)
+==8828==    by 0x400A70: freadlinep (readlinep.c:23)
+==8828==    by 0x4007B8: readlinep (readlinep.h:22)
+==8828==    by 0x400815: main (names9.c:49)
+==8828== 
+==8828== 687 (8 direct, 679 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==8828==    at 0x4C2BBAD: malloc (vg_replace_malloc.c:299)
+==8828==    by 0x400896: bag_new (names9.c:77)
+==8828==    by 0x4007FB: main (names9.c:43)
+==8828== 
+==8828== LEAK SUMMARY:
+==8828==    definitely lost: 8 bytes in 1 blocks
+==8828==    indirectly lost: 679 bytes in 14 blocks
+==8828==      possibly lost: 0 bytes in 0 blocks
+==8828==    still reachable: 0 bytes in 0 blocks
+==8828==         suppressed: 0 bytes in 0 blocks
+==8828== 
+==8828== For counts of detected and suppressed errors, rerun with: -v
+==8828== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password*  password.c  readlinep.c	readlinep.h
+[cs50@flume ~/demo]$ make clean
+rm -f *~
+rm -f *.o *.i *.s *.bc
+rm -f password
+[cs50@flume ~/demo]$ ls
+Makefile  names*  names9.c  password.c	readlinep.c  readlinep.h
+[cs50@flume ~/demo]$ rm names
+rm: remove regular file 'names'? y
+[cs50@flume ~/demo]$ ls
+Makefile  names9.c  password.c	readlinep.c  readlinep.h
+[cs50@flume ~/demo]$ 

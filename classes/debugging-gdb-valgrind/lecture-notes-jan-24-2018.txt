@@ -1,0 +1,85 @@
+CS50 Guest Lecture
+
+—————————————————————————————— 
+=Debugging=
+
+~5 minutes intro
+"Tool" week! 
+Introduce yourself
+Please interrupt me at anytime if something isn’t making sense — if I’m looking down at my computer, make a noise of some sort or something or jump up and down and wave your hands… something. 
+Like many topics you will encounter in this course, there is NO WAY that we can cover all there is to know about more advanced debugging tools like debuggers and memory checkers. We can, however, equip you with some of the basics that can do most of the work you need and answer most of the questions you’ll have. 
+motivation
+what is a debugger? 
+
+~3 minutes — printf-style debugging:
+ASK: At a high level, what sorts of things do you care about when you use printf statements or other means to debug your code? Or in other words, what information are you seeking or what questions are you trying to answer? => Write the questions on the board and then show how some of the basic GDB commands can be used to answer some of the questions. 
+
+~3-5 minutes walking through password.c
+
+—————————————————————————————— 
+=GDB=
+Review a few of the resources — open them!
+    => man gdb, cheatsheet, manual
+
+Along the way, mention gdb conveniences
+gdb commands store results in $N variables — try it
+gdb supports auto-completetion
+arrow up/down to recall previous commands
+abbreviated forms (r = run, b = break, i = info, bt = backtrace)
+
+NOTE: You need to ensure you compile programs with debug symbols
+show alias mygcc
+as an aside: compare file sizes of executable with and without debug symbols
+
+Dive into GDB + walk-through password.c — EXPLAIN WHAT EACH OF THESE COMMANDS/NOTIONS REALLY -ARE- (E.G., WHAT IS A BREAKPOINT?)
+gdb password => usually start gdb with a program
+quit
+gdb -q password
+“reading symbols” => show “mygcc” alias
+help
+e.g., help run
+run (nothing fancy — just show that the program runs normally under gdb)
+break (specific by function name, line number)
+break main
+break check_password
+break 36
+continue
+info break (inspect break points)
+enable, disable, delete (and show how info break changes)
+list <<< let’s run until we hit a breakpoint, then use list to see where we are
+print vs info locals 
+(in main) print n_guesses
+(in main) print PASSWORD
+step (accidentally step into a function, e.g., printf)
+finish
+next (similar to step but steps over functions)
+print (continued...) 
+(in check_password) print authenticated
+(in check_password) print &authenticated 
+(in check_password) print strlen(guess)   <<< you can even run C code!
+backtrace (bt)
+discuss the call stack and what you are seeing => HOW COOL IS THIS? YOU CAN LOOK AT THE CALL STACK AT ANY TIME WHILE RUNNING YOUR PROGRAM!!
+Want more? try backtrace full
+
+activity — ~5-10 minutes for activity
+solution — ~3-5 minutes for me to step through activity solution
+
+—————————————————————————————— 
+=Valgrind=
+memory errors (bad access) vs. memory leaks (failed to free allocated memory)
+we don’t give it the same attention as gdb because its really a reporting tool — if it reports something, find the bugs (perhaps using gdb) and fix them! 
+alias myvalgrind >>> we need the extra flags that are defined in this alias to make valgrind report on the errors we are interested in
+
+GOAL: report shows no errors or leaks; also, check that # allocated memory == # frees. 
+
+names9 memory leak demo
+mygcc names9.c readlinep.c -o names
+myvalgrind ./names >>> starts up and runs your program
+The easiest way to determine if there is some sort of memory leak is to check the alloc/free counts generated in the valgrind output. Ideally, the counts should match — if they don’t, you get a LEAK SUMMARY. 
+Often you get just enough information to direct you to the right place. 
+
+Pro Tip: get your code’s functionality where it should be, then try to “plug up” the memory leaks. 
+
+———————————————————————————————————————————————————————————— 
+Post Lecture
+Send Gevorg script.txt (terminal session — perhaps cleaned up a bit) 

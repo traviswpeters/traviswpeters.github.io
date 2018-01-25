@@ -1,0 +1,1086 @@
+twp@twpmbp ~/Desktop/teaching/debugging-gdb-valgrind/debug/password
+$ flume
+Last login: Wed Jan 24 10:07:22 2018 from 10.31.188.191
+
+traviswp@flume ~
+$ cd cs50/password
+
+traviswp@flume ~/cs50/password
+$ ls
+Makefile  password*  password.c  password.i  passwordNoDebug*  password.o  password.s
+
+traviswp@flume ~/cs50/password
+$ more password.
+more: stat of password. failed: No such file or directory
+
+traviswp@flume ~/cs50/password
+$ more password.c
+/**
+ * A simple "password" program. The password is hardcoded for simplicity. The
+ * user can attempt at most 3 password guesses. The goal: successfully "authenticate".
+ *
+ * What I wanted to demonstrate in this program is the fact that certain,
+ * well-crafted password guesses can result in a successful authentication as
+ * far as the program is concerned (i.e., the "success!" message is printed).
+ *
+ * The hardcoded password is currently "cs50". I found that a password guess of
+ * "abcdefghijklmn" allows me to authenticate..... What is happening?! :)
+ *
+ * NOTE: This has only been tested on the cs linux servers.
+ *
+ * - Travis Peters, CS50, April 2016
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
+// global *variables*
+const int MAX_NUM_GUESSES = 3;      // the max. number of password guesses allowed
+const char PASSWORD[] = "cs50";     // The fixed password of length = 4 (+1 for '\0')
+                                    // (NOTE: never hardcode password! :)
+                                    // Try this "password": abcdefghijklmn
+
+// function prototype *declarations*
+static int check_password();
+
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Main loop - ask for a guess, quit when it matches the answer or when guesses
+ * exceeds MAX_NUM_GUESSES.
+ */
+int main(const int argc, const char *argv[]) {
+    int n_guesses = 0;   // the curr. number of guess attempts.
+
+    // interpret arguments
+    if (argc != 1) {
+        // incorrect number of args
+        fprintf(stderr, "usage: %s\n", argv[0]);
+        exit(1);
+    }
+
+    // get password and check if user authenticated
+    int result;
+    while (n_guesses < MAX_NUM_GUESSES) {
+        result = check_password();
+        n_guesses++;
+        if (result)
+            break;
+        else
+            printf("incorrect. try again. (attempt %d)\n", n_guesses);
+    }
+
+    // check: did we exit because we ran out of guesses?!
+    if (!result && n_guesses == MAX_NUM_GUESSES) {
+        printf("you've exceeded the max. number of attempts. try again later.\n");
+        exit(2);
+    }
+
+    printf("success!\n");
+    return 0;
+}
+
+static int check_password() {
+    char guess[10];          // char. buffer for holding the password guess.
+    int authenticated = 0;   // "flag" that determines if the user successfully authenticated.
+
+    // if fgets encounters an error, or EOF after no input, it returns NULL.
+    printf("password: ");
+    if (fgets(guess, 50, stdin) == NULL)
+        return authenticated;
+
+    // this should not happen, but I want to protect the subscript below
+    if (strlen(guess) == 0)
+        return authenticated;
+
+    // fgets guarantees the string is null-terminated, but there may not be a
+    // newline if the buffer filled before a newline was encountered.
+    // if that happens, clear the stdio input until newline or EOF.
+    if (guess[strlen(guess)-1] != '\n') {
+        // strip characters until end of file or newline is reached
+        while ( !feof(stdin) && getchar() != '\n' )
+            ; // discard the rest of characters on input line
+        return authenticated;
+    } else {
+        // get rid of \n at end of buffer.
+        guess[strlen(guess)-1] = 0;
+    }
+
+    // check "guessed" password against the correct password.
+    if (strcmp(PASSWORD, guess) == 0)
+        authenticated = 1;
+
+    return authenticated;
+}
+
+traviswp@flume ~/cs50/password
+$  make clean
+rm -f *~
+rm -f *.o *.i *.s *.bc
+rm -f core
+rm -f password
+
+traviswp@flume ~/cs50/password
+$  man gdb
+GDB(1)                                                                            GNU Development Tools                                                                            GDB(1)
+
+NAME
+       gdb - The GNU Debugger
+
+SYNOPSIS
+       gdb [-help] [-nh] [-nx] [-q] [-batch] [-cd=dir] [-f] [-b bps]
+           [-tty=dev] [-s symfile] [-e prog] [-se prog] [-c core] [-p procID]
+           [-x cmds] [-d dir] [prog|prog procID|prog core]
+
+DESCRIPTION
+       The purpose of a debugger such as GDB is to allow you to see what is going on "inside" another program while it executes -- or what another program was doing at the moment it
+       crashed.
+
+       GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:
+
+       ·   Start your program, specifying anything that might affect its behavior.
+
+       ·   Make your program stop on specified conditions.
+
+       ·   Examine what has happened, when your program has stopped.
+
+       ·   Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.
+
+       You can use GDB to debug programs written in C, C@t{++}, Fortran and Modula-2.
+
+       GDB is invoked with the shell command "gdb".  Once started, it reads commands from the terminal until you tell it to exit with the GDB command "quit".  You can get online help
+       from GDB itself by using the command "help".
+
+       You can run "gdb" with no arguments or options; but the most usual way to start GDB is with one argument or two, specifying an executable program as the argument:
+
+               gdb program
+
+       You can also start with both an executable program and a core file specified:
+
+               gdb program core
+
+       You can, instead, specify a process ID as a second argument, if you want to debug a running process:
+
+               gdb program 1234
+               gdb -p 1234
+
+       would attach GDB to process 1234 (unless you also have a file named 1234; GDB does check for a core file first).  With option -p you can omit the program filename.
+
+       Here are some of the most frequently needed GDB commands:
+
+       break [file:]function
+           Set a breakpoint at function (in file).
+
+       run [arglist]
+           Start your program (with arglist, if specified).
+
+       bt  Backtrace: display the program stack.
+
+       print expr
+           Display the value of an expression.
+
+       c   Continue running your program (after stopping, e.g. at a breakpoint).
+
+       next
+           Execute next program line (after stopping); step over any function calls in the line.
+
+       edit [file:]function
+           look at the program line where it is presently stopped.
+
+       list [file:]function
+           type the text of the program in the vicinity of where it is presently stopped.
+
+       step
+           Execute next program line (after stopping); step into any function calls in the line.
+
+       help [name]
+           Show information about GDB command name, or general information about using GDB.
+
+       quit
+           Exit from GDB.
+
+       For full details on GDB, see Using GDB: A Guide to the GNU Source-Level Debugger, by Richard M. Stallman and Roland H. Pesch.  The same text is available online as the "gdb"
+       entry in the "info" program.
+
+OPTIONS
+       Any arguments other than options specify an executable file and core file (or process ID); that is, the first argument encountered with no associated option flag is equivalent to
+       a -se option, and the second, if any, is equivalent to a -c option if it's the name of a file.  Many options have both long and short forms; both are shown here.  The long forms
+       are also recognized if you truncate them, so long as enough of the option is present to be unambiguous.  (If you prefer, you can flag option arguments with + rather than -,
+       though we illustrate the more usual convention.)
+
+       All the options and command line arguments you give are processed in sequential order.  The order makes a difference when the -x option is used.
+
+       -help
+       -h  List all options, with brief explanations.
+
+       -symbols=file
+       -s file
+           Read symbol table from file file.
+
+       -write
+           Enable writing into executable and core files.
+
+       -exec=file
+       -e file
+           Use file file as the executable file to execute when appropriate, and for examining pure data in conjunction with a core dump.
+
+       -se=file
+           Read symbol table from file file and use it as the executable file.
+
+       -core=file
+       -c file
+           Use file file as a core dump to examine.
+
+       -command=file
+       -x file
+           Execute GDB commands from file file.
+
+       -ex command
+           Execute given GDB command.
+
+       -directory=directory
+       -d directory
+           Add directory to the path to search for source files.
+
+       -nh Do not execute commands from ~/.gdbinit.
+
+       -nx
+       -n  Do not execute commands from any .gdbinit initialization files.
+
+       -quiet
+       -q  "Quiet".  Do not print the introductory and copyright messages.  These messages are also suppressed in batch mode.
+
+       -batch
+           Run in batch mode.  Exit with status 0 after processing all the command files specified with -x (and .gdbinit, if not inhibited).  Exit with nonzero status if an error occurs
+           in executing the GDB commands in the command files.
+
+traviswp@flume ~/cs50/password
+$ ls
+Makefile  password.c  passwordNoDebug*
+
+traviswp@flume ~/cs50/password
+$ make
+gcc -Wall -pedantic -std=c11 -ggdb -save-temps    -c -o password.o password.c
+gcc -Wall -pedantic -std=c11 -ggdb -save-temps  password.o  -o password
+
+traviswp@flume ~/cs50/password
+$ ls
+Makefile  password*  password.c  password.i  passwordNoDebug*  password.o  password.s
+
+traviswp@flume ~/cs50/password
+$ ./password
+password: password
+incorrect. try again. (attempt 1)
+password: abc
+incorrect. try again. (attempt 2)
+password: 1234
+incorrect. try again. (attempt 3)
+you've exceeded the max. number of attempts. try again later.
+
+traviswp@flume ~/cs50/password
+$ ./password
+password: cs50
+success!
+
+traviswp@flume ~/cs50/password
+$ ./password
+password:
+incorrect. try again. (attempt 1)
+password: abcdefghijkl
+success!
+
+traviswp@flume ~/cs50/password
+$ ls -al password passwordNoDebug
+-rwxr-x--- 1 traviswp traviswp 11576 Jan 24 10:23 password*
+-rwxr-x--- 1 traviswp traviswp  8760 Jan 24 09:26 passwordNoDebug*
+
+traviswp@flume ~/cs50/password
+$ man gdb
+
+traviswp@flume ~/cs50/password
+$ gdb password
+GNU gdb (GDB) Fedora 8.0.1-33.fc27
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from password...done.
+(gdb) quit
+
+traviswp@flume ~/cs50/password
+$ gdb -q password
+Reading symbols from password...done.
+(gdb) help
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+(gdb) help data
+Examining data.
+
+List of commands:
+
+agent-printf -- Agent-printf "printf format string"
+append -- Append target code/data to a local file
+append binary -- Append target code/data to a raw binary file
+append binary memory -- Append contents of memory to a raw binary file
+append binary value -- Append the value of an expression to a raw binary file
+append memory -- Append contents of memory to a raw binary file
+append value -- Append the value of an expression to a raw binary file
+call -- Call a function in the program
+disassemble -- Disassemble a specified section of memory
+display -- Print value of expression EXP each time the program stops
+dump -- Dump target code/data to a local file
+dump binary -- Write target code/data to a raw binary file
+dump binary memory -- Write contents of memory to a raw binary file
+dump binary value -- Write the value of an expression to a raw binary file
+dump ihex -- Write target code/data to an intel hex file
+dump ihex memory -- Write contents of memory to an ihex file
+dump ihex value -- Write the value of an expression to an ihex file
+dump memory -- Write contents of memory to a raw binary file
+dump srec -- Write target code/data to an srec file
+dump srec memory -- Write contents of memory to an srec file
+dump srec value -- Write the value of an expression to an srec file
+dump tekhex -- Write target code/data to a tekhex file
+dump tekhex memory -- Write contents of memory to a tekhex file
+dump tekhex value -- Write the value of an expression to a tekhex file
+dump value -- Write the value of an expression to a raw binary file
+dump verilog -- Write target code/data to a verilog hex file
+dump verilog memory -- Write contents of memory to a verilog hex file
+dump verilog value -- Write the value of an expression to a verilog hex file
+explore -- Explore a value or a type valid in the current context
+explore type -- Explore a type or the type of an expression valid in the current
+explore value -- Explore value of an expression valid in the current context
+find -- Search memory for a sequence of bytes
+init-if-undefined -- Initialize a convenience variable if necessary
+mem -- Define attributes for memory region or reset memory region handling to
+output -- Like "print" but don't put in value history and don't print newline
+print -- Print value of expression EXP
+print-object -- Ask an Objective-C object to print itself
+printf -- Printf "printf format string"
+---Type <return> to continue, or q <return> to quit---
+ptype -- Print definition of type TYPE
+restore -- Restore the contents of FILE to target memory
+set -- Evaluate expression EXP and assign result to variable VAR
+set ada -- Prefix command for changing Ada-specfic settings
+set ada print-signatures -- Enable or disable the output of formal and return types for functions in the overloads selection menu
+set ada trust-PAD-over-XVS -- Enable or disable an optimization trusting PAD types over XVS types
+set agent -- Set debugger's willingness to use agent as a helper
+set annotate -- Set annotation_level
+set architecture -- Set architecture of target
+set args -- Set argument list to give program being debugged when it is started
+set arm -- Various ARM-specific commands
+set arm abi -- Set the ABI
+set arm apcs32 -- Set usage of ARM 32-bit mode
+set arm disassembler -- Set the disassembly style
+set arm fallback-mode -- Set the mode assumed when symbols are unavailable
+set arm force-mode -- Set the mode assumed even when symbols are available
+set arm fpu -- Set the floating point type
+set auto-connect-native-target -- Set whether GDB may automatically connect to the native target
+set auto-load -- Auto-loading specific settings
+set auto-load gdb-scripts -- Enable or disable auto-loading of canned sequences of commands scripts
+set auto-load guile-scripts -- Set the debugger's behaviour regarding auto-loaded Guile scripts
+set auto-load libthread-db -- Enable or disable auto-loading of inferior specific libthread_db
+set auto-load local-gdbinit -- Enable or disable auto-loading of .gdbinit script in current directory
+set auto-load python-scripts -- Set the debugger's behaviour regarding auto-loaded Python scripts
+set auto-load safe-path -- Set the list of files and directories that are safe for auto-loading
+set auto-load scripts-directory -- Set the list of directories from which to load auto-loaded scripts
+set auto-solib-add -- Set autoloading of shared library symbols
+set backtrace -- Set backtrace specific variables
+set backtrace limit -- Set an upper bound on the number of backtrace levels
+set backtrace past-entry -- Set whether backtraces should continue past the entry point of a program
+set backtrace past-main -- Set whether backtraces should continue past "main"
+set basenames-may-differ -- Set whether a source file may have multiple base names
+set breakpoint -- Breakpoint specific settings
+set breakpoint always-inserted -- Set mode for inserting breakpoints
+set breakpoint auto-hw -- Set automatic usage of hardware breakpoints
+set breakpoint condition-evaluation -- Set mode of breakpoint condition evaluation
+set breakpoint pending -- Set debugger's behavior regarding pending breakpoints
+set build-id-core-loads -- Set whether CORE-FILE loads the build-id associated files automatically
+set build-id-verbose -- Set debugging level of the build-id locator
+set can-use-hw-watchpoints -- Set debugger's willingness to use watchpoint hardware
+set case-sensitive -- Set case sensitivity in name search
+set charset -- Set the host and target character sets
+---Type <return> to continue, or q <return> to quit---
+set check -- Set the status of the type/range checker
+set check range -- Set range checking
+set check type -- Set strict type checking
+set circular-trace-buffer -- Set target's use of circular trace buffer
+set code-cache -- Set cache use for code segment access
+set coerce-float-to-double -- Set coercion of floats to doubles when calling functions
+set compile-args -- Set compile command GCC command-line arguments
+set complaints -- Set max number of complaints about incorrect symbols
+set confirm -- Set whether to confirm potentially dangerous operations
+set cp-abi -- Set the ABI used for inspecting C++ objects
+set data-directory -- Set GDB's data directory
+set dcache -- Use this command to set number of lines in dcache and line-size
+set dcache line-size -- Set dcache line size in bytes (must be power of 2)
+set dcache size -- Set number of dcache lines
+set debug -- Generic command for setting gdb debugging flags
+set debug aarch64 -- Set AArch64 debugging
+set debug arch -- Set architecture debugging
+set debug arm -- Set ARM debugging
+set debug auto-load -- Set auto-load verifications debugging
+set debug bfd-cache -- Set bfd cache debugging
+set debug check-physname -- Set cross-checking of "physname" code against demangler
+set debug coff-pe-read -- Set coff PE read debugging
+set debug compile -- Set compile command debugging
+set debug displaced -- Set displaced stepping debugging
+set debug dwarf-die -- Set debugging of the DWARF DIE reader
+set debug dwarf-line -- Set debugging of the dwarf line reader
+set debug dwarf-read -- Set debugging of the DWARF reader
+set debug entry-values -- Set entry values and tail call frames debugging
+set debug expression -- Set expression debugging
+set debug frame -- Set frame debugging
+set debug infrun -- Set inferior debugging
+set debug jit -- Set JIT debugging
+set debug libthread-db -- Set libthread-db debugging
+set debug lin-lwp -- Set debugging of GNU/Linux lwp module
+set debug linux-namespaces -- Set debugging of GNU/Linux namespaces module
+set debug notification -- Set debugging of async remote notification
+set debug observer -- Set observer debugging
+set debug overload -- Set debugging of C++ overloading
+set debug parser -- Set parser debugging
+set debug py-unwind -- Set Python unwinder debugging
+set debug record -- Set debugging of record/replay feature
+set debug remote -- Set debugging of remote protocol
+---Type <return> to continue, or q <return> to quit---
+set debug serial -- Set serial debugging
+set debug stap-expression -- Set SystemTap expression debugging
+set debug symbol-lookup -- Set debugging of symbol lookup
+set debug symfile -- Set debugging of the symfile functions
+set debug symtab-create -- Set debugging of symbol table creation
+set debug target -- Set target debugging
+set debug timestamp -- Set timestamping of debugging messages
+set debug varobj -- Set varobj debugging
+set debug xml -- Set XML parser debugging
+set debug-file-directory -- Set the directories where separate debug symbols are searched for
+set default-collect -- Set the list of expressions to collect by default
+set demangle-style -- Set the current C++ demangling style
+set detach-on-fork -- Set whether gdb will detach the child of a fork
+set directories -- Set the search path for finding source files
+set disable-randomization -- Set disabling of debuggee's virtual address space randomization
+set disassemble-next-line -- Set whether to disassemble next source line or insn when execution stops
+set disassembler-options -- Set the disassembler options
+set disassembly-flavor -- Set the disassembly flavor
+set disconnected-dprintf -- Set whether dprintf continues after GDB disconnects
+set disconnected-tracing -- Set whether tracing continues after GDB disconnects
+set displaced-stepping -- Set debugger's willingness to use displaced stepping
+set dprintf-channel -- Set the channel to use for dynamic printf
+set dprintf-function -- Set the function to use for dynamic printf
+set dprintf-style -- Set the style of usage for dynamic printf
+set editing -- Set editing of command lines as they are typed
+set endian -- Set endianness of target
+set environment -- Set environment variable value to give the program
+set exec-direction -- Set direction of execution
+set exec-done-display -- Set notification of completion for asynchronous execution commands
+set exec-wrapper -- Set a wrapper for running programs
+set extended-prompt -- Set the extended prompt
+set extension-language -- Set mapping between filename extension and source language
+set filename-display -- Set how to display filenames
+set follow-exec-mode -- Set debugger response to a program call of exec
+set follow-fork-mode -- Set debugger response to a program call of fork or vfork
+set frame-filter -- Prefix command for 'set' frame-filter related operations
+set frame-filter priority -- GDB command to set the priority of the specified frame-filter
+set gnutarget -- Set the current BFD target
+set guile -- Prefix command for Guile preference settings
+set guile print-stack -- Set mode for Guile exception printing on error
+set height -- Set number of lines in a page for GDB output pagination
+set history -- Generic command for setting command history parameters
+---Type <return> to continue, or q <return> to quit---
+set history expansion -- Set history expansion on command input
+set history filename -- Set the filename in which to record the command history
+set history remove-duplicates -- Set how far back in history to look for and remove duplicate entries
+set history save -- Set saving of the history record on exit
+set history size -- Set the size of the command history
+set host-charset -- Set the host character set
+set inferior-tty -- Set terminal for future runs of program being debugged
+set input-radix -- Set default input radix for entering numbers
+set interactive-mode -- Set whether GDB's standard input is a terminal
+set language -- Set the current source language
+set libthread-db-search-path -- Set search path for libthread_db
+set listsize -- Set number of source lines gdb will list by default
+set logging -- Set logging options
+set logging file -- Set the current logfile
+set logging off -- Disable logging
+set logging on -- Enable logging
+set logging overwrite -- Set whether logging overwrites or appends to the log file
+set logging redirect -- Set the logging output mode
+set max-completions -- Set maximum number of completion candidates
+set max-user-call-depth -- Set the max call depth for non-python/scheme user-defined commands
+set max-value-size -- Set maximum sized value gdb will load from the inferior
+set may-insert-breakpoints -- Set permission to insert breakpoints in the target
+set may-insert-fast-tracepoints -- Set permission to insert fast tracepoints in the target
+set may-insert-tracepoints -- Set permission to insert tracepoints in the target
+set may-interrupt -- Set permission to interrupt or signal the target
+set may-write-memory -- Set permission to write into target memory
+set may-write-registers -- Set permission to write into registers
+set mem -- Memory regions settings
+set mem inaccessible-by-default -- Set handling of unknown memory regions
+set mi-async -- Set whether MI asynchronous mode is enabled
+set mpx -- Set Intel Memory Protection Extensions specific variables
+set mpx bound -- Set the memory bounds for a given array/pointer storage in the bound table
+set multiple-symbols -- Set the debugger behavior when more than one symbol are possible matches
+set non-stop -- Set whether gdb controls the inferior in non-stop mode
+set observer -- Set whether gdb controls the inferior in observer mode
+set opaque-type-resolution -- Set resolution of opaque struct/class/union types (if set before loading symbols)
+set osabi -- Set OS ABI of target
+set output-radix -- Set default output radix for printing of values
+set overload-resolution -- Set overload resolution in evaluating C++ functions
+set pagination -- Set state of GDB output pagination
+set powerpc -- Various PowerPC-specific commands
+set powerpc exact-watchpoints -- Set whether to use just one debug register for watchpoints on scalars
+---Type <return> to continue, or q <return> to quit---
+set powerpc soft-float -- Set whether to use a soft-float ABI
+set powerpc vector-abi -- Set the vector ABI
+set print -- Generic command for setting how things print
+set print address -- Set printing of addresses
+set print array -- Set pretty formatting of arrays
+set print array-indexes -- Set printing of array indexes
+set print asm-demangle -- Set demangling of C++/ObjC names in disassembly listings
+set print demangle -- Set demangling of encoded C++/ObjC names when displaying symbols
+set print elements -- Set limit on string chars or array elements to print
+set print entry-values -- Set printing of function arguments at function entry
+set print frame-arguments -- Set printing of non-scalar frame arguments
+set print inferior-events -- Set printing of inferior events (e.g.
+set print max-symbolic-offset -- Set the largest offset that will be printed in <symbol+1234> form
+set print null-stop -- Set printing of char arrays to stop at first null char
+set print object -- Set printing of object's derived type based on vtable info
+set print pascal_static-members -- Set printing of pascal static members
+set print pretty -- Set pretty formatting of structures
+set print raw -- Generic command for setting what things to print in "raw" mode
+set print raw frame-arguments -- Set whether to print frame arguments in raw form
+set print repeats -- Set threshold for repeated print elements
+set print sevenbit-strings -- Set printing of 8-bit characters in strings as \nnn
+set print static-members -- Set printing of C++ static members
+set print symbol -- Set printing of symbol names when printing pointers
+set print symbol-filename -- Set printing of source filename and line number with <symbol>
+set print symbol-loading -- Set printing of symbol loading messages
+set print thread-events -- Set printing of thread events (such as thread start and exit)
+set print type -- Generic command for setting how types print
+show print type methods -- Set printing of methods defined in classes
+show print type typedefs -- Set printing of typedefs defined in classes
+set print union -- Set printing of unions interior to structures
+set print vtbl -- Set printing of C++ virtual function tables
+set prompt -- Set gdb's prompt
+set python -- Prefix command for python preference settings
+set python print-stack -- Set mode for Python stack dump on error
+set radix -- Set default input and output number radices
+set range-stepping -- Enable or disable range stepping
+set ravenscar -- Prefix command for changing Ravenscar-specific settings
+set ravenscar task-switching -- Enable or disable support for GNAT Ravenscar tasks
+set record -- Set record options
+set record btrace -- Set record options
+set record btrace bts -- Set record btrace bts options
+set record btrace bts buffer-size -- Set the record/replay bts buffer size
+---Type <return> to continue, or q <return> to quit---
+set record btrace pt -- Set record btrace pt options
+set record btrace pt buffer-size -- Set the record/replay pt buffer size
+set record btrace replay-memory-access -- Set what memory accesses are allowed during replay
+set record full -- Set record options
+set record full insn-number-max -- Set record/replay buffer limit
+set record full memory-query -- Set whether query if PREC cannot record memory change of next instruction
+set record full stop-at-limit -- Set whether record/replay stops when record/replay buffer becomes full
+set record function-call-history-size -- Set number of function to print in "record function-call-history"
+set record instruction-history-size -- Set number of instructions to print in "record instruction-history"
+set remote -- Remote protocol specific variables
+set remote P-packet -- Set use of remote protocol `P' (set-register) packet
+set remote TracepointSource-packet -- Set use of remote protocol `TracepointSource' (TracepointSource) packet
+set remote X-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote Z-packet -- Set use of remote protocol `Z' packets
+set remote access-watchpoint-packet -- Set use of remote protocol `Z4' (access-watchpoint) packet
+set remote agent-packet -- Set use of remote protocol `QAgent' (agent) packet
+set remote allow-packet -- Set use of remote protocol `QAllow' (allow) packet
+set remote attach-packet -- Set use of remote protocol `vAttach' (attach) packet
+set remote binary-download-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote breakpoint-commands-packet -- Set use of remote protocol `BreakpointCommands' (breakpoint-commands) packet
+set remote btrace-conf-bts-size-packet -- Set use of remote protocol `Qbtrace-conf:bts:size' (btrace-conf-bts-size) packet
+set remote btrace-conf-pt-size-packet -- Set use of remote protocol `Qbtrace-conf:pt:size' (btrace-conf-pt-size) packet
+set remote catch-syscalls-packet -- Set use of remote protocol `QCatchSyscalls' (catch-syscalls) packet
+set remote conditional-breakpoints-packet -- Set use of remote protocol `ConditionalBreakpoints' (conditional-breakpoints) packet
+set remote conditional-tracepoints-packet -- Set use of remote protocol `ConditionalTracepoints' (conditional-tracepoints) packet
+set remote ctrl-c-packet -- Set use of remote protocol `vCtrlC' (ctrl-c) packet
+set remote disable-btrace-packet -- Set use of remote protocol `Qbtrace:off' (disable-btrace) packet
+set remote disable-randomization-packet -- Set use of remote protocol `QDisableRandomization' (disable-randomization) packet
+set remote enable-btrace-bts-packet -- Set use of remote protocol `Qbtrace:bts' (enable-btrace-bts) packet
+set remote enable-btrace-pt-packet -- Set use of remote protocol `Qbtrace:pt' (enable-btrace-pt) packet
+set remote exec-event-feature-packet -- Set use of remote protocol `exec-event-feature' (exec-event-feature) packet
+set remote exec-file -- Set the remote pathname for "run"
+set remote fast-tracepoints-packet -- Set use of remote protocol `FastTracepoints' (fast-tracepoints) packet
+set remote fetch-register-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote fork-event-feature-packet -- Set use of remote protocol `fork-event-feature' (fork-event-feature) packet
+set remote get-thread-information-block-address-packet -- Set use of remote protocol `qGetTIBAddr' (get-thread-information-block-address) packet
+set remote get-thread-local-storage-address-packet -- Set use of remote protocol `qGetTLSAddr' (get-thread-local-storage-address) packet
+set remote hardware-breakpoint-limit -- Set the maximum number of target hardware breakpoints
+set remote hardware-breakpoint-packet -- Set use of remote protocol `Z1' (hardware-breakpoint) packet
+set remote hardware-watchpoint-length-limit -- Set the maximum length (in bytes) of a target hardware watchpoint
+set remote hardware-watchpoint-limit -- Set the maximum number of target hardware watchpoints
+set remote hostio-close-packet -- Set use of remote protocol `vFile:close' (hostio-close) packet
+---Type <return> to continue, or q <return> to quit---
+set remote hostio-fstat-packet -- Set use of remote protocol `vFile:fstat' (hostio-fstat) packet
+set remote hostio-open-packet -- Set use of remote protocol `vFile:open' (hostio-open) packet
+set remote hostio-pread-packet -- Set use of remote protocol `vFile:pread' (hostio-pread) packet
+set remote hostio-pwrite-packet -- Set use of remote protocol `vFile:pwrite' (hostio-pwrite) packet
+set remote hostio-readlink-packet -- Set use of remote protocol `vFile:readlink' (hostio-readlink) packet
+set remote hostio-setfs-packet -- Set use of remote protocol `vFile:setfs' (hostio-setfs) packet
+set remote hostio-unlink-packet -- Set use of remote protocol `vFile:unlink' (hostio-unlink) packet
+set remote hwbreak-feature-packet -- Set use of remote protocol `hwbreak-feature' (hwbreak-feature) packet
+set remote install-in-trace-packet -- Set use of remote protocol `InstallInTrace' (install-in-trace) packet
+set remote interrupt-on-connect -- Set whether interrupt-sequence is sent to remote target when gdb connects to
+set remote interrupt-sequence -- Set interrupt sequence to remote target
+set remote kill-packet -- Set use of remote protocol `vKill' (kill) packet
+set remote library-info-packet -- Set use of remote protocol `qXfer:libraries:read' (library-info) packet
+set remote library-info-svr4-packet -- Set use of remote protocol `qXfer:libraries-svr4:read' (library-info-svr4) packet
+set remote memory-map-packet -- Set use of remote protocol `qXfer:memory-map:read' (memory-map) packet
+set remote memory-read-packet-size -- Set the maximum number of bytes per memory-read packet
+set remote memory-write-packet-size -- Set the maximum number of bytes per memory-write packet
+set remote multiprocess-feature-packet -- Set use of remote protocol `multiprocess-feature' (multiprocess-feature) packet
+set remote no-resumed-stop-reply-packet -- Set use of remote protocol `N stop reply' (no-resumed-stop-reply) packet
+set remote noack-packet -- Set use of remote protocol `QStartNoAckMode' (noack) packet
+set remote osdata-packet -- Set use of remote protocol `qXfer:osdata:read' (osdata) packet
+set remote p-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote pass-signals-packet -- Set use of remote protocol `QPassSignals' (pass-signals) packet
+set remote pid-to-exec-file-packet -- Set use of remote protocol `qXfer:exec-file:read' (pid-to-exec-file) packet
+set remote program-signals-packet -- Set use of remote protocol `QProgramSignals' (program-signals) packet
+set remote query-attached-packet -- Set use of remote protocol `qAttached' (query-attached) packet
+set remote read-aux-vector-packet -- Set use of remote protocol `qXfer:auxv:read' (read-aux-vector) packet
+set remote read-btrace-conf-packet -- Set use of remote protocol `qXfer:btrace-conf' (read-btrace-conf) packet
+set remote read-btrace-packet -- Set use of remote protocol `qXfer:btrace' (read-btrace) packet
+set remote read-fdpic-loadmap-packet -- Set use of remote protocol `qXfer:fdpic:read' (read-fdpic-loadmap) packet
+set remote read-sdata-object-packet -- Set use of remote protocol `qXfer:statictrace:read' (read-sdata-object) packet
+set remote read-siginfo-object-packet -- Set use of remote protocol `qXfer:siginfo:read' (read-siginfo-object) packet
+set remote read-spu-object-packet -- Set use of remote protocol `qXfer:spu:read' (read-spu-object) packet
+set remote read-watchpoint-packet -- Set use of remote protocol `Z3' (read-watchpoint) packet
+set remote reverse-continue-packet -- Set use of remote protocol `bc' (reverse-continue) packet
+set remote reverse-step-packet -- Set use of remote protocol `bs' (reverse-step) packet
+set remote run-packet -- Set use of remote protocol `vRun' (run) packet
+set remote search-memory-packet -- Set use of remote protocol `qSearch:memory' (search-memory) packet
+set remote set-register-packet -- Set use of remote protocol `P' (set-register) packet
+set remote software-breakpoint-packet -- Set use of remote protocol `Z0' (software-breakpoint) packet
+set remote static-tracepoints-packet -- Set use of remote protocol `StaticTracepoints' (static-tracepoints) packet
+set remote supported-packets-packet -- Set use of remote protocol `qSupported' (supported-packets) packet
+---Type <return> to continue, or q <return> to quit---
+set remote swbreak-feature-packet -- Set use of remote protocol `swbreak-feature' (swbreak-feature) packet
+set remote symbol-lookup-packet -- Set use of remote protocol `qSymbol' (symbol-lookup) packet
+set remote system-call-allowed -- Set if the host system(3) call is allowed for the target
+set remote target-features-packet -- Set use of remote protocol `qXfer:features:read' (target-features) packet
+set remote thread-events-packet -- Set use of remote protocol `QThreadEvents' (thread-events) packet
+set remote threads-packet -- Set use of remote protocol `qXfer:threads:read' (threads) packet
+set remote trace-buffer-size-packet -- Set use of remote protocol `QTBuffer:size' (trace-buffer-size) packet
+set remote trace-status-packet -- Set use of remote protocol `qTStatus' (trace-status) packet
+set remote traceframe-info-packet -- Set use of remote protocol `qXfer:traceframe-info:read' (traceframe-info) packet
+set remote unwind-info-block-packet -- Set use of remote protocol `qXfer:uib:read' (unwind-info-block) packet
+set remote verbose-resume-packet -- Set use of remote protocol `vCont' (verbose-resume) packet
+set remote verbose-resume-supported-packet -- Set use of remote protocol `vContSupported' (verbose-resume-supported) packet
+set remote vfork-event-feature-packet -- Set use of remote protocol `vfork-event-feature' (vfork-event-feature) packet
+set remote write-siginfo-object-packet -- Set use of remote protocol `qXfer:siginfo:write' (write-siginfo-object) packet
+set remote write-spu-object-packet -- Set use of remote protocol `qXfer:spu:write' (write-spu-object) packet
+set remote write-watchpoint-packet -- Set use of remote protocol `Z2' (write-watchpoint) packet
+set remoteaddresssize -- Set the maximum size of the address (in bits) in a memory packet
+set remotecache -- Set cache use for remote targets
+set remoteflow -- Set use of hardware flow control for remote serial I/O
+set remotelogbase -- Set numerical base for remote session logging
+set remotelogfile -- Set filename for remote session recording
+set remotetimeout -- Set timeout limit to wait for target to respond
+set remotewritesize -- Set the maximum number of bytes per memory write packet (deprecated)
+set schedule-multiple -- Set mode for resuming threads of all processes
+set scheduler-locking -- Set mode for locking scheduler during execution
+set script-extension -- Set mode for script filename extension recognition
+set serial -- Set default serial/parallel port configuration
+set serial baud -- Set baud rate for remote serial I/O
+set serial parity -- Set parity for remote serial I/O
+set solib-absolute-prefix -- Set an alternate system root
+set solib-search-path -- Set the search path for loading non-absolute shared library symbol files
+set stack-cache -- Set cache use for stack access
+set startup-with-shell -- Set use of shell to start subprocesses
+set step-mode -- Set mode of the step operation
+set stop-on-solib-events -- Set stopping for shared library events
+set struct-convention -- Set the convention for returning small structs
+set substitute-path -- Usage: set substitute-path FROM TO
+set sysroot -- Set an alternate system root
+set target-charset -- Set the target character set
+set target-file-system-kind -- Set assumed file system kind for target reported file names
+set target-wide-charset -- Set the target wide character set
+set tcp -- TCP protocol specific variables
+---Type <return> to continue, or q <return> to quit---
+set tcp auto-retry -- Set auto-retry on socket connect
+set tcp connect-timeout -- Set timeout limit in seconds for socket connection
+set tdesc -- Set target description specific variables
+set tdesc filename -- Set the file to read for an XML target description
+set trace-buffer-size -- Set requested size of trace buffer
+set trace-commands -- Set tracing of GDB CLI commands
+set trace-notes -- Set notes string to use for current and future trace runs
+set trace-stop-notes -- Set notes string to use for future tstop commands
+set trace-user -- Set the user name to use for current and future trace runs
+set trust-readonly-sections -- Set mode for reading from readonly sections
+set tui -- TUI configuration variables
+set tui active-border-mode -- Set the attribute mode to use for the active TUI window border
+set tui border-kind -- Set the kind of border for TUI windows
+set tui border-mode -- Set the attribute mode to use for the TUI window borders
+set unwind-on-terminating-exception -- Set unwinding of stack if std::terminate is called while in call dummy
+set unwindonsignal -- Set unwinding of stack if a signal is received while in a call dummy
+set use-coredump-filter -- Set whether gcore should consider /proc/PID/coredump_filter
+set use-deprecated-index-sections -- Set whether to use deprecated gdb_index sections
+set variable -- Evaluate expression EXP and assign result to variable VAR
+set verbose -- Set verbosity
+set watchdog -- Set watchdog timer
+set width -- Set number of characters where GDB should wrap lines of its output
+set write -- Set writing into executable and core files
+undisplay -- Cancel some expressions to be displayed when program stops
+whatis -- Print data type of expression EXP
+x -- Examine memory: x/FMT ADDRESS
+
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+(gdb) run
+Starting program: /net/ifs-users/traviswp/cs50/password/password
+password: abc
+incorrect. try again. (attempt 1)
+password: password
+incorrect. try again. (attempt 2)
+password: asdf
+incorrect. try again. (attempt 3)
+you've exceeded the max. number of attempts. try again later.
+[Inferior 1 (process 5131) exited with code 02]
+(gdb) break main
+Breakpoint 1 at 0x4007a6: file password.c, line 38.
+(gdb) break check_password
+Breakpoint 2 at 0x400852: file password.c, line 70.
+(gdb) break 78
+Breakpoint 3 at 0x40088d: file password.c, line 78.
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007a6 in main at password.c:38
+2       breakpoint     keep y   0x0000000000400852 in check_password at password.c:70
+3       breakpoint     keep y   0x000000000040088d in check_password at password.c:78
+(gdb) run
+Starting program: /net/ifs-users/traviswp/cs50/password/password
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffdf98) at password.c:38
+38      int n_guesses = 0;   // the curr. number of guess attempts.
+(gdb) break disable 3
+Function "disable 3" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) n
+(gdb) disable 3
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007a6 in main at password.c:38
+    breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400852 in check_password at password.c:70
+3       breakpoint     keep n   0x000000000040088d in check_password at password.c:78
+(gdb) delete 3
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004007a6 in main at password.c:38
+    breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400852 in check_password at password.c:70
+(gdb) list
+33  /*
+34   * Main loop - ask for a guess, quit when it matches the answer or when guesses
+35   * exceeds MAX_NUM_GUESSES.
+36   */
+37  int main(const int argc, const char *argv[]) {
+38      int n_guesses = 0;   // the curr. number of guess attempts.
+39
+40      // interpret arguments
+41      if (argc != 1) {
+42          // incorrect number of args
+(gdb) list
+43          fprintf(stderr, "usage: %s\n", argv[0]);
+44          exit(1);
+45      }
+46
+47      // get password and check if user authenticated
+48      int result;
+49      while (n_guesses < MAX_NUM_GUESSES) {
+50          result = check_password();
+51          n_guesses++;
+52          if (result)
+(gdb) list
+53              break;
+54          else
+55              printf("incorrect. try again. (attempt %d)\n", n_guesses);
+56      }
+57
+58      // check: did we exit because we ran out of guesses?!
+59      if (!result && n_guesses == MAX_NUM_GUESSES) {
+60          printf("you've exceeded the max. number of attempts. try again later.\n");
+61          exit(2);
+62      }
+(gdb) list -
+43          fprintf(stderr, "usage: %s\n", argv[0]);
+44          exit(1);
+45      }
+46
+47      // get password and check if user authenticated
+48      int result;
+49      while (n_guesses < MAX_NUM_GUESSES) {
+50          result = check_password();
+51          n_guesses++;
+52          if (result)
+(gdb) list -
+33  /*
+34   * Main loop - ask for a guess, quit when it matches the answer or when guesses
+35   * exceeds MAX_NUM_GUESSES.
+36   */
+37  int main(const int argc, const char *argv[]) {
+38      int n_guesses = 0;   // the curr. number of guess attempts.
+39
+40      // interpret arguments
+41      if (argc != 1) {
+42          // incorrect number of args
+(gdb) print n_guesses
+$1 = 0
+(gdb) step
+41      if (argc != 1) {
+(gdb) step
+49      while (n_guesses < MAX_NUM_GUESSES) {
+(gdb) step
+50          result = check_password();
+(gdb) step
+
+Breakpoint 2, check_password () at password.c:70
+70      int authenticated = 0;   // "flag" that determines if the user successfully authenticated.
+(gdb) step
+73      printf("password: ");
+(gdb) step
+__printf (format=0x400a27 "password: ") at printf.c:28
+28  {
+(gdb) bt
+#0  __printf (format=0x400a27 "password: ") at printf.c:28
+#1  0x0000000000400868 in check_password () at password.c:73
+#2  0x00000000004007e7 in main (argc=1, argv=0x7fffffffdf98) at password.c:50
+(gdb) backtrace
+#0  __printf (format=0x400a27 "password: ") at printf.c:28
+#1  0x0000000000400868 in check_password () at password.c:73
+#2  0x00000000004007e7 in main (argc=1, argv=0x7fffffffdf98) at password.c:50
+(gdb) finish
+Run till exit from #0  __printf (format=0x400a27 "password: ") at printf.c:28
+check_password () at password.c:74
+74      if (fgets(guess, 50, stdin) == NULL)
+Value returned is $2 = 10
+(gdb) backtrace
+#0  check_password () at password.c:74
+#1  0x00000000004007e7 in main (argc=1, argv=0x7fffffffdf98) at password.c:50
+(gdb) next
+password: password
+78      if (strlen(guess) == 0)
+(gdb) next
+84      if (guess[strlen(guess)-1] != '\n') {
+(gdb) next
+91          guess[strlen(guess)-1] = 0;
+(gdb) next
+95      if (strcmp(PASSWORD, guess) == 0)
+(gdb) print strcmp(PASSWORD, guess)
+$3 = -13
+(gdb) next
+98      return authenticated;
+(gdb) print authenticated
+$4 = 0
+(gdb) info locals
+guess = "password\000"
+authenticated = 0
+(gdb) next
+99  }
+(gdb) next
+main (argc=1, argv=0x7fffffffdf98) at password.c:51
+51          n_guesses++;
+(gdb) bt
+#0  main (argc=1, argv=0x7fffffffdf98) at password.c:51
+(gdb) next
+52          if (result)
+(gdb) next
+55              printf("incorrect. try again. (attempt %d)\n", n_guesses);
+(gdb)
+incorrect. try again. (attempt 1)
+49      while (n_guesses < MAX_NUM_GUESSES) {
+(gdb)
+50          result = check_password();
+(gdb)
+
+Breakpoint 2, check_password () at password.c:70
+70      int authenticated = 0;   // "flag" that determines if the user successfully authenticated.
+(gdb)
+73      printf("password: ");
+(gdb)
+74      if (fgets(guess, 50, stdin) == NULL)
+(gdb)
+password:
+78      if (strlen(guess) == 0)
+(gdb)
+84      if (guess[strlen(guess)-1] != '\n') {
+(gdb)
+91          guess[strlen(guess)-1] = 0;
+(gdb)
+95      if (strcmp(PASSWORD, guess) == 0)
+(gdb)
+98      return authenticated;
+(gdb)
+99  }
+(gdb)
+main (argc=1, argv=0x7fffffffdf98) at password.c:51
+51          n_guesses++;
+(gdb)
+52          if (result)
+(gdb)
+55              printf("incorrect. try again. (attempt %d)\n", n_guesses);
+(gdb)
+incorrect. try again. (attempt 2)
+49      while (n_guesses < MAX_NUM_GUESSES) {
+(gdb)
+50          result = check_password();
+(gdb)
+
+Breakpoint 2, check_password () at password.c:70
+70      int authenticated = 0;   // "flag" that determines if the user successfully authenticated.
+(gdb)
+73      printf("password: ");
+(gdb)
+74      if (fgets(guess, 50, stdin) == NULL)
+(gdb)
+password:
+78      if (strlen(guess) == 0)
+(gdb)
+84      if (guess[strlen(guess)-1] != '\n') {
+(gdb)
+91          guess[strlen(guess)-1] = 0;
+(gdb)
+95      if (strcmp(PASSWORD, guess) == 0)
+(gdb)
+98      return authenticated;
+(gdb)
+99  }
+(gdb)
+main (argc=1, argv=0x7fffffffdf98) at password.c:51
+51          n_guesses++;
+(gdb)
+52          if (result)
+(gdb)
+55              printf("incorrect. try again. (attempt %d)\n", n_guesses);
+(gdb)
+incorrect. try again. (attempt 3)
+49      while (n_guesses < MAX_NUM_GUESSES) {
+(gdb)
+59      if (!result && n_guesses == MAX_NUM_GUESSES) {
+(gdb)
+60          printf("you've exceeded the max. number of attempts. try again later.\n");
+(gdb)
+you've exceeded the max. number of attempts. try again later.
+61          exit(2);
+(gdb)
+[Inferior 1 (process 25847) exited with code 02]
+(gdb)
+The program is not being run.
+(gdb)
+The program is not being run.
+(gdb)
+The program is not being run.
+(gdb)
+The program is not being run.
+(gdb)
+The program is not being run.
+(gdb)
+The program is not being run.
+(gdb) quit
+
+traviswp@flume ~/cs50/password
+$ cd ..
+
+traviswp@flume ~/cs50
+$ ls
+guessprime/  mem-example/  neglected-names-2018/  password/  password-old/  tree9/
+
+traviswp@flume ~/cs50
+$ cd neglected-names-2018/
+
+traviswp@flume ~/cs50/neglected-names-2018
+$ ls
+Makefile  names9.c  readlinep.c  readlinep.h
+
+traviswp@flume ~/cs50/neglected-names-2018
+$ make
+gcc -Wall -pedantic -std=c11 -ggdb     -c -o names9.o names9.c
+gcc -Wall -pedantic -std=c11 -ggdb     -c -o readlinep.o readlinep.c
+gcc -Wall -pedantic -std=c11 -ggdb   names9.o readlinep.o  -o names9
+
+traviswp@flume ~/cs50/neglected-names-2018
+$ ls
+Makefile  names9*  names9.c  names9.o  readlinep.c  readlinep.h  readlinep.o
+
+traviswp@flume ~/cs50/neglected-names-2018
+$ myvalgrind names9
+valgrind: names9: command not found
+
+traviswp@flume ~/cs50/neglected-names-2018
+$ myvalgrind ./names9
+==15609== Memcheck, a memory error detector
+==15609== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==15609== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==15609== Command: ./names9
+==15609==
+bob
+travis
+mary
+gevorg
+dan
+5 names:
+{dan, gevorg, mary, travis, bob , }
+==15609==
+==15609== HEAP SUMMARY:
+==15609==     in use at exit: 493 bytes in 11 blocks
+==15609==   total heap usage: 14 allocs, 3 frees, 2,622 bytes allocated
+==15609==
+==15609== 80 bytes in 5 blocks are indirectly lost in loss record 1 of 3
+==15609==    at 0x4C2FB6B: malloc (vg_replace_malloc.c:299)
+==15609==    by 0x4008DF: bagnode_new (names9.c:114)
+==15609==    by 0x40088F: bag_insert (names9.c:92)
+==15609==    by 0x4007F4: main (names9.c:51)
+==15609==
+==15609== 405 bytes in 5 blocks are indirectly lost in loss record 2 of 3
+==15609==    at 0x4C31A1E: calloc (vg_replace_malloc.c:711)
+==15609==    by 0x400A31: freadlinep (readlinep.c:23)
+==15609==    by 0x400779: readlinep (readlinep.h:22)
+==15609==    by 0x4007D6: main (names9.c:49)
+==15609==
+==15609== 493 (8 direct, 485 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==15609==    at 0x4C2FB6B: malloc (vg_replace_malloc.c:299)
+==15609==    by 0x400857: bag_new (names9.c:77)
+==15609==    by 0x4007BC: main (names9.c:43)
+==15609==
+==15609== LEAK SUMMARY:
+==15609==    definitely lost: 8 bytes in 1 blocks
+==15609==    indirectly lost: 485 bytes in 10 blocks
+==15609==      possibly lost: 0 bytes in 0 blocks
+==15609==    still reachable: 0 bytes in 0 blocks
+==15609==         suppressed: 0 bytes in 0 blocks
+==15609==
+==15609== For counts of detected and suppressed errors, rerun with: -v
+==15609== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

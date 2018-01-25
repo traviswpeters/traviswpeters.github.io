@@ -1,0 +1,11 @@
+  // here we are lazy and do not free the bag. 
+  if (bag != NULL) {
+    for (bagnode_t *node = bag->head; node != NULL;) {
+      free(node->item);             //free the item
+      bagnode_t *next = node->next; //remember what comes next
+      free(node);                   //free the node
+      node = next;                  //move to the next node
+    }
+  }
+  free(bag);
+
