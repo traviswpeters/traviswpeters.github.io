@@ -1,0 +1,11 @@
+# Ignore everything
+*
+# Except for these files
+!.gitignore
+!filewriter
+!package.json
+!map-example.html
+!Makefile
+!header.txt
+!footer.txt
+!makemap.js

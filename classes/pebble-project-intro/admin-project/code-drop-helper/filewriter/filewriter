@@ -1,0 +1,152 @@
+/*
+ * Read messages from a connected client and write Code Drop data to a file. 
+ * Files are created based on the device ID of the sending device and the time 
+ * the connection (session) began. E.g., 
+ *
+ *        0123456789abcdef0123456789abcdef-5-24-2016-11:04:45.dat
+ *
+ * Last Modified: Travis Peters, May 2016
+ */
+
+/* -------------------------------------------------------------------------- *
+ *  Utility functions
+ * -------------------------------------------------------------------------- */
+
+var logfilename = 'log.txt';
+
+// Create a log file and do some manipulations on stdout/stderr.
+var fs = require('fs');
+var util = require('util');
+
+var logFile = fs.createWriteStream(logfilename, { flags: 'w' });
+var logStdout = process.stdout;
+
+// Log to stdout AND to a log file. 
+console.log = function () {
+  logFile.write(util.format.apply(null, arguments) + '\n');
+  logStdout.write(util.format.apply(null, arguments) + '\n');
+}
+console.error = console.log;
+
+// Get a formatted representation of the current time.
+function tm() {
+    var dt = new Date( Date.now() );
+    // var dt = new Date().toLocaleString();
+    return dt;
+}
+
+/* -------------------------------------------------------------------------- *
+ *  Load server configurations. 
+ * -------------------------------------------------------------------------- */
+
+// A little weird - reach back up into the pebble app's directory and access the 
+// config file for host/port information.
+var config_filename = '../appinfo.json';
+
+fs = require('fs')
+var config_file = fs.readFileSync(config_filename);
+try {
+    config = JSON.parse(config_file);
+} catch (err) {
+    console.log('Error parsing your JSON configuration file: \'%s\'.', config_filename)
+    console.log(err);
+    process.exit(-1);
+}
+
+/* -------------------------------------------------------------------------- *
+ *  Setup the WebSocket server & UDP socket.
+ * -------------------------------------------------------------------------- */
+
+// Open WebSocket for listening (client -> proxy)
+var WebSocketServer = require('ws').Server;
+var wss = new WebSocketServer( { port: config.serverPort } );
+
+wss.on('connection', function(ws) {
+    console.log('[%s] new-connection %s:%d (%d active connections)', 
+        tm(), ws._socket.remoteAddress, ws._socket.remotePort, wss.clients.length);
+
+    // const util = require('util');
+    // console.log('---INSPECTION---> ' + util.inspect(ws));
+
+
+    start_time = new Date().toLocaleString().replace(/ AM/g, '').replace(/\//g, '-').replace(/ /g, '-').replace(/,/g, '');
+
+    // Handle the reception of messages from the connected client over a WebSocket.
+    ws.on('message', function(wsInMsg) {
+        // Received data over WebSocket.
+        addr  = ws._socket.remoteAddress;
+        port  = ws._socket.remotePort;
+
+        // DEBUG /////////////////////////////////////////////////
+        // console.log('[%s] -> wss rx: [%d bytes from %s:%d] %s', 
+        //     tm(), wsInMsg.length, addr, port, wsInMsg);
+        //////////////////////////////////////////////////////////
+
+        var args = wsInMsg.split(' ');
+        var file = args[0]+'-'+start_time+'.dat';
+        var data = args[1] + ' ' + args[2] + ' ' + args[3] + '\n';
+        console.log('writing file \'%s\': %s', file, data.trim()); // trim for logging
+
+        // Write line to a file (if the logToFile flag is set in appinfo.json).
+        if (config.logToFile) {
+            fs.appendFile(file, data, function (err) {
+                if (err) throw err;
+                console.log(' + success!');
+
+                // Send an ACK back with the code to confirm that code drop was logged. 
+                setTimeout(function() {
+                    ws.send('ACK ' + args[3]); 
+		    });
+            });
+        } else {
+            setTimeout(function() {
+                ws.send('ACK ' + args[3]); 
+            });
+    	}
+    });
+
+    // Error handling...
+    var errAddr;
+    var errPort;
+    ws.on('error', function onWsError(event) {
+        errAddr = ws._socket.remoteAddress;
+        errPort = ws._socket.remotePort;
+        console.error('Client %s:%d error: %s', errAddr, errPort, event);
+        ws.terminate();
+    });
+
+    // Clean-up WebSocketServer data structure for clients on a closed WebSocket connection.
+    ws.on('close', function(event) { 
+        var rAddr = ws._socket.remoteAddress || errAddr;
+        var rPort = ws._socket.remotePort || errPort;
+        var index = wss.clients.indexOf(ws);
+        if (index != -1) {
+            wss.clients.splice(index, 1);
+        }
+        console.log('[%s] connection-closed %s:%d (%d active connections)', 
+            tm(), rAddr, rPort, wss.clients.length);
+    });
+});
+
+/* -------------------------------------------------------------------------- *
+ *  Report host/port info for the configured proxy.
+ * -------------------------------------------------------------------------- */
+
+require('dns').lookup(require('os').hostname(), function (err, addr, fam) {
+    if (err) {
+        console.log('\n*************************************************************************');
+        console.log('Oops! got error \'' + err + '\' - i.e., the');
+        console.log('upstream DNS server replied that there are no matching records.\n');
+        console.log('Try running proxy on a machine that has a publicly routable IP address.');
+        console.log('*************************************************************************\n');
+
+        // Try to get IP on local network.
+        addr = require('os').networkInterfaces().en0[1].address; 
+        // throw err;
+    }
+
+    console.log('FileWriter Server Up!');
+    console.log(' + filewriter web socket: %s:%d (%s:%d)', require('os').hostname(), wss.options.port, addr, wss.options.port);
+    console.log('\nIf this is not the desired configuration please update the proxy/game\nserver settings in your project\'s `appinfo.json` file.\n');
+})
+

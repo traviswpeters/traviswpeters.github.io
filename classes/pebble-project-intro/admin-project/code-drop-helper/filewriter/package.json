@@ -1,0 +1,15 @@
+{
+  "name": "filewriter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "filewriter",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^1.1.0"
+  }
+}

@@ -1,0 +1,29 @@
+# cs50 project env variables (defaults)
+export PEBBLE_BT_DEV=/dev/cu.PebbleD2DB-SerialPortSe                            # CHANGEME: you need to update the identifier for your pebble in cu.Pebble[IDENTIFIER]
+export PEBBLE_PHONE=192.168.1.11                                                # CHANGEME: IP address of the phone
+export PEBBLE_EMULATOR=basalt                                                   # CHANGEME: default choice of emulator platform
+export PEBBLE_QEMU=localhost:12344                                              # CHANGEME: default instance of QEMU
+
+# cs50 project management aliases
+alias pebbuild="pebble build"                                                   # compile & build project into '.pbw' file
+alias pebclean="pebble clean"                                                   # delete all files in ./build
+
+# pebble physical device (WiFi) aliases
+alias pebphoneping="pebble ping --phone ${PEBBLE_PHONE}"                        # ping pebble via phone by IP
+alias pebphoneinstall="pebble install --phone ${PEBBLE_PHONE}"                  # install 'pbw' onto connected phone over WiFi (by IP)
+alias pebphoneinstalllogs="pebphoneinstall --logs"                              # install 'pbw' onto connected phone over WiFi (by IP; immediately attach & get log info)
+
+# pebble physical device (Bluetooth) aliases
+alias pebbtinstall="pebble install --serial ${PEBBLE_BT_DEV}"                   # install 'pbw' on pebble watch over Bluetooth
+alias pebbtinstalllogs="pebbtinstall --logs"                                    # install 'pbw' on pebble watch over Bluetooth (immediately attach & get log info)
+
+# pebble emulator aliases
+alias pebemulatorstart="pebble install --emulator ${PEBBLE_EMULATOR}"           # simply start emulator if no 'pbw' is provided or not in app directory
+alias pebemulatorkill="pebble kill"                                             # convenience alias
+alias pebkill="pebemulatorkill"                                                 # convenience alias
+alias pebemulatorinstall="pebble install --emulator ${PEBBLE_EMULATOR}"         # install 'pbw' onto default emulator
+alias pebemulatorlogs="pebble logs --emulator ${PEBBLE_EMULATOR}"
+alias pebemulatorgdb="pebble gdb --emulator ${PEBBLE_EMULATOR}"                 # start gdb (only works on emulator)
+alias pebgdb="pebemulatorgdb"                                                   # another (convenience) alias for starting gdb on the emulator
+                                                                                # -> see: https://developer.pebble.com/guides/tools-and-resources/pebble-tool/#emulator-interaction 
+                                                                                #    and: https://developer.pebble.com/guides/debugging/debugging-with-gdb/

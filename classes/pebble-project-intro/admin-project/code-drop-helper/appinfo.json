@@ -1,0 +1,33 @@
+{
+  "uuid": "47d8e5d9-0c09-4c1d-9169-a406aa8f33ab",
+  "shortName": "Code Drop Helper",
+  "longName": "code-drop-helper",
+  "companyName": "MakeAwesomeHappen",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["basalt"],
+  "enableMultiJS": true,
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "AppKeyJSReady": 0,
+    "AppKeySendMsg": 1,    
+    "AppKeyRecvMsg": 2,    
+    "AppKeyLocation": 3,
+    "AppKeyPebbleId": 4,
+    "AppKeySendError": 5, 
+    "AppKeyConnStatusChange": 6,
+    "AppKeyPebbleFinished": 7,
+    "AppKeyServerConnect" : 8,
+    "AppKeyServerDisconnect" : 9
+  },
+  "resources": {
+    "media": []
+  }, 
+  "capabilities": [ "location" ], 
+  "logToFile": true, 
+  "appjsDebug": true, 
+  "serverURL": "flume.cs.dartmouth.edu", 
+  "serverPort": 45454
+}

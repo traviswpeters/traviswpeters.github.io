@@ -47,6 +47,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
+  notes-url: classes/pebble-project-intro/
 # Professor David Kotz
 
 - title: "Debugging with GDB and Valgrind"
