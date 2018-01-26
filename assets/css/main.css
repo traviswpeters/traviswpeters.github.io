@@ -29,7 +29,7 @@ h1 a {
   text-decoration: none;
 }
 
-h2{
+h2 {
   /* Add horizontal line under each h2 with padding above and below */
   padding-top: 20px;
   border-bottom: 0.75px dashed #999;
