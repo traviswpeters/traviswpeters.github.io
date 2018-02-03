@@ -1,15 +1,13 @@
 ---
 layout: post
 title: "Kicking Plantar Fasciitis"
-published: false
+published: true
 tags: [running]
 image:
-  feature:
-  teaser:
-  credit:
+    feature: uvrc.jpg
+    teaser: uvrc-teaser.jpg
+    credit: Upper Valley Running Club
 ---
-
-# Kicking Plantar Fasciitis
 
 > *Originally posted in the [Upper Valley Running Club (UVRC) Newsletter](http://uppervalleyrunningclub.org/february-2018-newsletter/#4) on February 2, 2018.*
 
