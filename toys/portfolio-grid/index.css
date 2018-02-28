@@ -1,0 +1,33 @@
+/* Variable declarations */
+:root {
+    --base-font-size: 30px;
+    --columns: 200px 200px;
+    --base-margin: 30px;
+}
+
+/* Styles */
+#navbar {
+    margin: var(--base-margin) 0;
+}
+
+#navbar a {
+    font-size: var(--base-font-size);
+}
+
+h1 {
+    font-size: var(--base-font-size);
+}
+
+.grid {
+    margin: var(--base-margin) 0;
+    grid-template-columns: var(--columns);
+}
+
+/* Update variables for smaller screens (e.g., smartphones) */
+@media all and (max-width: 450px) {
+    :root {
+        --columns: 200px;
+        --base-margin: 15px;
+        --base-font-size: 20px;
+    }
+}

@@ -1,0 +1,108 @@
+/* Variable declarations */
+:root {
+    --base-font-size: 30px;
+    --para-font-size: 15px;
+    --columns: 300px 300px 300px;
+    --base-margin: 30px;
+    --red: #ff6f69;
+    --darkred: #ff4444;
+    --beige: #ffeead;
+    --yellow: #ffcc5c;
+}
+
+.grid {
+    display: grid;
+    grid-auto-rows: 140px;
+    grid-gap: 20px;
+    justify-content: center;
+    margin: var(--base-margin) 0;
+    grid-template-columns: var(--columns);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--beige);
+    color: var(--red);
+}
+
+main {
+    margin: var(--base-margin) 0;    
+}
+
+#navbar {
+    margin: var(--base-margin) 0;
+    font-size: 24px;
+}
+
+#navbar a {
+    font-size: var(--base-font-size);
+    color: var(--red);
+}
+
+#navbar > ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+.item {
+    background: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h1, p {
+    color: var(--red);
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: var(--base-font-size);
+}
+
+p {
+    text-align: center;
+    font-size: var(--para-font-size);
+}
+
+a {
+    text-decoration: none;
+    font-size: 28px;
+}
+
+button {
+    background: var(--red);
+    color: var(--yellow);
+    margin: 0px auto;
+    display: block;
+    padding: 5px 10px;
+    border: none;
+}
+
+button:hover {
+    background: var(--darkred);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer > p {
+    font-size: 12px;
+}
+
+/* Update variables for smaller screens (e.g., smartphones) */
+@media all and (max-width: 450px) {
+    :root {
+        --columns: 200px;
+        --base-margin: 15px;
+        --base-font-size: 20px;
+    }
+}
