@@ -15,7 +15,7 @@ handles:
   github: traviswp
   linkedin: traviswpeters # old: travis-peters-3513512a
   twitter: traviswpeters
-  facebook: travis.peters.144
+  facebook: travis.william.peters # old: travis.peters.144
   instagram: the.travisaurus.rex
   strava: traviswpeters
   gitlab: traviswpeters
@@ -28,7 +28,7 @@ social:
 - {icon: 'github', link: 'https://www.github.com/traviswp'}
 - {icon: 'linkedin', link: 'https://www.linkedin.com/in/traviswpeters'}
 - {icon: 'twitter', link: 'https://twitter.com/traviswpeters'}
-- {icon: 'facebook-square', link: 'https://www.facebook.com/travis.peters.144'}
+- {icon: 'facebook-square', link: 'https://www.facebook.com/travis.william.peters'}
 - {icon: 'instagram', link: 'https://www.instagram.com/the.travisaurus.rex'}
 - {icon: 'road', link: 'https://www.strava.com/athletes/traviswpeters'}
 # - {icon: '', link: ''}
