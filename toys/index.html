@@ -1,18 +1,20 @@
+<!--
+---
+---
+
+ {% for f in site.static_files %}
+    {% if f.path contains 'toys/' %}
+        {{ f.path }}
+        <br/>
+    {% endif %}
+{% endfor %} -->
+
+
 <html>
     <head>
-        <link rel="stylesheet" href="basic.css">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <!-- <header>
-            <nav id="navbar">
-                <ul>
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">contact</a></li>
-                </ul>
-            </nav>
-        </header> -->
         <main>
             <h1>toys</h1>
             <div class="grid">
@@ -42,9 +44,15 @@
                 </div>
 
                 <div class="item">
+                    <h1>Maps</h1>
+                    <p>A simple demo with LeafletJS mapping.</p>
+                    <a href="maps/"><button>learn more</button></a>
+                </div>
+
+                <div class="item">
                     <h1>node-webserver</h1>
                     <p>A simple NodeJS webserver.</p>
-                    <a href="node-simple-webserver/"><button>learn more</button></a>
+                    <a href="node-simple-webserver/views/hello.html"><button>learn more</button></a>
                 </div>
 
                 <div class="item">
