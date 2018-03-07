@@ -82,6 +82,16 @@
   documentation:
   show: true
 
+- title: "Code Drop Helper"
+  desc: "A geolocation module for creating 'code drops' (codes associated with geographic coordinates). \
+         This tool was created to aid CS 50 students at Dartmouth in their design and implementation of the final project: Mission Incomputable. (see the above project for more details.)"
+  url: https://github.com/traviswp/code-drop-helper
+  paper:
+  pdf:
+  video:
+  documentation:
+  show: true
+
 - title: "PEARL: Peer-to-peer Effective Audio, Radio, and visible Light communication"
   desc: "In advanced wireless technologies class project, I worked with Ayan Azmat and Suleman Ashfaq to build a proof-of-concept implementation and evaluation of
          PEARL: a first of its kind communication system that enabled simultaneous communication channels between physically co-located peers via diverse communication channels;
