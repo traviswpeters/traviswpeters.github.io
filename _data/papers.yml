@@ -1,22 +1,22 @@
 # Papers, posters, demos, etc.
 # - Types: conference, journal, workshop, techreport, poster, demo, poster/demo, wip (work in progress)
 
-- title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
-  authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
-  publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
-  date: December 2017
-  type: conference
-  internal: true
-  inSubmission: true
-  # url: papers/...
-
-- title: "A Generalized Framework for Trusted I/O"
-  authors: Travis Peters, Reshma Lal, Pradeep Pappachan, Srikanth Varadarajan, David Kotz
+- title: "BASTION: Bluetooth and Architectural Support for Trusted I/O on SGX" #"A Generalized Framework for Trusted I/O"
+  authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
   type: wip # work-in-progress
-  # note: 
+  # note:
   # date: ...
   # internal: true
   # publisher: ...
+  # url: papers/...
+
+- title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
+  authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
+  # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
+  # date: December 2017
+  type: wip # work-in-progress # conference
+  internal: true
+  inSubmission: true
   # url: papers/...
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
@@ -65,7 +65,7 @@
   date: September 2015
   type: poster/demo
 
-- title: "Trusted I/O and Bluetooth Devices"
+- title: "Poster: Trusted I/O and Bluetooth Devices"
   authors: Travis Peters, Srikanth Varadarajan, Pradeep Pappachan, Reshma Lal
   publisher: Intel Labs Intern Poster Show
   date: August 2015

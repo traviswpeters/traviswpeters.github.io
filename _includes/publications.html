@@ -27,10 +27,12 @@
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
 {% endif %}
-{% if pub.type == "wip" %}**(Work In Progress)**{% endif %} [**{{pub.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %})<br />
+[**{{pub.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %}){% if pub.type == "wip" %}**\***{% endif %}<br />
 {% if pub.publisher %}*{{pub.publisher}}, {{pub.date}}* <br />{% endif %}{{pub.authors}}<br />
 {% if pub.doi %}[[doi]({{pub.doi}})]{% endif %}
 {% if pub.media %}<br />Media: {% for article in pub.media %}[[{{article.name}}]({{article.url}})]{% endfor %}{% endif %}
 
 {% endif %}
 {% endfor %}
+
+\****Work In Progress***

@@ -4,7 +4,7 @@
 {% if talk.type == "guest-lecture" %}
 <!-- don't show guest lectures on "talks" - show in "teaching" -->
 {% else %}
-[**{{talk.title}}**]({% if pub.internal %}{{ pub.url | relative_url }}{% else %}{{pub.url}}{% endif %}) <br />
+[**{{talk.title}}**]({% if talk.internal %}{{ talk.url | relative_url }}{% else %}{{talk.url}}{% endif %}) <br />
 *{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
 {% endif %}
 
