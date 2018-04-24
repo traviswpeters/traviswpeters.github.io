@@ -1,14 +1,14 @@
 # Papers, posters, demos, etc.
 # - Types: conference, journal, workshop, techreport, poster, demo, poster/demo, wip (work in progress)
 
-# - title: "BASTION: Bluetooth and Architectural Support for Trusted I/O on SGX" #"A Generalized Framework for Trusted I/O"
-#   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
-#   type: wip # work-in-progress
-#   # note:
-#   # date: ...
-#   # internal: true
-#   # publisher: ...
-#   # url: papers/...
+- title: "BASTION: Bluetooth and Architectural Support for Trusted I/O on SGX"
+  authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
+  publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP) # TODO: Verify when the program is posted to ACM Digital Library
+  date: June 2018
+  url: papers/peters-hasp2018.pdf
+  type: workshop
+  internal: true
+  # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
 
 - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
