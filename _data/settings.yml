@@ -45,7 +45,7 @@ menu:
 - {name: 'Teaching', url: 'teaching.html'}
 - {name: 'Research', url: 'research.html'}
 - {name: 'Projects', url: 'projects.html'}
-- {name: 'CV', url: 'cv.html'}
+- {name: 'CV', url: 'vita.pdf'}
 - {name: 'News', url: 'news.html'}
 # - {name: 'Writing', url: 'writing.html'} #Blog
 

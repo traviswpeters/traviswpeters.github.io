@@ -1,3 +1,7 @@
+- descr: "Our paper, *BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX* with Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz, was accepted and will appear in HASP'18."
+  date: May 2018
+  show: true
+
 - descr: "Mary and I were accepted as 2018 Topo Ambassadors! We love to run and we love Topo! Ask me why sometime :D"
   date: January 2018
   show: true
@@ -12,7 +16,7 @@
   date: January 2017
   show: true
 
-- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted and will appear in Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys 2016)."
+- descr: "Our paper *Amulet: An Energy-Efficient, Multi-Application Wearable Platform* with Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber, has been accepted and will appear in SenSys'16."
   date: July 2016
   pdf: papers/hester-amulet-sensys2016.pdf
   demo: papers/hester-amulet-demo-sensys2016.pdf
