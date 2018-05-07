@@ -1,7 +1,7 @@
 # Papers, posters, demos, etc.
 # - Types: conference, journal, workshop, techreport, poster, demo, poster/demo, wip (work in progress)
 
-- title: "BASTION: Bluetooth and Architectural Support for Trusted I/O on SGX"
+- title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
   publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP) # TODO: Verify when the program is posted to ACM Digital Library
   date: June 2018
