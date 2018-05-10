@@ -18,17 +18,17 @@
   desc: "A personal website dedicated to professional and non-professional stuff: 'All things work and play.'
          Specifically, this project demonstrates how I use Jekyll and GitHub Pages to build and host my personal website;
          this website is primarily used to manage and make available assets such as published papers, class project papers, recreational projects and writing, and professional documents such as my CV and teaching statement."
-  url: https://github.com/traviswp/traviswp.github.io
+  code: https://github.com/traviswp/traviswp.github.io
   show: true
 
 - title: "My Vita"
-  desc: "My résumé / curriculum vitae on GitHub.
+  desc: "My résumé / curriculum vitae (CV) on GitHub.
          My CV is composed using LaTeX and BibTeX.
          While the PDF itself is a professional document, this project has served as a sort of plaground where I can try different formats and so forth.
          The source code, therefore, is probably not the most beautiful document, but I do like it for the time being!
          The link that follows will take you to a current copy of my CV that is included in the repository."
-  url: https://github.com/traviswp/resume
-  pdf: https://github.com/traviswp/resume/blob/master/resume.pdf
+  code: https://github.com/traviswp/resume
+  pdf: https://github.com/traviswp/resume/blob/master/vita.pdf
   show: true
 
 - title: "Dot Files (private repository currently; available upon request)"
@@ -38,12 +38,12 @@
          I've also made *some* attempt at making these play nice on Linux,
          but sometimes there is software in one environment that doesn't exist in the other and I haven't covered all the bases just yet.
          Needless to say, it is a never-ending work-in-progress."
-  url: https://github.com/traviswp/dot-files
+  code: https://github.com/traviswp/dot-files
   show: true
 
 - title: "Various (Simple) Scripts (private repository currently; available upon request)"
   desc: "A collection of useful (and not so useful) scripts. "
-  url: https://github.com/traviswp/scripts
+  code: https://github.com/traviswp/scripts
   show: true
 
 - title: "Grammar Effects (Gfx)"
@@ -53,7 +53,8 @@
         Many of the lessons and activities today are oriented towards sentence joining.
         Given directions, students try to compose sentences which are compared to a pre-crafted set of correct sentences.
         Helpful feedback is provided to students to guide them towards correct sentence composition."
-  url: https://github.com/srogersact/srogersact.github.io
+  url: https://srogersact.github.io/
+  code: https://github.com/srogersact/srogersact.github.io
   show: true
 
 #
@@ -65,8 +66,10 @@
          These devices coordinate the activity of the body-area network and provide a discreet means for communicating with their wearer.
          Such devices complement the capabilities of a smartphone, bridging the gap between the type of pervasive computing possible with a mobile phone and that enabled by wearable computing.
          For more information, see our papers above."
-  url: https://gitlab.cs.dartmouth.edu/amulet/amulet-dev
-  documentation: https://gitlab.cs.dartmouth.edu/amulet/amulet-docs
+  code: https://github.com/AmuletGroup/amulet-project
+  # code: https://gitlab.cs.dartmouth.edu/amulet/amulet-dev
+  # documentation: https://gitlab.cs.dartmouth.edu/amulet/amulet-docs
+  blog: https://amulet-project.org/
   show: true
 
 - title: "Mission Incomputable"
@@ -76,20 +79,12 @@
          The objective of the game was to have students ('agents') locate and 'neutralize' geo-targets while avoiding capture (a sort of geo-location game mixed with tag). \
          Students were asked to work in teams to develop user-facing software for Pebble devices as well as a game server and back-end helper ('guide') that allowed many clients to connect and play a game."
   url: classes/pebble-project-intro/specs-2016/
-  paper:
-  pdf:
-  video:
-  documentation:
   show: true
 
 - title: "Code Drop Helper"
   desc: "A geolocation module for creating 'code drops' (codes associated with geographic coordinates). \
          This tool was created to aid CS 50 students at Dartmouth in their design and implementation of the final project: Mission Incomputable. (see the above project for more details.)"
-  url: https://github.com/traviswp/code-drop-helper
-  paper:
-  pdf:
-  video:
-  documentation:
+  code: https://github.com/traviswp/code-drop-helper
   show: true
 
 - title: "PEARL: Peer-to-peer Effective Audio, Radio, and visible Light communication"
@@ -98,10 +93,8 @@
          in our work we experimented with a system capable of communicating over audio (ultrasonic), radio (Bluetooth), and visible Light (w/ LEDs, based on OpenVLC) channels, assuming that all of the relevant transmit/receive hardware co-exists on a single platform.
          PEARL, at its core, is meant to present an abstraction of the comunication technologies implemented in the underlying system.
          The abstraction enables application and system developers to focus more on -what- data is communicated, while delegating the responsibility of figuring our -how- to best communicate with other devices to the system itself."
-  url:
   pdf: papers/classes/cs169-peters-azmat-ashfaw-pearl-fall2015.pdf
-  video:
-  documentation:
+  video: # TODO
   show: true
 
 - title: "A Compendium of Essays on Wireless Topics"
@@ -119,26 +112,19 @@
          In the paper, I presented some of my findings and reviewed fuzzing frameworks.
          I also experimented with running Trinity-based fuzzing tools and share some of my insights."
   pdf: papers/classes/cs258-peters-stab-fuzzing-final-winter2016.pdf
-  url:
-  paper:
-  video:
-  documentation:
   show: true
 
 # TODO: grab pictures and code...
 - title: "Raspberry Pi hacking (IoT Workshop)"
   desc: "TODO"
-  url:
+  code:
   show: false
 
 - title: "Yalnix"
   desc: 'In a operating systems class project, I worked with Jianfu Zhou and Shahrzad Haddadan to build a small kernal named "Yalnix."
          In building Yalnix we implemented important features such as memory management, process scheduling, traps and some of the more important syscalls, context switching, and basic I/O.
          (private repository; available upon request).'
-  url:
-  paper:
-  video:
-  documentation:
+  code:
   show: true
 
 - title: "PyBluez"
@@ -146,7 +132,7 @@
          The project was originally intended to create Python wrappers for Bluez, the Linux Bluetoth subsystem.
          Since its genesis, the project has been updated to support Python wrappers for the underlying Bluetooth resources on Windows and OS X.
          When I began, there was not support for OS X - I contributed to this project by helping to add support for PyBluez on OS X."
-  url: https://github.com/traviswp/pybluez
+  code: https://github.com/traviswp/pybluez
   show: true
 
 # TODO: grab cs10 site and link here...
@@ -160,21 +146,21 @@
          The project aims to study the electrodermal activity (EDA) of a person to determine if the body's skin conductance is indicative of impending nicotine cravings.
          If successful, some form of intervention may be possible;
          for example, if oncoming craving were detected, the wearer of the appropriate sensor could be alerted via their smartphone which could then help them avoid a potentially challenging situation where they may be tempted to smoke."
-  url: https://gitlab.cs.dartmouth.edu/kotzgroup/project-semat
+  code: https://gitlab.cs.dartmouth.edu/kotzgroup/project-semat
   show: true
 
 - title: "DTutor (Android app & server-side scripts)"
   desc: "In a smartphone programming class project, I worked with Haider Syed and Arvind Kumaran to build DTutor, a specialty smartphone app designed by students for students.
          The primary goal of this application is to help students of all disciplines find tutors to help them with their courses.
          We accomplish this by providing a friendly interface that allows tutors and tutees to specify information about themselves and what they are looking for, search for and connect with others, as well as reserve a space for their tutor/tutee sessions."
-  url: https://github.com/traviswp/dtutor
+  code: https://github.com/traviswp/dtutor
   pdf: papers/classes/cs165-peters-syed-kumaran-dtutor-final-spring2014.pdf
   show: true
 
 # TODO: Finish description....
 - title: "MyRuns (Android fitness tracking app)"
   desc: "TODO: In a smartphone programming class project, I..."
-  url:
+  code:
   show: false
 
 - title: "Electromyography-based Gesture Recognition"
@@ -186,7 +172,6 @@
          We conducted experiments in which we used the EMG sensor to collect gestural input data from (1) the wrist, (2) the forearm, and (3) the bicep.
          Our results show that a single channel EMG sensor located near the wrist may be a viable approach to reliably recognizing simple gestures without mistaking them for common daily activities such as drinking from a cup, walking, or talking while moving your hands and arms.
          (private repository; available upon request)."
-  url: papers/peters-emg-gestures-2014-submit.pdf
   pdf: papers/peters-emg-gestures-2014-submit.pdf
   show: true
 
@@ -200,7 +185,7 @@
          The real challenge in this work is building a facial recognition system that can perform well even when the person's face is occluded by an object (e.g., a Spirometer).
          We designed and built a system that could identify the face and segment it from the baground, extract feature descriptors, and use a nearest-neighbor classifier to perform recognition.
          We tested our methods on the Faces in the Wile database."
-  url: https://github.com/traviswp/FaceID
+  code: https://github.com/traviswp/FaceID
   doc: papers/classes/cs183-syed-peters-facial-recognition-final-fall2013.docx
   pdf: papers/classes/cs183-syed-peters-facial-recognition-final-fall2013.pdf
   show: true
@@ -218,7 +203,7 @@
          Specifically, our project aims to implement a database search algorithm to predict loop structure given a protein loop sequence.
          Most loops contain between 7 and 9 amino acids, so in our work we focus on classifying loops within this length range.
          (NOTE: While I prefer to compose papers in LaTeX and generate nice PDFs, we wrote this paper using Microsoft Word. The converted PDF is provided for convenience but it looks horrific. I recommend reading the .doc version.)"
-  url:
+  code:
   doc: papers/classes/cs175-amos-peters-liu-lsp-final-fall2013.docx
   pdf: papers/classes/cs175-amos-peters-liu-lsp-final-fall2013.pdf
   show: true
@@ -242,7 +227,7 @@
          The contest included over 3,600 teams from 17 countries around the world.
          Only 10 teams are selected as Outstanding Winners of the contest.
          (private repository; available upon request)."
-  url: papers/peters-umap2012.pdf
+  pdf: papers/peters-umap2012.pdf
   show: true
 
 - title: "Simple Integrated Development Environemnt for C++ (SIDE++)"
@@ -250,7 +235,7 @@
          The intention of the project was to create a simple development environment for introductory programming students so that they could focus on learning the intricacies of the language,
          rather than getting hung-up in more complex development environments like Visual Studio, but still providing helpful tools such as project management guidance, basic text editor features, syntax highlighting, etc...
          The project was originally proposed by other students and later picked up by Travis Peters, Michael McAallister, and Christopher Proteau in CSCI 493 (Software Implementation) in the Fall of 2012 at Western Washington University."
-  url: https://github.com/traviswp/CS493_adagide
+  code: https://github.com/traviswp/CS493_adagide
   documentation: https://github.com/traviswp/CS493_adagide/blob/master/design-doc.txt
   show: true
 
@@ -258,7 +243,7 @@
   desc: "This is a networked implementation of the game UNO.
          This was done for the Computer Science 367 class (Computer Networking) at Western Washington University in which a class of 35 or so students had to design a specification for how to pass messages to and from client/server applications to play UNO.
          The goal at the end of the course was to try and play our servers/clients against other people's servers/clients."
-  url: https://github.com/traviswp/net-onu
+  code: https://github.com/traviswp/net-onu
   show: true
 
 - title: "Mini-shell"
@@ -271,7 +256,7 @@
          as well as support redirection and pipes.
          Throughout the class we also learned to utilize Makefiles for building our projects, CVS for version control, and various tools for demonstrating testing of our assignments.
          (private repository; available upon request)."
-  url:
+  code:
   show: true
 # https://facultyweb.cs.wwu.edu/~phil/classes/s17/352/
 

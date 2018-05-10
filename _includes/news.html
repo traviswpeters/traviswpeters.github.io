@@ -1,6 +1,4 @@
 {% for news in site.data.news %}
-<!-- {{ news.date | date: "%B %e, %Y" }} -->
-<p>
-<strong>({{ news.date | date: "%B %Y" }})</strong> {{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
-</p>
+**({{ news.date | date: "%B %Y" }})**
+{{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
 {% endfor %}

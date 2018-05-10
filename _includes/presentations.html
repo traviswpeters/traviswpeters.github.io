@@ -1,9 +1,7 @@
 ## Talks
 {% for talk in site.data.talks %}
 
-{% if talk.type == "guest-lecture" %}
-    {% comment%}<!-- don't show guest lectures on "talks" - show in "teaching" -->{% endcomment%}
-{% else %}
+{% if talk.type != "guest-lecture" %}
 **{{talk.title}}**<br/>
 *{{talk.venue}}
 <!-- location -->{% if talk.location %} - {{talk.location}}{% endif %}

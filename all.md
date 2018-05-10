@@ -8,9 +8,8 @@ title: All
 <!-- see: _includes/about.html -->
 {% include about.html %}
 
-<!-- see: _includes/news.html -->
-## News
-{% include news.html %}
+<!-- see: _includes/news-short.html & _includes/news.html -->
+{% include news-short.html %}
 
 <!-- see: _includes/publications.html -->
 {% include publications.html %}
@@ -18,5 +17,10 @@ title: All
 <!-- see: _includes/presentations.html -->
 {% include presentations.html %}
 
+<!-- see: _includes/teaching.html -->
+{% include teaching.html %}
+
+{% comment %}
 <!-- see: _includes/projects.html -->
 {% include projects.html %}
+{% endcomment %}
