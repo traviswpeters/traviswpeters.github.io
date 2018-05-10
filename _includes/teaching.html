@@ -50,11 +50,19 @@ George, Emily
 ### Guest Lectures
 
 {% for talk in site.data.talks %}
+
 {% if talk.type == "guest-lecture" %}
-**{{talk.title}}** {% if talk.notes-url %}[[notes]({{talk.notes-url}})]{% endif %}<br />
-*{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
+**{{talk.title}}** {% if talk.notes %}[[notes]]({{talk.notes}}){% endif %}<br/>
+*{{talk.venue}}
+<!-- location -->{% if talk.location %} - {{talk.location}}{% endif %}
+<!-- date -->{% if talk.date %} - {{talk.date}}{% endif %}*<br/>
+<!-- pdf -->{% if talk.pdf %}[[pdf]]({{talk.pdf}}){% endif %}
+<!-- code -->{% if talk.code %}[[code]]({{talk.code}}){% endif %}
 {% else %}
+    {% comment%}<!-- don't show guest lectures on "talks" - show in "teaching" -->{% endcomment%}
 {% endif %}
+
+
 {% endfor %}
 <!-- NOTE: don't show non-guest lecture talks here - those are shown in "talks" on the research page. -->
 

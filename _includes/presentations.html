@@ -2,10 +2,15 @@
 {% for talk in site.data.talks %}
 
 {% if talk.type == "guest-lecture" %}
-<!-- don't show guest lectures on "talks" - show in "teaching" -->
+    {% comment%}<!-- don't show guest lectures on "talks" - show in "teaching" -->{% endcomment%}
 {% else %}
-[**{{talk.title}}**]({% if talk.internal %}{{ talk.url | relative_url }}{% else %}{{talk.url}}{% endif %}) <br />
-*{{talk.venue}} - {% if talk.location %} {{talk.location}}{% endif %} - {% if talk.date %}{{talk.date}}{% endif %}*
+**{{talk.title}}**<br/>
+*{{talk.venue}}
+<!-- location -->{% if talk.location %} - {{talk.location}}{% endif %}
+<!-- date -->{% if talk.date %} - {{talk.date}}{% endif %}*<br/>
+<!-- pdf -->{% if talk.pdf %}[[pdf]]({{talk.pdf}}){% endif %}
+<!-- notes -->{% if talk.notes %}[[notes]]({{talk.notes}}){% endif %}
+<!-- code -->{% if talk.code %}[[code]]({{talk.code}}){% endif %}
 {% endif %}
 
 {% endfor %}

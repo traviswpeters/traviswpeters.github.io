@@ -16,7 +16,7 @@
   date: May 2015
   venue: Statistics Class
   location: Hanover High School (Hanover, New Hampshire)
-  url: http://www.cs.dartmouth.edu/~trdata/reports/abstracts/TR2018-839/
+  pdf: http://www.cs.dartmouth.edu/~trdata/reports/abstracts/TR2018-839/
   # abstract: ""
   # note: ""
 
@@ -32,7 +32,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
-  notes-url: classes/debugging-gdb-valgrind/
+  notes: classes/debugging-gdb-valgrind/
 # Professor Gevorg Gregorian
 
 - title: "Debugging with GDB and Valgrind"
@@ -40,7 +40,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
-  notes-url: classes/debugging-gdb-valgrind/
+  notes: classes/debugging-gdb-valgrind/
 # Professor David Kotz
 
 - title: "Introduction to Pebble Development"
@@ -48,7 +48,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
-  notes-url: classes/pebble-project-intro/
+  notes: classes/pebble-project-intro/
 # Professor David Kotz
 
 - title: "Debugging with GDB and Valgrind"
@@ -56,7 +56,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
-  notes-url: classes/debugging-gdb-valgrind/
+  notes: classes/debugging-gdb-valgrind/
 # Professor David Kotz
 
 - title: "Three Kinds of Memory"
@@ -64,7 +64,7 @@
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
-  notes-url: classes/memory/
+  notes: classes/memory/
   abstract: "To truly understand C, and in particular, the use of pointers, you need to understand how C programs use memory. These same concepts underly nearly all procedural languages, though some languages cover up the details."
 # Professor David Kotz
   # Goals:

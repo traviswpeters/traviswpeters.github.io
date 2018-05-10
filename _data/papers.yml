@@ -1,11 +1,15 @@
 # Papers, posters, demos, etc.
 # - Types: conference, journal, workshop, techreport, poster, demo, poster/demo, wip (work in progress)
+# - See: _includes/publications.html for formatting of this data.
+
+# Trying to make security cool by building solutions that are easy and... well... secure.
 
 - title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
-  publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP) # TODO: Verify when the program is posted to ACM Digital Library
+  publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP'18) # TODO: Verify when the program is posted to ACM Digital Library
   date: June 2018
-  url: papers/peters-hasp2018.pdf
+  pdf: papers/peters-hasp2018.pdf
+  slides:
   type: workshop
   internal: true
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
@@ -21,9 +25,9 @@
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
-  publisher: In Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings)
+  publisher: In Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings'17)
   date: November 2017
-  url: papers/kotz-safethings2017.pdf
+  pdf: papers/kotz-safethings2017.pdf
   type: workshop
   internal: true
 
@@ -31,26 +35,32 @@
   authors: Travis Peters
   publisher: Technical Report TR2017-823, Dartmouth College Computer Science Technical Report series
   date: May 2017
-  url: papers/peters-trusted-comp-tr2017.pdf
+  pdf: papers/peters-trusted-comp-tr2017.pdf
   type: techreport
   internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/
 
 - title: "Amulet: An Energy-Efficient, Multi-Application Wearable Platform"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
-  publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys)
+  publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys'16)
   date: November 2016
-  url: papers/hester-amulet-sensys2016.pdf
   type: conference
+  pdf: papers/hester-amulet-sensys2016.pdf
+  slides: slides/sensys16-presentation.pdf
+  code: https://github.com/AmuletGroup/amulet-project
+  blog: https://amulet-project.org/
   internal: true
-# note: 17.6% acceptance rate
+  # https://dl.acm.org/citation.cfm?id=2994554
+  # note: 17.6% acceptance rate
 
 - title: "The Amulet Wearable Platform: Demo Abstract"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
-  publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys)
+  publisher: In Proceedings of the ACM Conference on Embedded Networked Sensor Systems (SenSys'16)
   date: November 2016
-  url: papers/hester-amulet-demo-sensys2016.pdf
   type: demo
+  pdf: papers/hester-amulet-demo-sensys2016.pdf
+  code: https://github.com/AmuletGroup/amulet-project
+  blog: https://amulet-project.org/
   internal: true
 
 - title: "Poster: Security in IoT: What is IoT Security, Really?!"
@@ -73,17 +83,19 @@
 
 - title: "Amulet: A secure architecture for mHealth applications for low-power wearable devices"
   authors: Andres Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun, Bhargav Golla, Kevin Freeman, Travis Peters, Jacob Sorber, Ryan Halter, David Kotz
-  publisher: In Proceedings of the Workshop on Mobile Medical Applications - Design and Development (WMMADD)
+  publisher: In Proceedings of the Workshop on Mobile Medical Applications - Design and Development (WMMADD'14)
   date: November 2014
-  url: papers/molina-markham-wmmadd2014.pdf
   type: workshop
+  pdf: papers/molina-markham-wmmadd2014.pdf
+  code: https://github.com/AmuletGroup/amulet-project
+  blog: https://amulet-project.org/
   internal: true
 
 - title: "MobiSys 2014"
   authors: Travis Peters, Puneet Jain
   publisher: IEEE Pervasive Computing
   date: 2014
-  url: papers/peters-mobisys2014.pdf
+  pdf: papers/peters-mobisys2014.pdf
   type: journal
   internal: true
 
@@ -91,7 +103,7 @@
   authors: Travis Peters
   publisher: Technical Report TR2015-767, Dartmouth College Computer Science Technical Report series
   date: September 2014
-  url: papers/peters-emg-tr2014.pdf
+  pdf: papers/peters-emg-tr2014.pdf
   type: techreport
   internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/
@@ -100,6 +112,6 @@
   authors: Chip Jackson, Lucas Bourne, Travis Peters. Advised by Edoh Amiran
   publisher: In the UMAP Journal for Undergraduate Mathematics & Research
   date: 2012
-  url: papers/peters-umap2012.pdf
+  pdf: papers/peters-umap2012.pdf
   type: journal
   internal: true
