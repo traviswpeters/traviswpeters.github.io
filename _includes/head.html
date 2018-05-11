@@ -3,12 +3,10 @@
   <title>
     {% if page.title == "Home" %}
       {{ site.data.settings.title }} | {{ site.data.settings.tagline }}
+    {% elsif page.title == "All" %}
+      {{ site.data.settings.title }} (all) | {{ site.data.settings.tagline }}
     {% else %}
-      {% if page.title == "All" %}
-        {{ site.data.settings.title }} (all) | {{ site.data.settings.tagline }}
-      {% else %}
-        {{ page.title }} | {{ site.data.settings.title }}
-      {% endif %}
+      {{ page.title }} | {{ site.data.settings.title }}
     {% endif %}
   </title>
 
@@ -31,8 +29,9 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?...">
   </script>
 
+  <!-- Analytics -->
   {% include google-analytics.html %}
-  <!-- Use Atom -->
+  <!-- Feed; Use Atom -->
   {% feed_meta %}
 
 </head>

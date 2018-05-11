@@ -1,15 +1,15 @@
+<span id="news-short"></span>
+
 ## News
 
 {% for news in site.data.news %}
 **({{ news.date | date: "%B %Y" }})**
 {{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
 
-{% comment %}
-Only show 5 of the most recent news updates.
-{% endcomment %}
 {% if forloop.index >= 5 %}
     {% break %}
 {% endif %}
 {% endfor %}
 
+<!-- Only show 5 of the most recent news updates above - see full news.html for more news... -->
 [*See more news...*](news.html)

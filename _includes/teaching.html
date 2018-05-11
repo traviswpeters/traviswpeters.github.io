@@ -37,12 +37,14 @@ George, Emily
 {% for talk in site.data.talks %}
 
 {% if talk.type == "guest-lecture" %}
-**{{talk.title}}** {% if talk.notes %}[[notes]]({{talk.notes}}){% endif %}<br/>
+**{{talk.title}}**
+<!-- notes -->{% if talk.notes %}[[notes]]({{talk.notes}}){% endif %}
+<!-- pdf -->{% if talk.pdf %}[[pdf]]({{talk.pdf}}){% endif %}
+<!-- code -->{% if talk.code %}[[code]]({{talk.code}}){% endif %}
+<br/>
 *{{talk.venue}}
 <!-- location -->{% if talk.location %} - {{talk.location}}{% endif %}
 <!-- date -->{% if talk.date %} - {{talk.date}}{% endif %}*<br/>
-<!-- pdf -->{% if talk.pdf %}[[pdf]]({{talk.pdf}}){% endif %}
-<!-- code -->{% if talk.code %}[[code]]({{talk.code}}){% endif %}
 {% endif %}
 
 {% endfor %}

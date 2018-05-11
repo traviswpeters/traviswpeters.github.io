@@ -96,7 +96,7 @@ blockquote p {
 .container {
   margin-left: auto;
   margin-right: auto;
-  width: 625px;
+  width: 675px;
 }
 
 @media (max-width: 1366px) {
@@ -212,8 +212,26 @@ blockquote p {
 }
 
 /*
+  News (short)-specific style
+*/
+
+#news-short {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+}
+
+/*
   Footer
 */
+
+footer {
+    clear: both;
+}
+
+footer * {
+    display: inline;
+}
 
 .footer {
   color: #999;

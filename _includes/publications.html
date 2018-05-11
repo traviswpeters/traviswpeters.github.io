@@ -7,14 +7,16 @@
 {% for pub in site.data.papers %}
 {% if pub.type == "conference" or pub.type == "journal" or pub.type == "workshop" or pub.type == "techreport" %}
 
-**{{pub.title}}**<br/>
-<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
-<!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
-<!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
+**{{pub.title}}**
 <!-- pdf -->{% if pub.pdf %}[[pdf]]({{pub.pdf}}){% endif %}
 <!-- slides -->{% if pub.slides %}[[slides]]({{pub.slides}}){% endif %}
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
 <!-- blog -->{% if pub.blog %}[[blog]]({{pub.blog}}){% endif %}
+<br/>
+<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
+<!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
+<!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
+
 
 {% endif %}
 {% endfor %}
@@ -24,14 +26,15 @@
 {% for pub in site.data.papers %}
 {% if pub.type == "poster" or pub.type == "demo" or pub.type == "poster/demo" or pub.type == "wip" %}
 
-**{{pub.title}}**{% if pub.type == "wip" %}*{% endif %}<br/>
-<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
-<!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
-<!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
+**{{pub.title}}**{% if pub.type == "wip" %}*{% endif %}
 <!-- pdf -->{% if pub.pdf %}[[pdf]]({{pub.pdf}}){% endif %}
 <!-- slides -->{% if pub.slides %}[[slides]]({{pub.slides}}){% endif %}
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
 <!-- blog -->{% if pub.blog %}[[blog]]({{pub.blog}}){% endif %}
+<br/>
+<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
+<!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
+<!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
 
 {% endif %}
 {% endfor %}
