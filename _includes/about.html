@@ -1,15 +1,18 @@
-<div class="about">
-
-<p>
-Hi! I'm <strong>{{ site.data.settings.author }}</strong>, an n^th year PhD student at Dartmouth.
-I am advised by <a href="http://www.cs.dartmouth.edu/~dfk/">Dr. David Kotz</a>.
-</p>
-
-<p>
-I work with others on researching security and privacy issues in computer systems and wireless communications.
-I'm currently a member of the <a href="https://thaw.org/">Trustworthy Health &amp; Wellness</a> project where I'm exploring research problems in physical computing, secure I/O, and IoT security and privacy.
-I'm also a former member of the <a href="https://amulet-project.org/">Amulet</a> project where I worked on the design of a low-power and secure wearable device,
-as well as a software framework that enables developers to create safe, secure, and efficient mobile health applications.
-</p>
-
+<div class="captioned-img left photo grid-item-photo" align="{{include.align}}">
+<a href="{{ include.url }}">
+{% if include.width %}
+<img src="{{ include.url }}" width="{{ include.width }}" />
+{% else if include.height %}
+<img src="{{ include.url }}" height="{{ include.height }}" />
+{% else %}
+<img src="{{ include.url }}" />
+{% endif %}</a>{% if include.caption %}{{ include.caption }}{% endif %}
 </div>
+
+Hi! I'm **{{ site.data.settings.author }}**, an n^th year PhD student at [Dartmouth](https://dartmouth.edu).
+I am advised by [Dr. David Kotz](http://www.cs.dartmouth.edu/~dfk/).
+
+I work with others on researching security and privacy issues in computer systems and wireless communications.
+I'm currently a member of the [Trustworthy Health & Wellness (THaW)](https://thaw.org/) project where I'm exploring research problems in physical computing, secure I/O, and IoT security and privacy.
+I'm also a former member of the [Amulet](https://amulet-project.org/) project where I worked on the design of a low-power and secure wearable device,
+as well as a software framework that enables developers to create safe, secure, and efficient mobile health applications.

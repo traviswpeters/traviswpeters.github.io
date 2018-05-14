@@ -2,17 +2,31 @@
 <html>
 {% include head.html %}
 <body>
-<div class="container">
+<div class="grid-container">
+
+    {% comment %}
+    <!-- <div class="container"> -->
+    {% endcomment %}
 
 {% include header.html %}
 
-<div class="post-container">
+    {% comment %}
+    <!-- <div class="grid-container"> -->
+    <!-- <div class="post-container"> -->
+    {% endcomment %}
 
 {{ content }}
 
-</div>
+    {% comment %}
+    <!-- </div> -->
+    <!-- </div> -->
+    {% endcomment %}
 
 {% include footer.html %}
+
+    {% comment %}
+    <!-- </div> -->
+    {% endcomment %}
 
 </div>
 </body>
