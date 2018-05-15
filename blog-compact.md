@@ -1,9 +1,13 @@
 ---
 layout: page
-title: Writing (Compact View)
+title: Blog (Compact View)
 ---
 
-<ul class="posts">
+<div style="text-align: center" class="blog grid-item-blog" markdown="1">
+
+*You can also view a less compact version of this page here: <a href="{{ site.github.url }}/blog.html">less compact view.</a>*
+
+<ul style="text-align: center" class="posts">
   {% for post in site.posts %}
 
     {% unless post.next %}
@@ -24,6 +28,7 @@ title: Writing (Compact View)
   {% endfor %}
 </ul>
 
+{% comment %}
 <!--
 From the https://github.com/gchauras/much-worse-jekyll-theme
 
@@ -41,3 +46,6 @@ From the https://github.com/gchauras/much-worse-jekyll-theme
 {% endfor %}
 </ul>
 -->
+{% endcomment %}
+
+</div>

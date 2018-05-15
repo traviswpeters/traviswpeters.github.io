@@ -12,122 +12,38 @@
                 +------------------------------------------+
  */
 
- * {
-     /* debug */
-   /* outline: 1px solid red; */
-   /* margin: 0px;
-   padding: 0px;
-   border: 0px;
-   margin-right: auto;
-   margin-left: auto;
-   width: auto; */
-}
-
-/* .grid-container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 675px;
-}
-
-@media (max-width: 1366px) {
-  .grid-container {
-    width: 45vw;
-  }
-}
-
-@media (max-width: 768px) {
-  .grid-container {
-    width: 90vw;
-  }
-} */
-
-
-
-.grid-item-header { grid-area: header; }
+.grid-item-photo { grid-area: photo; }
 .grid-item-about { grid-area: about; }
-.grid-item-news { grid-area: news }
-.grid-item-research { grid-area: research }
+.grid-item-news-short { grid-area: news }
 .grid-item-publications { grid-area: publications }
 .grid-item-presentations { grid-area: presentations }
 .grid-item-teaching { grid-area: teaching }
-.grid-item-blog { grid-area: blog; }
-.grid-item-post-wrapper { grid-area: post-wrapper; }
-.grid-item-footer { grid-area: footer; }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 800px 1fr;
-  /* grid-gap: 10px; */
-
   grid-template-areas:
-    'header header header'
-    'about about about'
-    'news news news'
-    'research research research'
-    'publications publications publications'
-    'presentations presentations presentations'
-    'teaching teaching teaching'
-    'blog blog blog'
-    'post-wrapper post-wrapper post-wrapper'
-    'footer footer footer';
+    'photo photo about about about about'
+    'news news news news news news'
+    'publications publications publications publications publications publications'
+    'presentations presentations presentations presentations presentations presentations'
+    'teaching teaching teaching teaching teaching teaching';
 }
 
-.grid-container > * {
-    grid-column: 2 / 3;
-}
-
-@media all and (max-width: 1000px) and (min-width: 500px) {
+@media only screen and (max-width: 600px) {
     .grid-container {
-        grid-template-columns: 1fr 10fr 1fr;
+      grid-template-areas:
+        'photo photo photo'
+        'about about about'
+        'news news news'
+        'publications publications publications'
+        'presentations presentations presentations'
+        'teaching teaching teaching';
     }
 }
 
-/* @media all and (max-width: 799px) and (min-width: 500px) {
-    .grid-container {
-        grid-template-columns: 1fr 10fr 1fr;
-    }
-} */
-
-@media only screen and (max-width: 499px) {
-    .grid-container {
-        grid-template-columns: 5px 1fr 5px;
-    }
-    .masthead, h1, h2, h3, h4, h5, h6 { /* center all headers */
-        text-align: center;
-    }
-    .masthead-subtitle {
-        display: none;
-    }
-    .menu {
-        width: 300px;
-        margin: auto;
-    }
-    .menu-content {
-        width: 300px;
-        margin: auto;
-    }
-    .menu-content a {
-        font-size: 24px;
-    }
-    .menu-item {
-        display: block;
-    }
-    .menu-item:nth-of-type(1) { /* a little space between menu items and the main site title */
-        margin-top: 10px;
-    }
-    .social-icons { /* don't show icons at the top of the page when showing on smaller screen */
-        display: none;
-    }
-}
-
-/* ************************************************************************** */
-
-/* html {
-    height: 100%;
-    margin-bottom: 1px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-} */
+/*
+  Base
+*/
 
 body {
   font-family: "Quattrocento Sans", "Georgia", "Times New Roman", sans-serif;
@@ -136,16 +52,24 @@ body {
   font-size: 14px;
   color: #515151;
   line-height: 1.75rem;
-  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Quattrocento Sans", sans-serif;
-  color: #333;
+@media (max-width: 30em) {
+  body {
+    font-size: 14px;
+    line-height: 1.5rem;
+  }
+  body h1 {
+    font-size: 1.5rem;
+  }
 }
 
 h1{
   font-size: 2rem;
+}
+
+h1 a {
+  text-decoration: none;
 }
 
 h2 {
@@ -153,6 +77,11 @@ h2 {
   padding-top: 20px;
   border-bottom: 0.75px dashed #999;
   padding-bottom:5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Quattrocento Sans", sans-serif;
+  color: #333;
 }
 
 a {
@@ -166,35 +95,28 @@ a:hover {
   border-bottom: none;
 }
 
-
 img {
   max-width: 100%;
-  min-width: 100%;
   height: auto;
-  max-height: 175px;
   border-radius: 5px;
 }
 
-.captioned-img {
-  border-radius: 5px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-
-  float: left;
-  clear: left;
-  margin: 0  0.9em 0 0;
+img.resize {
+    width:540px; /* you can use % */
+    height: auto;
 }
 
-/* blockquote {
-    padding-left: 10px;
-    color: #666;
-    border-left: 3px solid black;
-    font-style: italic;
-    width: 100%;
+/*MAYBE REMOVE --- PLAYING WITH IMAGE/TEXT ALIGNMENT*/
+.left {
+   float: left;
+   padding: 0 20px 10px 0;
+}
+/*MAYBE REMOVE --- PLAYING WITH IMAGE/TEXT ALIGNMENT*/
 
-    width:inherit;
-    height:inherit;
-} */
+hr {
+    /* style all hr elements similar to how h2 elements are underlined (see h2 definition above) */
+    border: 0.75px dashed #999;
+}
 
 blockquote {
   border-left: 0.25rem solid #ccc;
@@ -215,7 +137,33 @@ blockquote p {
   display: inline;
 }
 
-/* MASTHEAD */
+/*
+  Site container
+*/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 675px;
+}
+
+@media (max-width: 1366px) {
+  .container {
+    width: 45vw;
+  }
+}
+
+/*48em*/
+
+@media (max-width: 768px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+/*
+  Masthead
+*/
 
 .masthead {
   padding-top: 0.5rem;
@@ -238,31 +186,92 @@ blockquote p {
   color: #999;
 }
 
-/* MENU (HEADER) */
+/*
+  Post
+*/
 
-.menu {
-  padding-top: 0.5rem;
+.post-container {
+  margin-bottom: 4rem;
+}
+
+.posts {
+  margin-bottom: 5rem;
+  padding: 0px;
+  list-style: none;
+}
+
+.post-date {
   display: block;
+  margin-top:3px;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size:0.8rem;
 }
 
-.menu-content {
-  float: left;
+@media (max-width: 30rem) {
+  .posts h1 {
+    font-size: 1.5rem;
+  }
 }
-.menu-content a {
+
+.related {
+  padding-bottom: 2rem;
+}
+
+.related-posts {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.related-posts a {
+  text-decoration: none;
+}
+
+/*
+  Pagination
+*/
+
+.pagination {
+  overflow: hidden;
+  font-family: 'Quattrocento Sans', sans-serif;
+  text-align: center;
+}
+
+.pagination a {
+  text-decoration: none;
+}
+
+.pagination-button {
   color: #999;
-  font-size: 1rem;
-  padding-right: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 15px 45px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.social-icons {
-  float: right;
-}
-.social-icons a {
-  color: #999;
-  font-size: 1rem;
+.pagination-active {
+  color: black;
 }
 
-/* FOOTER */
+.pagination-active:hover {
+  background-color: #e0e0e0;
+}
+
+/*
+  News (short)-specific style
+*/
+
+#news-short {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+}
+
+/*
+  Footer
+*/
 
 footer {
     clear: both;
@@ -288,42 +297,47 @@ footer * {
   color: #333;
 }
 
-/* POSTS */
+/*
+  Menu
+*/
 
-.posts {
-  margin-bottom: 3rem;
-  padding: 0px;
-  list-style: none;
-  width: 100%;
-}
-.posts p.posts-teaser-text {
-    font-style: italic;
-    margin-bottom: 5px;
-}
-
-.post-date {
+.menu {
+  padding-top: 0.5rem;
   display: block;
-  margin-top:0px;
-  margin-bottom: 1rem;
-  color: #9a9a9a;
-  font-family: 'Quattrocento Sans', sans-serif;
-  font-size:0.8rem;
 }
 
-/* .related {
-  padding-bottom: 2rem;
+.menu-content {
+  float: left;
 }
 
-.related-posts {
-  padding-left: 0px;
-  list-style: none;
+.menu-content a {
+  color: #999;
+  font-size: 1rem;
+  padding-right: 10px;
 }
 
-.related-posts a {
-  text-decoration: none;
-} */
+.social-icons {
+  float: right;
+}
 
-/* Code */
+.social-icons a {
+  color: #999;
+  font-size: 1rem;
+}
+
+@media (max-width: 30em) {
+  .social-icons {
+    float: left;
+    padding-top: 0px;
+  }
+  .menu-content {
+    margin-bottom: 5px;
+  }
+}
+
+/*
+  Code
+*/
 
 pre,
 code {
@@ -362,36 +376,10 @@ pre {
   word-wrap: normal;
 }
 
-/* Pagination */
 
-/* .pagination {
-  overflow: hidden;
-  font-family: 'Quattrocento Sans', sans-serif;
-  text-align: center;
-}
-
-.pagination a {
-  text-decoration: none;
-}
-
-.pagination-button {
-  color: #999;
-  border: 1px solid #e0e0e0;
-  padding: 15px 45px;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.pagination-active {
-  color: black;
-}
-
-.pagination-active:hover {
-  background-color: #e0e0e0;
-} */
-
-/* Social media icons */
+/*
+  Social media icons
+*/
 
 .sharing-icons a {
   padding-right: 10px;
@@ -473,6 +461,32 @@ pre {
 
 .fa-facebook:hover {
 	color: #3d5b99;
+}
+
+.fa-google-plus {
+  padding: 5px;
+	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	transition: .5s;
+}
+
+.fa-google-plus:hover {
+	color: #e64a41;
+}
+
+.fa-pinterest {
+  padding: 5px;
+	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	transition: .5s;
+}
+
+.fa-pinterest:hover {
+	color: #bd081c;
 }
 
 .fa-medium {
