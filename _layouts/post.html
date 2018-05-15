@@ -3,13 +3,8 @@ layout: default
 ---
 
 <div class="post-wrapper grid-item-post-wrapper" markdown="1">
-{{ content }}
-</div>
 
-
-{% comment %}
 <h1>{{ page.title }}</h1>
-
 {% include read-time-date-author.html %}
 
 {% if page.image.feature %}
@@ -20,11 +15,8 @@ layout: default
 
 {% include read-time-date-author.html %}
 
-{% include social-sharing.html %}
-
+{% comment %}
 {% include related-posts.html %}
-
-{% if site.data.settings.disqus.comments %}
-  {% include disqus.html %}
-{% endif %}
 {% endcomment %}
+
+</div>

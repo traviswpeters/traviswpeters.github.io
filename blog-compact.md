@@ -1,11 +1,13 @@
 ---
 layout: page
-title: Blog (Compact View)
+title: Blog
 ---
 
-<div style="text-align: center" class="blog grid-item-blog" markdown="1">
+<div style="text-align: center" markdown="1">
+[[toggle non-compact view]]({{ site.github.url }}/blog.html)
+</div>
 
-*You can also view a less compact version of this page here: <a href="{{ site.github.url }}/blog.html">less compact view.</a>*
+<div style="text-align: center" markdown="1">
 
 <ul style="text-align: center" class="posts">
   {% for post in site.posts %}

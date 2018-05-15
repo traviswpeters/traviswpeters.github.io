@@ -3,8 +3,6 @@ layout: page
 title: Teaching
 ---
 
-<div class="teaching grid-item-teaching" markdown="1">
-
 I strongly believe that teaching doesn't just happen in the classroom.
 Teaching is really about connecting with people and meeting them where they are at.
 Over the years I've had opportunities to lead, teach, coach, and mentor in a multitude of capacities, including:
@@ -22,5 +20,3 @@ Throughout my time at Western and Dartmouth I have also pursued (and greatly enj
 
 <!-- see: _includes/teaching.html -->
 {% include teaching.html %}
-
-</div>

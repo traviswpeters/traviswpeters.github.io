@@ -3,20 +3,24 @@ layout: page
 title: Blog
 ---
 
-<div class="blog grid-item-blog" markdown="1">
+<div style="text-align: center" markdown="1">
+[[toggle compact view]]({{ site.github.url }}/blog-compact.html)
+</div>
 
-*You can also view a more compact version of this page here: <a href="{{ site.github.url }}/blog-compact.html">compact view.</a>*
-
+<div style="text-align: center; margin-bottom: 50px;" markdown="1">
 *I'm still in the process of porting old notes/posts to this site. Check back soon!*
+</div>
 
 {% for post in site.posts %}
 <div class="posts">
   <h1>
     <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
   </h1>
+  {% comment %}
   <!-- {% if post.image.teaser %}
     <a class="teaser" href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image.teaser }}"></a>
   {% endif %} -->
+  {% endcomment %}
   <p class="posts-teaser-text">
     {{ post.content | markdownify | strip_html | truncate: 350 }} <a href="{{ site.github.url }}{{ post.url }}">>> Read more</a>
   </p>
@@ -43,5 +47,3 @@ title: Blog
   {% endif %}
 </div>
 {% endcomment %}
-
-</div>

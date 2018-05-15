@@ -3,8 +3,6 @@ layout: page
 title: Research
 ---
 
-<div class="research grid-item-research" markdown="1">
-
 I’m interested in (in)security, particularly at the lower levels of systems and wireless communications.
 I’ve spent a great deal of time studying operating systems and trusted hardware (SGX and TrustZone in particular).
 I became interested in these topics more as I began studying solutions for realizing secure I/O capabilities that can work with these trusted hardware features.
@@ -38,5 +36,3 @@ Trustworthy Infrastructure, Protecting User Data, and Malicious and Deceptive So
 
 <!-- see: _includes/presentations.html -->
 {% include presentations.html %}
-
-</div>

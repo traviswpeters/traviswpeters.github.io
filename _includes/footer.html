@@ -1,7 +1,7 @@
 <footer class="footer grid-item-footer">
 
     {% for item in site.data.settings.social %}
-    <a href="{{ item.link }}" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+    <a href="{{ item.link }}" target="_blank"><i class="fa{{ item.type }} fa-{{ item.icon }}" aria-hidden="true" style="font-size:1.5em;"></i></a>
     {% endfor %}
     <div class="post-date"><a href="{{ site.github.url }}">{{ site.data.settings.title }} | {{ site.data.settings.tagline }}</a></div>
 

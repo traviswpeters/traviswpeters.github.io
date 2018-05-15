@@ -6,7 +6,7 @@
         </div>
         <div class="social-icons">
             {% for item in site.data.settings.social %}
-            <a href="{{ item.link }}" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+            <a href="{{ item.link }}" target="_blank"><i class="fa{{ item.type }} fa-{{ item.icon }}" aria-hidden="true"></i></a>
             {% endfor %}
         </div>
     </div>

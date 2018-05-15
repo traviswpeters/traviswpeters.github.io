@@ -25,13 +25,13 @@ handles:
 
 #TODO: can we use the handles above to fill in links below? Otherwise, there is redundancy...
 social:
-- {icon: 'envelope', link: 'mailto:traviswp@cs.dartmouth.edu'}
-- {icon: 'github', link: 'https://www.github.com/traviswp'}
-- {icon: 'linkedin', link: 'https://www.linkedin.com/in/traviswpeters'}
-- {icon: 'twitter', link: 'https://twitter.com/traviswpeters'}
-- {icon: 'facebook-square', link: 'https://www.facebook.com/travis.william.peters'}
-- {icon: 'instagram', link: 'https://www.instagram.com/the.travisaurus.rex'}
-- {icon: 'road', link: 'https://www.strava.com/athletes/traviswpeters'}
+- {icon: 'envelope', type: 's', link: 'mailto:traviswp@cs.dartmouth.edu'}
+- {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswp'}
+- {icon: 'linkedin',  type: 'b', link: 'https://www.linkedin.com/in/traviswpeters'}
+- {icon: 'twitter',  type: 'b', link: 'https://twitter.com/traviswpeters'}
+- {icon: 'facebook',  type: 'b', link: 'https://www.facebook.com/travis.william.peters'}
+- {icon: 'instagram',  type: 'b', link: 'https://www.instagram.com/the.travisaurus.rex'}
+- {icon: 'strava',  type: 'b', link: 'https://www.strava.com/athletes/traviswpeters'}
 # - {icon: '', link: ''}
 #- {icon: 'gitlab', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 #- {icon: 'rss-square', link: 'feed.xml'}

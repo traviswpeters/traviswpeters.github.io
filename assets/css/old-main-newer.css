@@ -21,8 +21,27 @@
    margin-right: auto;
    margin-left: auto;
    width: auto; */
-
 }
+
+/* .grid-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 675px;
+}
+
+@media (max-width: 1366px) {
+  .grid-container {
+    width: 45vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    width: 90vw;
+  }
+} */
+
+
 
 .grid-item-header { grid-area: header; }
 .grid-item-about { grid-area: about; }
@@ -54,48 +73,44 @@
 }
 
 .grid-container > * {
-    grid-column: 2;
+    grid-column: 2 / 3;
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media all and (max-width: 1000px) and (min-width: 500px) {
     .grid-container {
         grid-template-columns: 1fr 10fr 1fr;
     }
 }
 
-@media all and (max-width: 699px) and (min-width: 400px) {
+/* @media all and (max-width: 799px) and (min-width: 500px) {
     .grid-container {
         grid-template-columns: 1fr 10fr 1fr;
     }
-    .masthead, .masthead-title { /* center all headers */
-      display: inline-block;
-      text-align: center;
-    }
-    .social-icons { /* don't show icons at the top of the page when showing on smaller screen */
-        display: none;
-    }
-    .minimenu {
-        display: hide;
-    }
-}
+} */
 
-@media only screen and (max-width: 399px) {
+@media only screen and (max-width: 499px) {
     .grid-container {
         grid-template-columns: 5px 1fr 5px;
     }
-    .masthead, .masthead-title { /* center all headers */
-      display: inline-block;
-      text-align: center;
-      margin-bottom: 0;
-    }
-    h1, h2, h3, h4, h5, h6 { /* center all headers */
-/*         text-align: center; */
+    .masthead, h1, h2, h3, h4, h5, h6 { /* center all headers */
+        text-align: center;
     }
     .masthead-subtitle {
         display: none;
     }
+    .menu {
+        width: 300px;
+        margin: auto;
+    }
+    .menu-content {
+        width: 300px;
+        margin: auto;
+    }
+    .menu-content a {
+        font-size: 24px;
+    }
     .menu-item {
-      padding: 0px 10px;
+        display: block;
     }
     .menu-item:nth-of-type(1) { /* a little space between menu items and the main site title */
         margin-top: 10px;
@@ -106,6 +121,13 @@
 }
 
 /* ************************************************************************** */
+
+/* html {
+    height: 100%;
+    margin-bottom: 1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+} */
 
 body {
   font-family: "Quattrocento Sans", "Georgia", "Times New Roman", sans-serif;
@@ -120,7 +142,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Quattrocento Sans", sans-serif;
   color: #333;
-  margin-bottom: 5px;
 }
 
 h1{
@@ -130,7 +151,7 @@ h1{
 h2 {
   /* Add horizontal line under each h2 with padding above and below */
   padding-top: 20px;
-  border-bottom: 0.75px solid #999;
+  border-bottom: 0.75px dashed #999;
   padding-bottom:5px;
 }
 
@@ -145,10 +166,12 @@ a:hover {
   border-bottom: none;
 }
 
+
 img {
   max-width: 100%;
   min-width: 100%;
   height: auto;
+  max-height: 175px;
   border-radius: 5px;
 }
 
@@ -162,23 +185,32 @@ img {
   margin: 0  0.9em 0 0;
 }
 
+/* blockquote {
+    padding-left: 10px;
+    color: #666;
+    border-left: 3px solid black;
+    font-style: italic;
+    width: 100%;
+
+    width:inherit;
+    height:inherit;
+} */
+
 blockquote {
   border-left: 0.25rem solid #ccc;
-  font-style: italic;
-  color: #999;
-
   margin: 1.5em 10px;
-  padding: 5px 20px;
+  color: #999;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
 }
-
 blockquote:before {
   color: #ccc;
-  font-size: 3em;
+  /*content: open-quote;*/
+  font-size: 2em;
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-
 blockquote p {
   display: inline;
 }
@@ -295,10 +327,25 @@ footer * {
 
 pre,
 code {
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-radius: 3px;
     background-color: #f5f5f5;
     font-family: "Andale Mono", "Source Code Pro", sans-serif;
+}
+
+code {
+    padding: 1px 5px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 .highlight .lineno {
@@ -314,18 +361,6 @@ code {
   overflow-x: auto;
   word-wrap: normal;
 }
-
-.rouge-table {
-  table-layout: fixed;
-  width: 100%;
-
-}
-
-.rouge-gutter {
-  width: 0px;
-  padding-right: 20px;
-}
-.rouge-code {}
 
 /* Pagination */
 
