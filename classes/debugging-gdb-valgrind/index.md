@@ -635,6 +635,8 @@ You can use those variables at a later point if you want (e.g., `print $3`).
 Below are some of the more common `gdb` commands that you will need.
 See also this printable [gdb quick reference guide](http://users.ece.utexas.edu/~adnan/gdb-refcard.pdf).
 
+<div class="travis-table" markdown="1">
+
 | command                 | purpose                 |
 | :---------------------- | :---------------------- |
 | `run [arglist]`         |Start your program (with arglist, if specified). |
@@ -648,6 +650,8 @@ See also this printable [gdb quick reference guide](http://users.ece.utexas.edu/
 | `step`                  |Execute next program line (after stopping); step into any function  calls  in the line.|
 | `help [name]`           |Show information about GDB command name, or general information about using GDB. |
 | `quit`                  |Exit from GDB.|
+
+</div>
 
 ## Valgrind: a memory management profiling tool
 
