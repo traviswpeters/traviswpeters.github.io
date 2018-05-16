@@ -21,24 +21,24 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 
 <div class="travis-table" markdown="1">
 
-| Date                       | Race                                                                                                | Distance       | Time       | Pace (min/mile) |  Notes                 |
-| :------------------------- | :-------------------------------------------------------------------------------------------------- | :------------- | :--------- | :-------------- | :--------------------- |
-| Saturday, March 10, 2018   | [Shamrock Shuffle](https://lebanonnh.gov/820/Results) (*/**)                                        | 5k             | 20:00      | 6:26            | |
-| Sunday, April 8, 2018      | [Soup Kitchen 10k](http://nsks.org/racehome0.aspx) (*)                                              | 10k            | 41:08      | 6:38            | |
-| Sunday, May 13, 2018       | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59      | 6:52            | Hilly. BEAUTIFUL!      |
-| Thursday, May 17, 2018     | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         |            |                 | |
-| Sunday, June 3, 2018       | Covered Bridges Half Marathon    | 13.1 miles        |                 |                  |    |
-| Sunday, June 10, 2018      | Flat N' Fast 5k (*)    | 5k        |                 |                  |    |
-| Saturday, June 23, 2018    | Capital City 10k  (*)   | 10k        |                 |                  |    |
-| Sunday, June 24, 2018      | Shaker 7 (**)    | 7 miles        |                 |                  |    |
-| Wednesday, July 4, 2018    | R/W/B 10k  (**)    | 10k        |                 |                  |    |
-| Saturday, July 21, 2018    | Bill Luti 5-miler (*)   | 5 miles        |                 |                  |    |
-| Sunday, August 5, 2018     | Run from the Law 5k (**)     | 5k        |                 |                  |    |
-| Sunday, August 12, 2018    | Epsom 4-miler (*)   | 4 miles        |                 |                  |    |
-| Sunday, September 9, 2018  | **Via Marathon**     | 26.2        |                 |                  |    |
-| Sunday, October 7, 2018    | Foliage Five  (**)    | 5 miles        |                 |                  |    |
-| Sunday, October 14, 2018   | CHaD Half Marathon (*)    | 13.1 miles        |                 |                  |    |
-| Saturday, November 3, 2018 | Run for the Pie  (**)    | 5k        |                 |                  |    |
+| Date       | Race                                                                                                | Distance       | Time       | Pace (min/mile) |  Notes                 |
+| :--------- | :-------------------------------------------------------------------------------------------------- | :------------- | :--------- | :-------------- | :--------------------- |
+| 03/10/2018 | [Shamrock Shuffle](https://lebanonnh.gov/820/Results) (*/**)                                        | 5k             | 20:00      | 6:26            | |
+| 04/08/2018 | [Soup Kitchen 10k](http://nsks.org/racehome0.aspx) (*)                                              | 10k            | 41:08      | 6:38            | |
+| 05/13/2018 | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59      | 6:52            | Hilly. BEAUTIFUL!      |
+| 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         |            |                 | |
+| 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     |            |                 | |
+| 06/10/2018 | Flat N' Fast 5k (*)    | 5k        |                 |                  |    |
+| 06/23/2018 | Capital City 10k  (*)   | 10k        |                 |                  |    |
+| 06/24/2018 | Shaker 7 (**)    | 7 miles        |                 |                  |    |
+| 07/24/2018 | R/W/B 10k  (**)    | 10k        |                 |                  |    |
+| 07/21/2018 | Bill Luti 5-miler (*)   | 5 miles        |                 |                  |    |
+| 08/05/2018 | Run from the Law 5k (**)     | 5k        |                 |                  |    |
+| 08/12/2018 | Epsom 4-miler (*)   | 4 miles        |                 |                  |    |
+| 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)     | 26.2        |                 |                  |    |
+| 10/07/2018 | Foliage Five  (**)    | 5 miles        |                 |                  |    |
+| 10/14/2018 | CHaD Half Marathon (*)    | 13.1 miles        |                 |                  |    |
+| 11/03/2018 | Run for the Pie  (**)    | 5k        |                 |                  |    |
 
 </div>
 
