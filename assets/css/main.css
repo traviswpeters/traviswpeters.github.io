@@ -335,7 +335,9 @@ code {
     padding-left: 10px;
 }
 
-/* Tables */
+/* Tables
+ - TRY ME (RESPONSIVE TABLE): http://lea.verou.me/2018/05/responsive-tables-revisited/
+ */
 
 .travis-table table {
     margin: 0px auto;
