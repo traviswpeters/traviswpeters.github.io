@@ -13,29 +13,33 @@ email: traviswp@cs.dartmouth.edu
 
 handles:
   github: traviswp
+  gitlab: traviswpeters
   linkedin: traviswpeters # old: travis-peters-3513512a
   twitter: traviswpeters
   facebook: travis.william.peters # old: travis.peters.144
   instagram: the.travisaurus.rex # traviswpeters
   strava: traviswpeters
-  gitlab: traviswpeters
-  # TODO: keybase: traviswpeters
-  # TODO: quora: QuroraUsername
-  # TODO: stackoverflow: username   #e.g: users/2735833/proton1h1
+  keybase: traviswpeters
+  quora: Travis-Peters
+  stackoverflow: users/2276247/traviswp
+  orcid: 0000-0003-0072-2735 # --> suggested HTML: <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0003-0072-2735" href="https://orcid.org/0000-0003-0072-2735" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">orcid.org/0000-0003-0072-2735</a></div>
 
-#TODO: can we use the handles above to fill in links below? Otherwise, there is redundancy...
+# -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
+# - {icon: '', type: '', link: ''}
 social:
 - {icon: 'envelope', type: 's', link: 'mailto:traviswp@cs.dartmouth.edu'}
 - {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswp'}
+# - {icon: 'gitlab', type: 'b', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 - {icon: 'linkedin',  type: 'b', link: 'https://www.linkedin.com/in/traviswpeters'}
 - {icon: 'twitter',  type: 'b', link: 'https://twitter.com/traviswpeters'}
 - {icon: 'facebook',  type: 'b', link: 'https://www.facebook.com/travis.william.peters'}
 - {icon: 'instagram',  type: 'b', link: 'https://www.instagram.com/the.travisaurus.rex'}
 - {icon: 'strava',  type: 'b', link: 'https://www.strava.com/athletes/traviswpeters'}
-# - {icon: '', link: ''}
-#- {icon: 'gitlab', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
-#- {icon: 'rss-square', link: 'feed.xml'}
-# -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
+# - {icon: 'keybase', type: 'b', link: 'https://keybase.io/traviswpeters'}
+# - {icon: 'quora', type: 'b', link: 'https://www.quora.com/profile/Travis-Peters'}
+# - {icon: 'stack-overflow', type: 'b', link: 'https://stackoverflow.com/users/2276247/traviswp'}
+# - {icon: 'orcid', type: 'b', link: 'https://orcid.org/0000-0003-0072-2735'}
+# - {icon: 'rss-square', link: 'feed.xml'}
 
 #
 # Site Menus
@@ -55,6 +59,5 @@ menu:
 disqus:
   comments: false
   disqus_shortname: 'https-travispeters-github-io'
-  # disqus_shortname: 'https-lenpaul-github-io-lagrange'
 
 google-ID: 'CHANGEME' #'UA-80213386-1'

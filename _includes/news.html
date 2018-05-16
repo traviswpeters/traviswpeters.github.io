@@ -1,4 +1,21 @@
+{% if include.showtitle %}
+## News
+{% endif %}
+
 {% for news in site.data.news %}
-**({{ news.date | date: "%B %Y" }})**
+**({{ news.date | date: "%m/%Y" }})**
 {{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
+
+{% if include.num %}
+    {% if forloop.index >= include.num %}
+        {% break %}
+    {% endif %}
+{% else %}
+    {% comment %}<!-- show all news if no limiting "num" is specified. -->{% endcomment %}
+{% endif %}
 {% endfor %}
+
+{% if include.num %}
+{% comment %}<!-- provide a link to see more news if the news feed was limited to only "num" items. -->{% endcomment %}
+[*See more news...*](news.html)
+{% endif %}

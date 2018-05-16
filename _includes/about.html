@@ -1,14 +1,3 @@
-<div class="captioned-img left photo grid-item-photo" align="{{include.align}}">
-<a href="{{ include.url }}">
-{% if include.width %}
-<img src="{{ include.url }}" width="{{ include.width }}" />
-{% else if include.height %}
-<img src="{{ include.url }}" height="{{ include.height }}" />
-{% else %}
-<img src="{{ include.url }}" />
-{% endif %}</a>{% if include.caption %}{{ include.caption }}{% endif %}
-</div>
-
 Hi! I'm **{{ site.data.settings.author }}**, an n^th year PhD student at [Dartmouth](https://dartmouth.edu).
 I am advised by [Dr. David Kotz](http://www.cs.dartmouth.edu/~dfk/).
 

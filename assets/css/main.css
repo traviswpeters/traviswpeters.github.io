@@ -338,7 +338,8 @@ code {
 /* Tables */
 
 .travis-table table {
-	color:#333333;
+    margin: 0px auto;
+ 	color:#333333;
 	border-width: 1px;
 	border-color: #666666;
 	border-collapse: collapse;
