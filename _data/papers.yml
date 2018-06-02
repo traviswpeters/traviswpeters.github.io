@@ -9,7 +9,7 @@
   publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP'18) # TODO: Verify when the program is posted to ACM Digital Library
   date: June 2018
   pdf: papers/peters-hasp2018.pdf
-  slides:
+  slides: slides/bastion-sgx-hasp18-slides.pdf
   type: workshop
   internal: true
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
