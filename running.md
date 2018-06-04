@@ -26,8 +26,8 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 | 03/10/2018 | [Shamrock Shuffle](https://lebanonnh.gov/820/Results) (*/**)                                        | 5k             | 20:00      | 6:26            | |
 | 04/08/2018 | [Soup Kitchen 10k](http://nsks.org/racehome0.aspx) (*)                                              | 10k            | 41:08      | 6:38            | |
 | 05/13/2018 | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59      | 6:52            | Hilly. BEAUTIFUL!      |
-| 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         |            |                 | |
-| 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     |            |                 | |
+| 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         | 5:27       | 5:27            | |
+| 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     | 1:28:43    | 6:47            | Just perfect :)        |
 | 06/10/2018 | Flat N' Fast 5k (*)    | 5k        |                 |                  |    |
 | 06/23/2018 | Capital City 10k  (*)   | 10k        |                 |                  |    |
 | 06/24/2018 | Shaker 7 (**)    | 7 miles        |                 |                  |    |
