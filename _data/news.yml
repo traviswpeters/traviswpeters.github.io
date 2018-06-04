@@ -1,3 +1,7 @@
+- descr: "I presented our paper at the workshop on Hardware and Architectural Support for Security & Privacy (HASP'18) in Los Angeles, CA."
+  date: June 2018
+  show: true
+
 - descr: "Our paper, *BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX* with Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz, was accepted and will appear in HASP'18."
   date: May 2018
   show: true
