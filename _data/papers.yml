@@ -6,10 +6,11 @@
 
 - title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
-  publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP'18) # TODO: Verify when the program is posted to ACM Digital Library
+  publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP'18)
   date: June 2018
   pdf: papers/peters-hasp2018.pdf
   slides: slides/bastion-sgx-hasp18-slides.pdf
+  doi: http://dx.doi.org/10.1145/3214292.3214295 # https://dl.acm.org/citation.cfm?doid=3214292.3214295
   type: workshop
   internal: true
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
@@ -36,6 +37,7 @@
   publisher: In Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings'17)
   date: November 2017
   pdf: papers/kotz-safethings2017.pdf
+  doi: http://dx.doi.org/10.1145/3137003.3137012
   type: workshop
   internal: true
 
@@ -57,6 +59,7 @@
   slides: slides/sensys16-presentation.pdf
   code: https://github.com/AmuletGroup/amulet-project
   blog: https://amulet-project.org/
+  doi: http://dx.doi.org/10.1145/2994551.2994554
   internal: true
   # https://dl.acm.org/citation.cfm?id=2994554
   # note: 17.6% acceptance rate
@@ -69,6 +72,7 @@
   pdf: papers/hester-amulet-demo-sensys2016.pdf
   code: https://github.com/AmuletGroup/amulet-project
   blog: https://amulet-project.org/
+  doi: http://dx.doi.org/10.1145/2994551.2996527
   internal: true
 
 - title: "Poster: Security in IoT: What is IoT Security, Really?!"
