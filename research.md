@@ -13,6 +13,27 @@ Ultimately, all of this ties into work that myself and my group have been doing 
 Our focus is increasingly shifting towards a broader IoT security agenda.
 
 {% comment %}
+
+In response to the rise of the Internet of Things (IoT) - and all of the challenges
+that ensue - my advisor and I co-authored a paper that appeared in the proceedings of SafeThings (2017).
+In this paper, we describe many issues in the realization of IoT,
+and provide thoughts about how we - the community of security researchers - can
+proceed in addressing these issues.
+
+- Challenges/Life-Cycle Security, Privacy, and Safety of Things
+
+Many of the most critical issues in security are focused around the security
+of applications and user data - particularly sensitive data such as
+login credentials (usernames, passwords, emails),
+financial information (credit/debit card numbers, financial history), and
+personal health information (PHI) (data sent to/from electronic health records).  
+In response to these issues, we've addressed some of the most pressing
+open problem in our recent work.
+
+- Amulet
+- BASTION-SGX
+
+
 <!--
 Broadly speaking, I'm interested in ....
 More specifically, I'm interested in ...

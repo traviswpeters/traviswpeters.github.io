@@ -5,7 +5,7 @@ NOTE: funcky comments used to prevent jekyll's generator from inserting undesire
 ## Publications
 
 {% for pub in site.data.papers %}
-{% if pub.type == "conference" or pub.type == "journal" or pub.type == "workshop" or pub.type == "techreport" %}
+{% if pub.type == "conference" or pub.type == "journal" or pub.type == "workshop" or pub.type == "techreport" or pub.type == "patent" %}
 
 **{{pub.title}}**
 <!-- pdf -->{% if pub.pdf %}[[pdf]]({{pub.pdf}}){% endif %}
@@ -13,10 +13,9 @@ NOTE: funcky comments used to prevent jekyll's generator from inserting undesire
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
 <!-- blog -->{% if pub.blog %}[[blog]]({{pub.blog}}){% endif %}
 <br/>
-<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
+<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*, {{pub.date}}.<br/>{% endif %}
 <!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
 <!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
-
 
 {% endif %}
 {% endfor %}
@@ -32,7 +31,7 @@ NOTE: funcky comments used to prevent jekyll's generator from inserting undesire
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
 <!-- blog -->{% if pub.blog %}[[blog]]({{pub.blog}}){% endif %}
 <br/>
-<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*<br/>{% endif %}
+<!-- publisher -->{% if pub.publisher %}*{{pub.publisher}}*, {{pub.date}}.<br/>{% endif %}
 <!-- authors -->{% if pub.authors %}{{pub.authors}}<br/>{% endif %}
 <!-- note -->{% if pub.note %} *({{pub.note}})*{% endif %}
 

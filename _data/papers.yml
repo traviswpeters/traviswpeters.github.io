@@ -14,6 +14,14 @@
   internal: true
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
 
+- title: "System, apparatus and method for providing trusted input/output communications"
+  authors: Srikanth Varadarajan, Reshma Lal, Steven B. McGowan, Hakan Magnus Eriksson, Travis W. Peters
+  publisher: U.S. Patent Application US20180145951A1
+  date: May 2018
+  pdf: https://patents.google.com/patent/US20180145951A1/en
+  type: patent
+  internal: false
+
 - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
   # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
