@@ -44,3 +44,62 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 \*New Hampshire Grand Prix (NHGP)
 
 \*\*Upper Valley Running Series (UVRS)
+
+## Past Races
+
+### (#3) Via Marathon (03:09:27)
+*September 10, 2017 - [[results](https://results.chronotrack.com/event/results/event/event-32681)]*
+
+I wasn't thrilled with how the Maine Coast Marathon went so I thought I'd try to sneak in one more attempt at a BQ before the 2018 deadline (only about 4 months after Maine!).
+We found this marathon kind of by chance, but we read great things about it.
+
+WHAT A PERFECT DAY!
+Mary drove out to cheer me on (I had flown into Allentown, PA on my way back from a conference at UIUC).
+It was a beautiful course, there was perfect weather, and I had a great pack of guys to run with for about 10 miles.
+Everything was going according to plan;
+I started out running a little over 7-minute/mile pace to ease into the race;
+I settled into sub-7-minute pace after a few miles and felt great.
+I went through the half-marathon with a PR (1:30:10)
+
+Cramps and fatigue started setting in around mile 18 and it got pretty bad pretty fast.
+The wheels fell off at mile 21.
+I'm bummed I didn't go sub-3:05 but it was an awesome race.
+What do you do? All is well. Maybe next time :)
+
+### (#2) Maine Coast Marathon - My First (Accidental) Ultra Marathon... (3:14:55)
+*May 14, 2017 - [[results](https://my.racewire.com/results/33401/37916)]*
+
+A Travis, a noreaster, and a mistaken volunteer walk into a marathon...
+26.7 miles later, a Travis finishes with a 3:14:55 official time (3:11:00 for the actual 26.2).
+
+My training was much better this time around, albeit not perfect.
+It was a *realll* cold day, with high winds.
+Most of the race is run along the coast and we were quite exposed to the wind coming in off the ocean.
+I got to run a good portion of the race with Mary and Greg (the first half or so).
+Right around mile 12, a misinformed volunteer sent runners off-course, down a long road.
+Of course the road was down hill, so upon reaching the end --- where there was no official course markers --- we simply turned around and had to run back up hill.
+This really got in my head.
+I got a pretty bad side-ache shortly after this and it was struggling to draw in a full breath of air;
+it was about this time that I fell off Mary and Greg.
+In fact, Greg *really* took off at this point.
+Mary was up ahead and I was chasing her for a while... until all of a sudden she popped out of the woods and started running with me :)
+We ran together for a short while, but by this point, my pace had slowed and Mary pulled away.
+We all finished. We were all cold. We didn't even stick around to drink our free beer.
+We proceeded to go back to the hotel and destroy a couple of pizzas and lay around.
+What a day.
+
+### (#1) Burlington Marathon (DNF)
+*May 29, 2016 -  [[results](http://www.coolrunning.com/results/16/vt/May29_28thPe_set1.shtml)]*
+
+A day that can only be described as one heaping pile of humble pie.
+I went in cocky, injured, and under-trained.
+My days of competitive running in high school and college made me think running 7-minute miles would be no big thing.
+It was extremely hot (and shortly after I dropped out, the race was actually stopped due to dangerous temperatures).
+I overheated and almost dropped out by about 10k into the race.
+Some nice volunteers put ice on my neck and gave me water on the side of the road.
+After some minutes of sitting and cooling down and catching my breath, I decided to try to run some more.
+I slogged through the half-marathon mark and dropped out.
+
+Even though it was a terrible day for running (at least for me), I fell in love with the city of Burlington and its people.
+Out of the kindness of their hearts, people setup personal tables in their yards and gave away their own fruit and water and turned on sprinklers to try to help runners.
+Thank you Burlington, VT, for making such a hard day into such a beautiful memory.
