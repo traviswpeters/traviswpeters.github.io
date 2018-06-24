@@ -17,6 +17,21 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 * [2018 New Hampshire Grand Prix (NHGP)](http://uppervalleyrunningclub.org/2018-uvrs/)
 * [Cool Running Pace Calculator](http://www.coolrunning.com/engine/4/4_1/96.shtml)
 
+<!--
+
+## TODO: Calculators
+
+Option 1 (basic): add total distance, plus time (in hours, minutes, seconds) => avg. pace/mile
+    - bonus: extend to support kilometers, not just miles.
+Option 2: Add mile splits (mile 1, mile 2, ...) and have it sum them => total time, avg. pace/mile
+    - allow option to "select" a subset of the miles, and compute total time/avg. pace/mile just for the selected miles
+
+distance_in_miles = 5;
+hours = 0;
+minutes = 0;
+seconds = 0;
+total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
+
 ## 2018 Racing Schedule
 
 <div class="travis-table" markdown="1">
@@ -28,8 +43,8 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 | 05/13/2018 | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59      | 6:52            | Hilly. BEAUTIFUL!      |
 | 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         | 5:27       | 5:27            | |
 | 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     | 1:28:43    | 6:47            | Just perfect :)        |
-| 06/23/2018 | Capital City 10k  (*)   | 10k        |                 |                  |    |
-| 06/24/2018 | Shaker 7 (**)    | 7 miles        |                 |                  |    |
+| 06/23/2018 | [Capital City Classic 10k](http://www.iresultslive.com/?op=individual&eid=3216&refid=45910458)  (*) | 10k            | 40:06      | 6:28            | |
+| 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51      | 6:42            | |
 | 07/04/2018 | R/W/B 10k  (**)    | 10k        |                 |                  |    |
 | 07/21/2018 | Bill Luti 5-miler (*)   | 5 miles        |                 |                  |    |
 | 08/05/2018 | Run from the Law 5k (**)     | 5k        |                 |                  |    |
@@ -45,10 +60,10 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 
 \*\*Upper Valley Running Series (UVRS)
 
-## Past Races
+## Past Marathons
 
 ### (#3) Via Marathon (03:09:27)
-*September 10, 2017 - [[results](https://results.chronotrack.com/event/results/event/event-32681)]*
+*September 10, 2017 - [[results](https://results.chronotrack.com/event/results/event/event-32681)] [[strava](https://www.strava.com/activities/1178239615)]*
 
 I wasn't thrilled with how the Maine Coast Marathon went so I thought I'd try to sneak in one more attempt at a BQ before the 2018 deadline (only about 4 months after Maine!).
 We found this marathon kind of by chance, but we read great things about it.
@@ -61,23 +76,23 @@ I started out running a little over 7-minute/mile pace to ease into the race;
 I settled into sub-7-minute pace after a few miles and felt great.
 I went through the half-marathon with a PR (1:30:10)
 
-Cramps and fatigue started setting in around mile 18 and it got pretty bad pretty fast.
+Cramps and fatigue started setting in around mile 18 and it got pretty bad, pretty fast.
 The wheels fell off at mile 21.
 I'm bummed I didn't go sub-3:05 but it was an awesome race.
 What do you do? All is well. Maybe next time :)
 
 ### (#2) Maine Coast Marathon - My First (Accidental) Ultra Marathon... (3:14:55)
-*May 14, 2017 - [[results](https://my.racewire.com/results/33401/37916)]*
+*May 14, 2017 - [[results](https://my.racewire.com/results/33401/37916)] [[strava](https://www.strava.com/activities/987404829)]*
 
 A Travis, a noreaster, and a mistaken volunteer walk into a marathon...
 26.7 miles later, a Travis finishes with a 3:14:55 official time (3:11:00 for the actual 26.2).
 
 My training was much better this time around, albeit not perfect.
 It was a *realll* cold day, with high winds.
-Most of the race is run along the coast and we were quite exposed to the wind coming in off the ocean.
+About one-third of the race is run along the coast and we were quite exposed to the wind coming in off the ocean.
 I got to run a good portion of the race with Mary and Greg (the first half or so).
 Right around mile 12, a misinformed volunteer sent runners off-course, down a long road.
-Of course the road was down hill, so upon reaching the end --- where there was no official course markers --- we simply turned around and had to run back up hill.
+Of course the road was down hill, so upon reaching the end --- where there were no official course markers --- we simply turned around and had to run back up hill.
 This really got in my head.
 I got a pretty bad side-ache shortly after this and it was struggling to draw in a full breath of air;
 it was about this time that I fell off Mary and Greg.
