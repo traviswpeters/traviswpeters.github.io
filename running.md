@@ -12,10 +12,15 @@ Wanna chat or go for a run sometime? [Connect with me on Strava](https://www.str
 ## Links
 
 * [Travis on Strava](https://www.strava.com/athletes/traviswpeters)
+* [MAF Test Results](https://docs.google.com/spreadsheets/d/1KV7-Jj6z1sFdLgS2WxpIS7vLblWPOVAQLqPu0ZVeRNQ/edit?usp=sharing)
 * [Upper Valley Running Club - Race Results](http://uppervalleyrunningclub.org/race-results-page/?race_id=0&runner_id=171)
-* [2018 Upper Valley Running Series (UVRS)](http://uppervalleyrunningclub.org/2018-uvrs/)
-* [2018 New Hampshire Grand Prix (NHGP)](http://uppervalleyrunningclub.org/2018-uvrs/)
-* [Cool Running Pace Calculator](http://www.coolrunning.com/engine/4/4_1/96.shtml)
+    * [2018 Upper Valley Running Series (UVRS)](http://uppervalleyrunningclub.org/2018-uvrs/)
+    * [2018 New Hampshire Grand Prix (NHGP)](http://www.nhgp.org/)
+
+## Tools & Calculators
+
+* [Cool Running - Pace Calculator](http://www.coolrunning.com/engine/4/4_1/96.shtml) & [Active - Pace Calculator](https://www.active.com/fitness/calculators/pace) **(a little nicer UI)**
+* [Cool Running - Race Planner](http://www.coolrunning.com/engine/4/4_1/97.shtml)
 
 <!--
 
@@ -45,7 +50,7 @@ total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 | 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     | 1:28:43 (6:47)  |
 | 06/23/2018 | [Capital City Classic 10k](http://www.iresultslive.com/?op=individual&eid=3216&refid=45910458)  (*) | 10k            | 40:06 (6:28)    |
 | 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51 (6:42)    |
-| 07/04/2018 | R/W/B 10k  (**)    | 10k        |                 |                  
+| 07/04/2018 | [R/W/B 6.2](http://www.coolrunning.com/results/18/nh/Jul4_RedWhi_set1.shtml) (**)                   | 10k            | 41:38 (6:42)    |                  
 | 07/21/2018 | Bill Luti 5-miler (*)   | 5 miles        |                 |   
 | 08/05/2018 | Run from the Law 5k (**)     | 5k        |                 |    
 | 08/12/2018 | Epsom 4-miler (*)   | 4 miles        |                 |    
