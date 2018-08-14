@@ -4,6 +4,41 @@
 
 # Trying to make security cool by building solutions that are easy and... well... secure.
 
+#
+# In Progress.....
+#
+
+# - title: "CloseTalker: secure short-range ad hoc information exchange between wireless devices"
+#   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
+#   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
+#   # date: August 2018
+#   type: wip #conference
+#   internal: true
+#   inSubmission: true
+#   # url: papers/...
+
+# - title: "Proximity detection with single-antenna IoT devices"
+#   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
+#   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
+#   # date: August 2018
+#   type: wip # conference
+#   internal: true
+#   inSubmission: true
+#   # url: papers/...
+
+# - title: "Poster: Proximity detection with single-antenna IoT devices"
+#   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
+#   # publisher: The 24th Annual International Conference on Mobile Computing and Networking (MobiCom '18)
+#   # date: August 2018
+#   type: wip #poster
+#   internal: true
+#   inSubmission: true
+#   # url: papers/...
+
+#
+# 2018
+#
+
 - title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
   publisher: In Proceedings of the Workshop on Hardware and Architectural Support for Security and Privacy (HASP'18)
@@ -23,14 +58,14 @@
   type: patent
   internal: false
 
-- title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
-  authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
-  # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
-  # date: December 2017
-  type: wip # work-in-progress # conference
-  internal: true
-  inSubmission: true
-  # url: papers/...
+# - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
+#   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
+#   # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
+#   # date: December 2017
+#   type: wip # work-in-progress # conference
+#   internal: true
+#   inSubmission: true
+#   # url: papers/...
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
@@ -41,6 +76,10 @@
   type: workshop
   internal: true
 
+#
+# 2017
+#
+
 - title: "A Survey of Trustworthy Computing on Mobile & Wearable Systems"
   authors: Travis Peters
   publisher: Technical Report TR2017-823, Dartmouth College Computer Science Technical Report series
@@ -49,6 +88,10 @@
   type: techreport
   internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/
+
+#
+# 2016
+#
 
 - title: "Amulet: An Energy-Efficient, Multi-Application Wearable Platform"
   authors: Josiah Hester, Travis Peters, Tianlong Yun, Ronald Peterson, Joseph Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord, Ryan Halter, David Kotz, Jacob Sorber
@@ -81,6 +124,10 @@
   date: September 2016
   type: poster/demo
 
+#
+# 2015
+#
+
 - title: "Poster & Demo: Protecting Bluetooth Input from Malware"
   authors: Travis Peters, Srikanth Varadarajan, Pradeep Pappachan, Reshma Lal
   publisher: Intel Labs Open House
@@ -92,6 +139,10 @@
   publisher: Intel Labs Intern Poster Show
   date: August 2015
   type: poster
+
+#
+# 2014
+#
 
 - title: "Amulet: A secure architecture for mHealth applications for low-power wearable devices"
   authors: Andres Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun, Bhargav Golla, Kevin Freeman, Travis Peters, Jacob Sorber, Ryan Halter, David Kotz
@@ -110,6 +161,10 @@
   pdf: papers/peters-mobisys2014.pdf
   type: journal
   internal: true
+
+#
+# 2012
+#
 
 - title: "An Assessment of Single-Channel EMG Sensing for Gestural Input"
   authors: Travis Peters
