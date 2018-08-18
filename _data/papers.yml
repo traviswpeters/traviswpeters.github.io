@@ -13,7 +13,15 @@
 #   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
 #   # date: August 2018
 #   type: wip #conference
-#   internal: true
+#   inSubmission: true
+#   # url: papers/...
+
+# OLD???
+# - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
+#   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
+#   # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
+#   # date: December 2017
+#   type: wip # work-in-progress # conference
 #   inSubmission: true
 #   # url: papers/...
 
@@ -22,18 +30,15 @@
 #   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
 #   # date: August 2018
 #   type: wip # conference
-#   internal: true
 #   inSubmission: true
 #   # url: papers/...
 
 - title: "Poster: Proximity detection with single-antenna IoT devices (accepted)"
   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
-  publisher: In Proceedings of the International Conference on Mobile Computing and Networking - Posters (MobiCom'18' Posters)
+  publisher: In Proceedings of the International Conference on Mobile Computing and Networking - Posters (MobiCom'18 Posters)
   date: August 2018
   type: poster
-  internal: true
-  inSubmission: true
-  # url: papers/...
+  pdf: papers/pierson-snap-poster-mobicom2018.pdf
 
 #
 # 2018
@@ -47,7 +52,6 @@
   slides: slides/bastion-sgx-hasp18-slides.pdf
   doi: http://dx.doi.org/10.1145/3214292.3214295 # https://dl.acm.org/citation.cfm?doid=3214292.3214295
   type: workshop
-  internal: true
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
 
 - title: "System, apparatus and method for providing trusted input/output communications"
@@ -56,16 +60,6 @@
   date: May 2018
   pdf: https://patents.google.com/patent/US20180145951A1/en
   type: patent
-  internal: false
-
-# - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
-#   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
-#   # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
-#   # date: December 2017
-#   type: wip # work-in-progress # conference
-#   internal: true
-#   inSubmission: true
-#   # url: papers/...
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
@@ -74,7 +68,6 @@
   pdf: papers/kotz-safethings2017.pdf
   doi: http://dx.doi.org/10.1145/3137003.3137012
   type: workshop
-  internal: true
 
 #
 # 2017
@@ -86,7 +79,6 @@
   date: May 2017
   pdf: papers/peters-trusted-comp-tr2017.pdf
   type: techreport
-  internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2017-823/
 
 #
@@ -103,7 +95,6 @@
   code: https://github.com/AmuletGroup/amulet-project
   blog: https://amulet-project.org/
   doi: http://dx.doi.org/10.1145/2994551.2994554
-  internal: true
   # https://dl.acm.org/citation.cfm?id=2994554
   # note: 17.6% acceptance rate
 
@@ -116,7 +107,6 @@
   code: https://github.com/AmuletGroup/amulet-project
   blog: https://amulet-project.org/
   doi: http://dx.doi.org/10.1145/2994551.2996527
-  internal: true
 
 - title: "Poster: Security in IoT: What is IoT Security, Really?!"
   authors: Travis Peters, Srikanth Varadarajan, Reshma Lal
@@ -152,7 +142,6 @@
   pdf: papers/molina-markham-wmmadd2014.pdf
   code: https://github.com/AmuletGroup/amulet-project
   blog: https://amulet-project.org/
-  internal: true
 
 - title: "MobiSys 2014"
   authors: Travis Peters, Puneet Jain
@@ -160,7 +149,6 @@
   date: 2014
   pdf: papers/peters-mobisys2014.pdf
   type: journal
-  internal: true
 
 #
 # 2012
@@ -172,7 +160,6 @@
   date: September 2014
   pdf: papers/peters-emg-tr2014.pdf
   type: techreport
-  internal: true
   # url: http://www.cs.dartmouth.edu/reports/abstracts/TR2015-767/
 
 - title: "Computing Along the Big Long River"
@@ -181,4 +168,3 @@
   date: 2012
   pdf: papers/peters-umap2012.pdf
   type: journal
-  internal: true
