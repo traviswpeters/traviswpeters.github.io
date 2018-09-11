@@ -51,10 +51,7 @@ total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 | 06/23/2018 | [Capital City Classic 10k](http://www.iresultslive.com/?op=individual&eid=3216&refid=45910458)  (*) | 10k            | 40:06 (6:28)    |
 | 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51 (6:42)    |
 | 07/04/2018 | [R/W/B 6.2](http://www.coolrunning.com/results/18/nh/Jul4_RedWhi_set1.shtml) (**)                   | 10k            | 41:38 (6:42)    |                  
-| 07/21/2018 | Bill Luti 5-miler (*)   | 5 miles        |                 |   
-| 08/05/2018 | Run from the Law 5k (**)     | 5k        |                 |    
-| 08/12/2018 | Epsom 4-miler (*)   | 4 miles        |                 |    
-| 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)     | 26.2        |                 |    
+| 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)                                                         | 26.2           | DNF              |    
 | 10/07/2018 | Foliage Five  (**)    | 5 miles        |                 |
 | 10/14/2018 | CHaD Half Marathon (*)    | 13.1 miles        |                 |    
 | 11/03/2018 | Run for the Pie  (**)    | 5k        |                 |    
@@ -66,6 +63,67 @@ total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 \*\*Upper Valley Running Series (UVRS)
 
 ## Past Marathons
+
+
+### (#4) Via Marathon (DNF)
+*September 9th, 2018 -
+[[results](https://results.rmraces.live/Via-Marathon/events/2018/lehigh-valley-health-network-via-marathon/results)]
+[[strava](https://www.strava.com/activities/1830601967)]
+[[watch Travis and Mary run the Via Marathon 2018 - Strava Flyby](https://labs.strava.com/flyby/viewer/#1830601967?c=dr4qgvu7&z=D&t=1RbF_O&a=78QcbU9sGm0)]*
+
+It was Boston or Bust... and it was Bust.
+I was hopeful going into the race, but I was also on the fence as to whether or not I thought it was going to happen.
+The first 10 or so miles were good, though I could tell that my hip flexors were getting really tired, really fast.
+(Side Note: I ran with two awesome guys from State College through about mile 10 or 11;
+    they were marathon veterans, and were super nice and encouraging and made jokes about all sorts of stuff that we saw as we were running - shout out to them for making those miles enjoyable!)
+I decided I had banked some time and that I could back off a little around miles 11-13.
+My hip flexors were all but gone at that point.
+(Cramped? Stiff? Hard to say. All I know is that they weren't helping me pick my legs up anymore.)
+As a result, I started running more with my hips/butt, but developed sharp pains in my right hip pretty quick.
+(Some blips in the pace graph on Strava show me stopping to walk a little, trying to massage the muscles but keep moving.)
+I was able to run with the hip pain for miles 13-23, and I was on pace through about 18 miles (slowing down 17-18, but still on target with the time I had banked up front).
+I was pretty sure between 18-23 that I was slipping off pace and that a Boston Qualifier (BQ) wasn't going to happen.
+With my hip hurting, I began thinking: 'even if I finish, I'm going to be disappointed with the time, *and* I'm probably going to hurt my hip more;'
+    an increase in the sharpness in my hip ultimately led to me stopping at about mile 23.
+
+**Looking Forward:**
+I'm disappointed I didn't hit my goal of getting a BQ.
+I'm clearly still trying to figure out what I need to do in my training to get my body in a place to handle the distance/pace.
+Aerobically I felt pretty good, so I suspect that the problem is that I didn't have enough training/miles at a pace that was close enough to my goal marathon pace.
+Something to remember for next time...
+I still got my eye on you BQ. I'll see you another day...
+
+Even with all of the disappointment, there are so many things to take heart in:
+God answered so many prayers leading up to this day (e.g., my health, Mary's health, confidence, low temperatures on race day);
+I get to spend so much quality time with my best friend;
+I've learned *so much* in the past 6 months about running and training;
+I'm healthier (e.g., diet is better, lower blood pressure, lost weight, no injuries);
+I'm happier when I run;
+New Hampshire/Vermont is such a beautiful place to train (and PA was such a beautiful place to race!);
+We are so blessed to have these incredible bodies that can do so much;
+And volunteers at races are so amazing! They are generous and gracious and so supportive.
+I'm so grateful that I get to walk (run?) out this journey with so many amazing people and in so many great places.
+
+*"I have not failed. I've just found 10,000 ways that won't work."* - Thomas Edison
+
+(^^^) A quote M shared with me the day before the race (from her running notebook).
+Likewise, I realize that I have not failed (though it is hard in the short term to escape the feeling that I have).
+I have found (not quite 10,000, but) many ways that won't work; but I've also found many things that I think will work.
+As long as I'm healthy and have good people around me and continually trying,
+    I (we!) have so much opportunity ahead of us to find more 'ways that won't work' (and hopefully, ways that will work!).
+
+**Training Background:**
+It is worth noting that I began doing most of my training in accordance with the [Maffetone (MAF) Method](https://philmaffetone.com/what-is-maf/) in July.
+Basically, this equated to most of my runs being done with a HR monitor, where my HR was at or below 152 (my "MAF number").
+I was really enjoying progress (as gauged by [a couple of aerobic tests](https://docs.google.com/spreadsheets/d/1KV7-Jj6z1sFdLgS2WxpIS7vLblWPOVAQLqPu0ZVeRNQ/edit#gid=0).)
+But, it seemed that my aerobic progress stalled in mid or late July --- when we went back west for summer vacation --- and never really bounced back.
+Training runs regressed to 8:45/mile and slower for pretty much all of my training runs in August. Not sure why...
+    my best guesses is that it had something to do with a combination of stress from gearing up for my thesis proposal and the anticipation of the race.
+(It didn't help that it was unbelievably humid and warm here in the summer, but it was humid in June and July as well when I was making progress.)
+Overall, I really believe in this methodology though.
+I feel better and I got through the entirety of my most recent training cycle without any injuries.
+I think I just need more time and less stressful conditions (though, as a grad student, this is hard to avoid altogether...).
+I'm looking forward to the coming year where I plan to spend *many* months training according to the MAF Method.
 
 ### (#3) Via Marathon (03:09:27)
 *September 10, 2017 - [[results](https://results.chronotrack.com/event/results/event/event-32681)] [[strava](https://www.strava.com/activities/1178239615)]*
