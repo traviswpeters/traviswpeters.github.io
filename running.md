@@ -41,17 +41,17 @@ total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 
 <div class="travis-table" markdown="1">
 
-| Date       | Race                                                                                                | Distance       | Time (min/mile) |
-| :--------- | :-------------------------------------------------------------------------------------------------- | :------------- | :-------------- |
-| 03/10/2018 | [Shamrock Shuffle](https://lebanonnh.gov/820/Results) (*/**)                                        | 5k             | 20:00 (6:26)    |
-| 04/08/2018 | [Soup Kitchen 10k](http://nsks.org/racehome0.aspx) (*)                                              | 10k            | 41:08 (6:38)    |
-| 05/13/2018 | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59 (6:52)    |
-| 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         | 5:27  (5:27)    |
-| 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     | 1:28:43 (6:47)  |
-| 06/23/2018 | [Capital City Classic 10k](http://www.iresultslive.com/?op=individual&eid=3216&refid=45910458)  (*) | 10k            | 40:06 (6:28)    |
-| 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51 (6:42)    |
-| 07/04/2018 | [R/W/B 6.2](http://www.coolrunning.com/results/18/nh/Jul4_RedWhi_set1.shtml) (**)                   | 10k            | 41:38 (6:42)    |                  
-| 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)                                                         | 26.2           | DNF              |    
+| Date       | Race                                                                                                | Distance       | Time (min/mile)             |
+| :--------- | :-------------------------------------------------------------------------------------------------- | :------------- | :-------------------------- |
+| 03/10/2018 | [Shamrock Shuffle](https://lebanonnh.gov/820/Results) (*/**)                                        | 5k             | 20:00 (6:26)                |
+| 04/08/2018 | [Soup Kitchen 10k](http://nsks.org/racehome0.aspx) (*)                                              | 10k            | 41:08 (6:38)                |
+| 05/13/2018 | [Road to the Pogue](http://www.roadtothepogue.com/) (**)                                            | 6-7 miles (?!) | 47:59 (6:52)                |
+| 05/17/2018 | [Main Street Mile](https://www.hanoverrec.com/info/activities/program_details.aspx?ProgramID=30114) | 1 mile         | 5:27  (5:27)                |
+| 06/03/2018 | [Covered Bridges Half Marathon](http://cbhm.com/)                                                   | 13.1 miles     | 1:28:43 (6:47)              |
+| 06/23/2018 | [Capital City Classic 10k](http://www.iresultslive.com/?op=individual&eid=3216&refid=45910458)  (*) | 10k            | 40:06 (6:28)                |
+| 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51 (6:42)                |
+| 07/04/2018 | [R/W/B 6.2](http://www.coolrunning.com/results/18/nh/Jul4_RedWhi_set1.shtml) (**)                   | 10k            | 41:38 (6:42)                |                  
+| 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)                                                         | 26.2           | DNF (dropped out @ mile 23) |    
 | 10/07/2018 | Foliage Five  (**)    | 5 miles        |                 |
 | 10/14/2018 | CHaD Half Marathon (*)    | 13.1 miles        |                 |    
 | 11/03/2018 | Run for the Pie  (**)    | 5k        |                 |    
