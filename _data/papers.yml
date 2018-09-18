@@ -10,7 +10,7 @@
 
 # - title: "CloseTalker: secure short-range ad hoc information exchange between wireless devices"
 #   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
-#   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
+#   # publisher: In Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
 #   # date: August 2018
 #   type: wip #conference
 #   inSubmission: true
@@ -25,9 +25,11 @@
 #   inSubmission: true
 #   # url: papers/...
 
+
+
 # - title: "Proximity detection with single-antenna IoT devices"
 #   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
-#   # publisher: The 25th Annual International Conference on Mobile Computing and Networking (MobiCom '19)
+#   # publisher: In Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
 #   # date: August 2018
 #   type: wip # conference
 #   inSubmission: true
