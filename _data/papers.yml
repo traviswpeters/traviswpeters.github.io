@@ -16,24 +16,20 @@
 #   inSubmission: true
 #   # url: papers/...
 
-# OLD???
-# - title: "JamFi: secure short-range ad hoc information exchange between wireless devices"
-#   authors: Timothy Pierson, Travis Peters, Reza Rawassizadeh, Ronald Peterson, David Kotz
-#   # publisher: The International Symposium on Mobile Ad Hoc Networking and Computing (MobiHoc 2018)
-#   # date: December 2017
-#   type: wip # work-in-progress # conference
-#   inSubmission: true
-#   # url: papers/...
+#
+# 2019
+#
 
+- title: "Proximity detection with single-antenna IoT devices"
+  authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
+  publisher: Accepted for publication in Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
+  date: 2019
+  type: conference
+  # pdf: papers/pierson-snap-mobicom2019.pdf
 
-
-# - title: "Proximity detection with single-antenna IoT devices"
-#   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
-#   # publisher: In Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
-#   # date: August 2018
-#   type: wip # conference
-#   inSubmission: true
-#   # url: papers/...
+#
+# 2018
+#
 
 - title: "Poster: Proximity detection with single-antenna IoT devices (accepted)"
   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
@@ -41,10 +37,6 @@
   date: August 2018
   type: poster
   pdf: papers/pierson-snap-poster-mobicom2018.pdf
-
-#
-# 2018
-#
 
 - title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
