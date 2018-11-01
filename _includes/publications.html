@@ -8,6 +8,8 @@ NOTE: funcky comments used to prevent jekyll's generator from inserting undesire
 {% if pub.type == "conference" or pub.type == "journal" or pub.type == "workshop" or pub.type == "techreport" or pub.type == "patent" %}
 
 **{{pub.title}}**
+<!-- status (e.g., accepted) -->{% if pub.status %}<font color="red">({{pub.status}})</font>{% endif %}
+<!-- award -->{% if pub.award %}<font color="red">({{pub.award}})</font>{% endif %}
 <!-- pdf -->{% if pub.pdf %}[[pdf]]({{pub.pdf}}){% endif %}
 <!-- slides -->{% if pub.slides %}[[slides]]({{pub.slides}}){% endif %}
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
@@ -26,7 +28,9 @@ NOTE: funcky comments used to prevent jekyll's generator from inserting undesire
 {% if pub.type == "poster" or pub.type == "demo" or pub.type == "poster/demo" or pub.type == "wip" %}
 
 **{{pub.title}}**{% if pub.type == "wip" %}*{% endif %}
+<!-- award -->{% if pub.award %}<font color="red">({{pub.award}})</font>{% endif %}
 <!-- pdf -->{% if pub.pdf %}[[pdf]]({{pub.pdf}}){% endif %}
+<!-- poster -->{% if pub.poster %}[[poster]]({{pub.poster}}){% endif %}
 <!-- slides -->{% if pub.slides %}[[slides]]({{pub.slides}}){% endif %}
 <!-- code -->{% if pub.code %}[[code]]({{pub.code}}){% endif %}
 <!-- blog -->{% if pub.blog %}[[blog]]({{pub.blog}}){% endif %}

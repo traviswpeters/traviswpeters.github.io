@@ -22,21 +22,25 @@
 
 - title: "Proximity detection with single-antenna IoT devices"
   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
-  publisher: Accepted for publication in Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
+  publisher: In Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
   date: 2019
   type: conference
+  status: Accepted for Publication
   # pdf: papers/pierson-snap-mobicom2019.pdf
 
 #
 # 2018
 #
 
-- title: "Poster: Proximity detection with single-antenna IoT devices (accepted)"
+- title: "Poster: Proximity detection with single-antenna IoT devices"
   authors: Timothy Pierson, Travis Peters, Ronald Peterson, David Kotz
   publisher: In Proceedings of the International Conference on Mobile Computing and Networking - Posters (MobiCom'18 Posters)
   date: August 2018
   type: poster
   pdf: papers/pierson-snap-poster-mobicom2018.pdf
+  poster: papers/posters/mobicom2018_snap_poster.pdf
+  award: Best Poster Award
+# https://dl.acm.org/citation.cfm?id=3267751
 
 - title: "BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX"
   authors: Travis Peters, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan, David Kotz
