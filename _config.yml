@@ -4,6 +4,7 @@
 
 # Build settings
 markdown:            kramdown # use <TAG markdown="1"> to render markdown within HTML tags!
+mathjax:             true
 highlighter:         rouge
 permalink:           /blog/:title.html #none
 plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed]
