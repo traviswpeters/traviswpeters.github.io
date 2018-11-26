@@ -1,3 +1,16 @@
+- descr: "I am traveling to Morgan State University to spend time working with new THaW collaborators at the Center for Reverse Engineering and Assured Microelectronics (CREAM)."
+  date: December 2018
+  show: true
+  # http://www.iotcream.com/
+
+- descr: "Our paper, *Proximity detection with single-antenna IoT devices* with Timothy Pierson, Travis Peters, Ronald Peterson, and David Kotz, was accepted and will appear in MobiCom'19."
+  date: October 2018
+  show: true
+
+- descr: "I successfully completed my proposal and proposal defense!"
+  date: October 2018
+  show: true
+
 - descr: "I presented our paper at the workshop on Hardware and Architectural Support for Security & Privacy (HASP'18) in Los Angeles, CA."
   date: June 2018
   show: true
