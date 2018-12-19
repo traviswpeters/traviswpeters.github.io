@@ -12,15 +12,20 @@ My specific interest has been in searching for jobs jobs related to computer sci
 Academic Jobs
 * [Matt Welsh's Advice (3 Parts)](https://www.nyu.edu/projects/rzhang/Matt-Welsh-Advice.pdf)
 * [Guide to Answering Academic Job Interview Questions](https://iml.esm.rochester.edu/careers/wp-content/uploads/sites/3/2017/03/Guide-to-Answering-Academic-Job-Interview-Questions.pdf)
+* [What to Expect in a First-Round Interview](https://www.chronicle.com/article/What-to-Expect-in-a/128827)
 
 Industry Jobs
-*
+* [Cracking the Coding Interview (Resources)](http://www.crackingthecodinginterview.com/resources.html)
 
 ## Papers
 
 *Classic papers, some of my favorite reads (old and new), etc.*
 
 * [Reflections on Trusting Trust](https://www.archive.ece.cmu.edu/~ganger/712.fall02/papers/p761-thompson.pdf)
+
+## Concepts
+
+* A nice overview of processes in Linux - [All You Need To Know About Processes in Linux](https://www.tecmint.com/linux-process-management/)
 
 ## Other reading/watching
 
