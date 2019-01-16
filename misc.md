@@ -1,9 +1,16 @@
 ---
 layout: page
-title: Resources
+title: Miscellaneous Stuff
 ---
 
-This page is dedicated to an assortment of things (e.g., interesting papers, helpful resources).
+This page is dedicated to an assortment of things (e.g., interesting papers, helpful resources, fun writing, running).
+
+I have dedicated pages for some of these things:
+* [Projects]({{ site.github.url }}/projects.html)
+* [Running]({{ site.github.url }}/running.html)
+* [Blog]({{ site.github.url }}/blog.html)
+
+For general resources, which I find useful and refer back to often, see below. 
 
 ## Job Hunting
 

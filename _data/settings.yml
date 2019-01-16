@@ -48,11 +48,16 @@ menu:
 - {name: 'Home', url: ''}
 - {name: 'Teaching', url: 'teaching.html'}
 - {name: 'Research', url: 'research.html'}
-- {name: 'Projects', url: 'projects.html'}
 - {name: 'CV', url: 'vita.pdf'}
+- {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
 - {name: 'News', url: 'news.html'}
-- {name: 'Running', url: 'running.html'}
-- {name: 'Blog', url: 'blog.html'}
+- {name: 'Misc.', url: 'misc.html'}
+
+# funmenu:
+# - {name: 'Resources', url: 'resources.html'}
+# - {name: 'Projects', url: 'projects.html'}
+# - {name: 'Running', url: 'running.html'}
+# - {name: 'Blog', url: 'blog.html'}
 
 #
 # Change to true for Disqus comments
