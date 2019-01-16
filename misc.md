@@ -10,7 +10,7 @@ I have dedicated pages for some of these things:
 * [Running]({{ site.github.url }}/running.html)
 * [Blog]({{ site.github.url }}/blog.html)
 
-For general resources, which I find useful and refer back to often, see below. 
+For general resources, which I find useful and refer back to often, see below.
 
 ## Job Hunting
 
@@ -28,7 +28,8 @@ Industry Jobs
 
 *Classic papers, some of my favorite reads (old and new), etc.*
 
-* [Reflections on Trusting Trust](https://www.archive.ece.cmu.edu/~ganger/712.fall02/papers/p761-thompson.pdf)
+* [Reflections on Trusting Trust](https://www.archive.ece.cmu.edu/~ganger/712.fall02/papers/p761-thompson.pdf) - Ken Thompson
+* [Intel SGX Explained](https://eprint.iacr.org/2016/086.pdf) - Victor Costan and Srinivas Devadas
 
 ## Concepts
 
