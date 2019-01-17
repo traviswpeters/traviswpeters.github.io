@@ -25,9 +25,7 @@
   publisher: In Proceedings of the International Conference on Mobile Computing and Networking (MobiCom'19)
   date: 2019
   type: conference
-  pdf: https://www.cs.dartmouth.edu/~dfk/papers/pierson-snap.pdf
-  # status: Accepted for Publication
-  # pdf: papers/pierson-snap-mobicom2019.pdf
+  pdf: papers/pierson-snap-mobicom2019.pdf
 
 #
 # 2018
