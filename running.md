@@ -37,6 +37,19 @@ minutes = 0;
 seconds = 0;
 total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 
+## 2019 Racing Schedule
+
+<div class="travis-table" markdown="1">
+
+| Date       | Race                                                                                                | Distance       | Time (min/mile)             |
+| :--------- | :-------------------------------------------------------------------------------------------------- | :------------- | :-------------------------- |
+| 03/XX/2019 | [Shamrock Shuffle]() (*/**)                                                                         | 5k             |               |
+| 04/14/2019 | [Portsmouth Half Marathon]()                                                                        | 13.1 miles     |               |
+| 06/XX/2019 | (Pacing) [Covered Bridges Half Marathon](http://cbhm.com/)                                          | 13.1 miles     |               |
+| 06/22/2019 | [Catamount Ultra Marathon](https://www.catamountultra.com/)                                         | 50k            |               |
+
+</div>
+
 ## 2018 Racing Schedule
 
 <div class="travis-table" markdown="1">
@@ -52,9 +65,9 @@ total_time_in_seconds = (hours * 60 * 60) + (minutes * 60) + (seconds * 1); -->
 | 06/24/2018 | [Shaker 7](http://www.iresultslive.com/?op=summary&eid=3313) (**)                                   | 7 miles        | 46:51 (6:42)                |
 | 07/04/2018 | [R/W/B 6.2](http://www.coolrunning.com/results/18/nh/Jul4_RedWhi_set1.shtml) (**)                   | 10k            | 41:38 (6:42)                |                  
 | 09/09/2018 | [Via Marathon](http://www.viamarathon.org/)                                                         | 26.2           | DNF (dropped out @ mile 23) |    
-| 10/07/2018 | Foliage Five  (**)    | 5 miles        |                 |
-| 10/14/2018 | CHaD Half Marathon (*)    | 13.1 miles        |                 |    
-| 11/03/2018 | Run for the Pie  (**)    | 5k        |                 |    
+| 10/07/2018 | Foliage Five  (**)                                                                                  | 5 miles        | 36:43 (7:20)                |
+| 10/14/2018 | CHaD Half Marathon (*)                                                                              | 13.1 miles     | 1:42:52 (7:49)              |    
+| 11/03/2018 | Run for the Pie  (**)                                                                               | 5k             | 21:16 (7:03)                |    
 
 </div>
 
