@@ -311,18 +311,18 @@ footer * {
 
 pre,
 code {
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-radius: 3px;
     background-color: #eee;
-    padding: 1px 3px;
+    padding: 1px 10px;
     font-family: "Andale Mono", "Source Code Pro", sans-serif;
 }
 
 .highlight .lineno {
     color: #aaa;
     display:inline-block;
-    padding: 0 5px;
-    border-right:1px solid #ccc;
+    padding: 0 0px;
+    border-right:0.5px solid #ccc;
 }
 
 .highlight pre code {
