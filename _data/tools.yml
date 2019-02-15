@@ -1,35 +1,46 @@
 # My go-to tools.
 
-- name: "Dropbox" 
-  desc: ""
-  url: 
+#
+# Tools for Research/Groups
+#
 
-- name: "Evernote" 
-  desc: ""
-  url: 
+- name: "Mendeley"
+  desc: "Mendeley is a free reference manager and academic social network that can help you organize your research, collaborate with others online, and discover the latest research."
+  url: https://mendeley.com
 
-- name: "Flux" 
-  desc: ""
-  url: 
+- name: "BibBase"
+  desc: "An easy way to set up and maintain a scientific publications page."
+  url: https://bibbase.org
 
-- name: "Hex Fiend" 
+- name: "Dropbox"
+  desc: ""
+  url:
+
+- name: "Evernote"
+  desc: ""
+  url:
+
+#
+# Dev Tools
+#
+
+- name: "Hex Fiend"
   desc: "Hex Fiend is a fast and clever hex editor for macOS."
   url: http://ridiculousfish.com/hexfiend/
   github: https://github.com/ridiculousfish/HexFiend/
 
-- name: "Homebrew" 
+- name: "Homebrew"
   desc: "The missing package manage for OS X."
   url: https://brew.sh/
 
-- name: "iTerm" 
+- name: "iTerm"
   desc: ""
-  url: 
+  url:
 
-- name: "Zotero" 
-  desc: ""
-  url: 
+
+
 
 #template
-# - name: "" 
+# - name: ""
 #   desc: ""
-#   url: 
+#   url:
