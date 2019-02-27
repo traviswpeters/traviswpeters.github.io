@@ -20,6 +20,7 @@ Academic Jobs
 * [Matt Welsh's Advice (3 Parts)](https://www.nyu.edu/projects/rzhang/Matt-Welsh-Advice.pdf)
 * [Guide to Answering Academic Job Interview Questions](https://iml.esm.rochester.edu/careers/wp-content/uploads/sites/3/2017/03/Guide-to-Answering-Academic-Job-Interview-Questions.pdf)
 * [What to Expect in a First-Round Interview](https://www.chronicle.com/article/What-to-Expect-in-a/128827)
+* [How to Succeed at a Teaching Demo](https://www.chronicle.com/article/How-to-Succeed-at-a-Teaching/245696?cid=wcontentgrid_hp_9)
 
 Industry Jobs
 * [Cracking the Coding Interview (Resources)](http://www.crackingthecodinginterview.com/resources.html)
