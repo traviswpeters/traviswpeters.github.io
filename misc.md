@@ -32,6 +32,7 @@ Industry Jobs
 * [Reflections on Trusting Trust](https://www.archive.ece.cmu.edu/~ganger/712.fall02/papers/p761-thompson.pdf) - Ken Thompson
 * [Intel SGX Explained](https://eprint.iacr.org/2016/086.pdf) - Victor Costan and Srinivas Devadas
 * [IoT Security & Privacy Reading List](https://github.com/Beerkay/IoTResearch) - list maintained by Z. Berkay Celik and Xiaolei Wang
+* [Potential Science of Security paper sources for calendar year 2018](https://cps-vo.org/sos/papercompetition/sources-2018)
 
 ## Concepts
 
