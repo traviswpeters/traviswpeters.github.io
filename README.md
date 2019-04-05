@@ -1,3 +1,5 @@
+*updating for traviswpeters...*
+
 Personal website built on [Jekyll](http://jekyllrb.com/),
 inspired by the [Much-Worse](http://jekyllthemes.org/themes/much-worse/) and [Lagrange](https://lenpaul.github.io/Lagrange/) Jekyll themes,
 and freely hosted in [Github pages](https://pages.github.com/).
