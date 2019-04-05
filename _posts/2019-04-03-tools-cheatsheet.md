@@ -5,10 +5,49 @@ title: Tools Cheatsheet
 *Tired of hunting for good cheatsheets. Made one that is useful to me.*
 
 # Python
-...
+
+```bash
+brew install python
+
+# virtual environments
+pip install virtualenv
+virtualenv env
+source env/bin/activate
+
+# data science
+pip install pandas scipy scikitlearn statsmodels sympy matplotlib jupyter
+```
 
 # Git
-...
+
+- Book: https://git-scm.com/book/en/v2  
+- Guided Tutorial: http://gitimmersion.com
+- Illustrations/Cheatsheet: https://sentheon.com/blog/git-cheat-sheet.html#.XIfXZy2ZPUI
+
+Convert a subfolder into its own Git repository (then make it a submodule)  
+https://gist.github.com/korya/9047870
+
+Working with large files:  
+- https://github.com/git-lfs/git-lfs
+- https://sabicalija.github.io/git-lfs-intro/
+
+```bash
+git lfs
+```
+
+Cleaning up Git history
+
+```bash
+# cleaning git history (e.g., files bigger than 100 MB - GitHub’s limit)  
+bfg --strip-blobs-bigger-than 100M FOLDER/
+```
+
+Pull Requests
+
+```bash
+# create a pull request which you may include into an email
+git request-pull  
+```
 
 # Vagrant
 
@@ -22,6 +61,20 @@ vagrant up --debug
 ```bash
 vagrant box list
 vagrant ssh-config
+```
+
+```bash
+# list VirtualBox VMs
+VBoxManage list vms
+# list host USB devices
+VBoxManage list usbhost
+
+# see VM info
+VBoxManage showvminfo NAME
+# add a USB filter
+VBoxManage usbfilter add 1 --target NAME --name "TWP: Apple Inc. Bluetooth USB Host Controller" --vendorid 0x05ac --productid 0x8289 --manufacturer "Apple Inc."
+# remove the USB filter
+VBoxManage usbfilter remove 0 --target NAME
 ```
 
 ### Vagrant quick-start guide
@@ -80,8 +133,13 @@ end
 # Docker
 
 ```bash
+# setup
+brew install docker
 docker run hello-world
+```
 
+```bash
+# utility commands
 docker container ls [-a]
 docker image ls
 docker ps -a
@@ -98,6 +156,15 @@ docker run -it busybox sh
 docker rm $(docker ps -a -q -f status=exited)
 #vs.
 docker container prune
+```
+
+#### EXTRAS
+
+Use repo2docker to create a container based on all dependencies within a repository:
+```bash
+pip install jupyter-repo2docker
+repo2docker [repo-link]
+# => automatically creates a new docker image, installs all the required dependencies, and finally, launches a jupyter server in the environment
 ```
 
 # SSH
@@ -135,4 +202,35 @@ ssh-copy-id -i ~/.ssh/myvagrantkey_rsa4096 user@host
 
 # Test the key by trying to ssh into the machine now.
 ssh -i ~/.ssh/myvagrantkey_rsa4096 user@host
+```
+
+Example:
+```bash
+# Setting up SSH on Kali Vagrant Box w/ Custom SSH Keys
+# -----------------------------------------------------
+# Given the nature of this VM (a hacker tool that lots of hackers use...) I don't want default access with default key.
+# After bring up the machine once with the 'ssh-keys/pentest-env' identity, I create my own key-pair, install it, and
+# remove 'ssh-keys/pentest-env' from ~/.ssh/authorized_keys (so it is not possible to ssh in with that identity)
+# Edit these steps to your liking.
+
+# Create your key and stash it in this repository on the host. (NOTE: only stash the key(s) here if the repository is private!)
+mkdir -p ssh-keys && cd ssh-keys
+ssh-keygen -m PEM -t rsa -b 4096 -f myvagrantkey_rsa4096 -C "vagrant//traviswp@gmail.com"
+
+# Install your key (NOTE: you may need to edit the port) & log in:
+ssh-copy-id -i myvagrantkey_rsa4096 root@127.0.0.1 -p 2222  
+ssh -i myvagrantkey_rsa4096 root@127.0.0.1 -p 2222  
+
+# Remove the pentest-env key from the guest's set of authorized keys:
+sed -i.bak '/pentest-env/d' ~/.ssh/authorized_keys  
+
+# Vagrantfile
+# -----------
+# By setting the private_key_path as it is below, vagrant will try to ssh into the guest using those private keys in that order.
+# The last key is the DEFAULT key for vagrant boxes (it shouldn't actually give you access to this VM...).
+# The second to last key is the DEFAULT key for the pentest box (it should no longer grant you ssh access to the VM if you followed the steps above).
+# THe first key is THE NEW SSH KEY, which should be the only ssh key that grants access to the VM now.
+kali.ssh.username = 'root'
+kali.ssh.private_key_path = ["ssh-keys/myvagrantkey_rsa4096", "ssh-keys/pentest-env", "~/.vagrant.d/insecure_private_key"]
+kali.ssh.insert_key = false # DO NOT INSERT A NEW KEY/REMOVE DEFAULT (INSECURE) KEY
 ```
