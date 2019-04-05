@@ -4,46 +4,46 @@ title: Blog
 ---
 
 <div style="text-align: center" markdown="1">
-[[toggle compact view]]({{ site.github.url }}/blog-compact.html)
-</div>
 
-<div style="text-align: center; margin-bottom: 50px;" markdown="1">
-*I'm still in the process of porting old notes/posts to this site. Check back soon!*
-</div>
+<ul style="text-align: center" class="posts">
+  {% for post in site.posts %}
 
-{% for post in site.posts %}
-<div class="posts">
-  <h1>
-    <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
-  </h1>
-  {% comment %}
-  <!-- {% if post.image.teaser %}
-    <a class="teaser" href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image.teaser }}"></a>
-  {% endif %} -->
-  {% endcomment %}
-  <p class="posts-teaser-text">
-    {{ post.content | markdownify | strip_html | truncate: 350 }} <a href="{{ site.github.url }}{{ post.url }}">>> Read more</a>
-  </p>
-  <span class="post-date">
-    <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }} -
-    <i class="fa fa-clock-o" aria-hidden="true"></i>{% include read-time.html %}
-  </span>
-</div>
-{% endfor %}
+    {% unless post.next %}
+      <h3>{{ post.date | date: '%Y' }}</h3>
+    {% else %}
+      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+      {% if year != nyear %}
+        <h3>{{ post.date | date: '%Y' }}</h3>
+      {% endif %}
+    {% endunless %}
+
+    <li itemscope>
+      <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
+      <p class="post-date"><span><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%B %-d" }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span></p>
+    </li>
+
+  {% endfor %}
+</ul>
 
 {% comment %}
-<!-- Pagination links -->
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-button pagination-active" href="{{ site.github.url }}{{ paginator.next_page_path }}" class="next">Older</a>
-  {% else %}
-    <span class="pagination-button">Older</span>
-  {% endif %}
+<!--
+From the https://github.com/gchauras/much-worse-jekyll-theme
 
-  {% if paginator.previous_page %}
-    <a class="pagination-button pagination-active" href="{{ site.baseurl }}{{ paginator.previous_page_path }}">Newer</a>
-    {% else %}
-      <span class="pagination-button">Newer</span>
+<ul class="listing">
+{% for post in site.posts %}
+  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
+  {% if year != y %}
+    {% assign year = y %}
+    <li class="listing-seperator">{{ y }}</li>
   {% endif %}
-</div>
+  <li class="listing-item">
+    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+    <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>
+-->
 {% endcomment %}
+
+</div>
