@@ -1,7 +1,7 @@
-title: Travis Peters
+title: Travis W. Peters
 tagline: all things work and play
 description: A website dedicated to my academic work, hobbies, and other ramblings.
-author: Travis Peters
+author: Travis W. Peters
 
 #
 # Personal Settings
@@ -15,7 +15,7 @@ email: traviswp@cs.dartmouth.edu
 # travis.w.peters.gr@dartmouth.edu
 
 handles:
-  github: traviswp
+  github: traviswpeters
   gitlab: traviswpeters
   linkedin: traviswpeters # old: travis-peters-3513512a
   twitter: traviswpeters
@@ -31,7 +31,7 @@ handles:
 # - {icon: '', type: '', link: ''}
 social:
 - {icon: 'envelope', type: 's', link: 'mailto:traviswp@cs.dartmouth.edu'}
-- {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswp'}
+- {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswpeters'}
 # - {icon: 'gitlab', type: 'b', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 - {icon: 'linkedin',  type: 'b', link: 'https://www.linkedin.com/in/traviswpeters'}
 - {icon: 'twitter',  type: 'b', link: 'https://twitter.com/traviswpeters'}
@@ -65,8 +65,8 @@ menu:
 #
 # Change to true for Disqus comments
 #
-disqus:
-  comments: false
-  disqus_shortname: 'https-travispeters-github-io'
+# disqus:
+#   comments: false
+#   disqus_shortname: 'https-travispeters-github-io'
 
 google-ID: 'CHANGEME' #'UA-80213386-1'
