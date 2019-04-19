@@ -1,7 +1,10 @@
-# My WebApp & WebSec Cheatsheet
+---
+layout: post
+title: My WebApp & WebSec Cheatsheet
+---
 
 Miscellaneous snippets, readings, tools, and tips.
-Pretty Node.js and Javascript-specific since these are my preferred tools for webdev.
+This is pretty Node.js and Javascript-specific since these are my preferred tools for webdev.
 
 ## Create a Node.js project
 
