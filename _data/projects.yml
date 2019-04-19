@@ -14,11 +14,11 @@
 # Personal
 #
 
-- title: "Personal Website (traviswp.github.io)"
+- title: "Personal Website (traviswpeters.github.io)"
   desc: "A personal website dedicated to professional and non-professional stuff: 'All things work and play.'
          Specifically, this project demonstrates how I use Jekyll and GitHub Pages to build and host my personal website;
          this website is primarily used to manage and make available assets such as published papers, class project papers, recreational projects and writing, and professional documents such as my CV and teaching statement."
-  code: https://github.com/traviswp/traviswp.github.io
+  code: https://github.com/traviswpeters/traviswpeters.github.io
   show: true
 
 - title: "My Vita"
@@ -28,7 +28,7 @@
          The source code, therefore, is probably not the most beautiful document, but I do like it for the time being!
          The link that follows will take you to a current copy of my CV that is included in the repository."
   code: https://github.com/traviswp/resume
-  pdf: https://traviswp.github.io/vita.pdf
+  pdf: https://traviswpeters.github.io/vita.pdf
   show: true
 
 - title: "Dot Files (private repository currently; available upon request)"

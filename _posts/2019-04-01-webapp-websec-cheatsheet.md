@@ -122,7 +122,7 @@ While I prefer working on the functional aspects of things like websites and web
 * *NOTE: Margin-Border-Padding (content) Padding-Border-Margin - these are the "boxes" around content and their order; think "MBP" - "Most Beautiful Player" (since we are talking about styles and "looks" of a webpage, why not use a similar mnemonic to remember the order).*
 * [x] [Masonry Layout](https://masonry.desandro.com/layout.html)
 
-See Grids: [https://traviswp.github.io/toys/grids/](https://traviswp.github.io/toys/grids/)
+See Grids: [https://traviswpeters.github.io/toys/grids/](https://traviswpeters.github.io/toys/grids/)
 
 ## Security Reading
 

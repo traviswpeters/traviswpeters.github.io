@@ -469,7 +469,7 @@ usage: ./leviathan6 <4 digit code>
 A program that expects a 4-digit code just screams "brute force me"!
 So we can try this approach.
 
-As in one of the [Bandit challenges](https://traviswp.github.io/bandit.html#level-25),
+As in one of the [Bandit challenges](https://traviswpeters.github.io/bandit.html#level-25),
     we can put together a concise brute-force pipeline.
 Our pipeline will construct all possibilities of 4-digit codes using bash expansions.
 For example, `{0..9}` expands to 0, 1, 2, ..., 9.
@@ -713,7 +713,7 @@ And to be honest, write-ups are useful - there are some things that we can't fig
 And at that point, it is helpful to learn from others and their experience.
 That was my hope - that my write-ups would provide insights that you the reader might not have had initially.
 I hope that there was *something* you found useful - perhaps you learned a new tool or a new trick or a new way of thinking about how to solve a problem.
-If you have comments for me, feel free to send me a message ([my home page](https://traviswp.github.io/) makes various communication options apparent).
+If you have comments for me, feel free to send me a message ([my home page](https://traviswpeters.github.io/) makes various communication options apparent).
 
 Onto more challenges!
 

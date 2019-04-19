@@ -4,7 +4,13 @@ title: Tools Cheatsheet
 ---
 *Tired of hunting for good cheatsheets. Made one that is useful to me.*
 
+
+
+
+
+
 # Python
+All things Python, pip, virtual environments, etc.
 
 ```bash
 brew install python
@@ -16,7 +22,77 @@ source env/bin/activate
 
 # data science
 pip install pandas scipy scikitlearn statsmodels sympy matplotlib jupyter
+
+# upgrade pip
+python -m pip install --upgrade pip
+
+# list python modules in current environment
+pip list
+# see package metadata
+pip show requests
+# search for new python modules
+pip search requests oauth
+# uninstall python modules
+pip uninstall certifi
+
+# capture requirements installed in the current environment
+pip freeze > requirements.txt
+# install requirements specified in a requirements file
+pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
+
+pip uninstall -r requirements.txt -y
 ```
+
+#### virtualenv
+
+```python
+
+```
+
+#### pipenv
+Pipenv has virtual environment management built in so that you have a single tool for your package management.
+
+```bash
+# install pipenv... and then forget about pip!
+pip install pipenv  
+# - Pipfile (replaces requirements.txt)
+# - Pipfile.lock (enables deterministic builds)
+
+pipenv --venv
+pipenv --where
+```
+
+https://pipenv.readthedocs.io/en/latest/advanced/#configuration-with-environment-variables
+
+```bash
+# Spawn a shell in a virtual environment to isolate the development of this app.
+# This will create a virtual environment if one doesn’t already exist.
+# Pipenv creates all your virtual environments in a default location.
+pipenv shell
+
+pipenv install flask==0.12.1
+pipenv install numpy
+pipenv install -e git+https://github.com/requests/requests.git#egg=requests
+pipenv install pytest --dev
+
+# Create/update your Pipfile.lock, which you’ll never need to (and are never meant to) edit manually.
+# You should always use the generated file.
+pipenv lock
+
+# This tells Pipenv to ignore the Pipfile for installation and use what’s in the Pipfile.lock.
+# Given Pipfile.lock, Pipenv will create the exact same environment you had when you ran pipenv lock
+# (sub-dependencies and all).
+pipenv install --ignore-pipfile
+
+pipenv uninstall numpy
+pipenv uninstall --all
+```
+
+
+
+
+
 
 # Git
 
@@ -48,6 +124,11 @@ Pull Requests
 # create a pull request which you may include into an email
 git request-pull  
 ```
+
+
+
+
+
 
 # Vagrant
 
@@ -130,6 +211,10 @@ end
 
 *NOTE: The Vagrantfile should be the parent of wherever your `ssh-keys/` directory is located.*
 
+
+
+
+
 # Docker
 
 ```bash
@@ -157,8 +242,48 @@ docker rm $(docker ps -a -q -f status=exited)
 #vs.
 docker container prune
 ```
+#### Creating Images
 
-#### EXTRAS
+We first need a `Dockerfile`.
+
+Example:
+
+```bash
+# our base image
+FROM python:3-onbuild
+
+# specify the port number the container should expose
+EXPOSE 5000
+
+# run the application
+CMD ["python", "./app.py"]
+```
+
+Then, instruct `docker` to build an image from the `Dockerfile`.
+```bash
+# The docker build command does the heavy-lifting of creating a Docker image from a Dockerfile.
+docker build -t twpeters/catnip .
+# + run, creating a port mapping.
+docker run -p 5000:5000 twpeters/catnip
+```
+
+#### Deploying to AWS
+
+Before we can deploy our app to AWS we must publish our image on a registry which can be accessed by AWS.
+There are many different [Docker registries](https://aws.amazon.com/ecr/) you can use
+ (you can even [host your own](https://docs.docker.com/registry/deploying/)).
+For now, let's use [Docker Hub](https://hub.docker.com) to publish the image. To publish, just type
+
+```bash
+# Log in to a Docker registry
+docker login
+
+# publish the image to the Docker Hub registry
+docker push twpeters/catnip
+
+```
+
+#### Extras
 
 Use repo2docker to create a container based on all dependencies within a repository:
 ```bash
@@ -166,6 +291,18 @@ pip install jupyter-repo2docker
 repo2docker [repo-link]
 # => automatically creates a new docker image, installs all the required dependencies, and finally, launches a jupyter server in the environment
 ```
+
+#### Docker & Data Science
+
+```bash
+# Download and run:
+docker pull datascienceworkshops/data-science-at-the-command-line
+docker run --rm -it datascienceworkshops/data-science-at-the-command-line
+
+# To mount a volume and enable shared files (e.g., current directory) between container and host.
+docker run --rm -it -v`pwd`:/data datascienceworkshops/data-science-at-the-command-line
+```
+
 
 # SSH
 

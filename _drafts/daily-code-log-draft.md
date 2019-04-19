@@ -166,7 +166,7 @@ Perhaps I'll implement a break-out page for each person that I do in-depth learn
 
     The tribute page uses some recent knowledge I've obtained about CSS Grid for page layouts.
 
-**Tribute Project Link:** [https://traviswp.github.io/toys/tribute/](https://traviswp.github.io/toys/tribute/).
+**Tribute Project Link:** [https://traviswpeters.github.io/toys/tribute/](https://traviswpeters.github.io/toys/tribute/).
 
 ## R1D2: January 4, 2018 (Th)
 
