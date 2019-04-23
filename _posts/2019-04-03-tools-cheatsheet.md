@@ -20,11 +20,15 @@ pip install virtualenv
 virtualenv env
 source env/bin/activate
 
+# upgrade pip
+python -m pip install --upgrade pip
+
 # data science
 pip install pandas scipy scikitlearn statsmodels sympy matplotlib jupyter
 
-# upgrade pip
-python -m pip install --upgrade pip
+# ------------------------------------------------------ #
+# --- other commands (list, show, search, uninstall) --- #
+# ------------------------------------------------------ #
 
 # list python modules in current environment
 pip list
@@ -35,6 +39,10 @@ pip search requests oauth
 # uninstall python modules
 pip uninstall certifi
 
+# ---------------------------------------------------------- #
+# --- saving/installing virtual environment dependencies --- #
+# ---------------------------------------------------------- #
+
 # capture requirements installed in the current environment
 pip freeze > requirements.txt
 # install requirements specified in a requirements file
@@ -44,13 +52,55 @@ pip install --upgrade -r requirements.txt
 pip uninstall -r requirements.txt -y
 ```
 
-#### virtualenv
+Avoid version conflicts with Virtual Environments:
+```bash
+# Virtual Environments ("virtualenvs") keep your project dependencies separated.
+# They help you avoid version conflicts between packages and different versions
+# of the Python runtime.
 
-```python
+# Before creating & activating a virtualenv: `python` and `pip` map to the system
+# version of the Python interpreter (e.g. Python 2.7)
+$ which python
+/usr/local/bin/python
 
+# Let's create a fresh virtualenv using another version of Python (Python 3):
+$ python3 -m venv ./venv
+
+# A virtualenv is just a "Python environment in a folder":
+$ ls ./venv
+bin      include    lib      pyvenv.cfg
+
+# Activating a virtualenv configures the current shell session to use the python
+# (and pip) commands from the virtualenv folder instead of the global environment:
+$ source ./venv/bin/activate
+
+# Note how activating a virtualenv modifies your shell prompt with a little note
+# showing the name of the virtualenv folder:
+(venv) $ echo "wee!"
+
+# With an active virtualenv, the `python` command maps to the interpreter binary
+# *inside the active virtualenv*:
+(venv) $ which python
+/Users/dan/my-project/venv/bin/python3
+
+# Installing new libraries and frameworks with `pip` now installs them *into the
+# virtualenv sandbox*, leaving your global environment (and any other virtualenvs)
+# completely unmodified:
+(venv) $ pip install requests
+
+# To get back to the global Python environment, run the following command:
+(venv) $ deactivate
+
+# (See how the prompt changed back to "normal" again?)
+$ echo "yay!"
+
+# Deactivating the virtualenv flipped the `python` and `pip` commands back to
+# the global environment:
+$ which python
+/usr/local/bin/python
 ```
 
-#### pipenv
+#### Better? `pipenv`
 Pipenv has virtual environment management built in so that you have a single tool for your package management.
 
 ```bash
@@ -61,11 +111,11 @@ pip install pipenv
 
 pipenv --venv
 pipenv --where
-```
 
-https://pipenv.readthedocs.io/en/latest/advanced/#configuration-with-environment-variables
+#
+# https://pipenv.readthedocs.io/en/latest/advanced/#configuration-with-environment-variables
+#
 
-```bash
 # Spawn a shell in a virtual environment to isolate the development of this app.
 # This will create a virtual environment if one doesn’t already exist.
 # Pipenv creates all your virtual environments in a default location.
@@ -88,9 +138,6 @@ pipenv install --ignore-pipfile
 pipenv uninstall numpy
 pipenv uninstall --all
 ```
-
-
-
 
 
 
@@ -370,4 +417,15 @@ sed -i.bak '/pentest-env/d' ~/.ssh/authorized_keys
 kali.ssh.username = 'root'
 kali.ssh.private_key_path = ["ssh-keys/myvagrantkey_rsa4096", "ssh-keys/pentest-env", "~/.vagrant.d/insecure_private_key"]
 kali.ssh.insert_key = false # DO NOT INSERT A NEW KEY/REMOVE DEFAULT (INSECURE) KEY
+```
+
+
+# Data
+
+```bash
+pip install csvkit
+# OR brew info csvkit
+cat FILE | csvlook
+cat FILE | csvstat
+csvjson FILE --indent 4
 ```
