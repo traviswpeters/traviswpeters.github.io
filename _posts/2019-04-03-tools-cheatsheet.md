@@ -264,6 +264,17 @@ end
 
 # Docker
 
+**Get Images:**
+* [Docker Hub](https://hub.docker.com/search?q=&type=image)
+    * [Alpine Linux](https://alpinelinux.org) is often recommended as a base image. 
+
+**Recommended Resources:**
+* [*THE* Docker Cheatsheet :)](https://github.com/wsargent/docker-cheat-sheet)
+* [Getting Started with Docker in Development](https://rock-it.pl/getting-started-with-docker-in-development/)
+* [10 Docker Image Security Best Practices](https://snyk.io/blog/10-docker-image-security-best-practices/)
+* [How to Write Excellent Dockerfiles](https://rock-it.pl/how-to-write-excellent-dockerfiles/)
+* [Building Better Docker Images](https://jonathan.bergknoff.com/journal/building-better-docker-images/)
+
 ```bash
 # setup
 brew install docker
@@ -272,11 +283,16 @@ docker run hello-world
 
 ```bash
 # utility commands
+docker info
 docker container ls [-a]
 docker image ls
 docker ps -a
+# find images in a registry (default: Docker registry)
+docker search <image-name>
+# push an image to a registry
+docker push NAME
 
-# start the container
+# pull a pre-built image
 docker pull busybox
 # start the container and run a command [rm the container after exit]
 docker run busybox COMMAND [--rm]
@@ -289,6 +305,9 @@ docker rm $(docker ps -a -q -f status=exited)
 #vs.
 docker container prune
 ```
+#### Docker Security Notes
+Containers are realized through a combination of **namespaces**, **control groups (cgroups)**.
+
 #### Creating Images
 
 We first need a `Dockerfile`.
@@ -314,6 +333,32 @@ docker build -t twpeters/catnip .
 docker run -p 5000:5000 twpeters/catnip
 ```
 
+#### Dockerfile
+The `Dockerfile` is a script with instructions on how to create a docker image.
+The image is then used to create running containers.
+
+**Example:**
+
+```bash
+# file: Dockerfile
+FROM alpine:3.1
+
+ADD build.sh /usr/bin/
+RUN build.sh
+
+ADD test.sh /tmp/
+RUN /tmp/test.sh
+
+ENTRYPOINT [ "sass" ]
+```
+
+```bash
+# file: .dockerignore
+.git/
+node_modules/
+dist/
+```
+
 #### Deploying to AWS
 
 Before we can deploy our app to AWS we must publish our image on a registry which can be accessed by AWS.
@@ -324,10 +369,9 @@ For now, let's use [Docker Hub](https://hub.docker.com) to publish the image. To
 ```bash
 # Log in to a Docker registry
 docker login
-
 # publish the image to the Docker Hub registry
 docker push twpeters/catnip
-
+#...
 ```
 
 #### Extras
@@ -428,4 +472,10 @@ pip install csvkit
 cat FILE | csvlook
 cat FILE | csvstat
 csvjson FILE --indent 4
+
+# randomly sample dataset
+seq 10000 | sample -r 1% -d 1000 -s 5 | jq -c '{line: .}'
+
+# show just the first 79 characters (columns) of each line
+head -n 10 data/wiki.html | cut -c1-79
 ```
