@@ -51,6 +51,10 @@ Industry Jobs
 * My Ph.D. advisor, [David Kotz](https://www.cs.dartmouth.edu/~dfk/),
     details many (invaluable) thoughts on [writing research papers](https://www.cs.dartmouth.edu/~dfk/writing.html).
 
+## Data
+
+* [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf), Hadley Wickahm (RStudio)
+
 ## Presentations
 
 * [How to Prepare and Present a Good Talk - Advice for Conference Presenters](https://www.ifte.de/infos/dissertation/presentationAdvices.pdf)

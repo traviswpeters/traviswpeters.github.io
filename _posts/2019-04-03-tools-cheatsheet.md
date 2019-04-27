@@ -264,16 +264,10 @@ end
 
 # Docker
 
-**Get Images:**
-* [Docker Hub](https://hub.docker.com/search?q=&type=image)
-    * [Alpine Linux](https://alpinelinux.org) is often recommended as a base image. 
+***To minimize duplicate info, I keep a collection of Docker information & resources here:***
+- ***https://github.com/traviswpeters/dockerfiles***
 
-**Recommended Resources:**
-* [*THE* Docker Cheatsheet :)](https://github.com/wsargent/docker-cheat-sheet)
-* [Getting Started with Docker in Development](https://rock-it.pl/getting-started-with-docker-in-development/)
-* [10 Docker Image Security Best Practices](https://snyk.io/blog/10-docker-image-security-best-practices/)
-* [How to Write Excellent Dockerfiles](https://rock-it.pl/how-to-write-excellent-dockerfiles/)
-* [Building Better Docker Images](https://jonathan.bergknoff.com/journal/building-better-docker-images/)
+The intention of this page/section is really just to provide a quick command cheatsheet/reference.
 
 ```bash
 # setup
@@ -298,13 +292,23 @@ docker pull busybox
 docker run busybox COMMAND [--rm]
 #
 docker run -it busybox sh
+```
 
-# Docker will keep exited containers around until you remove them;
-# to clean-up all "exited" containers:
+Docker will keep exited containers around until you remove them; to clean-up all "exited" containers:
+
+```bash
 docker rm $(docker ps -a -q -f status=exited)
 #vs.
 docker container prune
 ```
+Similarly, to view "dangling" images (images with no tags) & clean up images:
+```bash
+# view them...
+docker images -f "dangling=true"
+# and remove them...
+docker rmi $(docker images -f "dangling=true" -q)
+```
+
 #### Docker Security Notes
 Containers are realized through a combination of **namespaces**, **control groups (cgroups)**.
 
