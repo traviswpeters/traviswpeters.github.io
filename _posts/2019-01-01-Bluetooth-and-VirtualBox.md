@@ -105,25 +105,3 @@ Other recommended resources detailing useful VirtualBox Virtual Machine configur
 * [Accessing shared folders](http://www.howtogeek.com/75705/access-shared-folders-in-a-virtualbox-ubuntu-11.04-virtual-machine/)
 * [Installing Users and Group Management Tool on Ubuntu 14.04](http://ubuntuhandbook.org/index.php/2014/05/install-users-groups-management-tool-ubuntu1404/)
 * [Install Fedora 18 on VirtualBox](http://www.zealfortechnology.com/2013/01/install-fedora-18-on-virtualbox-with.html)
-
-
-## Commands - Getting Started
-
-```bash
-# see which Bluetooth devices (controllers) are available to use
-hcitool dev
-
-# create an interactive connection with a specific Bluetooth device
-gatttool -i hci1 --primary -b MAC
-
-# HCI Command — READ Link Keys (used to generate tmp keys for OTA sessions)
-#           <ogf>  <ocf> <args>
-hcitool cmd 0x03 0x000D 0x01
-
-# Linux — BT Device Info (+ Link Keys?) — <BDADDR> is the address of your connected BT controller; within the directory are all of its known devices.
-/var/lib/bluetooth/<BDADDR>/
-
-# Android — btsnoop_hci.log stored at /storage/emulated/legacy/btsnoop_hci.log — fetch it by running:
-adb pull /storage/emulated/legacy/btsnoop_hci.log .
-# => See also: https://developer.android.com/studio/command-line/adb
-```
