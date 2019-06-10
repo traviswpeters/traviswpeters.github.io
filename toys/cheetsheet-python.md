@@ -1,10 +1,14 @@
 ---
-layout: post
-title: Python Cheatsheet
+
 ---
 
 # Python
 All things Python, pip, virtual environments, etc.
+
+- A summary of the language and features:  
+https://medium.com/fintechexplained/everything-about-python-from-beginner-to-advance-level-227d52ef32d2  
+https://towardsdatascience.com/a-data-scientist-should-know-at-least-this-much-python-oop-d63f37eaac4d
+
 
 ```bash
 brew install python
@@ -187,4 +191,79 @@ Now, when I switch in/out of this directory, my virtual environment is automatic
 ```bash
 echo layout_pipenv >> .envrc
 direnv allow .
+```
+
+
+
+# Misc.
+
+### [Bit Manipulation](https://wiki.python.org/moin/BitManipulation)
+
+```python
+def testBit(int_type, offset):
+    """testBit() returns a nonzero result, 2**offset, if the bit at 'offset' is one."""
+    mask = 1 << offset
+    return(int_type & mask)
+
+def setBit(int_type, offset):
+    """setBit() returns an integer with the bit at 'offset' set to 1."""
+    mask = 1 << offset
+    return(int_type | mask)
+
+def clearBit(int_type, offset):
+    """clearBit() returns an integer with the bit at 'offset' cleared."""
+    mask = ~(1 << offset)
+    return(int_type & mask)
+
+def toggleBit(int_type, offset):
+    """toggleBit() returns an integer with the bit at 'offset' inverted, 0 -> 1 and 1 -> 0."""
+    mask = 1 << offset
+    return(int_type ^ mask)
+```
+
+Bit Fields (E.g., for communication protocols)
+
+```python
+import ctypes
+c_uint8 = ctypes.c_uint8
+
+class Flags_bits( ctypes.LittleEndianStructure ):
+    _fields_ = [
+                ("logout",     c_uint8, 1 ),  # asByte & 1
+                ("userswitch", c_uint8, 1 ),  # asByte & 2
+                ("suspend",    c_uint8, 1 ),  # asByte & 4
+                ("idle",       c_uint8, 1 ),  # asByte & 8
+               ]
+
+class Flags( ctypes.Union ):
+    _anonymous_ = ("bit",)
+    _fields_ = [
+                ("bit",    Flags_bits ),
+                ("asByte", c_uint8    )
+               ]
+
+flags = Flags()
+flags.asByte = 0x2  # ->0010
+
+print( "logout: %i"      % flags.bit.logout   )
+# `bit` is defined as anonymous field, so its fields can also be accessed directly:
+print( "logout: %i"      % flags.logout     )
+print( "userswitch:  %i" % flags.userswitch )
+print( "suspend   :  %i" % flags.suspend    )
+print( "idle  : %i"      % flags.idle       )
+
+# OUTPUT: 
+# logout: 0
+# logout: 0
+# userswitch:  1
+# suspend   :  0
+# idle  : 0
+```
+
+
+### [Efficient way to swap bytes in python (StackOverflow Post)](https://stackoverflow.com/questions/36096292/efficient-way-to-swap-bytes-in-python)
+```python
+# original = bytes
+original = bytearray([1,2,3,4])
+original[0::2], original[1::2] = original[1::2], original[0::2]
 ```
