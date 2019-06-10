@@ -94,6 +94,7 @@ VBoxManage usbfilter remove 0 --target NAME
 ```
 
 Examples:
+
 ```bash
 VBoxManage usbfilter add 0 --target cbe4bde4-2a95-459f-a96e-0684e3cd74d7 --name "TWP: Apple Inc. Bluetooth USB Host Controller" --vendorid 0x05ac --productid 0x8289 --manufacturer "Apple Inc."
 
@@ -128,6 +129,7 @@ vagrant ssh
 ### Vagrant SSH
 
 In the **Terminal:**
+
 ```bash
 cd /path/to/project \
   && mkdir -p ssh-keys && cd ssh-keys \
@@ -195,7 +197,9 @@ docker rm $(docker ps -a -q -f status=exited)
 #vs.
 docker container prune
 ```
+
 Similarly, to view "dangling" images (images with no tags) & clean up images:
+
 ```bash
 # view them...
 docker images -f "dangling=true"
@@ -224,6 +228,7 @@ CMD ["python", "./app.py"]
 ```
 
 Then, instruct `docker` to build an image from the `Dockerfile`.
+
 ```bash
 # The docker build command does the heavy-lifting of creating a Docker image from a Dockerfile.
 docker build -t twpeters/catnip .
@@ -275,6 +280,7 @@ docker push twpeters/catnip
 #### Extras
 
 Use repo2docker to create a container based on all dependencies within a repository:
+
 ```bash
 pip install jupyter-repo2docker
 repo2docker [repo-link]
@@ -330,6 +336,7 @@ ssh -i ~/.ssh/myvagrantkey_rsa4096 user@host
 ```
 
 Example:
+
 ```bash
 # Setting up SSH on Kali Vagrant Box w/ Custom SSH Keys
 # -----------------------------------------------------
@@ -362,41 +369,49 @@ kali.ssh.insert_key = false # DO NOT INSERT A NEW KEY/REMOVE DEFAULT (INSECURE) 
 
 # Contribute to Open Source Software (Git)
 
-Based on:   
+- Fork a project (so you have your own copy).
 
-https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
+- Clone your forked version of the project repository.
 
-https://www.digitalocean.com/community/tutorials/how-to-rebase-and-update-a-pull-request
-
-https://www.digitalocean.com/community/tutorials/how-to-maintain-open-source-software-projects
-
-https://www.digitalocean.com/community/tutorials/how-to-use-git-a-reference-guide
-
-1. Fork a project (so you have your own copy).
-2. Clone your forked version of the project repository.
 ```bash
 $ git clone URL-TO-FORKED-REPO
 ```
-3. Move into the repository and create a new branch.  
+
+- Move into the repository and create a new branch.  
+
 ```bash
-$ git branch new-branch
-$ git checkout new-branch
-#vs.
 $ git checkout -b new-branch
 ```
-4. Make some changes locally & commit them.
-5. Push your changes to YOUR remote repository. *(You may choose to wait to push to your remote until AFTER you sync your repository with the upstream. See steps 6-8.)*
-6. Add the original repository as an `upstream` repository.
+
+- Make some changes locally & commit them.
+- Push your changes to YOUR remote repository.  
+*(You may choose to wait to push to your remote until AFTER you sync your repository with the upstream. See the following steps.)*
+
+- Add the original repository as an `upstream` repository.
+
 ```bash
 $ git remote add upstream URL-TO-ORIGINAL-REPO
 ```
-7. Sync your local repository with the `upstream` repository.
+
+- Sync your local repository with the `upstream` repository.
+
 ```bash
 $ git fetch upstream
 # -> commits to the master branch will be stored in a local branch called upstream/master.
 $ git checkout master
 $ git merge upstream/master
-# -> merge any changes that were made in the original repository’s master branch with our local master branch
+# -> merge any changes that were made in the original repository’s master branch 
+#    with our local master branch
 ```
-8. Push your changes to YOUR remote repository.
-9. Create a Pull Request. *(Navigate to your forked repository, and press the “New pull request” button on your left-hand side of the page)*
+
+- Push your changes to YOUR remote repository.
+- Create a Pull Request.  
+*(Navigate to your forked repository, and press the “New pull request” button on your left-hand side of the page)*
+
+***References:***
+
+- https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github  
+- https://www.digitalocean.com/community/tutorials/how-to-rebase-and-update-a-pull-request  
+- https://www.digitalocean.com/community/tutorials/how-to-maintain-open-source-software-projects  
+- https://www.digitalocean.com/community/tutorials/how-to-use-git-a-reference-guide
+
