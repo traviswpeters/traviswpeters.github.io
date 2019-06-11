@@ -620,7 +620,19 @@ UUID_characteristic (0x2803)   # denotes the start of a characteristic (encapsul
 UUID_cccd (0x2902)             # denotes the special Client Characteristic Configuration Descriptor
 ```
 
-UUIDs specifically related to the Heart Rate Service: 
+**Service UUIDs**
+
+```
+0x1800 # Generic Access - generic infomration about the device; all characteristics are read-only
+       # > Characteristics: Device Name, Appearance
+
+0x1801 # Generic Attribute 
+       # > Characteristics: Service Changed [Indicate ONLY], CCCD [RW]  
+
+0x180A # Device Information
+```
+
+**UUIDs specifically related to the Heart Rate Service:**
 
 ```
 UUID_hr_service (0x0x180D)
