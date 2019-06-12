@@ -19,6 +19,7 @@ A collection of Bluetooth (and BLE) reading, tutorials, projects, tools, etc..
 - [Bluetooth: ATT and GATT](https://epxx.co/artigos/bluetooth_gatt.html)
 - [BLE Advertising Primer](https://www.argenox.com/bluetooth-low-energy-ble-v4-0-development/library/a-ble-advertising-primer/) *(Includes a nice breakdown of Apple's iBeacon payload format)* --- Included in Argenox's [BLE Library](https://www.argenox.com/library/bluetooth-low-energy/).
 - [Turning a Raspberry Pi 3 into a Bluetooth Low Energy peripheral (2016)](https://tobiastrumm.de/2016/10/04/turning-a-raspberry-pi-3-into-a-bluetooth-low-energy-peripheral/)
+- [Understanding & Optimizing BLE Throughput](https://github.com/chrisc11/ble-guides/blob/master/ble-throughput.md)
 - [GATT Services and Characteristics - Chapter 4 of Getting Started with Bluetooth Low Energy by Davidson et al. (2015)](https://www.oreilly.com/library/view/getting-started-with/9781491900550/ch04.html)
 - [Introduction to Bluetooth Low Energy (2014)](https://learn.adafruit.com/introduction-to-bluetooth-low-energy/introduction)
 - [Bluetooth Recon With BlueZ (2014)](https://blog.ice9.us/2014/02/bluetooth-recon-with-bluez.html)

@@ -196,6 +196,97 @@ direnv allow .
 
 # Misc.
 
+### [Working with Binary Data in Python](https://www.devdungeon.com/content/working-binary-data-python)
+
+#### Little Helpful Things...
+
+```python
+# Getting the size of a file
+import os
+file_length_in_bytes = os.path.getsize("test.txt")
+print(file_length_in_bytes)
+```
+
+```python
+# Find out what byte order your system uses
+import sys
+print("Native byteorder: ", sys.byteorder)
+```
+
+```python
+# diff.py - Do two files match?
+# Exercise: Rewrite this code to compare the files part at a time so it
+# will not run out of RAM with large files.
+import sys
+
+with open(sys.argv[1], 'rb') as file1, open(sys.argv[2], 'rb') as file2:
+    data1 = file1.read()
+    data2 = file2.read()
+
+if data1 != data2:
+    print("Files do not match.")
+else:
+    print("Files match.")
+```
+
+```python
+# find_ascii_in_binary.py - Identify ASCII characters in binary files
+
+import sys
+from functools import partial
+
+chunk_size = 1
+with open(sys.argv[1], 'rb') as in_file:    
+    for data in iter(partial(in_file.read, chunk_size), b''):
+        x = int.from_bytes(data, byteorder='big')
+        if (x > 64 and x < 91) or (x > 96 and x < 123) :
+            sys.stdout.write(chr(x))
+        else:
+            sys.stdout.write('.')
+```
+
+#### Bytes to Integer
+
+```python
+# Create an int from bytes. Default is unsigned.
+some_bytes = b'\x00\xF0'
+i = int.from_bytes(some_bytes, byteorder='big')
+print(i)
+```
+
+#### Hexadecimal
+
+```python
+# Starting with a hex string you can unhexlify it to bytes
+deadbeef = binascii.unhexlify('DEADBEEF')
+print(deadbeef)
+
+# Given raw bytes, get an ASCII string representing the hex values
+hex_data = binascii.hexlify(b'\x00\xff')  # Two bytes values 0 and 255
+
+# The resulting value will be an ASCII string but it will be a bytes type
+# It may be necessary to decode it to a regular string
+text_string = hex_data.decode('utf-8')  # Result is string "00ff"
+print(text_string)
+```
+
+#### Format Strings
+
+*Format strings can be helpful to visualize or output byte values. Format strings require an integer value so the byte will have to be converted to an integer first.*
+
+```python
+a_byte = b'\xff'  # 255
+i = ord(a_byte)   # Get the integer value of the byte
+
+bin = "{0:b}".format(i) # binary: 11111111
+hex = "{0:x}".format(i) # hexadecimal: ff
+oct = "{0:o}".format(i) # octal: 377
+
+print(bin)
+print(hex)
+print(oct)
+```
+
 ### [Bit Manipulation](https://wiki.python.org/moin/BitManipulation)
 
 ```python
