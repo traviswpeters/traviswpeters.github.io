@@ -284,29 +284,96 @@ accepted (e.g.: `plugins/*:src/main.c`).
 <div id='tools-and-commands'/>
 ## Getting Started: Bluetooth Tools & Commands
 
+### Stored Data on the Linux Bluetooth Host
+
+[Where are bluetooth link keys stored in Ubuntu 14.10?](https://askubuntu.com/a/565977) 
+*(you need root to read/write these files)*. 
+
+```bash
+# ADAPTER_ADDR is the address of your connected BT controller. 
+# Within the directory are all of its known devices (e.g., REMOTE_DEVICE_ADDR/).
+#
+# - info contains keys, device metadata, etc. 
+# - attributes file contains cached GATT service information.
+
+/var/lib/bluetooth/ADAPTER_ADDR/REMOTE_DEVICE_ADDR/info
+/var/lib/bluetooth/ADAPTER_ADDR/REMOTE_DEVICE_ADDR/attributes
+```
+
+For example:
+
+```
+$ cat /var/lib/bluetooth/60\:03\:08\:8F\:51\:0F/FC\:18\:3C\:85\:88\:4F/info
+[IdentityResolvingKey]
+Key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (scrubbed)
+
+[SlaveLongTermKey]
+Key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (scrubbed)
+Authenticated=2
+EncSize=16
+EDiv=0
+Rand=0
+
+[General]
+Name=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (scrubbed)
+Appearance=0x0040
+AddressType=public
+SupportedTechnologies=BR/EDR;LE;
+Trusted=false
+Blocked=false
+Services=00001800-0000-1000-8000-00805f9b34fb;00001801-0000-1000-8000-00805f9b34fb;00001805-0000-1000-8000-00805f9b34fb;0000180a-0000-1000-8000-00805f9b34fb;0000180f-0000-1000-8000-00805f9b34fb;7905f431-b5ce-4e99-a40f-4b1e122d00d0;89d3502b-0f36-433a-8ef4-c502ad55f8dc;9fa480e0-4967-4542-9390-d343dc5d04ae;d0611e78-bbb4-4591-a5f8-487910ae4366;
+
+[ServiceChanged]
+CCC_LE=2
+```
+
+### Research Tools/Commands
+
+```
+./bt --scan --connect
+./bt --scan --knownonly
+./bt --parse --all
+```
+
+### Tools
+
 ```bash
 # start the bluetooth service + see which BT devices are available
 systemctl start bluetooth.service && hcitool dev
+
+# create an interactive connection with a specific Bluetooth device
+gatttool -i hci1 --primary -b MAC
+# Ex. gatttool -i hci1 -b 00:22:D0:33:1E:0F -I
+
+# Android — btsnoop_hci.log stored at /storage/emulated/legacy/btsnoop_hci.log — fetch it by running:
+adb pull /storage/emulated/legacy/btsnoop_hci.log .
+# => See also: https://developer.android.com/studio/command-line/adb
+```
+
+#### HCITOOL
+
+```bash
 # see which Bluetooth devices (controllers) are available to use
 hcitool dev
 
 # perform a scan for BLE devices on controller 'hci0'
 hcitool -i hci0 lescan
 
-# create an interactive connection with a specific Bluetooth device
-gatttool -i hci1 --primary -b MAC
-# Ex. gatttool -i hci1 -b 00:22:D0:33:1E:0F -I
-
 # HCI Command — READ Link Keys (used to generate tmp keys for OTA sessions)
 #           <ogf>  <ocf> <args>
-hcitool cmd 0x03 0x000D 0x01
 
-# Linux — BT Device Info (+ Link Keys?) — <BDADDR> is the address of your connected BT controller; within the directory are all of its known devices.
-/var/lib/bluetooth/<BDADDR>/
+hcitool cmd 0x03 0x000d 0x01   # Read Stored Link Key (are 1+ keys stored in controller?)
+hcitool cmd 0x04 0x0001        # Read Local Version Information 
+hcitool cmd 0x04 0x0009        # Read bd_addr
+hcitool cmd 0x08 0x0003        # LE Read Local Supported Features
+hcitool cmd 0x08 0x0005 ADDR   # LE Set Random Address
+```
 
-# Android — btsnoop_hci.log stored at /storage/emulated/legacy/btsnoop_hci.log — fetch it by running:
-adb pull /storage/emulated/legacy/btsnoop_hci.log .
-# => See also: https://developer.android.com/studio/command-line/adb
+```
+# On Kali, write btmon capture session to file; read back in; view in hex. 
+btmon --write logs/testscan.log
+btmon -r logs/testscan.log
+xxd logs/testscan.log
 ```
 
 ```bash
@@ -386,9 +453,7 @@ Here is an illustration of the relationship between services, characteristics, d
 These terms are defined and discussed below. 
 This figure is presented here as a reference. 
 
-<center>
 ![](figs/BLE-ATT-and-GATT.png) 
-</center>
 
 ### ATT & GATT
 ATT is a wire application protocol, while GATT dictates how ATT is employed in service composition.
@@ -539,6 +604,159 @@ NOTEs:
 GATT knows that CCC belongs to a particular characteristic because its handle falls into the range between one characteristic and the next.
 And it knows it is CCCD because of the distinctive UUID (0x2902).
 
+## BLE State Machines
+
+BLUETOOTH SPECIFICATION Version 4.2 [Vol 6, Part B] page 30
+
+Link Layer State Machine & State Machine States:
+
+![](figs/BLE-LL-state-machine.png)
+
+- **Standby**–device does not transmit or receive any packets.
+- **Advertising**–a device will transmit packets on advertising channels and possible listen for (and respond to) responses triggered by advertishing channel packets. 
+- **Scanning**–a device will listen on advertising channels for advertising packets.
+- **Initiating**–a device will listen for advertishing channel packets from a specific device(s) and respond to these packets to initiate a connection with another device. 
+- **Connection**–the connection state is entered from either the initiating state or the advertising state; a device in this state is known as being in a connection. 
+
+***Within the Connection State, two roles are defined:***
+
+- **Master Role**–assumed when a device enters a connection from the initiating state. The Link Layer in the Master Role will communicate with a device in the Slave Role and defines the timings of transmissions.
+- **Slave Role**–assumed when a device enters a connection from the advertising state. The Link Layer in the Slave Role will communicate with a single device in the Master Role.
+
+> The Link Layer may optionally support multiple state machines. 
+
+> For instance, the Link Layer in the Connection State may operate in the Master Role and Slave Role at the same time.
+
+> The Link Layer in the Connection State shall have at most one connection to another Link Layer in the Connection State.
+
+## BLE Packets
+
+BLUETOOTH SPECIFICATION Version 4.2 [Vol 6, Part B] page 32
+
+> The **bit ordering** when defining fields within the packet or Protocol Data Unit (PDU) in the Link Layer specification follows the **Little Endian** format. The following rules apply:
+> 
+> - The Least Significant Bit (LSB) corresponds to $b0$
+> - The LSB is the first bit sent over the air.
+> - In illustrations, **the LSB is shown on the left side**.
+>
+> Furthermore, data fields defined in the Link Layer, such as the PDU header fields, shall be transmitted with the LSB first. For instance, a 3-bit parameter X=3 is sent as:
+>
+> 	$b0b1b2$ = 110
+>
+> Over the air, 1 is sent first, 1 is sent next, and 0 is sent last. This is shown as 110 in the specification.
+> Binary field values specified in this specification that follow the format 10101010b (e.g., pre-amble in Section 2.1.1 or advertising channel Access Address in Section 2.1.2) are written with the MSB to the left.
+
+## BLE Addresses
+
+BLUETOOTH SPECIFICATION Version 4.2 [Vol 6, Part B] page 33
+
+[Sanitized IEEE OUI Data (oui.txt)](https://linuxnet.ca/ieee/oui/)
+
+> Devices are identified using a device address. Device addresses may be either a **public** device address or a **random** device address. A public device address and a random device address are both **48 bits in length**.
+
+> If a device is using **Resolvable Private Addresses**, it shall also have an Identity Address that is either a Public Device Address or Random Static Device Address type.
+
+<!--![](figs/BT_public_address.png)-->
+
+![](figs/BLE-address-types-0.png)
+![](figs/BLE-address-types-1.png)
+![](figs/BLE-address-types-2.png)
+![](figs/BLE-address-types-3.png)
+
+The random device address may be of either of the following two sub-types:
+
+- Static address
+- Private address
+
+These addresses are 48-bits randomly-generated bits, with the exception of the 2 most significant bits.
+
+#### Private Device Address Generation
+
+```
+LSB             MSB
+---------------- 11 static device address
+---------------- 00 non-resolvable address
+--hash---prand-- 10 resolvable private address
+```
+
+The resolvable private address is the most interesting type.
+`prand` is 24-bits and includes the two most significant bits. 
+Within `prand`, the two MSBs must be `10`. 
+The remaining (22) bits of `prand` cannot be all 0 or all 1. 
+`hash` is also 24-bits, and is generated using the random address function, $ah(k,r)$ 
+(defined in [Vol 3] Part H, Section 2.2.2), 
+where $k$ is set to the (Local/Peer) Identity Resolving Key (IRK) and $r$ is set to the value of `prand`:
+
+> $hash = ah(IRK, prand)$
+
+The `prand` and `hash` are concatenated to generate the random address (randomAddress) in the following manner:
+
+> $randomAddress = hash || prand$
+
+The least significant octet of `hash` becomes the least significant octet of randomAddress and the most significant octet of `prand` becomes the most significant octet of randomAddress.
+
+#### Private Device Address Resolution
+
+To resolve a private address, the resolver must hold a copy of the (previously-established) IRK. 
+The resolution uses the same random address function as above, 
+where IRK is the previously-established IRK, and `prand` is extracted from the observed resolvable private address. 
+
+> $localHash = ah(IRK, prand)$
+
+`localHash` is then compared with the `hash` value extract from the resolvable private address. 
+If `localHash` and `hash` match, then the address has been resolved. 
+
+Also note:
+
+> If a device has more than one stored IRK, the device repeats the above procedure for each stored IRK to determine if the received resolvable private address is associated with a stored IRK, until either address resolution is successful for one of the IRKs or all have been tried.
+
+> A non-resolvable private address cannot be resolved.
+
+## BLE Over The Air (OTA) Details 
+
+> The preamble is 1 octet and the Access Address is 4 octets. The PDU range is from 2 to 257 octets. The CRC is 3 octets.
+
+![](figs/LL-packet-format.png)
+![](figs/BLE-LL-packet-pdu.png)
+
+#### Access Address
+
+> The Access Address for all **advertising channel packets** shall be `10001110100010011011111011010110b` (`0x8E89BED6`).
+
+> The Access Address in data channel packets shall be different for each Link Layer connection between any two devices with certain restrictions as defined below. The Access Address shall be a random 32-bit value, generated by the device in the Initiating State and sent in a connection request as defined in Section 2.3.3.1.
+
+#### PDUs
+
+> When a packet is transmitted in an advertising physical channel, the PDU shall be the Advertising Channel PDU as defined in Section 2.3. When a packet is transmitted in a data physical channel, the PDU shall be the Data Channel PDU as defined in Section 2.4.
+
+> The advertising channel PDU has a 16-bit header and a variable size payload. Its format is as shown in Figure 2.2. 
+
+![](figs/BLE-advertising-pdu.png)
+
+> The 16 bit Header field of the advertising channel PDU is as shown in Figure 2.3.
+
+![](figs/BLE-advertising-pdu-header.png)
+
+**TxAdd** = Transmitter Address bit (0 => transmitter's address is public; 1 => transmitter's address is private).
+
+The PDU Type field of the advertising channel PDU that is contained in the header indicates the PDU type as defined below.
+
+```
+PDU Type 
+b3b2b1b0	Packet Name
+0000		ADV_IND
+0001		ADV_DIRECT_IND
+0010		ADV_NONCONN_IND
+0011		SCAN_REQ
+0100		SCAN_RSP
+0101		CONNECT_REQ
+0110		ADV_SCAN_IND
+0111-1111	Reserved
+```
+
+#### CRC
+
+> At the end of every Link Layer packet there is a 24-bit CRC. It shall be calculated over the PDU.
 
 ## BLE Advertising
 
@@ -568,6 +786,13 @@ but limits the power consumption since the user may take some time to connect.
 - The Packet data unit for the advertising channel (called the **Advertising Channel PDU**) includes a 2-byte header and a variable payload from 6 to 37 bytes. The actual length of the payload is defined by the 6-bit Length field in the header of the Advertising Channel PDU.
 - **ADV\_IND** is a generic advertisement and usually the most common. It’s generic in that it is not directed and it is connectable, meaning that a central device can connect to the peripheral that is advertising, and it is not directed towards a particular Central device. When a peripheral device sends an ADV_IND advertisements, it is helping Central devices such as Smartphones find it. Once found, a Central device can begin the connection process.
 - **ADV\_NONCONN\_IND** is the advertisement type used when the peripheral does not want to accept connections, which is typical in Beacons.
+
+```
+ADV_IND: connectable undirected advertising event
+ADV_DIRECT_IND: connectable directed advertising event
+ADV_NONCONN_IND: non-connectable undirected advertising event
+ADV_SCAN_IND: scannable undirected advertising event
+```
 
 ## UUIDs
 
@@ -642,9 +867,7 @@ UUID_hr_measurement (0x2A37)
 
 Example GATT Service (Heart Rate Service) w/ UUIDs:
 
-<center>
 ![](figs/BLE-ble-gatt-hr-service.png)
-</center>
 
 
 <div id='glossary'/>
