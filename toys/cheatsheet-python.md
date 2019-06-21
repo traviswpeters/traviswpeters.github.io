@@ -6,7 +6,7 @@ A summary of the language and features:
 - https://medium.com/fintechexplained/everything-about-python-from-beginner-to-advance-level-227d52ef32d2  
 - https://towardsdatascience.com/a-data-scientist-should-know-at-least-this-much-python-oop-d63f37eaac4d
 
-Install/Setup: 
+## Install/Setup 
 
 ```bash
 brew install python
@@ -48,7 +48,7 @@ pip install --upgrade -r requirements.txt
 pip uninstall -r requirements.txt -y
 ```
 
-Avoid version conflicts with Virtual Environments:
+## Avoid version conflicts with Virtual Environments
 
 ```bash
 # Virtual Environments ("virtualenvs") keep your project dependencies separated.
@@ -97,7 +97,7 @@ $ which python
 /usr/local/bin/python
 ```
 
-#### **Better? `pipenv`**
+## **Better? `pipenv`**
 Pipenv has virtual environment management built in so that you have a single tool for your package management.
 
 The problems that Pipenv seeks to solve are multi-faceted:
@@ -168,11 +168,7 @@ pipenv install -e btsnoop
 ```
 
 
-
-
-
-
-# Auto-Environment Using `direnv` - https://direnv.net
+## Auto-Environment Using `direnv` - https://direnv.net
 
 From the project website:
 > direnv is an environment switcher for the shell. It knows how to hook into bash, zsh, tcsh, fish shell and elvish to load or unload environment variables depending on the current directory. This allows project-specific environment variables without cluttering the ~/.profile file.
@@ -191,7 +187,6 @@ Now, when I switch in/out of this directory, my virtual environment is automatic
 echo layout_pipenv >> .envrc
 direnv allow .
 ```
-
 
 
 # Misc.
