@@ -40,10 +40,37 @@ Choosing the Right Metric for Evaluating Machine Learning Models -
 
 # Concepts
 
-Eigenvectors & Eigenvalues
+[Eigenvectors & Eigenvalues](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)
+> In linear algebra, an eigenvector or characteristic vector of a linear transformation is a non-zero vector that changes by only a scalar factor when that linear transformation is applied to it.
+> 
+> In essence, an eigenvector $v$ of a linear transformation $T$ is a non-zero vector that, when $T$ is applied to it, does not change direction. Applying $T$ to the eigenvector only scales the eigenvector by the scalar value $λ$, called an eigenvalue. This condition can be written as the equation
+>
+> $T(\mathbf {v} )=\lambda \mathbf {v} ,$
+>
+> referred to as the eigenvalue equation or eigenequation. In general, $λ$ may be any scalar.
 
-Principle Component Analysis
+[Principle Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis)
+> Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components. If there are $n$ observations with $p$ variables, then the number of distinct principal components is $min(n−1,p)$. This transformation is defined in such a way that the first principal component has the largest possible variance (that is, accounts for as much of the variability in the data as possible), and each succeeding component in turn has the highest variance possible under the constraint that it is orthogonal to the preceding components. The resulting vectors (each being a linear combination of the variables and containing n observations) are an uncorrelated orthogonal basis set.
 
+
+[Pearson Correlation Coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) 
+> A measure of the linear correlation between two variables X and Y. According to the Cauchy–Schwarz inequality it has a value between +1 and −1, where 1 is total positive linear correlation, 0 is no linear correlation, and −1 is total negative linear correlation. It is widely used in the sciences. 
+> 
+> Pearson's correlation coefficient is the covariance of the two variables divided by the product of their standard deviations.
+
+### Later...
+
+[Shapiro–Wilk test](https://en.wikipedia.org/wiki/Shapiro–Wilk_test)
+> The Shapiro–Wilk test is a test of normality in frequentist statistics.
+>
+> The null-hypothesis of this test is that the population is normally distributed. Thus, on the one hand, if the p value is less than the chosen alpha level, then the null hypothesis is rejected and there is evidence that the data tested are not normally distributed. On the other hand, if the p value is greater than the chosen alpha level, then the null hypothesis that the data came from a normally distributed population can not be rejected.
+
+[Spearman's rank correlation coefficient](https://en.wikipedia.org/wiki/Spearman's_rank_correlation_coefficient)
+> The Spearman correlation between two variables is equal to the Pearson correlation between the rank values of those two variables; while Pearson's correlation assesses linear relationships, Spearman's correlation assesses monotonic relationships (whether linear or not). If there are no repeated data values, a perfect Spearman correlation of +1 or −1 occurs when each of the variables is a perfect monotone function of the other.
+> 
+> Intuitively, the Spearman correlation between two variables will be high when observations have a similar (or identical for a correlation of 1) rank (i.e. relative position label of the observations within the variable: 1st, 2nd, 3rd, etc.) between the two variables, and low when observations have a dissimilar (or fully opposed for a correlation of −1) rank between the two variables.
+
+[Pareto Efficiency](https://en.wikipedia.org/wiki/Pareto_efficiency)
 
 # Working with Data
 
