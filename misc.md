@@ -37,6 +37,7 @@ Industry Jobs
 ## Concepts
 
 * A nice overview of processes in Linux - [All You Need To Know About Processes in Linux](https://www.tecmint.com/linux-process-management/)
+* How to organize data - [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf), Hadley Wickahm (RStudio)
 
 ## Other reading/watching
 
@@ -50,12 +51,12 @@ Industry Jobs
 
 * My Ph.D. advisor, [David Kotz](https://www.cs.dartmouth.edu/~dfk/),
     details many (invaluable) thoughts on [writing research papers](https://www.cs.dartmouth.edu/~dfk/writing.html).
-
-## Data
-
-* [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf), Hadley Wickahm (RStudio)
+    * **A typical paper structure:** Introduction, Background, (System), Experiments, Results, Discussion+Limitations, Related Work, Conclusion, Future Work, Acknowledgements, References.
 
 ## Presentations
+
+* Notes from [Tom Cormen](https://cs.dartmouth.edu/~thc/)
+on [how to give talks of various kinds](resources/thc-talks.txt) (poster, conference, seminar/colloquium, job).
 
 * [How to Prepare and Present a Good Talk - Advice for Conference Presenters](https://www.ifte.de/infos/dissertation/presentationAdvices.pdf)
     * Slides & Slide Order

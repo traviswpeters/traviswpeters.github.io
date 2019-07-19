@@ -1,0 +1,230 @@
+How to give talks- Thomas Cormen
+
+Sources: Pat Winston, Ian Parberry, Lance Glasser, John Carter, Zobel [1], Dupré [2], Cormen. Also good materials by David Johnson and Cathy McGeoch & Bernard Moret.
+
+[1] Justin Zobel, Writing for Computer Science, second edition. Springer-Verlag, 2004.
+[2] Lyn Dupré, Bugs in Writing: A Guide to Debugging Your Prose, Addison Wesley Longman, 1998.
+
+4 kinds of talks:
+1.	Poster-length. Usually ≤ 10 minutes.
+2.	Conference. 20–30 minutes.
+3.	Colloquium/seminar. 45–60 minutes.
+4.	Job talk. Also 45–60 minutes.
+
+Poster-length talks
+
+The second-hardest kind, due to
+
+The Theory of Relativity
+
+When you’re giving a talk, 10 minutes feels like 4 minutes.
+When you’re listening to a talk, 10 minutes feels like 25 minutes.
+
+Hence, you feel like you had no time to say anything when the 10 minutes are up, yet your audience will be ready for you to be done.
+
+In a 10-minute talk, you will be successful if you can just state the problem and results. Unless the problem is so well known that you barely need any time to state it (e.g., P = NP?), strive for nothing more.
+
+Figure on 6–8 slides max. You might be able to squeeze in 10, but
+1.	Everyone will know that you’re pushing it.
+2.	Don’t even try doing that until you’re an experienced talk-giver.
+
+Conference talks
+
+Your goal: Entice listeners to go and read the paper.
+
+Present the problem, its context, the results, and one or two key ideas. You won’t have time for details.
+
+Colloquium/seminar
+
+Conference talk, with all parts slightly expandable + some details. You will have time some, but not all, details.
+
+Job talk
+
+The hardest talk to give. In 45–60 minutes, you have to convince a roomful of professors (and possibly grad students) that
+•	Your work is interesting.
+•	Your work is deep.
+•	Your work is fundable.
+•	You know what you’re doing.
+•	There is plenty of follow-on work, so that you’ll have projects to work on when you start working there.
+•	You’ll be a good teacher (at the places that care about teaching).
+•	You’ll be a good colleague.
+•	People will want to be around you.
+•	You’ll be an asset to the institution when you give talks as a member of the department.
+
+Even worse, you will get very little feedback about a job talk.
+
+Your friends can attend the other kinds of talks, but rarely are they there when you deliver the real job talk.
+
+You get one bit of feedback—either a job offer or a nuke—and you might not get any of it until you’ve delivered all the talks.
+
+Techniques for preparing your talk
+
+Content, visual, and verbal.
+
+Bear in mind that some people absorb information better when they hear it, and others when they read it. So you want your slides and your oral presentation to mesh well.
+
+Content
+
+Zobel: Choose a single main goal. What idea or result do you want your audience to learn? Then determine the essential points needed to include in order to get the audience to the goal.
+
+Zobel suggests “uncritical brainstorming, critical selection.” First, jot down every idea or point that might be of value to the audience. Imagine that you’re conversing about your work, and write down what you might say. Don’t judge; just let it flow. Then, assemble the talk by selecting the important points and figuring out their order. Now you can judge.
+
+Zobel says that a talk is not a sales pitch. I disagree.
+
+Dupré suggests using examples liberally, and to make them simple and explicit. She also recommends against giving the audience handouts at the beginning of your talk, because then the audience will be looking at the handouts rather than at you or the projected slides. If you want them to go away with something, OK to give handouts at the end of the talk. Exception: If you have specific material that you want people to examine and can’t project it, then OK to give handouts at the beginning. Don’t give handouts during the talk, because that distracts the audience.
+
+Zobel suggests avoiding detail that the audience is unlikely to follow. “Once listeners do not understand the flow of the discussion, they are lost and will remain that way. … as a rule the audience is more satisfied if not exposed to intricate material that is unnecessary to understanding of the overall result.”
+
+Zobel: Don’t hide shortcomings or limitations of your work. Better that you should be forthcoming about them than be exposed during questions.
+
+Never have too much material for the time allotted. You don’t want to have to rush through the end of the talk, cut in real time, or run over your allotted time. Remember the Theory of Relativity.
+
+As you’re organizing the talk, give guideposts. Listeners should always know where in the structure of the talk you (and they) are at any time. One simple technique is to show an outline slide early in the talk, and every time you shift to a new topic in the outline, show a slide of the outline, highlighting the topic you’re starting.
+
+
+Visual
+
+•	Give yourself plenty of time to prepare the visuals.
+o	I like to give myself at least one week.
+o	Talks prepared the night before usually look it. And they give the audience the message that you don’t care.
+
+•	Figure on 1.5–2 minutes per slide.
+o	I usually shoot for 15–20 slides for conference talk.
+o	For a colloquium, 25–35 slides.
+o	Of course, it all depends on how long you linger on your slides.
+
+•	Storyboard your talk
+
+
+
+o	Quadrants maintain aspect ratio.
+o	Remember to use landscape, not portrait.
+o	Storyboard allows you to see your entire talk at once, before you go to the effort of making slides.
+
+•	Zobel (and others): Don’t use dark backgrounds. Light fonts on dark backgrounds don’t display as well as dark fonts on light backgrounds. And in low light, a dark background makes the room even darker, and more likely to put the audience to sleep. (I tend to break this rule, but I should probably start following it.) The worst is a background of variable darkness, because no one font color is going to work for the entire background. (I used to use gradient backgrounds, but I stopped for just that reason.)
+
+•	Use large type.
+o	Stand 10 feet from your laptop. If you can’t read the type, make it larger.
+o	I find that 18–24 point is best.
+o	One nice feature of PowerPoint is that it can shrink your type to fit.
+Beware: That feature can also get you into trouble.
+o	If you think your type might be too small, it is.
+
+•	Treat each slide like a paragraph (or part of a long paragraph).
+o	Title = topic sentence
+o	Each slide is about one idea.
+
+•	Favor pictures over words. But don’t copy figures from your paper. They won’t look good when you project them. Redraw them for the talk.
+
+•	Use the right amount of words. Get some verbs in there. Full sentences are OK; full paragraphs are not.
+
+•	Use color to teach
+o	Not to show off.
+o	Color should have meaning.
+o	Don’t use similar colors.
+
+•	Don’t use animation unless it’s necessary. Animated entry and exit is usually cheesy.
+
+•	What about point-at-a-time display? Zobel recommends against it. You’ll have to remember to reveal each point, and you rob your audience of being able to read ahead, which they’ll want to do. (Back when we used transparencies, many speakers would hide the text and reveal it line by line. Glasser: Doing this will drive your audience nuts, because they’ll wonder about what you’re hiding. The fashion industry has taken advantage of this trick for thousands of years.)
+
+Verbal
+
+•	Know exactly what you want to say at all times in the talk.
+o	Use your slides to remind you.
+o	Mention everything that’s on each slide.
+o	Don’t decide at talk time what you want to say.
+o	But don’t write out your entire talk. Your talk should feel as though it were spontaneous, even though it isn’t. The worst is when someone just reads their talk. We don’t see that happen much in CS, but it’s common in the humanities.
+
+•	Turn on your um-filter.
+o	Or your OK-filter.
+o	Or all your filters.
+o	If you don’t know what filters you need to turn on:
+•	Listen to yourself talk. (I know that I say, “OK?” a lot.)
+•	Ask a friend. Make it clear that you need an honest answer; you’re not just looking for an affirmation.
+
+•	Practice, practice, practice, with the slides.
+o	First time, in an empty room.
+•	You’ll realize just how often you don’t really know what you want to say.
+•	You’ll find bugs in your slides.
+•	You can time the talk.
+•	Zobel recommends that you do all practice talks while standing. I usually do my first one in an empty room while sitting at the computer. That way, if I realize that I want to change a slide while giving the practice talk, I can do it immediately, before I forget. I make sure to stop and then resume the clock.
+o	Second time, in an empty room.
+•	Gives you a chance to work out the bugs from the first time.
+•	You become more familiar and comfortable with the talk.
+•	You get a more accurate timing of the length, since you have fewer bugs and moments of indecision.
+o	Repeat until you’re comfortable with the talk.
+o	Then do at least one practice with a live audience.
+Glasser: “In order of increasing usefulness: your goldfish, dog, cat, mother, friends, even technical peers.”
+•	A live audience will force you to interact with the audience.
+•	They can give you feedback.
+•	Ask an audience member to count your ums, or whatever verbal tick you need to keep in check. Just seeing someone mark them down might provide a negative feedback loop.
+o	Repeat until you’re comfortable with the talk before a live audience.
+•	You might need to enlist some new audience members to avoid burning out the old ones.
+•	But having someone see progressive iterations can help you understand whether you’re improving.
+
+•	It’s OK to be a little nervous. Even I’m a little nervous when I start giving a talk, but I try to get into the moment as I go along.
+
+•	Make sure you know how to run the presentation on your laptop. Nobody wants to see you fumbling around with your computer while waiting for you to start. That goes double for a conference, which is run on a tight schedule.
+
+•	Zobel: If the paper you’re talking about has multiple authors, make sure that the audience knows which one you are. (I’ve seen too many conference talks in which the speaker didn’t identify himself or herself, or mumbled the name.)
+
+•	I like to use a remote for navigating through the talk. That way, I’m not tied to the computer, and I can walk around naturally.
+
+•	If there’s a session chair who is trying to keep your talk within its time limit, make sure to look over at the session chair every now and then. He or she will flash signs indicating how much time you have left. Always acknowledge that you’ve seen the signs by nodding while looking at the session chair. Best is to keep the nod slight, enough that the session chair sees it, but subtle enough that the audience might not even notice.
+
+•	Zobel: Speak a little slower than you would in normal conversation. Slightly overemphasize consonants, which helps the 10% or so with hearing problems. Keep your head up. Face the audience. Dupré: Don’t hide the front of your body. Step out from behind the lectern. Don’t block the screen.
+
+•	Dupré: Use your hands thoughtfully. “Do not ball your hands into fists in your pockets; if you want to use your pockets at all, use only one at a time, and never fiddle with the contents. If gesturing is not coming easily because you are tense, gesture with one hand at a time. In general, you should neither hold your hands close to your body (signaling tension) nor throw them wide (like a politician).” I think that you should practice talking with your hands relaxed at your sides. It feels uncomfortable, but it actually looks OK.
+
+•	Zobel: When referring to the screen, use a stick or laser pointer; don’t use the cursor.
+
+•	How to handle a heckler: Be tactful. Don’t let the heckler get under your skin. Offer to talk with him or her afterward.
+
+•	Zobel: During question time, repeat each question. (The audience might not have heard it, or you might have misheard it, and repeating gives the questioner an opportunity to correct you.) Zobel says to reply to the whole audience. Never bluff when you don’t know; you’ll look stupid. Better to say that you don’t know. Of course, be polite to audience members and treat all questions—even ridiculous ones—respectfully. [Nabil’s response to Dally’s question.]
+
+
+The most important points to keep in mind for a talk
+
+•	Glasser:
+o	Meta-goal:
+•	Convey technical information and understanding.
+•	Convince your audience of the validity and value of your results.
+o	Non-goals:
+•	Show people how clever you are.
+•	Make a social statement.
+•	Attack someone.
+
+•	Get the important points up front.
+o	Each listener comes in with a certain amount of attention capital. It’s spent as the talk progresses. The rate varies according to the listener and the speaker. Get the important points in while there’s still capital left.
+o	Don’t lead your audience down the garden path until the end, when the main point must become self-evident.
+•	You’ll have lost them by then.
+•	Besides, bottom-up is a bad way to present material verbally.
+o	Better to state the important points early, and to summarize them in the conclusion.
+
+•	Don’t be afraid to repeat key ideas during the talk.
+o	At any moment, ≥ 20% of the audience is not paying attention to what you’re saying. Don’t assume that everyone has heard everything you’ve said.
+o	Repeating key ideas allows those who missed them the first time another chance.
+o	Repeating key ideas underscores that they are the key ideas.
+
+•	Motivate the audience to care about your work.
+o	But don’t fall into the trap of spending too much time on motivation.
+
+•	Have a presence.
+o	Take command of your audience,
+o	Be confident but not cocky.
+o	Enjoy yourself, and show that you’re having a good time.
+•	Like it or not, you are giving a performance.
+•	Audiences feel better about performances in which the performers are clearly enjoying themselves. (As long as it’s not at the audience’s expense, or beyond the ability of the audience to understand why.)
+o	Yet, do not try too hard to be funny, unless you really are funny.
+•	If you’re not funny and you try to be, you’ll turn off the audience.
+•	It will also make them wonder whether you’re technically competent, if you have to rely on lame humor.
+
+•	Zobel: Vary what you are doing. Move around a bit. Make frequent eye contact with the audience. Focus on friendly faces.
+
+•	Let your personality come through.
+o	Nobody wants to hear a talk from an automaton.
+o	Don’t act like your advisor, me, or anyone else. Be yourself.
+o	Reacting to personality is a very human thing. Give your audience the opportunity to do so.
+o	A talk with personality will be more memorable.
+o	Zobel: Avoid swagger or vanity. That’s even worse in a talk than it is in a paper.
+Thank you for using LibCal, sponsored by the Dartmouth College Library!
