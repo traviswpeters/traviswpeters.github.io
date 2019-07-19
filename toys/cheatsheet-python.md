@@ -1,10 +1,9 @@
-# Python
 All things Python, pip, virtual environments, etc.
 
 A summary of the language and features: 
 
-- https://medium.com/fintechexplained/everything-about-python-from-beginner-to-advance-level-227d52ef32d2  
-- https://towardsdatascience.com/a-data-scientist-should-know-at-least-this-much-python-oop-d63f37eaac4d
+- [https://medium.com/fintechexplained/everything-about-python-from-beginner-to-advance-level-227d52ef32d2]()  
+- [https://towardsdatascience.com/a-data-scientist-should-know-at-least-this-much-python-oop-d63f37eaac4d]()
 
 ## Install/Setup 
 

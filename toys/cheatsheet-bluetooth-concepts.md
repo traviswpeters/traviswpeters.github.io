@@ -160,6 +160,8 @@ Therefore, ultimately, every LE service uses ATT as the application protocol.
 
 ###### ATT
 
+> The attribute protocol allows a device referred to as the server to expose a set of attributes and their associated values to a peer device referred to as the client. These attributes exposed by the server can be discovered, read, and written by a client, and can be indicated and notified by the server.
+
 The sole building block of ATT is the **attribute**.
 
 The ATT protocol is for discovering, reading, and writing attributes on a peer device.
