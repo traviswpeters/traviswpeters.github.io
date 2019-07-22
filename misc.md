@@ -52,6 +52,7 @@ Industry Jobs
 * My Ph.D. advisor, [David Kotz](https://www.cs.dartmouth.edu/~dfk/),
     details many (invaluable) thoughts on [writing research papers](https://www.cs.dartmouth.edu/~dfk/writing.html).
     * **A typical paper structure:** Introduction, Background, (System), Experiments, Results, Discussion+Limitations, Related Work, Conclusion, Future Work, Acknowledgements, References.
+* Notes from [Tom Cormen](https://cs.dartmouth.edu/~thc/) - [a list of 39 rules pertaining to usage and punctuation.](resources/thc-rules.pdf) 
 
 ## Presentations
 
