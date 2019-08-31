@@ -1,7 +1,9 @@
 ---
 layout: page
-title: Teaching
+title: Teaching Experience & Awards
 ---
+
+{% comment %}
 
 I strongly believe that teaching doesn't just happen in the classroom.
 Teaching is really about connecting with people and meeting them where they are at.
@@ -17,6 +19,8 @@ Over the years I've had opportunities to lead, teach, coach, and mentor in a mul
 
 Throughout my time at Western and Dartmouth I have also pursued (and greatly enjoyed!)
     more traditional academic teaching and mentoring opportunities.
+
+{% endcomment %}
 
 <!-- see: _includes/teaching.html -->
 {% include teaching.html %}

@@ -3,7 +3,7 @@
 {% endif %}
 
 {% for news in site.data.news %}
-**({{ news.date | date: "%m/%Y" }})**
+**{{ news.date | date: "%B %d, %Y" }}** <br/>
 {{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
 
 {% if include.num %}

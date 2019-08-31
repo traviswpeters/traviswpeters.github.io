@@ -37,7 +37,7 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 800px 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   /* grid-gap: 10px; */
 
   grid-template-areas:
@@ -126,37 +126,59 @@ body {
   font-style:normal;
   font-size: 14px;
   color: #515151;
-  line-height: 1.75rem;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   /* font-family: "Quattrocento Sans", sans-serif; */
   font-family: 'Montserrat', sans-serif;
-
   color: #333;
-  margin-bottom: 5px;
+  padding: 0px;
+  margin: 0px;
+  /* margin-bottom: 5px; */
 }
 
-h1{
-  font-size: 2rem;
+h1 {
+  font-size: 2.5rem;
+  /* padding-bottom: 20px; */
+  margin-top: 0px;
+  margin-bottom: 15px;
 }
 
 h2 {
   /* Add horizontal line under each h2 with padding above and below */
-  padding-top: 20px;
+  font-size: 1.75rem;
   border-bottom: 0.75px solid #999;
-  padding-bottom:5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 15px;
+    line-height: 1.25rem;
+}
+
+/* ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+} */
 
 a {
   text-decoration: none;
+  font-size: 1.01rem;
   font-weight: bold;
-  color: green;
+  color: rgb(24, 107, 188); /* MSU Blue */
 }
 
 a:hover {
-  color: black;
+  color: #515151;
   border-bottom: none;
 }
 
@@ -167,33 +189,37 @@ img {
   border-radius: 5px;
 }
 
+.copyright {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.75rem;
+    /* color: rgb(24, 107, 188); /* MSU Blue */ */
+}
+
 .captioned-img {
   border-radius: 5px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-
   float: left;
-  clear: left;
+  /* margin-right: 10px;
+  margin-bottom: 0px; */
+
+  /* clear: left; */
   margin: 0  0.9em 0 0;
 }
 
 blockquote {
-  border-left: 0.25rem solid #ccc;
+  border-left: 0.2rem solid #ccc;
   font-style: italic;
   color: #999;
-
-  margin: 1.5em 10px;
-  padding: 5px 20px;
+  margin: 10px 0px;
+  padding: 5px 10px;
+  /* margin-left: 1.5em; */
+  /* margin: 1.5em 10px; */
+  /* padding: 5px 20px; */
 }
-
-blockquote:before {
-  color: #ccc;
-  font-size: 3em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+blockquote strong {
+    color: #777;
+    /* font-size: 1.05rem; */
 }
-
 blockquote p {
   display: inline;
 }
@@ -213,7 +239,7 @@ blockquote p {
 }
 
 .masthead-title a {
-  font-size: 2rem;
+  font-size: 3rem;
   text-decoration: none;
   color: #505050;
 }

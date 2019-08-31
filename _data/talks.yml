@@ -36,20 +36,22 @@
   # note: ""
 
 - title: "Debugging with GDB and Valgrind"
-  date: January, 2018
+  date: January 2018, April 2017, April 2016
   venue: CS50 Guest Lecture
   location: Dartmouth College (Hanover, New Hampshire)
   type: guest-lecture
   notes: classes/debugging-gdb-valgrind/
-# Professor Gevorg Gregorian
+# date: January 2018, Professor Gevorg Gregorian
+# date: April 17, 2017, Professor David Kotz
+# date: April 26, 2016, Professor David Kotz
 
-- title: "Debugging with GDB and Valgrind"
-  date: April 17, 2017
-  venue: CS50 Guest Lecture
-  location: Dartmouth College (Hanover, New Hampshire)
-  type: guest-lecture
-  notes: classes/debugging-gdb-valgrind/
-# Professor David Kotz
+# - title: "Debugging with GDB and Valgrind"
+#   date: April 17, 2017
+#   venue: CS50 Guest Lecture
+#   location: Dartmouth College (Hanover, New Hampshire)
+#   type: guest-lecture
+#   notes: classes/debugging-gdb-valgrind/
+# # Professor David Kotz
 
 - title: "Introduction to Pebble Development"
   date: May 13, 2016 # TODO: verify... May 13, 2016 (friday) or May 16, 2016 (monday)?
@@ -59,13 +61,13 @@
   notes: classes/pebble-project-intro/
 # Professor David Kotz
 
-- title: "Debugging with GDB and Valgrind"
-  date: April 26, 2016
-  venue: CS50 Guest Lecture
-  location: Dartmouth College (Hanover, New Hampshire)
-  type: guest-lecture
-  notes: classes/debugging-gdb-valgrind/
-# Professor David Kotz
+# - title: "Debugging with GDB and Valgrind"
+#   date: April 26, 2016
+#   venue: CS50 Guest Lecture
+#   location: Dartmouth College (Hanover, New Hampshire)
+#   type: guest-lecture
+#   notes: classes/debugging-gdb-valgrind/
+# # Professor David Kotz
 
 - title: "Three Kinds of Memory"
   date: April 15, 2016

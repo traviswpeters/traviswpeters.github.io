@@ -1,5 +1,5 @@
 title: Travis W. Peters
-tagline: all things work and play
+tagline: #all things work and play
 description: A website dedicated to my academic work, hobbies, and other ramblings.
 author: Travis Peters
 
@@ -9,7 +9,8 @@ author: Travis Peters
 url: https://traviswpeters.github.io/
 baseurl:
 avatar: profile.png
-email: traviswp@cs.dartmouth.edu
+email: travis.peters1@montana.edu
+#traviswp@cs.dartmouth.edu
 # traviswp@gmail.com
 # traviswpeters@protonmail.com
 # travis.w.peters.gr@dartmouth.edu

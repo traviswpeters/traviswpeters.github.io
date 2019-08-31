@@ -697,6 +697,20 @@ Many of these definitions are taken from:
 - **Active scanning**—The scanner issues a Scan Request packet after receiving an advertising packet. The advertiser receives it and responds with a Scan Response packet. This additional packet doubles the effective payload that the advertiser is able to send to the scanner, but it is important to note that this does not provide a means for the scanner to send any user data at all to the advertiser. 
 
 
+
+
+
+---
+
+---
+
+------ 
+
+# MOVED TO DISSERTATION
+
+
+
+
 *Role-related terms...*
 
 - **ATT/GATT Client**–Sends requests to a server and receives responses (and server-initiated updates) from it. 

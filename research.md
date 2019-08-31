@@ -3,6 +3,8 @@ layout: page
 title: Research
 ---
 
+{% comment %}
+
 I’m interested in (in)security, particularly at the lower levels of systems and wireless communications.
 I’ve spent a great deal of time studying operating systems and trusted hardware (SGX and TrustZone in particular).
 I became interested in these topics more as I began studying solutions for realizing secure I/O capabilities that can work with these trusted hardware features.
@@ -12,6 +14,7 @@ I’m increasingly interested in the existence of physical side channels — bot
 Ultimately, all of this ties into work that myself and my group have been doing around security- and privacy-oriented problems in the mobile healthcare domain.
 Our focus is increasingly shifting towards a broader IoT security agenda.
 
+{% endcomment %}
 {% comment %}
 
 In response to the rise of the Internet of Things (IoT) - and all of the challenges
