@@ -31,7 +31,7 @@ handles:
 # -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
 # - {icon: '', type: '', link: ''}
 social:
-- {icon: 'envelope', type: 's', link: 'mailto:traviswp@cs.dartmouth.edu'}
+- {icon: 'envelope', type: 's', link: 'mailto:travis.peters1@gmontana.edu'}
 - {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswpeters'}
 # - {icon: 'gitlab', type: 'b', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 - {icon: 'linkedin',  type: 'b', link: 'https://www.linkedin.com/in/traviswpeters'}
@@ -50,24 +50,11 @@ social:
 #
 menu:
 - {name: 'Home', url: ''}
-- {name: 'Teaching', url: 'teaching.html'}
 - {name: 'Research', url: 'research.html'}
+- {name: 'Teaching', url: 'teaching.html'}
 - {name: 'CV', url: 'vita.pdf'}
-- {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
+# - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
 - {name: 'News', url: 'news.html'}
 - {name: 'Misc.', url: 'misc.html'}
-
-# funmenu:
-# - {name: 'Resources', url: 'resources.html'}
-# - {name: 'Projects', url: 'projects.html'}
-# - {name: 'Running', url: 'running.html'}
-# - {name: 'Blog', url: 'blog.html'}
-
-#
-# Change to true for Disqus comments
-#
-# disqus:
-#   comments: false
-#   disqus_shortname: 'https-travispeters-github-io'
 
 google-ID: 'CHANGEME' #'UA-80213386-1'

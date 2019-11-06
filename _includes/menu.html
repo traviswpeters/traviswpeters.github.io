@@ -4,9 +4,11 @@
             <a class="menu-item" href="{{ site.github.url }}/{{ item.url }}">{{ item.name }}</a>
             {% endfor %}
         </div>
+        {% comment %}
         <div class="social-icons">
             {% for item in site.data.settings.social %}
             <a href="{{ item.link }}" target="_blank"><i class="fa{{ item.type }} fa-{{ item.icon }}" aria-hidden="true"></i></a>
             {% endfor %}
         </div>
+        {% endcomment %}
     </div>
