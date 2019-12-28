@@ -51,14 +51,14 @@ Industry Jobs
 * [The Morning Paper](https://blog.acolyer.org/)
 * [Two Minute Papers (YouTube)](https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg)
 
-## Writing
+## Reading/Writing Papers
 
 * My Ph.D. advisor, [David Kotz](https://www.cs.dartmouth.edu/~dfk/),
     details many (invaluable) thoughts on [writing research papers](https://www.cs.dartmouth.edu/~dfk/writing.html).
     * **A typical paper structure:**
       * Introduction
       * Background
-      * System/Approach
+      * System/Approach _--- description of your system_
       * Experiments
       * Results
       * Discussion (e.g., Interesting Observations, Limitations)
@@ -67,6 +67,10 @@ Industry Jobs
       * Acknowledgements
       * References
 * Notes from [Tom Cormen](https://cs.dartmouth.edu/~thc/) - [a list of 39 rules pertaining to usage and punctuation.](resources/thc-rules.pdf)
+* [Dr. Kevin W. Hamlen's tips on technical writing for CS](resources/tech-writing-hamlen-writingtips.pdf)
+* Tips on writing **_reviews_** for technical papers:
+  * [Writing reviews for systems conferences](resources/tech-review-alan-meier.pdf)
+  * [How to Review a Technical Paper](resources/writing-reviews-for-systems-conferences.pdf)
 
 ## Presentations
 

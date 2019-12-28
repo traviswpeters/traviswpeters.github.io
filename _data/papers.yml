@@ -53,10 +53,14 @@
 
 - title: "System, apparatus and method for providing trusted input/output communications"
   authors: Srikanth Varadarajan, Reshma Lal, Steven B. McGowan, Hakan Magnus Eriksson, Travis W. Peters
-  publisher: U.S. Patent Application US20180145951A1
-  date: May 2018
-  pdf: https://patents.google.com/patent/US20180145951A1/en
+  publisher: "U.S. Patent 10,372,656"
+  date: August 2019
+  pdf: papers/US10372656.pdf
   type: patent
+  # publisher: U.S. Patent Application US20180145951A1
+  # date: May 2018
+  # pdf: https://patents.google.com/patent/US20180145951A1/en
+  # type: patent
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
