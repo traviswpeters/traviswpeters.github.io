@@ -1,26 +1,11 @@
 <head>
 
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.data.settings.title }} | {{ site.data.settings.tagline }}
-    {% elsif page.title == "All" %}
-      {{ site.data.settings.title }} (all) | {{ site.data.settings.tagline }}
-    {% else %}
-      {{ page.title }} | {{ site.data.settings.title }}
-    {% endif %}
-  </title>
+  <title>{{ site.data.settings.title }}</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  {% comment %}
-  <!-- RSS-v2.0
-  <link href="{{ site.github.url }}/feed.xml" type="application/rss+xml" rel="alternate" title="{{ site.data.settings.title }} | {{ site.data.settings.tagline }}"/>
-  //-->
-
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans"> -->
-  {% endcomment %}
+  <!-- Fonts & TextFormatting -->
+  <link href="https://fonts.googleapis.com/css?family=Assistant|Roboto:500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500|Quattrocento+Sans" rel="stylesheet">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -28,12 +13,13 @@
   <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
-  <link rel="stylesheet" href="{{ site.github.url }}/assets/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
   <!-- Analytics -->
   {% include google-analytics.html %}
-  <!-- Feed; Use Atom -->
-  {% feed_meta %}
 
 </head>

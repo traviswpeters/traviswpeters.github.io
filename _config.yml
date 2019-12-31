@@ -7,7 +7,11 @@ markdown:            kramdown # use <TAG markdown="1"> to render markdown within
 mathjax:             true
 highlighter:         rouge
 permalink:           /blog/:title.html #none
-plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed]
+plugins:
+  - jekyll-paginate
+  # - jekyll-gist # run: gem install jekyll-gist
+  # - jekyll-sitemap
+  # - jekyll-feed
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
 #feed:

@@ -1,10 +1,9 @@
-{% if include.showtitle %}
+
 ## News
-{% endif %}
 
 {% for news in site.data.news %}
-**{{ news.date | date: "%B %d, %Y" }}** <br/>
-{{ news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' }}
+<i class="far fa-newspaper"></i> **{{ news.date | date: "%B %d, %Y" }}**<br/>
+{{- news.descr | markdownify | replace: '<p>', '' | replace: '</p>', '' -}}
 
 {% if include.num %}
     {% if forloop.index >= include.num %}

@@ -1,9 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
 {% include head.html %}
 <body>
 
-<div class="grid-container">
+<div class="container-xl shadow-lg p-3 mb-5 bg-white rounded">
 
 {% include header.html %}
 
@@ -13,5 +13,31 @@
 
 </div>
 
+<!-- Optional JavaScript for Bootstrap - jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+    /*
+     * class hacking: add bootstrap/bootswatch class labels to my custom classes (notes, slides, etc.)
+     */
+
+    // site asset stles
+    $('.pdf').addClass('badge badge-pill badge-primary');
+    $('.slides').addClass('badge badge-pill badge-primary');
+    $('.code').addClass('badge badge-pill badge-primary');
+    $('.blog').addClass('badge badge-pill badge-primary');
+
+    // admin styles
+    $('.new').addClass('badge badge-pill badge-primary');
+    $('.announcement').addClass('alert alert-primary').prepend('<h4 class="alert-heading">Class Announcement!</h4>');
+    $('.timestamp').prepend('&mdash;Posted ');
+});
+</script>
+
+{% include mathjax.html %}
 </body>
+
 </html>

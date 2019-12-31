@@ -1,10 +1,11 @@
+
 ## Talks
 
 {% for talk in site.data.talks %}
 
 {% if talk.type != "guest-lecture" %}
 **{{talk.title}}**
-<!-- pdf -->{% if talk.pdf %}[[pdf]]({{talk.pdf}}){% endif %}
+<!-- pdf -->{% if talk.pdf %}[pdf]({{talk.pdf}}){:.pdf}{% endif %}
 <!-- notes -->{% if talk.notes %}[[notes]]({{talk.notes}}){% endif %}
 <!-- code -->{% if talk.code %}[[code]]({{talk.code}}){% endif %}
 <br/>

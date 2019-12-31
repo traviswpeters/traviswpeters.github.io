@@ -1,19 +1,44 @@
-title: Travis W. Peters
-tagline: #all things work and play
-description: A website dedicated to my academic work, hobbies, and other ramblings.
+title: Travis Peters
 author: Travis Peters
-
-#
-# Personal Settings
-#
-url: https://traviswpeters.github.io/
-baseurl:
-avatar: profile.png
-email: travis.peters1@montana.edu
-#traviswp@cs.dartmouth.edu
+description: A website dedicated to my academic work, hobbies, and other ramblings.
+school: "Montana State University"
+email: "travis.peters1@montana.edu"
 # traviswp@gmail.com
 # traviswpeters@protonmail.com
 # travis.w.peters.gr@dartmouth.edu
+# traviswp@cs.dartmouth.edu
+office: "NAH 253A"
+officehours: "M/W/F 9:00&ndash;10:00 a.m." # and by appointment.
+officephone: "‭406-994-4296‬"
+officephoneext: "x4296" # extension
+url: https://traviswpeters.github.io/
+githuburl: https://github.com/traviswpeters/traviswpeters.github.io
+baseurl:
+avatar: profile.png
+
+# Site Menus
+menu:
+- {name: 'Home', url: ''}
+- {name: 'Teaching', url: '#teaching'}
+- {name: 'Publications', url: '#publications'}
+- {name: 'News', url: '#news'}
+- {name: 'CV', url: 'vita.pdf'}
+- {name: 'Docs', url: ''}
+# - {name: 'CV (web)', url: 'vita.html'}
+# - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
+# - {name: 'Misc.', url: 'misc.html'}
+
+docs:
+- name: 'CV (pdf)'
+  url: vita.pdf
+# - name: 'CV (web)'
+#   url: vita.html
+- name: 'R&eacute;sum&eacute; (pdf)'
+  url: resume.pdf
+# - name: 'Bib (web)'
+#   url: bib.html
+- name: 'MSU Application Materials (pdf)'
+  url: travis-peters-dartmouth-msu.pdf
 
 handles:
   github: traviswpeters
@@ -45,16 +70,5 @@ social:
 # - {icon: 'orcid', type: 'b', link: 'https://orcid.org/0000-0003-0072-2735'}
 # - {icon: 'rss-square', link: 'feed.xml'}
 
-#
-# Site Menus
-#
-menu:
-- {name: 'Home', url: ''}
-- {name: 'Research', url: 'research.html'}
-- {name: 'Teaching', url: 'teaching.html'}
-- {name: 'CV', url: 'vita.pdf'}
-# - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
-- {name: 'News', url: 'news.html'}
-- {name: 'Misc.', url: 'misc.html'}
 
 google-ID: 'CHANGEME' #'UA-80213386-1'
