@@ -1,6 +1,8 @@
 <!-- contact info -->
-<div class="card">
-  <img src="/assets/peters-sq.jpeg" class="border-0 card-img-top">
+<div class="card shadow">
+
+  <img src="/assets/peters-sq.jpeg" class="border-0 card-img-top" alt="me">
+
   <div class="card-body pl-2 pb-0" markdown="1">
   **Office:** {{site.data.settings.office}}<br/>
   **Phone:** {{site.data.settings.officephone}}<br/>
@@ -8,4 +10,5 @@
   {:.card-subtitle .small}
   {% for item in site.data.settings.social -%}<a href="{{ item.link }}"><i class="fa{{ item.type }} fa-{{ item.icon }}" aria-hidden="true"></i></a>{%- endfor %}
   </div>
+
 </div>
