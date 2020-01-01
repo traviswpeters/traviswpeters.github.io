@@ -1,6 +1,9 @@
 # Site Settings
 
-# paginate:            5
+baseurl: 
+livereload: true
+profile: true
+
 
 # Build settings
 markdown:            kramdown # use <TAG markdown="1"> to render markdown within HTML tags!

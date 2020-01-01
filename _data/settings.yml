@@ -1,5 +1,6 @@
 title: Travis Peters
 author: Travis Peters
+avatar: profile.png
 description: A website dedicated to my academic work, hobbies, and other ramblings.
 school: "Montana State University"
 email: "travis.peters1@montana.edu"
@@ -13,8 +14,6 @@ officephone: "‭406-994-4296‬"
 officephoneext: "x4296" # extension
 url: https://traviswpeters.github.io/
 githuburl: https://github.com/traviswpeters/traviswpeters.github.io
-baseurl:
-avatar: profile.png
 
 # Site Menus
 menu:
