@@ -1,8 +1,8 @@
 # Site Settings
 
-baseurl: 
+baseurl:
 livereload: true
-profile: true
+# profile: true
 
 
 # Build settings
