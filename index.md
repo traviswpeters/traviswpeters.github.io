@@ -22,8 +22,9 @@ permalink: /
 <!-- Row 2 -->
 <div class="row">
 
-<div class="col-sm-3 order-3" markdown="1">
+<div class="col-sm-3 order-5" markdown="1">
 {% include news.html num=9 %}
+{% include links.html %}
 </div>
 
 <div class="col order-4" markdown="1">

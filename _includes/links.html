@@ -1,0 +1,10 @@
+
+## Links
+
+{% for link in site.data.links -%}
+{%- if link.show -%}
+<!-- <i class="fas fa-link"></i> -->
+<i class="fas fa-external-link-alt"></i>
+<a target="_blank" href="{{link.url}}">{{link.name}}</a><br/>
+{%- endif -%}
+{% endfor %}
