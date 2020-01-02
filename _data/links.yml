@@ -3,7 +3,7 @@
   show: false
 - name: 'Data Science @ MSU'
   url: 'http://www.montana.edu/datascience/index.html'
-  show: true
+  show: false
 - name: 'CAIRHE @ MSU'
   url: 'http://www.montana.edu/cairhe/'
   show: false
