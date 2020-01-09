@@ -31,6 +31,7 @@ permalink: /
 {% include education.html %}
 {% include teaching.html %}
 {% include publications.html %}
+{% include activities.html %}
 {% include awards.html %}
 </div>
 
