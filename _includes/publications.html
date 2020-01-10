@@ -6,7 +6,9 @@
 <!-- status (e.g., accepted) -->{% if pub.status -%}<font color="red">({{pub.status}})</font>{% endif %}
 <!-- award -->{% if pub.award -%}<font color="red">({{pub.award}})</font>{% endif %}
 <br/>
+{%- if pub.type == 'conference' or pub.type == 'workshop' or pub.type == 'poster' or pub.type == 'demo' -%}In {% endif -%}
 <!-- publisher -->{% if pub.publisher -%}*{{pub.publisher}}*, {{pub.date}}.{% endif %}
+<br/>
 <!-- authors -->{% if pub.authors -%}{{pub.authors}}{% endif %}
 <!-- note -->{% if pub.note -%} *({{pub.note}})*{% endif %}
 <br/>
