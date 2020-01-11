@@ -23,8 +23,8 @@ menu:
 - {name: 'Activities', url: '#activities'}
 - {name: 'Awards', url: '#awards'}
 - {name: 'News', url: '#news'}
-- {name: 'CV', url: 'vita.pdf'}
 - {name: 'Docs', url: ''}
+# - {name: 'CV', url: 'vita.pdf'}
 # - {name: 'CV (web)', url: 'vita.html'}
 # - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
 # - {name: 'Misc.', url: 'misc.html'}

@@ -19,6 +19,18 @@
   type: conference
   pdf: papers/pierson-snap-mobicom2019.pdf
 
+- title: "System, apparatus and method for providing trusted input/output communications"
+  authors: Srikanth Varadarajan, Reshma Lal, Steven B. McGowan, Hakan Magnus Eriksson, Travis W. Peters
+  publisher: "U.S. Patent 10,372,656"
+  date: August 2019
+  pdf: papers/US10372656.pdf
+  gscholar: https://patents.google.com/patent/US10372656B2/en
+  type: patent
+  # publisher: U.S. Patent Application US20180145951A1
+  # date: May 2018
+  # pdf: https://patents.google.com/patent/US20180145951A1/en
+  # type: patent
+
 - title: "CloseTalker: Secure, Short-Range Ad Hoc Wireless Communication"
   authors: Timothy J. Pierson, Travis Peters, Ronald Peterson, David Kotz
   publisher: Proceedings of the International Conference on Mobile Systems, Applications, and Services (MobiSys'19)
@@ -49,17 +61,6 @@
   doi: http://dx.doi.org/10.1145/3214292.3214295 # https://dl.acm.org/citation.cfm?doid=3214292.3214295
   type: workshop
   # note: "We had 26 papers registered in the end I believe and accepted 11" - 42.3% acceptance rate
-
-- title: "System, apparatus and method for providing trusted input/output communications"
-  authors: Srikanth Varadarajan, Reshma Lal, Steven B. McGowan, Hakan Magnus Eriksson, Travis W. Peters
-  publisher: "U.S. Patent 10,372,656"
-  date: August 2019
-  pdf: papers/US10372656.pdf
-  type: patent
-  # publisher: U.S. Patent Application US20180145951A1
-  # date: May 2018
-  # pdf: https://patents.google.com/patent/US20180145951A1/en
-  # type: patent
 
 - title: "Challenges to ensuring human safety throughout the life-cycle of Smart Environments"
   authors: David Kotz and Travis Peters
