@@ -1,0 +1,31 @@
+# Grants
+
+#
+# In Progress.....
+#
+
+- title: "Self-Adapting Security Weakness Scoring Mechanisms"
+  source: "Department of Homeland Security (DHS)"
+  amount: "$3,000,000"
+  period: "2019-2023" # e.g., for 2020-2021
+  members: "" # with ...
+  myrole: "" # e.g., PI, Co-PI, Solo PI, Investigator, Consultant, Advisor
+  url: "" # link to grant page
+  status: "pending"
+
+#
+# Funding --- Current
+#
+
+- title: "REU Site: On the operations of cybersecurity algorithms in SecDevOps environments"
+  source: "National Science Foundation (NSF)"
+  amount: "$404,749"
+  period: "2020-2023" # e.g., for 2020-2021
+  members: "" # with ...
+  myrole: "" # e.g., PI, Co-PI, Solo PI, Investigator, Consultant, Advisor
+  url: "" # link to grant page
+  status: "granted"
+
+#
+# Funding --- Past
+#

@@ -1,0 +1,28 @@
+
+
+#
+# Graduate Students
+#
+
+- name: "Andrew Johnson"
+  class: "PhD"
+  completed: "TBD"
+  myrole: "Committee Member"
+
+#
+# Undergraduate Students
+#
+
+- name: "Benjamin Bushnell"
+  project: "Crowdfunding and Blockchain Technologies"
+  class: "Undergraduate"
+  completed: "Spring 2020"
+  type: "Independent Study"
+  myrole: "Advisor"
+
+- name: "Benjamin Cathelineau"
+  project: "Validating the Correctness of Linux Scheduling Policies"
+  class: "Undergraduate"
+  completed: "Fall 2019 - Spring 2020"
+  type: "Research"
+  myrole: "Advisor"

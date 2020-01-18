@@ -147,9 +147,11 @@
 - title: "MobiSys 2014"
   authors: Travis Peters, Puneet Jain
   publisher: IEEE Pervasive Computing
+  # month: October
   date: 2014
   pdf: papers/peters-mobisys2014.pdf
   type: journal
+  # IEEE DL: https://ieeexplore.ieee.org/document/6926730
 
 #
 # 2012
