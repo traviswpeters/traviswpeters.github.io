@@ -312,3 +312,10 @@ code {
 .fa-rss-square:hover {
 	color: #ff6600;
 }
+
+a[aria-expanded=true] .fa-chevron-right {
+   display: none;
+}
+a[aria-expanded=false] .fa-chevron-down {
+   display: none;
+}

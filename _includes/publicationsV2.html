@@ -1,0 +1,32 @@
+
+## Publications
+
+{% for pub in site.data.papersV2 %}
+**{{pub.TITLE}}**
+<!-- status (e.g., accepted) -->{% if pub.status -%}**>> {{pub.status}}**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
+<!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
+{%- if pub.ENTRYTYPE == 'inproceedings' -%}<br/>In *{{pub.booktitle}}*, {{pub.month}} {{pub.year}}.{% endif -%}
+{%- if pub.ENTRYTYPE == 'report' -%}<br/>*{{pub.number}}, {{pub.institution}}*, {{pub.month}} {{pub.year}}.{% endif -%}
+{%- if pub.ENTRYTYPE == 'article' -%}<br/>*{{pub.journal}}*, {{pub.month}} {{pub.year}}.{% endif -%}
+{%- if pub.ENTRYTYPE == 'patent' -%}<br/>*{{pub.howpublished}}*, {{pub.month}} {{pub.year}}.{% endif -%}
+{%- if pub.ENTRYTYPE == 'unpublished' -%}<br/>*{{pub.journal}}*, {{pub.month}} {{pub.year}}.{% endif -%}
+<!-- authors -->{% if pub.authors -%}<br/>{{pub.authors}}{% endif %}
+<br/>
+<!-- doi -->{% if pub.doi -%}[doi](http://dx.doi.org/{{pub.doi}}){:.pdf}{% endif %}
+<!-- pdf -->{% if pub.pdf -%}[pdf]({{pub.pdf}}){:.pdf}{% endif %}
+<!-- google scholar -->{% if pub.gscholar -%}[google scholar]({{pub.gscholar}}){:.pdf}{% endif %}
+<!-- slides -->{% if pub.slides -%}[slides]({{pub.slides}}){:.slides}{% endif %}
+<!-- code -->{% if pub.code -%}[code]({{pub.code}}){:.code}{% endif %}
+<!-- blog -->{% if pub.blog -%}[blog]({{pub.blog}}){:.blog}{% endif %}
+<!-- abstract button-->{% if pub.abstract -%}
+<a data-toggle="collapse" href="#{{pub.CITEKEY}}" aria-expanded="false" aria-controls="{{pub.CITEKEY}}">
+<span class="pdf">abstract</span>
+<!-- <i style="font-size:10%;" class="fa fa-chevron-right pull-right" aria-hidden="true"></i> -->
+<!-- <i style="font-size:10%;" class="fa fa-chevron-down pull-right" aria-hidden="true"></i> -->
+</a>
+{%- endif %}
+<!-- note -->
+<!-- {%- if pub.note -%}<span class="text-muted" style="font-style: italic; font-size:90%;">>>{{pub.note}}</span>{% endif %} -->
+
+<!-- abstract body-->{% if pub.abstract -%}<div class="collapse" id="{{pub.CITEKEY}}"><div class="card card-body border-0 m-0 pt-0">{{pub.abstract}}</div></div>{% endif %}
+{% endfor %}

@@ -30,7 +30,7 @@ permalink: /
 <div class="col-md-9 order-4" markdown="1">
 {% include education.html %}
 {% include teaching.html %}
-{% include publications.html %}
+{% include publicationsV2.html %}
 {% include activities.html %}
 {% include awards.html %}
 </div>
