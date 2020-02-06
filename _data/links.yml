@@ -1,7 +1,7 @@
 - name: 'Cyber @ MSU'
   url: ''
   show: false
-- name: 'MEERC' # Montana Engineering Education Research Center 
+- name: 'MEERC' # Montana Engineering Education Research Center
   url: 'http://www.montana.edu/meerc/affiliates.html'
   show: false
 - name: 'Data Science @ MSU'
@@ -24,4 +24,7 @@
   show: true
 - name: 'Computeroxy Jobs'
   url: 'https://computeroxy.com'
+  show: true
+- name: 'Funding & Fellowships for Grad Students @ MSU'
+  url: 'http://www.montana.edu/gradschool/fellowships/index.html'
   show: true
