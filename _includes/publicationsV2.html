@@ -2,7 +2,8 @@
 ## Publications
 
 {% for pub in site.data.papersV2 %}
-**{{pub.TITLE}}**
+<b id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
+<!-- quick link --><a class="far fa-link" aria-hidden="true" href="#{{pub.CITEKEY}}"></a>
 <!-- status (e.g., accepted) -->{% if pub.status -%}**>> {{pub.status}}**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
 <!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
 {%- if pub.ENTRYTYPE == 'inproceedings' -%}<br/>In *{{pub.booktitle}}*, {{pub.month}} {{pub.year}}.{% endif -%}
@@ -19,7 +20,7 @@
 <!-- code -->{% if pub.code -%}[code]({{pub.code}}){:.code}{% endif %}
 <!-- blog -->{% if pub.blog -%}[blog]({{pub.blog}}){:.blog}{% endif %}
 <!-- abstract button-->{% if pub.abstract -%}
-<a data-toggle="collapse" href="#{{pub.CITEKEY}}" aria-expanded="false" aria-controls="{{pub.CITEKEY}}">
+<a data-toggle="collapse" href="#abstract-{{pub.CITEKEY}}" aria-expanded="false" aria-controls="abstract-{{pub.CITEKEY}}">
 <span class="pdf">abstract</span>
 <!-- <i style="font-size:10%;" class="fa fa-chevron-right pull-right" aria-hidden="true"></i> -->
 <!-- <i style="font-size:10%;" class="fa fa-chevron-down pull-right" aria-hidden="true"></i> -->
@@ -28,5 +29,5 @@
 <!-- note -->
 <!-- {%- if pub.note -%}<span class="text-muted" style="font-style: italic; font-size:90%;">>>{{pub.note}}</span>{% endif %} -->
 
-<!-- abstract body-->{% if pub.abstract -%}<div class="collapse" id="{{pub.CITEKEY}}"><div class="card card-body border-0 m-0 pt-0">{{pub.abstract}}</div></div>{% endif %}
+<!-- abstract body-->{% if pub.abstract -%}<div class="collapse" id="abstract-{{pub.CITEKEY}}"><div class="card card-body border-0 m-0 pt-0">{{pub.abstract}}</div></div>{% endif %}
 {% endfor %}

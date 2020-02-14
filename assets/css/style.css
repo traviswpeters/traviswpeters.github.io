@@ -313,9 +313,23 @@ code {
 	color: #ff6600;
 }
 
-a[aria-expanded=true] .fa-chevron-right {
+a.fa-link:link { color: #DDDDDD; /* Really light gray */ }
+a.fa-link:visited { color: #DDDDDD; /* Really light gray */  }
+a.fa-link:hover { color: #777777; }
+
+/* a[aria-expanded=true] .fa-chevron-right {
    display: none;
 }
 a[aria-expanded=false] .fa-chevron-down {
    display: none;
+} */
+
+.fa-link{
+  font-size:50%;
+  margin: 0px;
+  padding: 0px;
+  offset: 0px;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
