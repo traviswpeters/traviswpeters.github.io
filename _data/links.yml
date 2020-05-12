@@ -19,6 +19,9 @@
 - name: 'Grad Students @ MSU'
   url: 'http://www.montana.edu/gradschool/'
   show: true
+- name: 'Forms @ MSU'
+  url: 'http://www.montana.edu/gradschool/forms.html'
+  show: true
 - name: 'CRA Jobs'
   url: 'https://cra.org/ads/#s=1'
   show: true
