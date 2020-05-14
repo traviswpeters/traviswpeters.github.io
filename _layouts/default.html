@@ -34,6 +34,11 @@ $(document).ready(function() {
     $('.new').addClass('badge badge-pill badge-primary');
     $('.announcement').addClass('alert alert-primary').prepend('<h4 class="alert-heading">Class Announcement!</h4>');
     $('.timestamp').prepend('&mdash;Posted ');
+
+    $("#mypic").hover(
+        function() {$(this).attr("src","assets/peters2.jpg");}, // on hover
+        function() {$(this).attr("src","assets/peters1.jpg");   // off hover (default)
+    });
 });
 </script>
 
