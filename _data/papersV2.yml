@@ -29,13 +29,13 @@
   copyright: ACM
   doi: 10.1145/3300061.3300120
   earlier: pierson:snap-poster
-  keywords: paper, security, wireless, iot, mobile, mhealth
+  keywords: paper, security, wireless, iot, mobile, mhealth, secondary
   mnum: 9
   month: October
   note: Acceptance Rate 24%.
   pages: 1--12
   pdf: papers/pierson-snap-mobicom2019.pdf
-  publisher: ACM Press
+  publisher: ACM
   slides: slides/2019-mobicom-snap-slides.pdf
   url: papers/pierson-snap-mobicom2019.pdf
   vitatype: '12'
@@ -85,20 +85,20 @@
     betweendevices in close physical proximity (about 5cm), even though they have
     nevermet nor shared a key.
   acceptpercent: '23'
-  authors: Timothy Pierson, **Travis Peters**, Reza Rawassizadeh, Ronald Peterson,
+  authors: Timothy J. Pierson, **Travis Peters**, Reza Rawassizadeh, Ronald Peterson,
     David Kotz
   booktitle: Proceedings of the ACM International Conference on Mobile Systems, Applications,
     and Services (MobiSys)
   category: mhealth
-  copyright: ACM Press
+  copyright: ACM
   doi: 10.1145/3307334.3326100
-  keywords: paper, mHealth, Wi-Fi, security
+  keywords: paper, mHealth, Wi-Fi, security, secondary
   mnum: 5
   month: June
   note: Acceptance Rate 23%.
   pages: 1--12
   pdf: papers/pierson-closetalker-mobisys2019.pdf
-  publisher: ACM Press
+  publisher: ACM
   slides: slides/2019-mobisys-closetalker-slides.pdf
   url: papers/pierson-closetalker-mobisys2019.pdf
   vitatype: '12'
@@ -134,7 +134,7 @@
   note: Acceptance Rate 50%.
   pages: 663--665
   pdf: papers/posters/mobicom2018_snap_poster.pdf
-  publisher: ACM Press
+  publisher: ACM
   url: papers/posters/mobicom2018_snap_poster.pdf
   vitatype: '11'
   year: '2018'
@@ -151,7 +151,6 @@
     security all the way to an SGX enclave by securing user databetween the Bluetooth
     Controller and an SGX enclave.
   acceptpercent: '42'
-  articleno: '3'
   authors: '**Travis Peters**, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan,
     David Kotz'
   blog: https://amulet-project.org/
@@ -160,7 +159,7 @@
   category: mhealth
   copyright: ACM
   doi: 10.1145/3214292.3214295
-  keywords: paper, security, I/O, systems, operating systems
+  keywords: paper, security, I/O, systems, operating systems, primary
   mnum: 5
   month: June
   note: Acceptance Rate 42%.
@@ -197,7 +196,7 @@
   category: mhealth
   copyright: ACM
   doi: 10.1145/3137003.3137012
-  keywords: paper, IoT, IoTsec, safety, security, challenges, mhealth, ubicomp
+  keywords: paper, IoT, IoTsec, safety, security, challenges, mhealth, ubicomp, primary
   mnum: 10
   month: November
   note: Acceptance Rate 54%.
@@ -233,6 +232,7 @@
   authors: '**Travis Peters**'
   copyright: the authors
   institution: Dartmouth Computer Science
+  keywords: report, mHealth, security, privacy, wearable, mobile, primary
   mnum: 4
   month: May
   number: Technical Report TR2017-823
@@ -272,13 +272,13 @@
   comment: See also amulet-project.org
   copyright: ACM
   doi: 10.1145/2994551.2994554
-  keywords: paper, amulet, mhealth, security, low-power, wearable
+  keywords: paper, amulet, mhealth, security, low-power, wearable, primary
   mnum: 10
   month: November
   note: Acceptance Rate 18%.
   pages: 216--229
   pdf: papers/hester-amulet-sensys2016.pdf
-  publisher: ACM Press
+  publisher: ACM
   slides: slides/2016-sensys-amulet-slides.pdf
   url: papers/hester-amulet-sensys2016.pdf
   vitatype: '12'
@@ -312,7 +312,7 @@
   month: November
   pages: 290--291
   pdf: papers/hester-amulet-demo-sensys2016.pdf
-  publisher: ACM Press
+  publisher: ACM
   url: papers/hester-amulet-demo-sensys2016.pdf
   vitatype: '11'
   year: '2016'
@@ -431,7 +431,8 @@
   code: https://github.com/AmuletGroup/amulet-project
   copyright: ACM
   doi: 10.1145/2676431.2676432
-  keywords: paper, amulet, wearable, mHealth, security, privacy, wearable, mobile
+  keywords: paper, amulet, wearable, mHealth, security, privacy, wearable, mobile,
+    primary
   mnum: 10
   month: November
   note: Acceptance Rate 57%.
