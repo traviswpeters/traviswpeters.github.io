@@ -4,6 +4,7 @@ avatar: profile.png
 description: A website dedicated to my academic work, hobbies, and other ramblings.
 school: "Montana State University"
 email: "travis.peters1@montana.edu"
+gmail: "[traviswp [at] gmail [dot] com](mailto:traviswp@gmail.com)"
 # traviswp@gmail.com
 # traviswpeters@protonmail.com
 # travis.w.peters.gr@dartmouth.edu
@@ -28,6 +29,7 @@ menu:
 # - {name: 'CV (web)', url: 'vita.html'}
 # - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
 # - {name: 'Misc.', url: 'misc.html'}
+- {name: 'Consulting', url: 'consulting'}
 
 docs:
 - name: 'CV (pdf)'
