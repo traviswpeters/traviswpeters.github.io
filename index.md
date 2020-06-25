@@ -23,7 +23,7 @@ permalink: /
 <div class="row">
 
 <div class="col-md-3 order-3" markdown="1">
-{% include news.html num=9 %}
+{% include news.html num=5 %}
 {% include links.html %}
 </div>
 
