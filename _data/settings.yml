@@ -3,11 +3,10 @@ author: Travis Peters
 avatar: profile.png
 description: A website dedicated to my academic work, hobbies, and other ramblings.
 school: "Montana State University"
-email: "travis.peters1@montana.edu"
+email: "[travis.peters1@montana.edu](mailto:travis.peters1@montana.edu)"
 gmail: "[traviswp [at] gmail [dot] com](mailto:traviswp@gmail.com)"
-# traviswp@gmail.com
-# traviswpeters@protonmail.com
-# travis.w.peters.gr@dartmouth.edu
+pmail: "[traviswpeters [at] protonmail [dot] com](mailto:traviswpeters@protonmail.com)"
+dmail: "[travis.w.peters.gr [at] dartmouth [dot] edu](mailto:travis.w.peters.gr@dartmouth.edu)"
 # traviswp@cs.dartmouth.edu
 office: "NAH 253A"
 officehours: "M/W/F 9:00&ndash;10:00 a.m." # and by appointment.
@@ -25,9 +24,6 @@ menu:
 - {name: 'Awards', url: '#awards'}
 - {name: 'News', url: '#news'}
 - {name: 'Docs', url: ''}
-# - {name: 'CV', url: 'vita.pdf'}
-# - {name: 'CV (web)', url: 'vita.html'}
-# - {name: 'R&eacute;sum&eacute;', url: 'resume.pdf'}
 # - {name: 'Misc.', url: 'misc.html'}
 - {name: 'Consulting', url: 'consulting'}
 
@@ -72,6 +68,5 @@ social:
 # - {icon: 'stack-overflow', type: 'b', link: 'https://stackoverflow.com/users/2276247/traviswp'}
 # - {icon: 'orcid', type: 'b', link: 'https://orcid.org/0000-0003-0072-2735'}
 # - {icon: 'rss-square', link: 'feed.xml'}
-
 
 google-ID: 'CHANGEME' #'UA-80213386-1'
