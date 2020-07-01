@@ -39,6 +39,15 @@ $(document).ready(function() {
         function() {$(this).attr("src","assets/peters2.jpg");}, // on hover
         function() {$(this).attr("src","assets/peters1.jpg");   // off hover (default)
     });
+
+    // add links to all section headers...
+    $( ".anchorItem" ).each(function(index) {
+      var attr = $(this).attr('id');
+      if (typeof attr !== typeof undefined && attr !== false) {
+        $(this).html( '<a href="#' + attr + '">' +$(this).html()+ ' </a>' );
+      }
+    });
+
 });
 </script>
 

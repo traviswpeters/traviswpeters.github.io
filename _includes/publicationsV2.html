@@ -2,8 +2,7 @@
 ## Publications
 
 {% for pub in site.data.papersV2 %}
-<b id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
-<!-- quick link --><a class="far fa-link" aria-hidden="true" href="#{{pub.CITEKEY}}"></a>
+<b class="anchorItem" id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
 <!-- status (e.g., accepted) -->{% if pub.status -%}**>> {{pub.status}}**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
 <!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
 {%- if pub.ENTRYTYPE == 'inproceedings' -%}<br/>In *{{pub.booktitle}}*, {{pub.month}} {{pub.year}}.{% endif -%}
