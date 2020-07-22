@@ -10,14 +10,20 @@
 - name: 'CAIRHE @ MSU'
   url: 'http://www.montana.edu/cairhe/'
   show: false
-- name: 'Current Students @ MSU'
+- name: 'Future CS Students @ MSU'
+  url: 'https://www.cs.montana.edu/degrees_offered.html'
+  show: true
+- name: 'Current CS Students @ MSU'
   url: 'https://www.cs.montana.edu/current_students.html'
   show: true
-- name: 'Future Students @ MSU'
-  url: 'https://www.cs.montana.edu/degrees_offered.html'
+- name: 'Grad Students @ NACOE'
+  url: 'https://www.coe.montana.edu/grad/'
   show: true
 - name: 'Grad Students @ MSU'
   url: 'http://www.montana.edu/gradschool/'
+  show: true
+- name: 'Funding & Fellowships for Grad Students @ MSU'
+  url: 'http://www.montana.edu/gradschool/fellowships/index.html'
   show: true
 - name: 'Forms @ MSU'
   url: 'http://www.montana.edu/gradschool/forms.html'
@@ -27,7 +33,4 @@
   show: true
 - name: 'Computeroxy Jobs'
   url: 'https://computeroxy.com'
-  show: true
-- name: 'Funding & Fellowships for Grad Students @ MSU'
-  url: 'http://www.montana.edu/gradschool/fellowships/index.html'
   show: true
