@@ -34,3 +34,6 @@
 - name: 'Computeroxy Jobs'
   url: 'https://computeroxy.com'
   show: true
+- name: 'Academic Calendar'
+  url: 'https://www.montana.edu/registrar/academic-calendar/index.html'
+  show: true
