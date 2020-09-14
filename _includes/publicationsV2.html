@@ -4,7 +4,7 @@
 {% for pub in site.data.papersV2 %}
 <b class="anchorItem" id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
 <!-- status (e.g., accepted) -->{% if pub.status -%}**>> {{pub.status}}**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
-<!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
+<!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic}{% endif %}
 {%- if pub.ENTRYTYPE == 'inproceedings' -%}<br/>In *{{pub.booktitle}}*, {{pub.month}} {{pub.year}}.{% endif -%}
 {%- if pub.ENTRYTYPE == 'report' -%}<br/>*{{pub.number}}, {{pub.institution}}*, {{pub.month}} {{pub.year}}.{% endif -%}
 {%- if pub.ENTRYTYPE == 'article' -%}<br/>*{{pub.journal}}*, {{pub.month}} {{pub.year}}.{% endif -%}
