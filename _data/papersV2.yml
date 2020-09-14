@@ -5,66 +5,66 @@
 - CITEKEY: Dartmouth-TR2020-878
   ENTRYTYPE: report
   TITLE: Trustworthy Wireless Personal Area Networks
-  abstract: "In the Internet of Things (IoT), everyday objects are equipped withthe\
-    \ ability to compute and communicate. These smart things haveinvaded the lives\
-    \ of everyday people, being constantly carried or wornon our bodies, and entering\
-    \ into our homes, our healthcare, and beyond.This has given rise to wireless networks\
-    \ of smart, connected, always-on,personal things that are constantly around us,\
-    \ and have unfetteredaccess to our most personal data as well as all of the other\
-    \ devicesthat we own and encounter throughout our day. It should, therefore, comeas\
-    \ no surprise that our personal devices and data are frequent targetsof ever-present\
-    \ threats. Securing these devices and networks, however,is challenging. In this\
-    \ dissertation, we outline three critical problemsin the context of Wireless Personal\
-    \ Area Networks (WPANs) and presentour solutions to these problems.First, I present\
-    \ our Trusted I/O solution (BASTION-SGX) for protectingsensitive user data transferred\
-    \ between wirelessly connected (Bluetooth)devices. This work shows how in-transit\
-    \ data can be protected fromprivileged threats, such as a compromised OS, on commodity\
-    \ systems. Ipresent insights into the Bluetooth architecture, Intel\u2019s Software\
-    \ GuardExtensions (SGX), and how a Trusted I/O solution can be engineered oncommodity\
-    \ devices equipped with SGX.Second, I present our work on AMULET and how we successfully\
-    \ built awearable health hub that can run multiple health applications, providestrong\
-    \ security properties, and operate on a single charge for weeks oreven months\
-    \ at a time. I present the design and evaluation of our highlyefficient event-driven\
-    \ programming model, the design of our low-poweroperating system, and developer\
-    \ tools for profiling ultra-low-powerapplications at compile time.Third, I present\
-    \ a new approach (VIA) that helps devices at the centerof WPANs (e.g., smartphones)\
-    \ to verify the authenticity of interactionswith other devices. This work builds\
-    \ on past work in anomaly detectiontechniques and shows how these techniques can\
-    \ be applied to Bluetoothnetwork traffic. Specifically, we show how to create\
-    \ normality modelsbased on fine- and course-grained insights from network traffic,\
-    \ whichcan be used to verify the authenticity of future interactions."
+  abstract: " In the Internet of Things (IoT), everyday objects are equipped with\
+    \ the ability to compute and communicate. These smart things have invaded the\
+    \ lives of everyday people, being constantly carried or worn on our bodies, and\
+    \ entering into our homes, our healthcare, and beyond. This has given rise to\
+    \ wireless networks of smart, connected, always-on, personal things that are constantly\
+    \ around us, and have unfettered access to our most personal data as well as all\
+    \ of the other devices that we own and encounter throughout our day. It should,\
+    \ therefore, come as no surprise that our personal devices and data are frequent\
+    \ targets of ever-present threats. Securing these devices and networks, however,\
+    \ is challenging. In this dissertation, we outline three critical problems in\
+    \ the context of Wireless Personal Area Networks (WPANs) and present our solutions\
+    \ to these problems.  <br/><br/> First, I present our Trusted I/O solution (BASTION-SGX)\
+    \ for protecting sensitive user data transferred between wirelessly connected\
+    \ (Bluetooth) devices. This work shows how in-transit data can be protected from\
+    \ privileged threats, such as a compromised OS, on commodity systems. I present\
+    \ insights into the Bluetooth architecture, Intel\u2019s Software Guard Extensions\
+    \ (SGX), and how a Trusted I/O solution can be engineered on commodity devices\
+    \ equipped with SGX.  <br/><br/> Second, I present our work on AMULET and how\
+    \ we successfully built a wearable health hub that can run multiple health applications,\
+    \ provide strong security properties, and operate on a single charge for weeks\
+    \ or even months at a time. I present the design and evaluation of our highly\
+    \ efficient event-driven programming model, the design of our low-power operating\
+    \ system, and developer tools for profiling ultra-low-power applications at compile\
+    \ time.  <br/><br/> Third, I present a new approach (VIA) that helps devices at\
+    \ the center of WPANs (e.g., smartphones) to verify the authenticity of interactions\
+    \ with other devices. This work builds on past work in anomaly detection techniques\
+    \ and shows how these techniques can be applied to Bluetooth network traffic.\
+    \ Specifically, we show how to create normality models based on fine- and course-grained\
+    \ insights from network traffic, which can be used to verify the authenticity\
+    \ of future interactions. "
   address: Hanover, NH
   authors: '**Travis Peters**'
-  comment: 'Ph.D Dissertation. Advisor: David Kotz.This dissertation was successfully
-    defended in August 2019, finalized in March 2020, and released in August 2020.'
+  comment: ' Ph.D Dissertation. Advisor: David Kotz. This dissertation was successfully
+    defended in August 2019, finalized in March 2020, and released in August 2020. '
   institution: Dartmouth College, Computer Science
   mnum: 2
   month: March
   note: Dissertation
   number: TR2020-878
-  pdf: papers/thesis-peters-twpan-03-02-2020-TR.pdf
-  url: papers/thesis-peters-twpan-03-02-2020-TR.pdf
-  urltr: https://www.cs.dartmouth.edu/trdata/reports/abstracts/TR2020-878/
   year: '2020'
 - CITEKEY: pierson-snap
   ENTRYTYPE: inproceedings
   TITLE: Proximity Detection with Single-Antenna IoT Devices
-  abstract: Providing secure communications between wireless devices thatencounter
-    each other on an ad-hoc basis is a challenge that has not yet beenfully addressed.
-    In these cases, close physical proximity among devices thathave never shared a
-    secret key is sometimes used as a basis of trust; devicesin close proximity are
-    deemed trustworthy while more distant devices areviewed as potential adversaries.
-    Because radio waves are invisible, however,a user may believe a wireless device
-    is communicating with a nearby devicewhen in fact the user's device is communicating
-    with a distant adversary.Researchers have previously proposed methods for multi-antenna
-    devices toascertain physical proximity with other devices, but devices with a
-    singleantenna, such as those commonly used in the Internet of Things, cannot takeadvantage
-    of these techniques. <br/><br/> We present theoretical and practicalevaluation
-    of a method called SNAP -- SiNgle Antenna Proximity -- that allowsa single-antenna
-    Wi-Fi device to quickly determine proximity with anotherWi-Fi device. Our proximity
-    detection technique leverages the repeatingnature Wi-Fi's preamble and the behavior
-    of a signal in a transmittingantenna's near-field region to detect proximity with
-    high probability; SNAPnever falsely declares proximity at ranges longer than 14cm.
+  abstract: Providing secure communications between wireless devices that encounter
+    each other on an ad-hoc basis is a challenge that has not yet been fully addressed.
+    In these cases, close physical proximity among devices that have never shared
+    a secret key is sometimes used as a basis of trust; devices in close proximity
+    are deemed trustworthy while more distant devices are viewed as potential adversaries.
+    Because radio waves are invisible, however, a user may believe a wireless device
+    is communicating with a nearby device when in fact the user's device is communicating
+    with a distant adversary. Researchers have previously proposed methods for multi-antenna
+    devices to ascertain physical proximity with other devices, but devices with a
+    single antenna, such as those commonly used in the Internet of Things, cannot
+    take advantage of these techniques. <br/><br/> We present theoretical and practical
+    evaluation of a method called SNAP -- SiNgle Antenna Proximity -- that allows
+    a single-antenna Wi-Fi device to quickly determine proximity with another Wi-Fi
+    device. Our proximity detection technique leverages the repeating nature Wi-Fi's
+    preamble and the behavior of a signal in a transmitting antenna's near-field region
+    to detect proximity with high probability; SNAP never falsely declares proximity
+    at ranges longer than 14cm.
   acceptpercent: '24'
   authors: Timothy J. Pierson, **Travis Peters**, Ronald Peterson, David Kotz
   booktitle: Proceedings of the ACM International Conference on Mobile Computing and
@@ -76,7 +76,7 @@
   keywords: paper, security, wireless, iot, mobile, mhealth, secondary
   mnum: 9
   month: October
-  note: Acceptance Rate 24%.
+  note: Acceptance Rate 24 %.
   pages: 1--12
   pdf: papers/pierson-snap-mobicom2019.pdf
   publisher: ACM
@@ -87,13 +87,14 @@
 - CITEKEY: tiopatent2018
   ENTRYTYPE: patent
   TITLE: System, apparatus and method for providing trusted input/output communications
-  abstract: In one embodiment, an apparatus includes a wireless controller,which may
-    include a byte stream parser to receive a stream of data from one or more wireless
-    devicesand parse the stream of data to identify a first data packet associated
-    with a first channel identifierassociated with a trusted application, and a cryptographic
-    engine coupled to the byte stream parser toencrypt a payload portion of the first
-    data packet in response to the identification of the first datapacket associated
-    with the first channel identifier. Other embodiments are described and claimed.
+  abstract: In one embodiment, an apparatus includes a wireless controller, which
+    may include a byte stream parser to receive a stream of data from one or more
+    wireless devices and parse the stream of data to identify a first data packet
+    associated with a first channel identifier associated with a trusted application,
+    and a cryptographic engine coupled to the byte stream parser to encrypt a payload
+    portion of the first data packet in response to the identification of the first
+    data packet associated with the first channel identifier. Other embodiments are
+    described and claimed.
   authors: Srikanth Varadarajan, Reshma Lal, Steven B. McGowan, Hakan Magnus Eriksson,
     **Travis W. Peters**
   copyright: the authors
@@ -109,25 +110,25 @@
 - CITEKEY: pierson-closetalker
   ENTRYTYPE: inproceedings
   TITLE: 'CloseTalker: secure, short-range ad hoc wireless communication'
-  abstract: Secure communication is difficult to arrange between devices thathave
-    not previously shared a secret. Previous solutions to the problem aresusceptible
-    to man-in-the-middle attacks, require additional hardware forout-of-band communication,
-    or require an extensive public-key infrastructure.Furthermore, as the number of
-    wireless devices explodes with the advent ofthe Internet of Things, it will be
-    impractical to manually configure eachdevice to communicate with its neighbors
-    or with the local WLAN. <br/><br/> Oursystem, CloseTalker, allows simple, secure,
-    ad hoc communicationbetween devices in close physical proximity, while jamming
-    the signal so itis unintelligible to any receivers more than a few centimeters
-    away.CloseTalker does not require any specialized hardware or sensors in thedevices,
-    does not require complex algorithms or cryptography libraries,occurs only when
-    intended by the user, and can transmit a short burst of dataor an address and
-    key that can be used to establish long-term or long-rangecommunications at full
-    bandwidth. <br/><br/> In this paper we present a theoreticaland practical evaluation
-    of CloseTalker, which exploits Wi-Fi MIMO antennasand the fundamental physics
-    of radio to establish secure communicationbetween devices that have never previously
-    met. We demonstrate thatCloseTalker is able to facilitate secure in-band communication
-    betweendevices in close physical proximity (about 5cm), even though they have
-    nevermet nor shared a key.
+  abstract: Secure communication is difficult to arrange between devices that have
+    not previously shared a secret. Previous solutions to the problem are susceptible
+    to man-in-the-middle attacks, require additional hardware for out-of-band communication,
+    or require an extensive public-key infrastructure. Furthermore, as the number
+    of wireless devices explodes with the advent of the Internet of Things, it will
+    be impractical to manually configure each device to communicate with its neighbors
+    or with the local WLAN. <br/><br/> Our system, CloseTalker, allows simple, secure,
+    ad hoc communication between devices in close physical proximity, while jamming
+    the signal so it is unintelligible to any receivers more than a few centimeters
+    away. CloseTalker does not require any specialized hardware or sensors in the
+    devices, does not require complex algorithms or cryptography libraries, occurs
+    only when intended by the user, and can transmit a short burst of data or an address
+    and key that can be used to establish long-term or long-range communications at
+    full bandwidth. <br/><br/> In this paper we present a theoretical and practical
+    evaluation of CloseTalker, which exploits Wi-Fi MIMO antennas and the fundamental
+    physics of radio to establish secure communication between devices that have never
+    previously met. We demonstrate that CloseTalker is able to facilitate secure in-band
+    communication between devices in close physical proximity (about 5cm), even though
+    they have never met nor shared a key.
   acceptpercent: '23'
   authors: Timothy J. Pierson, **Travis Peters**, Reza Rawassizadeh, Ronald Peterson,
     David Kotz
@@ -139,7 +140,7 @@
   keywords: paper, mHealth, Wi-Fi, security, secondary
   mnum: 5
   month: June
-  note: Acceptance Rate 23%.
+  note: Acceptance Rate 23 %.
   pages: 1--12
   pdf: papers/pierson-closetalker-mobisys2019.pdf
   publisher: ACM
@@ -150,19 +151,20 @@
 - CITEKEY: pierson-snap-poster
   ENTRYTYPE: inproceedings
   TITLE: 'Poster: Proximity Detection with Single-Antenna IoT Devices'
-  abstract: Close physical proximity among wireless devices that have nevershared
-    a secret key is sometimes used as a basis of trust. In these cases,devices in
-    close proximity are deemed trustworthy while more distant devicesare viewed as
-    potential adversaries. Because radio waves are invisible,however, a user may believe
-    a wireless device is communicating with a nearbydevice when in fact the user's
-    device is communicating with a distantadversary. Researchers have previously proposed
-    methods for multi-antennadevices to ascertain physical proximity with other devices,
-    but devices witha single antenna, such as those commonly used in the Internet
-    of Things,cannot take advantage of these techniques. We investigate a method for
-    asingle-antenna Wi-Fi device to quickly determine proximity with another Wi-Fidevice.
-    Our approach leverages the repeating nature Wi-Fi's preamble and thecharacteristics
-    of a transmitting antenna's near field to detect proximitywith high probability.
-    Our method never falsely declares proximity at rangeslonger than 14 cm.
+  abstract: Close physical proximity among wireless devices that have never shared
+    a secret key is sometimes used as a basis of trust. In these cases, devices in
+    close proximity are deemed trustworthy while more distant devices are viewed as
+    potential adversaries. Because radio waves are invisible, however, a user may
+    believe a wireless device is communicating with a nearby device when in fact the
+    user's device is communicating with a distant adversary. Researchers have previously
+    proposed methods for multi-antenna devices to ascertain physical proximity with
+    other devices, but devices with a single antenna, such as those commonly used
+    in the Internet of Things, cannot take advantage of these techniques. We investigate
+    a method for a single-antenna Wi-Fi device to quickly determine proximity with
+    another Wi-Fi device. Our approach leverages the repeating nature Wi-Fi's preamble
+    and the characteristics of a transmitting antenna's near field to detect proximity
+    with high probability. Our method never falsely declares proximity at ranges longer
+    than 14 cm.
   acceptpercent: '50'
   authors: Timothy J. Pierson, **Travis Peters**, Ronald Peterson, David Kotz
   award: Best Poster Award
@@ -175,7 +177,7 @@
   later: pierson:snap
   mnum: 9
   month: October
-  note: Acceptance Rate 50%.
+  note: Acceptance Rate 50 %.
   pages: 663--665
   pdf: papers/posters/mobicom2018_snap_poster.pdf
   publisher: ACM
@@ -185,15 +187,15 @@
 - CITEKEY: peters-bastionsgx
   ENTRYTYPE: inproceedings
   TITLE: 'BASTION-SGX: Bluetooth and Architectural Support for Trusted I/O on SGX'
-  abstract: This paper presents work towards realizing architectural supportfor Bluetooth
-    Trusted I/O on SGX-enabled platforms, with the goal ofproviding I/O data protection
-    that does not rely on system software security.Indeed, we are primarily concerned
-    with protecting I/O from all softwareadversaries, including privileged software.
-    In this paper we describe thechallenges in designing and implementing Trusted
-    I/O at the architecturallevel for Bluetooth. We propose solutions to these challenges.
-    In addition,we describe our proof-of-concept work that extends existing over-the-airBluetooth
-    security all the way to an SGX enclave by securing user databetween the Bluetooth
-    Controller and an SGX enclave.
+  abstract: This paper presents work towards realizing architectural support for Bluetooth
+    Trusted I/O on SGX-enabled platforms, with the goal of providing I/O data protection
+    that does not rely on system software security. Indeed, we are primarily concerned
+    with protecting I/O from all software adversaries, including privileged software.
+    In this paper we describe the challenges in designing and implementing Trusted
+    I/O at the architectural level for Bluetooth. We propose solutions to these challenges.
+    In addition, we describe our proof-of-concept work that extends existing over-the-air
+    Bluetooth security all the way to an SGX enclave by securing user data between
+    the Bluetooth Controller and an SGX enclave.
   acceptpercent: '42'
   authors: '**Travis Peters**, Reshma Lal, Srikanth Varadarajan, Pradeep Pappachan,
     David Kotz'
@@ -206,7 +208,7 @@
   keywords: paper, security, I/O, systems, operating systems, primary
   mnum: 5
   month: June
-  note: Acceptance Rate 42%.
+  note: Acceptance Rate 42 %.
   pages: 1--9
   pdf: papers/peters-hasp2018.pdf
   publisher: ACM
@@ -217,23 +219,23 @@
 - CITEKEY: kotz-safethings
   ENTRYTYPE: inproceedings
   TITLE: Challenges to ensuring human safety throughout the life-cycle of Smart Environments
-  abstract: The homes, offices, and vehicles of tomorrow will be embeddedwith numerous
-    ``Smart Things,'' networked with each other and with theInternet. Many of these
-    Things are embedded in the physical infrastructure,and like the infrastructure
-    they are designed to last for decades -- farlonger than is normal with today's
-    electronic devices. What happens then,when an occupant moves out or transfers
-    ownership of her Smart Environment?This paper outlines the critical challenges
-    required for the safe long-termoperation of Smart Environments. How does an occupant
-    identify anddecommission all the Things in an environment before she moves out?
-    How doesa new occupant discover, identify, validate, and configure all the Things
-    inthe environment he adopts? When a person moves from smart home to smartoffice
-    to smart hotel, how is a new environment vetted for safety andsecurity, how are
-    personal settings migrated, and how are they securelydeleted on departure? When
-    the original vendor of a Thing (or the servicebehind it) disappears, how can that
-    Thing (and its data, and itsconfiguration) be transferred to a new service provider?
-    What interface canenable lay people to manage these complex challenges, and be
-    assured of theirprivacy, security, and safety? We present a list of key research
-    questions toaddress these important challenges.
+  abstract: The homes, offices, and vehicles of tomorrow will be embedded with numerous
+    ``Smart Things,'' networked with each other and with the Internet. Many of these
+    Things are embedded in the physical infrastructure, and like the infrastructure
+    they are designed to last for decades -- far longer than is normal with today's
+    electronic devices. What happens then, when an occupant moves out or transfers
+    ownership of her Smart Environment? This paper outlines the critical challenges
+    required for the safe long-term operation of Smart Environments. How does an occupant
+    identify and decommission all the Things in an environment before she moves out?
+    How does a new occupant discover, identify, validate, and configure all the Things
+    in the environment he adopts? When a person moves from smart home to smart office
+    to smart hotel, how is a new environment vetted for safety and security, how are
+    personal settings migrated, and how are they securely deleted on departure? When
+    the original vendor of a Thing (or the service behind it) disappears, how can
+    that Thing (and its data, and its configuration) be transferred to a new service
+    provider? What interface can enable lay people to manage these complex challenges,
+    and be assured of their privacy, security, and safety? We present a list of key
+    research questions to address these important challenges.
   acceptpercent: '54'
   authors: David Kotz, **Travis Peters**
   booktitle: Proceedings of the ACM Workshop on the Internet of Safe Things (SafeThings)
@@ -243,7 +245,7 @@
   keywords: paper, IoT, IoTsec, safety, security, challenges, mhealth, ubicomp, primary
   mnum: 10
   month: November
-  note: Acceptance Rate 54%.
+  note: Acceptance Rate 54 %.
   pages: 1--7
   pdf: http://www.traviswpeters.com/papers/kotz-safethings2017.pdf
   publisher: ACM
@@ -253,26 +255,26 @@
   year: '2017'
 - CITEKEY: tc-peters-tr2017
   ENTRYTYPE: report
-  TITLE: A Survey of Trustworthy Computing on Mobile & Wearable Systems
+  TITLE: A Survey of Trustworthy Computing on Mobile  & Wearable Systems
   abstract: Mobile and wearable systems have generated unprecedented interest in recent
-    years,particularly in the domain of mobile health (mHealth) where carried or worn
-    devices are used to collect health-related information about the observed person.Much
-    of the information -- whether physiological, behavioral, or social -- collected
-    by mHealth systems is sensitive and highly personal;it follows that mHealth systems
-    should, at the very least, be deployed with mechanisms suitable for ensuring confidentiality
-    of the data it collects.Additional properties -- such as integrity of the data,
-    source authentication of data, and data freshness -- are also desirable to address
-    other security, privacy, and safety issues.Developing systems that are robust
-    against capable adversaries (including physical attacks) is,and has been, an active
-    area of research. While techniques for protecting systems that handle sensitive
-    data are well-known today,many of the solutions in use today are not well suited
-    for mobile and wearable systems,which are typically limited with respect to power,
-    memory, computation, and other capabilities.In this paper we look at prior research
-    on developing trustworthy mobile and wearable systems.To survey this topic we
-    begin by discussing solutions for securing computing systems that are not subject
-    to thetype of strict constraints associated with mobile and wearable systems.Next,
-    we present other efforts to design and implement trustworthy mobile and wearable
-    systems.We end with a discussion of future directions.
+    years, particularly in the domain of mobile health (mHealth) where carried or
+    worn devices are used to collect health-related information about the observed
+    person. Much of the information -- whether physiological, behavioral, or social
+    -- collected by mHealth systems is sensitive and highly personal; it follows that
+    mHealth systems should, at the very least, be deployed with mechanisms suitable
+    for ensuring confidentiality of the data it collects. Additional properties --
+    such as integrity of the data, source authentication of data, and data freshness
+    -- are also desirable to address other security, privacy, and safety issues. Developing
+    systems that are robust against capable adversaries (including physical attacks)
+    is, and has been, an active area of research. While techniques for protecting
+    systems that handle sensitive data are well-known today, many of the solutions
+    in use today are not well suited for mobile and wearable systems, which are typically
+    limited with respect to power, memory, computation, and other capabilities. In
+    this paper we look at prior research on developing trustworthy mobile and wearable
+    systems. To survey this topic we begin by discussing solutions for securing computing
+    systems that are not subject to the type of strict constraints associated with
+    mobile and wearable systems. Next, we present other efforts to design and implement
+    trustworthy mobile and wearable systems. We end with a discussion of future directions.
   authors: '**Travis Peters**'
   copyright: the authors
   institution: Dartmouth Computer Science
@@ -288,22 +290,22 @@
 - CITEKEY: hester-amulet
   ENTRYTYPE: inproceedings
   TITLE: 'Amulet: An Energy-Efficient, Multi-Application Wearable Platform'
-  abstract: Wearable technology enables a range of exciting new applicationsin health,
-    commerce, and beyond. For many important applications, wearablesmust have battery
-    life measured in weeks or months, not hours and days as inmost current devices.
-    Our vision of wearable platforms aims for long batterylife but with the flexibility
-    and security to support multiple applications.To achieve long battery life with
-    a workload comprising apps from multipledevelopers, these platforms must have
-    robust mechanisms for app isolation anddeveloper tools for optimizing resource
-    usage. <br/><br/> We introduce the AmuletPlatform for constrained wearable devices,
-    which includes an ultra-low-powerhardware architecture and a companion software
-    framework, including a highlyefficient event-driven programming model, low-power
-    operating system, anddeveloper tools for profiling ultra-low-power applications
-    at compile time.We present the design and evaluation of our prototype Amulet hardware
-    andsoftware, and show how the framework enables developers to writeenergy-efficient
-    applications. Our prototype has battery lifetime lastingweeks or even months,
-    depending on the application, and our interactiveresource-profiling tool predicts
-    battery lifetime within 6-10% of themeasured lifetime.
+  abstract: Wearable technology enables a range of exciting new applications in health,
+    commerce, and beyond. For many important applications, wearables must have battery
+    life measured in weeks or months, not hours and days as in most current devices.
+    Our vision of wearable platforms aims for long battery life but with the flexibility
+    and security to support multiple applications. To achieve long battery life with
+    a workload comprising apps from multiple developers, these platforms must have
+    robust mechanisms for app isolation and developer tools for optimizing resource
+    usage. <br/><br/> We introduce the Amulet Platform for constrained wearable devices,
+    which includes an ultra-low-power hardware architecture and a companion software
+    framework, including a highly efficient event-driven programming model, low-power
+    operating system, and developer tools for profiling ultra-low-power applications
+    at compile time. We present the design and evaluation of our prototype Amulet
+    hardware and software, and show how the framework enables developers to write
+    energy-efficient applications. Our prototype has battery lifetime lasting weeks
+    or even months, depending on the application, and our interactive resource-profiling
+    tool predicts battery lifetime within 6-10 % of the measured lifetime.
   acceptpercent: '18'
   authors: Josiah Hester, **Travis Peters**, Tianlong Yun, Ronald Peterson, Joseph
     Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Kevin Freeman, Sarah Lord,
@@ -319,7 +321,7 @@
   keywords: paper, amulet, mhealth, security, low-power, wearable, primary
   mnum: 10
   month: November
-  note: Acceptance Rate 18%.
+  note: Acceptance Rate 18 %.
   pages: 216--229
   pdf: papers/hester-amulet-sensys2016.pdf
   publisher: ACM
@@ -330,16 +332,16 @@
 - CITEKEY: hester-amulet-demo
   ENTRYTYPE: inproceedings
   TITLE: 'The Amulet Wearable Platform: Demo Abstract'
-  abstract: In this demonstration we present the Amulet Platform; a hardwareand software
-    platform for developing energy- and resource-efficientapplications on multi-application
-    wearable devices. This platform, whichincludes the Amulet Firmware Toolchain,
-    the Amulet Runtime, the ARP-Viewgraphical tool, and open reference hardware, efficiently
-    protectsapplications from each other without MMU support, allows developers tointeractively
-    explore how their implementation decisions impact battery lifewithout the need
-    for hardware modeling and additional software development,and represents a new
-    approach to developing long-lived wearable applications.We envision the Amulet
-    Platform enabling long-duration experiments on humansubjects in a wide variety
-    of studies.
+  abstract: In this demonstration we present the Amulet Platform; a hardware and software
+    platform for developing energy- and resource-efficient applications on multi-application
+    wearable devices. This platform, which includes the Amulet Firmware Toolchain,
+    the Amulet Runtime, the ARP-View graphical tool, and open reference hardware,
+    efficiently protects applications from each other without MMU support, allows
+    developers to interactively explore how their implementation decisions impact
+    battery life without the need for hardware modeling and additional software development,
+    and represents a new approach to developing long-lived wearable applications.
+    We envision the Amulet Platform enabling long-duration experiments on human subjects
+    in a wide variety of studies.
   authors: Josiah Hester, **Travis Peters**, Tianlong Yun, Ronald Peterson, Joseph
     Skinner, Bhargav Golla, Kevin Storer, Steven Hearndon, Sarah Lord, Ryan Halter,
     David Kotz, Jacob Sorber
@@ -365,12 +367,12 @@
   TITLE: 'Poster: Security in IoT: What is IoT Security, Really?!'
   abstract: 'In this work we conduct a survey of the Internet of Things, primarily
     focused around identifying security, privacy, and safety concerns in consumer-centric
-    scenarios (e.g., SmartHealthcare, SmartHomes, SmartCars).Our primary goal in this
-    work is to identify gaps in the security and threat models that are being considered
-    today in order to gain insight into what needs to be done in the futureto ensure
-    the security of our interconnected things. To begin to try to understand the threats
-    in the IoT we began by first trying to understand the usages, technologies, and
-    standardsthat are driving the adoption of IoT. '
+    scenarios (e.g., SmartHealthcare, SmartHomes, SmartCars). Our primary goal in
+    this work is to identify gaps in the security and threat models that are being
+    considered today in order to gain insight into what needs to be done in the future
+    to ensure the security of our interconnected things. To begin to try to understand
+    the threats in the IoT we began by first trying to understand the usages, technologies,
+    and standards that are driving the adoption of IoT. '
   authors: '**Travis Peters**, Srikanth Varadarajan, Reshma Lal'
   journal: Intel Labs Open House
   mnum: 8
@@ -378,31 +380,31 @@
   year: '2016'
 - CITEKEY: peters-IntelLabsOH2015-poster-demo
   ENTRYTYPE: unpublished
-  TITLE: 'Poster & Demo: Protecting Bluetooth Input from Malware'
+  TITLE: 'Poster  & Demo: Protecting Bluetooth Input from Malware'
   abstract: "The role of securing I/O data is generally understood to be a responsibility\
-    \ of a modern OS.This is, however, inherently assuming that we trust the OS and\
-    \ the various drivers that handle I/O data with potentially sensitive information.Of\
-    \ particular interest in I/O data security is the security of input data for authentication\
-    \ such as passwords and PINs,as well as other sensitive information that is entered\
-    \ in popular applications including, but not limited to, addresses, phone numbers,\
-    \ social security numbers, and credit/debit card information.When input data is\
-    \ entered via a Bluetooth Human Interface Device (HID) such as a keyboard, this\
-    \ data is secured over the air, however,upon arriving in the Bluetooth Controller\
-    \ of the host machine, the data is decrypted and passed up through various drivers\
-    \ in the OS before ultimately reaching an application.Trusted I/O (TIO) for Bluetooth\
-    \ devices aims to secure data between a Trusted Application (e.g., an application\
-    \ running in a Trusted Execution Environment (TEE)) and the Bluetooth Controller\
-    \ which receives Bluetooth data over the air.In this document, I will present\
-    \ some of the challenges that must be addressed in implementing TIO for Bluetooth\
-    \ devices, review our plan for a firmware-based approachto cryptographically protecting\
-    \ Bluetooth keyboard input data and our actual Proof of Concept work which(1)\
-    \ implements an interface by which a Trusted Application can program/clear a TIO\
-    \ session key into the Bluetooth Controller,(2) modifies the Bluetooth Controller\u2019\
-    s firmware to maintain TIO-related connection information for connected devices,\
-    \ and(3) modifies the firmware to implement L2CAP-level packet parsing to identify\
-    \ packets containing HID Report data and encrypt the data if a TIO session has\
-    \ been enabled for that device.I will close with an overview of remaining challenges\
-    \ and future work."
+    \ of a modern OS. This is, however, inherently assuming that we trust the OS and\
+    \ the various drivers that handle I/O data with potentially sensitive information.\
+    \ Of particular interest in I/O data security is the security of input data for\
+    \ authentication such as passwords and PINs, as well as other sensitive information\
+    \ that is entered in popular applications including, but not limited to, addresses,\
+    \ phone numbers, social security numbers, and credit/debit card information. When\
+    \ input data is entered via a Bluetooth Human Interface Device (HID) such as a\
+    \ keyboard, this data is secured over the air, however, upon arriving in the Bluetooth\
+    \ Controller of the host machine, the data is decrypted and passed up through\
+    \ various drivers in the OS before ultimately reaching an application. Trusted\
+    \ I/O (TIO) for Bluetooth devices aims to secure data between a Trusted Application\
+    \ (e.g., an application running in a Trusted Execution Environment (TEE)) and\
+    \ the Bluetooth Controller which receives Bluetooth data over the air. In this\
+    \ document, I will present some of the challenges that must be addressed in implementing\
+    \ TIO for Bluetooth devices, review our plan for a firmware-based approach to\
+    \ cryptographically protecting Bluetooth keyboard input data and our actual Proof\
+    \ of Concept work which (1) implements an interface by which a Trusted Application\
+    \ can program/clear a TIO session key into the Bluetooth Controller, (2) modifies\
+    \ the Bluetooth Controller\u2019s firmware to maintain TIO-related connection\
+    \ information for connected devices, and (3) modifies the firmware to implement\
+    \ L2CAP-level packet parsing to identify packets containing HID Report data and\
+    \ encrypt the data if a TIO session has been enabled for that device. I will close\
+    \ with an overview of remaining challenges and future work."
   authors: '**Travis Peters**, Srikanth Varadarajan, Pradeep Pappachan, Reshma Lal'
   journal: Intel Labs Open House
   mnum: 8
@@ -412,29 +414,29 @@
   ENTRYTYPE: unpublished
   TITLE: 'Poster: Trusted I/O and Bluetooth Devices'
   abstract: "The role of securing I/O data is generally understood to be a responsibility\
-    \ of a modern OS.This is, however, inherently assuming that we trust the OS and\
-    \ the various drivers that handle I/O data with potentially sensitive information.Of\
-    \ particular interest in I/O data security is the security of input data for authentication\
-    \ such as passwords and PINs,as well as other sensitive information that is entered\
-    \ in popular applications including, but not limited to, addresses, phone numbers,\
-    \ social security numbers, and credit/debit card information.When input data is\
-    \ entered via a Bluetooth Human Interface Device (HID) such as a keyboard, this\
-    \ data is secured over the air, however,upon arriving in the Bluetooth Controller\
-    \ of the host machine, the data is decrypted and passed up through various drivers\
-    \ in the OS before ultimately reaching an application.Trusted I/O (TIO) for Bluetooth\
-    \ devices aims to secure data between a Trusted Application (e.g., an application\
-    \ running in a Trusted Execution Environment (TEE)) and the Bluetooth Controller\
-    \ which receives Bluetooth data over the air.In this document, I will present\
-    \ some of the challenges that must be addressed in implementing TIO for Bluetooth\
-    \ devices, review our plan for a firmware-based approachto cryptographically protecting\
-    \ Bluetooth keyboard input data and our actual Proof of Concept work which(1)\
-    \ implements an interface by which a Trusted Application can program/clear a TIO\
-    \ session key into the Bluetooth Controller,(2) modifies the Bluetooth Controller\u2019\
-    s firmware to maintain TIO-related connection information for connected devices,\
-    \ and(3) modifies the firmware to implement L2CAP-level packet parsing to identify\
-    \ packets containing HID Report data and encrypt the data if a TIO session has\
-    \ been enabled for that device.I will close with an overview of remaining challenges\
-    \ and future work."
+    \ of a modern OS. This is, however, inherently assuming that we trust the OS and\
+    \ the various drivers that handle I/O data with potentially sensitive information.\
+    \ Of particular interest in I/O data security is the security of input data for\
+    \ authentication such as passwords and PINs, as well as other sensitive information\
+    \ that is entered in popular applications including, but not limited to, addresses,\
+    \ phone numbers, social security numbers, and credit/debit card information. When\
+    \ input data is entered via a Bluetooth Human Interface Device (HID) such as a\
+    \ keyboard, this data is secured over the air, however, upon arriving in the Bluetooth\
+    \ Controller of the host machine, the data is decrypted and passed up through\
+    \ various drivers in the OS before ultimately reaching an application. Trusted\
+    \ I/O (TIO) for Bluetooth devices aims to secure data between a Trusted Application\
+    \ (e.g., an application running in a Trusted Execution Environment (TEE)) and\
+    \ the Bluetooth Controller which receives Bluetooth data over the air. In this\
+    \ document, I will present some of the challenges that must be addressed in implementing\
+    \ TIO for Bluetooth devices, review our plan for a firmware-based approach to\
+    \ cryptographically protecting Bluetooth keyboard input data and our actual Proof\
+    \ of Concept work which (1) implements an interface by which a Trusted Application\
+    \ can program/clear a TIO session key into the Bluetooth Controller, (2) modifies\
+    \ the Bluetooth Controller\u2019s firmware to maintain TIO-related connection\
+    \ information for connected devices, and (3) modifies the firmware to implement\
+    \ L2CAP-level packet parsing to identify packets containing HID Report data and\
+    \ encrypt the data if a TIO session has been enabled for that device. I will close\
+    \ with an overview of remaining challenges and future work."
   authors: '**Travis Peters**, Srikanth Varadarajan, Pradeep Pappachan, Reshma Lal'
   journal: Intel Labs Intern Poster Show
   mnum: 7
@@ -444,28 +446,29 @@
   ENTRYTYPE: inproceedings
   TITLE: 'Amulet: A secure architecture for mHealth applications for low-power wearable
     devices'
-  abstract: Interest in using mobile technologies for health-relatedapplications (mHealth)
-    has increased. However, none of the available mobileplatforms provide the essential
-    properties that are needed by theseapplications. An mHealth platform must be (i)
-    secure; (ii) provide highavailability; and (iii) allow for the deployment of multiple
-    third-partymHealth applications that share access to an individual's devices and
-    data.Smartphones may not be able to provide property (ii) because there areactivities
-    and situations in which an individual may not be able to carrythem (e.g., while
-    in a contact sport). A low-power wearable device canprovide higher availability,
-    remaining attached to the user during mostactivities. Furthermore, some mHealth
-    applications require integratingmultiple on-body or near-body devices, some owned
-    by a single individual, butothers shared with multiple individuals. In this paper,
-    we propose a securesystem architecture for a low-power bracelet that can run multipleapplications
-    and manage access to shared resources in a body-area mHealthnetwork. The wearer
-    can install a personalized mix of third-partyapplications to support the monitoring
-    of multiple medical conditions orwellness goals, with strong security safeguards.
-    Our preliminaryimplementation and evaluation supports the hypothesis that our
-    approachallows for the implementation of a resource monitor on far less power
-    thanwould be consumed by a mobile device running Linux or Android. Ourpreliminary
-    experiments demonstrate that our secure architecture would enableapplications
-    to run for several weeks on a small wearable device withoutrecharging.
+  abstract: Interest in using mobile technologies for health-related applications
+    (mHealth) has increased. However, none of the available mobile platforms provide
+    the essential properties that are needed by these applications. An mHealth platform
+    must be (i) secure; (ii) provide high availability; and (iii) allow for the deployment
+    of multiple third-party mHealth applications that share access to an individual's
+    devices and data. Smartphones may not be able to provide property (ii) because
+    there are activities and situations in which an individual may not be able to
+    carry them (e.g., while in a contact sport). A low-power wearable device can provide
+    higher availability, remaining attached to the user during most activities. Furthermore,
+    some mHealth applications require integrating multiple on-body or near-body devices,
+    some owned by a single individual, but others shared with multiple individuals.
+    In this paper, we propose a secure system architecture for a low-power bracelet
+    that can run multiple applications and manage access to shared resources in a
+    body-area mHealth network. The wearer can install a personalized mix of third-party
+    applications to support the monitoring of multiple medical conditions or wellness
+    goals, with strong security safeguards. Our preliminary implementation and evaluation
+    supports the hypothesis that our approach allows for the implementation of a resource
+    monitor on far less power than would be consumed by a mobile device running Linux
+    or Android. Our preliminary experiments demonstrate that our secure architecture
+    would enable applications to run for several weeks on a small wearable device
+    without recharging.
   acceptpercent: '57'
-  authors: Andr'es Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun,
+  authors: Andr 'es Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun,
     Bhargav Golla, Kevin Freeman, **Travis Peters**, Jacob Sorber, Ryan Halter, David
     Kotz
   blog: https://amulet-project.org/
@@ -479,7 +482,7 @@
     primary
   mnum: 10
   month: November
-  note: Acceptance Rate 57%.
+  note: Acceptance Rate 57 %.
   pages: 16--21
   pdf: papers/molina-markham-wmmadd2014.pdf
   url: papers/molina-markham-wmmadd2014.pdf
@@ -489,7 +492,7 @@
   ENTRYTYPE: article
   TITLE: MobiSys 2014
   abstract: This conference report on MobiSys 2014 covers the keynote by James Landay
-    on balancing design and technology to tackle global grand challenges;highlights
+    on balancing design and technology to tackle global grand challenges; highlights
     selected papers from the various conference sessions on topics ranging from wearable
     computing to security to localization; and discusses some of the posters and demos.
   authors: '**Travis Peters**, Puneet Jain'
@@ -511,17 +514,17 @@
 - CITEKEY: emg-peters-tr2014
   ENTRYTYPE: report
   TITLE: An Assessment of Single-Channel EMG Sensing for Gestural Input
-  abstract: Wearable devices of all kinds are becoming increasingly popular.One problem
-    that plagues wearable devices, however, is how to interact with them.In this paper
-    we construct a prototype electromyography (EMG) sensing device that captures a
-    single channel of EMG sensor data corresponding to user gestures.We also implement
+  abstract: Wearable devices of all kinds are becoming increasingly popular. One problem
+    that plagues wearable devices, however, is how to interact with them. In this
+    paper we construct a prototype electromyography (EMG) sensing device that captures
+    a single channel of EMG sensor data corresponding to user gestures. We also implement
     a machine learning pipeline to recognize gestural input received via our prototype
-    sensing device.Our goal is to assess the feasibility of using a BITalino EMG sensor
-    to recognize gestural input on a mobile health (mHealth) wearable device known
-    as Amulet.We conduct three experiments in which we use the EMG sensor to collect
-    gestural input data from (1) the wrist, (2) the forearm, and (3) the bicep.Our
-    results show that a single channel EMG sensor located near the wrist may be a
-    viable approach to reliably recognizing simple gestureswithout mistaking them
+    sensing device. Our goal is to assess the feasibility of using a BITalino EMG
+    sensor to recognize gestural input on a mobile health (mHealth) wearable device
+    known as Amulet. We conduct three experiments in which we use the EMG sensor to
+    collect gestural input data from (1) the wrist, (2) the forearm, and (3) the bicep.
+    Our results show that a single channel EMG sensor located near the wrist may be
+    a viable approach to reliably recognizing simple gestures without mistaking them
     for common daily activities such as drinking from a cup, walking, or talking while
     moving your arms.
   authors: '**Travis Peters**'
@@ -538,20 +541,20 @@
 - CITEKEY: computing-jackson-umap2012
   ENTRYTYPE: article
   TITLE: Computing Along the Big Long River
-  abstract: "We develop a model to schedule trips down the Big Long River.The goal\
+  abstract: "We develop a model to schedule trips down the Big Long River. The goal\
     \ is to optimally plan boat trips of varying duration and propulsion so as to\
-    \ maximize the number of trips over the six-month season.We model the process\
+    \ maximize the number of trips over the six-month season. We model the process\
     \ by which groups travel from campsite to campsite. Subject to the given constraints,\
-    \ our algorithm outputs the optimal daily schedule for each group on the river.By\
-    \ studying the algorithm\u2019s long-term behavior, we can compute a maximum number\
-    \ of trips, which we define as the river\u2019s carrying capacity.We apply our\
-    \ algorithm to a case study of the Grand Canyon, which has many attributes in\
-    \ common with the Big Long River.Finally, we examine the carrying capacity\u2019\
+    \ our algorithm outputs the optimal daily schedule for each group on the river.\
+    \ By studying the algorithm\u2019s long-term behavior, we can compute a maximum\
+    \ number of trips, which we define as the river\u2019s carrying capacity. We apply\
+    \ our algorithm to a case study of the Grand Canyon, which has many attributes\
+    \ in common with the Big Long River. Finally, we examine the carrying capacity\u2019\
     s sensitivity to changes in the distribution of propulsion methods, distribution\
     \ of trip duration, and the number of campsites on the river."
   authors: Chip Jackson, Lucas Bourne, **Travis Peters**
-  booktitle: The UMAP Journal for Undergraduate Mathematics & Research
-  journal: The UMAP Journal for Undergraduate Mathematics & Research
+  booktitle: The UMAP Journal for Undergraduate Mathematics  & Research
+  journal: The UMAP Journal for Undergraduate Mathematics  & Research
   mnum: 0
   month: Fall
   number: '3'
