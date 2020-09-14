@@ -19,7 +19,7 @@ githuburl: https://github.com/traviswpeters/traviswpeters.github.io
 menu:
 - {name: 'Home', url: ''}
 - {name: 'Teaching', url: '#teaching'}
-- {name: 'Publications', url: '#publications'}
+- {name: 'Research', url: '#research'}
 - {name: 'Activities', url: '#activities'}
 - {name: 'Awards', url: '#awards'}
 - {name: 'News', url: '#news'}
