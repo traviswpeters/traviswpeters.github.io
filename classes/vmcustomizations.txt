@@ -31,6 +31,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 # other helpful aliases
+alias ll='ls -alhF' # (a) include '.' and '..', (lhF) pretty printing
 #alias mygcc='gcc -Wall -pedantic -std=c11 -ggdb'
 #alias myvalgrind='valgrind --leak-check=full --show-leak-kinds=all'
 
