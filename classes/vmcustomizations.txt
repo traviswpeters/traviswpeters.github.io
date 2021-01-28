@@ -42,3 +42,5 @@ alias ll='ls -alhF' # (a) include '.' and '..', (lhF) pretty printing
 # set the timezone...
 #sudo timedatectl set-timezone America/Denver
 # to verify, run: timedatectl
+
+alias update="curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations"
