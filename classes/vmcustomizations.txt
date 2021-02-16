@@ -44,7 +44,7 @@ alias ll='ls -alhF' # (a) include '.' and '..', (lhF) pretty printing
 # to verify, run: timedatectl
 
 # Update common code folders
-pull() {
+gitpull() {
     echo "Updating admin/ ..."
     cd ~/admin && git pull && cd - > /dev/null
     echo "Updating code/ ..."
@@ -53,7 +53,6 @@ pull() {
 
 # updates THIS file from upstream source
 update() {
-    curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations && source ~/.vmcustomizations
-    pull
+    curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$`date +%s` -o ~/.vmcustomizations && source ~/.vmcustomizations
+    gitpull
 }
-# alias update="curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations && source ~/.vmcustomizations"
