@@ -43,6 +43,17 @@ alias ll='ls -alhF' # (a) include '.' and '..', (lhF) pretty printing
 #sudo timedatectl set-timezone America/Denver
 # to verify, run: timedatectl
 
-alias update="curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations && source ~/.vmcustomizations"
-alias updatecode="cd ~/code && git pull"
-alias updateadmin="cd ~/admin && git pull"
+# Update common code folders
+pull() {
+    echo "Updating admin/ ..."
+    cd ~/admin && git pull && cd - > /dev/null
+    echo "Updating code/ ..."
+    cd ~/code && git pull && cd - > /dev/null
+}
+
+# updates THIS file from upstream source
+update() {
+    curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations && source ~/.vmcustomizations
+    pull
+}
+# alias update="curl https://www.traviswpeters.com/classes/vmcustomizations.txt?$(date +%s) -o ~/.vmcustomizations && source ~/.vmcustomizations"
