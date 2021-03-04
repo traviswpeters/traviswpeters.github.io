@@ -36,7 +36,7 @@
   booktitle: In _Realizing Complex Integrated Systems_
   mnum: 0
   month: January
-  note: Book Chapter In Progress
+  note: Book Chapter
   year: '2021'
 - CITEKEY: peters-rcis-sw-security
   ENTRYTYPE: inprogress
@@ -50,7 +50,7 @@
   booktitle: In _Realizing Complex Integrated Systems_
   mnum: 0
   month: January
-  note: Book Chapter In Progress
+  note: Book Chapter
   year: '2021'
 - CITEKEY: tandberg-btencryption-reu2020-poster
   ENTRYTYPE: unpublished
@@ -541,9 +541,9 @@
     would enable applications to run for several weeks on a small wearable device
     without recharging.
   acceptpercent: '57'
-  authors: Andr 'es Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong Yun,
-    Bhargav Golla, Kevin Freeman, **Travis Peters**, Jacob Sorber, Ryan Halter, David
-    Kotz
+  authors: Andr&eacute;s Molina-Markham, Ronald Peterson, Joseph Skinner, Tianlong
+    Yun, Bhargav Golla, Kevin Freeman, **Travis Peters**, Jacob Sorber, Ryan Halter,
+    David Kotz
   blog: https://amulet-project.org/
   booktitle: Proceedings of the Workshop on Mobile Medical Applications -- Design
     and Development (WMMADD)
