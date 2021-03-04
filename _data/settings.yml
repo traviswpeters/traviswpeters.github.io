@@ -21,7 +21,7 @@ menu:
 - {name: 'Teaching', url: '#teaching'}
 - {name: 'Research', url: '#research'}
 - {name: 'Activities', url: '#activities'}
-- {name: 'Awards', url: '#awards'}
+- {name: 'Awards', url: '#selected-awards'}
 - {name: 'News', url: '#news'}
 - {name: 'Docs', url: ''}
 # - {name: 'Misc.', url: 'misc.html'}
