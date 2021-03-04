@@ -1,3 +1,9 @@
+- descr: "In collaboration with Washington State University, Dr. Clem Izurieta and I have received funding ($170,000) to establish the Northwest Virtual Institute for CyberSecurity Education & Research (CySER) -- A Center for Academic Excellence in Cybersecurity Knowledge, Skills & Abilities for the Military and Civilian Workforce. CySER will provide training that is highly aligned with the National Initiative for Cyber Security Education (NICE) Framework."
+  #$MSU will provide cybersecurity training for undergraduate civilian and ROTC cadets. CySER will provide the knowledge units required for the burgeoning national need for organizations to protect their data, network systems and operations over the spectrum of Workforce (WF) specialty areas specified by the National Initiative for Cyber Security Education (NICE) Framework."
+  date: February 2021
+  show: true
+  # https://www.montana.edu/news/20558/msu-partners-with-federal-lab-on-3-1-million-cybersecurity-research-project
+
 - descr: "It's official: MSU is partnering with Idaho National Laboratory on a [new $3.1 million cybersecurity research project](https://www.montana.edu/news/20558/msu-partners-with-federal-lab-on-3-1-million-cybersecurity-research-project) funded by the U.S. Department of Homeland Security. The three-year project will focus on developing new ways to detect and thwart cyberattacks."
   date: November 2020
   show: true
