@@ -4,8 +4,24 @@
 Conference papers, journal articles, patents, technical reports, posters, code, blogs, etc.
 {:.subtitletext}
 
+#### In Progress
+{:.pb-2}
+
 {% for pub in site.data.papersV2 %}
-<b class="anchorItem" id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
+{%- if pub.ENTRYTYPE == 'inprogress' -%}
+- <b class="anchorItem" id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>({{pub.note}})
+<!-- booktitle -->{% if pub.booktitle -%}<br/>{{pub.booktitle}}{% endif %}
+<!-- authors -->{% if pub.authors -%}<br/>{{pub.authors}}{% endif %}
+
+{% endif -%}
+{% endfor %}
+
+#### Selected Works
+{:.pb-2}
+
+{% for pub in site.data.papersV2 %}
+{%- if pub.ENTRYTYPE != 'inprogress' -%}
+- <b class="anchorItem" id="{{pub.CITEKEY}}">{{pub.TITLE}}</b>
 <!-- status (e.g., accepted) -->{% if pub.status -%}**>> {{pub.status}}**{: .pl-1 .text-success .font-italic .font-weight-bolder}{% endif %}
 <!-- award -->{% if pub.award -%}**>> {{pub.award}}!**{: .pl-1 .text-success .font-italic}{% endif %}
 {%- if pub.ENTRYTYPE == 'inproceedings' -%}<br/>In *{{pub.booktitle}}*, {{pub.month}} {{pub.year}}.{% endif -%}
@@ -32,4 +48,5 @@ Conference papers, journal articles, patents, technical reports, posters, code, 
 <!-- {%- if pub.note -%}<span class="text-muted" style="font-style: italic; font-size:90%;">>>{{pub.note}}</span>{% endif %} -->
 
 <!-- abstract body-->{% if pub.abstract -%}<div class="collapse" id="abstract-{{pub.CITEKEY}}"><div class="card card-body border-0 m-0 pt-0">{{pub.abstract}}</div></div>{% endif %}
+{% endif -%}
 {% endfor %}
