@@ -1,7 +1,7 @@
 title: Travis Peters
 author: Travis Peters
 avatar: profile.png
-description: A website dedicated to my academic work, hobbies, and other ramblings.
+description: A website dedicated to my work, hobbies, and other ramblings.
 school: "Montana State University"
 email: "[travis.peters1@montana.edu](mailto:travis.peters1@montana.edu)"
 gmail: "[traviswp [at] gmail [dot] com](mailto:traviswp@gmail.com)"
@@ -18,14 +18,14 @@ githuburl: https://github.com/traviswpeters/traviswpeters.github.io
 # Site Menus
 menu:
 - {name: 'Home', url: ''}
-- {name: 'Teaching', url: '#teaching'}
 - {name: 'Research', url: '#research'}
+- {name: 'Teaching', url: '#teaching'}
 - {name: 'Activities', url: '#activities'}
 - {name: 'Awards', url: '#selected-awards'}
-- {name: 'News', url: '#news'}
-- {name: 'Docs', url: ''}
+- {name: 'News', url: 'news'}
 # - {name: 'Misc.', url: 'misc.html'}
 - {name: 'Consulting', url: 'consulting'}
+- {name: 'Docs', url: ''}
 
 docs:
 - name: 'CV (pdf)'
@@ -55,7 +55,7 @@ handles:
 # -> Available social icons are powered by Font Awesome, so you can use any icon that they offer
 # - {icon: '', type: '', link: ''}
 social:
-- {icon: 'envelope', type: 's', link: 'mailto:travis.peters1@gmontana.edu'}
+- {icon: 'envelope', type: 's', link: 'mailto:traviswp@gmail.com'}
 - {icon: 'github',  type: 'b', link: 'https://www.github.com/traviswpeters'}
 # - {icon: 'gitlab', type: 'b', link: 'https://gitlab.cs.dartmouth.edu/traviswpeters'}
 - {icon: 'linkedin',  type: 'b', link: 'https://www.linkedin.com/in/traviswpeters'}

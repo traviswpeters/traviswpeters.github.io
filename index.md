@@ -24,7 +24,9 @@ permalink: /
 
 <div class="col-md-3 order-3" markdown="1">
 {% include news.html num=5 %}
+{%comment%}
 {% include links.html %}
+{%endcomment%}
 </div>
 
 <div class="col-md-9 order-4" markdown="1">

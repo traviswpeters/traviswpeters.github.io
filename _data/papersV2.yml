@@ -3,26 +3,15 @@
 #
 
 - CITEKEY: peters-via-wisec21
-  ENTRYTYPE: inprogress
-  TITLE: Recurring Verification of Interaction Authenticity Within Wireless Networks
+  ENTRYTYPE: inproceedings
+  TITLE: Recurring Verification of Interaction Authenticity Within Bluetooth Networks
   authors: '**Travis Peters**, Timothy J. Pierson, Sougata Sen, Jos&eacute; Camacho,
     David Kotz'
   booktitle: Proceedings of the ACM Conference on Security and Privacy in Wireless
     and Mobile Networks (WiSec'21)
-  mnum: 2
-  month: March
-  note: In Submission
-  year: '2021'
-- CITEKEY: lux-studentdataprivacy
-  ENTRYTYPE: inproceedings
-  TITLE: Preparing Preservice Teachers to Better Understand Student Data Privacy Concerns
-  authors: Nick Lux, **Travis Peters**
-  booktitle: Proceedings of the Conference on Society for Information Technology &
-    Teacher Education (SITE)
-  mnum: 2
-  month: March
-  pages: 1--6
-  status: To Appear
+  mnum: 5
+  month: June
+  note: Accepted
   year: '2021'
 - CITEKEY: peters-rcis-sw-security
   ENTRYTYPE: inprogress
