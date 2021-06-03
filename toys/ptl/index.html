@@ -1,9 +1,10 @@
 ---
 ---
 
+<ul>
 {% for f in site.static_files %}
-    {% if f.path contains 'toys/ptl/' %}
-        {{ f.path }}
-        <br/>
-    {% endif %}
+{% if f.path contains 'toys/ptl/' %}
+<li><a href="{{ f.path }}">{{ f.path }}</a></li>
+{% endif %}
 {% endfor %}
+</ul>
