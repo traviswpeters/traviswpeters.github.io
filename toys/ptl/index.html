@@ -1,0 +1,9 @@
+---
+---
+
+{% for f in site.static_files %}
+    {% if f.path contains 'toys/ptl/' %}
+        {{ f.path }}
+        <br/>
+    {% endif %}
+{% endfor %}
