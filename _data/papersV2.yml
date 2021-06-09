@@ -5,41 +5,32 @@
 - CITEKEY: peters-via-wisec21
   ENTRYTYPE: inproceedings
   TITLE: Recurring Verification of Interaction Authenticity Within Bluetooth Networks
+  abstract: 'Although user authentication has been well explored, device-to-device
+    authentication -- specifically in Bluetooth networks -- has not seen the same
+    attention. We propose Verification of Interaction Authenticity (VIA) -- a recurring
+    authentication scheme based on evaluating characteristics of the communications
+    (interactions) between devices. We adapt techniques from wireless traffic analysis
+    and intrusion-detection systems to develop behavioral models that capture typical,
+    authentic device interactions (behavior); these models enable recurring verification
+    of device behavior. To evaluate our approach we produced a new dataset consisting
+    of more than 300 Bluetooth network traces collected from 20 Bluetooth-enabled
+    smart-health and smart-home devices. In our evaluation, we found that devices
+    can be correctly verified at a variety of granularities, achieving an F1-score
+    of 0.86 or better in most cases. '
+  acceptpercent: '28'
   authors: '**Travis Peters**, Timothy J. Pierson, Sougata Sen, Jos&eacute; Camacho,
     David Kotz'
   booktitle: Proceedings of the ACM Conference on Security and Privacy in Wireless
-    and Mobile Networks (WiSec'21)
+    and Mobile Networks (WiSec)
+  copyright: ACM
+  keywords: paper, traffic analysis; behavioral analysis; bluetooth; multi-factor
+    authentication, verification, intrusion detection systems, mobile, wireless
   mnum: 5
   month: June
-  note: Accepted
-  year: '2021'
-- CITEKEY: peters-rcis-sw-security
-  ENTRYTYPE: inprogress
-  TITLE: Software Security
-  abstract: ' Most software engineering efforts focus on the design, development,
-    and test of complex software with little attention given to inherent vulnerabilities
-    in the design or implementation. This chapter will look at software-specific issues
-    in software vulnerability and software security, including not only the code base
-    but how the data itself can be the source of an attack. '
-  authors: '**Travis Peters**, Clem Izurieta'
-  booktitle: In _Realizing Complex Integrated Systems_
-  mnum: 0
-  month: January
-  note: Book Chapter
-  year: '2021'
-- CITEKEY: peters-rcis-sw-security
-  ENTRYTYPE: inprogress
-  TITLE: Cryptographic Systems
-  abstract: ' Whenever information is involved, securing that information in a way
-    to prevent unauthorized access is essential. Modern encryption methods and systems
-    are reviewed. Mathematical details will be kept only to a level necessary to understand
-    the basics with references provided for more detailed mathematical treatments.
-    The potential impact of emerging so-called quantum computers will also be addressed. '
-  authors: '**Travis Peters**'
-  booktitle: In _Realizing Complex Integrated Systems_
-  mnum: 0
-  month: January
-  note: Book Chapter
+  note: Acceptance Rate 28 %.
+  pdf: papers/peters-wisec21.pdf
+  publisher: ACM
+  url: papers/peters-wisec21.pdf
   year: '2021'
 - CITEKEY: tandberg-btencryption-reu2020-poster
   ENTRYTYPE: unpublished
