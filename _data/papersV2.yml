@@ -6,9 +6,9 @@
   ENTRYTYPE: inproceedings
   TITLE: Recurring Verification of Interaction Authenticity Within Bluetooth Networks
   abstract: 'Although user authentication has been well explored, device-to-device
-    authentication -- specifically in Bluetooth networks -- has not seen the same
-    attention. We propose Verification of Interaction Authenticity (VIA) -- a recurring
-    authentication scheme based on evaluating characteristics of the communications
+    authentication  &mdash; specifically in Bluetooth networks  &mdash; has not seen
+    the same attention. We propose Verification of Interaction Authenticity (VIA)  &mdash;
+    a recurring authentication scheme based on evaluating characteristics of the communications
     (interactions) between devices. We adapt techniques from wireless traffic analysis
     and intrusion-detection systems to develop behavioral models that capture typical,
     authentic device interactions (behavior); these models enable recurring verification
@@ -112,12 +112,12 @@
     devices to ascertain physical proximity with other devices, but devices with a
     single antenna, such as those commonly used in the Internet of Things, cannot
     take advantage of these techniques. <br/><br/> We present theoretical and practical
-    evaluation of a method called SNAP -- SiNgle Antenna Proximity -- that allows
-    a single-antenna Wi-Fi device to quickly determine proximity with another Wi-Fi
-    device. Our proximity detection technique leverages the repeating nature Wi-Fi's
-    preamble and the behavior of a signal in a transmitting antenna's near-field region
-    to detect proximity with high probability; SNAP never falsely declares proximity
-    at ranges longer than 14cm.
+    evaluation of a method called SNAP  &mdash; SiNgle Antenna Proximity  &mdash;
+    that allows a single-antenna Wi-Fi device to quickly determine proximity with
+    another Wi-Fi device. Our proximity detection technique leverages the repeating
+    nature Wi-Fi's preamble and the behavior of a signal in a transmitting antenna's
+    near-field region to detect proximity with high probability; SNAP never falsely
+    declares proximity at ranges longer than 14cm.
   acceptpercent: '24'
   authors: Timothy J. Pierson, **Travis Peters**, Ronald Peterson, David Kotz
   booktitle: Proceedings of the ACM International Conference on Mobile Computing and
@@ -275,8 +275,8 @@
   abstract: The homes, offices, and vehicles of tomorrow will be embedded with numerous
     ``Smart Things,'' networked with each other and with the Internet. Many of these
     Things are embedded in the physical infrastructure, and like the infrastructure
-    they are designed to last for decades -- far longer than is normal with today's
-    electronic devices. What happens then, when an occupant moves out or transfers
+    they are designed to last for decades  &mdash; far longer than is normal with
+    today's electronic devices. What happens then, when an occupant moves out or transfers
     ownership of her Smart Environment? This paper outlines the critical challenges
     required for the safe long-term operation of Smart Environments. How does an occupant
     identify and decommission all the Things in an environment before she moves out?
@@ -312,22 +312,23 @@
   abstract: Mobile and wearable systems have generated unprecedented interest in recent
     years, particularly in the domain of mobile health (mHealth) where carried or
     worn devices are used to collect health-related information about the observed
-    person. Much of the information -- whether physiological, behavioral, or social
-    -- collected by mHealth systems is sensitive and highly personal; it follows that
-    mHealth systems should, at the very least, be deployed with mechanisms suitable
-    for ensuring confidentiality of the data it collects. Additional properties --
-    such as integrity of the data, source authentication of data, and data freshness
-    -- are also desirable to address other security, privacy, and safety issues. Developing
-    systems that are robust against capable adversaries (including physical attacks)
-    is, and has been, an active area of research. While techniques for protecting
-    systems that handle sensitive data are well-known today, many of the solutions
-    in use today are not well suited for mobile and wearable systems, which are typically
-    limited with respect to power, memory, computation, and other capabilities. In
-    this paper we look at prior research on developing trustworthy mobile and wearable
-    systems. To survey this topic we begin by discussing solutions for securing computing
-    systems that are not subject to the type of strict constraints associated with
-    mobile and wearable systems. Next, we present other efforts to design and implement
-    trustworthy mobile and wearable systems. We end with a discussion of future directions.
+    person. Much of the information &mdash; whether physiological, behavioral, or
+    social &mdash; collected by mHealth systems is sensitive and highly personal;
+    it follows that mHealth systems should, at the very least, be deployed with mechanisms
+    suitable for ensuring confidentiality of the data it collects. Additional properties
+    &mdash; such as integrity of the data, source authentication of data, and data
+    freshness &mdash; are also desirable to address other security, privacy, and safety
+    issues. Developing systems that are robust against capable adversaries (including
+    physical attacks) is, and has been, an active area of research. While techniques
+    for protecting systems that handle sensitive data are well-known today, many of
+    the solutions in use today are not well suited for mobile and wearable systems,
+    which are typically limited with respect to power, memory, computation, and other
+    capabilities. In this paper we look at prior research on developing trustworthy
+    mobile and wearable systems. To survey this topic we begin by discussing solutions
+    for securing computing systems that are not subject to the type of strict constraints
+    associated with mobile and wearable systems. Next, we present other efforts to
+    design and implement trustworthy mobile and wearable systems. We end with a discussion
+    of future directions.
   authors: '**Travis Peters**'
   copyright: the authors
   institution: Dartmouth Computer Science
@@ -525,7 +526,7 @@
     Yun, Bhargav Golla, Kevin Freeman, **Travis Peters**, Jacob Sorber, Ryan Halter,
     David Kotz
   blog: https://amulet-project.org/
-  booktitle: Proceedings of the Workshop on Mobile Medical Applications -- Design
+  booktitle: Proceedings of the Workshop on Mobile Medical Applications &mdash; Design
     and Development (WMMADD)
   category: mhealth
   code: https://github.com/AmuletGroup/amulet-project
