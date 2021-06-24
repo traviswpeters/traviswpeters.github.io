@@ -8,11 +8,16 @@ I'm currently open to work engagements.
 If you are interested in discussing opportunities and/or working together, reach out at {{ site.data.settings.gmail }}.
 
 My consulting expertise spans a few high-demand areas:
-- Code mentorships
-- Codebase audits
-- Best practices in teamwork and software development lifecycle issues (e.g., agile, SDLC, bug bounty programs)
-- Software security and some freelance software development (particularly Linux-based apps and mobile apps)
-- DevOps & SecDevOps (e.g., automation, managing virtual machines and containers, CI/CD)
+
+- Advising
+  - General and technical advising (e.g., secure software development)
+  - Best practices in teamwork and software development lifecycle issues (e.g., agile, SDLC, bug bounty programs)
+- R&D
+  - Development of proof-of-concepts (PoC), prototypes, and tooling (e.g., security, automation)
+  - Code assessments and pentesting
+- Education & Research
+  - Code & education mentorships
+  - Advising for academic & research programs oriented around cybersecurity
 
 {%comment%}
 My research and interests in consulting engagements are highly aligned with the philosophy of "security by design".
