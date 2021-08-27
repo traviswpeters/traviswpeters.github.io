@@ -20,6 +20,7 @@
   acceptpercent: '28'
   authors: '**Travis Peters**, Timothy J. Pierson, Sougata Sen, Jos&eacute; Camacho,
     David Kotz'
+  blog: https://blog.includesecurity.com/2021/08/issues-with-indefinite-trust-in-bluetooth/
   booktitle: Proceedings of the ACM Conference on Security and Privacy in Wireless
     and Mobile Networks (WiSec)
   copyright: ACM
