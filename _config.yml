@@ -4,6 +4,13 @@ baseurl:
 livereload: true
 # profile: true
 
+# Files to exclude from processing
+exclude:
+  - DEVELOPMENT.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
 
 # Build settings
 markdown:            kramdown # use <TAG markdown="1"> to render markdown within HTML tags!
