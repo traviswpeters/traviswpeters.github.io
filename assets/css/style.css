@@ -365,3 +365,111 @@ a[aria-expanded=false] .fa-chevron-down {
 .anchorItem a:visited {
   color: black;
 }
+
+/* --- Blog Post Content Improvements --- */
+.post-content {
+  font-family: 'Inter', 'Open Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #222;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem 1rem;
+}
+
+.post-content h1, .post-content h2, .post-content h3 {
+  font-family: 'Lato', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2.2em;
+  margin-bottom: 0.7em;
+}
+.post-content h1 { font-size: 2.2em; }
+.post-content h2 { font-size: 1.5em; border-bottom: 2px solid #eee; padding-bottom: 0.2em; }
+.post-content h3 { font-size: 1.2em; }
+
+.post-content pre, .post-content code {
+  font-size: 0.97em;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  background: #f6f8fa;
+  color: #2d2d2d;
+  border-radius: 6px;
+}
+.post-content pre {
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.post-content code {
+  padding: 0.2em 0.4em;
+  font-size: 0.95em;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-size: 1em;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.post-content th, .post-content td {
+  border: 1px solid #e0e0e0;
+  padding: 0.6em 1em;
+  text-align: left;
+}
+.post-content tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.post-content a {
+  color: #0074d9;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.post-content a:hover {
+  color: #005fa3;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #0074d9;
+  background: #f4f8fb;
+  color: #444;
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  font-style: italic;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 8px;
+}
+
+.post-content ul, .post-content ol {
+  margin-bottom: 1.2em;
+  margin-top: 1.2em;
+  padding-left: 2em;
+  font-size: 1em;
+  line-height: 1.7;
+}
+
+.post-content li {
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .post-content {
+    padding: 1em 0.5em;
+    font-size: 16px;
+  }
+  .post-content table {
+    font-size: 0.95em;
+  }
+}
