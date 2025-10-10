@@ -1,33 +1,51 @@
 /* Variable declarations */
 :root {
-    --base-font-size: 30px;
-    --para-font-size: 15px;
-    --columns: 300px 300px 300px;
-    --base-margin: 30px;
-    --red: #ff6f69;
-    --darkred: #ff4444;
-    --beige: #ffeead;
-    --yellow: #ffcc5c;
+    --base-font-size: 28px;
+    --para-font-size: 16px;
+    --columns: repeat(auto-fit, minmax(320px, 1fr));
+    --base-margin: 40px;
+    --primary: #1a1a2e;
+    --secondary: #16213e;
+    --accent: #0f3460;
+    --highlight: #533483;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a0a0a0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 16px 64px rgba(0, 0, 0, 0.4);
 }
 
 .grid {
     display: grid;
-    grid-auto-rows: 140px;
-    grid-gap: 20px;
-    justify-content: center;
+    grid-auto-rows: min-content;
+    gap: 24px;
+    padding: 0 var(--base-margin);
     margin: var(--base-margin) 0;
     grid-template-columns: var(--columns);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 html, body {
     margin: 0;
     padding: 0;
-    background: var(--beige);
-    color: var(--red);
+    background: var(--primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 main {
-    margin: var(--base-margin) 0;    
+    margin: var(--base-margin) 0;
+    position: relative;
 }
 
 #navbar {
@@ -49,25 +67,66 @@ main {
 }
 
 .item {
-    background: var(--yellow);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    min-height: 180px;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item:nth-child(3n+2)::before {
+    background: var(--gradient-2);
+}
+
+.item:nth-child(3n+3)::before {
+    background: var(--gradient-3);
 }
 
 h1, p {
-    color: var(--red);
     margin: 0;
 }
 
 h1 {
-    text-align: center;
+    color: var(--text-primary);
     font-size: var(--base-font-size);
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    color: var(--text-primary);
+    font-size: var(--base-font-size);
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.025em;
 }
 
 p {
-    text-align: center;
+    color: var(--text-secondary);
     font-size: var(--para-font-size);
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 a {
@@ -76,16 +135,29 @@ a {
 }
 
 button {
-    background: var(--red);
-    color: var(--yellow);
-    margin: 0px auto;
-    display: block;
-    padding: 5px 10px;
+    background: var(--highlight);
+    color: white;
     border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(83, 52, 131, 0.3);
 }
 
 button:hover {
-    background: var(--darkred);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(83, 52, 131, 0.4);
+    background: #6b4c97;
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 footer {
@@ -98,11 +170,104 @@ footer > p {
     font-size: 12px;
 }
 
-/* Update variables for smaller screens (e.g., smartphones) */
-@media all and (max-width: 450px) {
+/* Hover effects and micro-interactions */
+.item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.item:hover::before {
+    opacity: 1;
+}
+
+.item:hover h1,
+.item:hover h2 {
+    color: white;
+}
+
+.item:hover p {
+    color: var(--text-primary);
+}
+
+/* Page title styling */
+header h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 3rem 0;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Background enhancement */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Responsive design for tablets and mobile */
+@media (max-width: 768px) {
     :root {
-        --columns: 200px;
-        --base-margin: 15px;
-        --base-font-size: 20px;
+        --base-margin: 24px;
+        --base-font-size: 24px;
+        --para-font-size: 15px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 var(--base-margin);
+    }
+    
+    .item {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --base-margin: 16px;
+        --base-font-size: 22px;
+        --para-font-size: 14px;
+    }
+    
+    .grid {
+        gap: 16px;
+        grid-auto-rows: min-content;
+    }
+    
+    .item {
+        padding: 16px;
+        min-height: 160px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
     }
 }
