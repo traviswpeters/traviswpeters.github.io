@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Journal - AI Text Enhancement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Journal</h1>
+            <p class="subtitle">AI-powered text enhancement and improvement</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="api-key">Claude API Key:</label>
+                    <input type="password" id="api-key" placeholder="Enter your Claude API key..." autocomplete="off">
+                    <small>Your API key is stored locally and never sent anywhere except directly to Anthropic's API</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-text">Your Text:</label>
+                    <textarea id="user-text" placeholder="Enter the text you'd like to refine..."></textarea>
+                </div>
+
+
+                <div class="controls">
+                    <button id="refine-btn" class="primary-btn">Refine Text</button>
+                    <button id="clear-btn" class="secondary-btn">Clear All</button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="refinements-container">
+                    <h2>Enhancement History</h2>
+                    <div id="refinements-list" class="refinements-list">
+                        <div class="placeholder">
+                            <p>Your text enhancements will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+            <p>Enhancing your text...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
