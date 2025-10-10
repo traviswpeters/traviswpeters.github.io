@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45-Intentional Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: #fafbfc;
+            min-height: 100vh;
+            padding: 24px 16px;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+        }
+        
+        .hamburger-menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .hamburger-btn {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .hamburger-btn:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+        
+        .hamburger-icon {
+            width: 20px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background: #6b7280;
+            border-radius: 1px;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            min-width: 180px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: #f9fafb;
+        }
+        
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .challenge-info {
+            display: flex;
+            justify-content: center;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .date-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .nav-arrow {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            color: #6b7280;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .nav-arrow:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .nav-arrow:active {
+            transform: translateY(0);
+        }
+        
+        .today-btn {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .today-btn:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .date-picker {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1f2937;
+            font-weight: 500;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .date-picker:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .habits-list {
+            margin-bottom: 24px;
+        }
+        
+        .habit-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+            min-height: 56px;
+            cursor: move;
+            user-select: none;
+        }
+        
+        .habit-item:hover {
+            border-color: #cbd5e1;
+        }
+        
+        .habit-item.dragging {
+            opacity: 0.5;
+            transform: rotate(2deg);
+        }
+        
+        .habit-item.drag-over {
+            border-top: 3px solid #3b82f6;
+        }
+        
+        .habit-item.complete {
+            background: #f1f5f9;
+            border-color: #9ca3af;
+        }
+        
+        .drag-handle {
+            color: #cbd5e1;
+            margin-right: 8px;
+            font-size: 12px;
+            cursor: grab;
+        }
+        
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        
+        .habit-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .habit-name {
+            font-weight: 500;
+            font-size: 14px;
+            color: #1e293b;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .habit-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .checkbox.complete {
+            background: #6b7280;
+            border-color: #6b7280;
+            color: white;
+        }
+        
+        .weight-input {
+            width: 60px;
+            padding: 4px 6px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .note-btn {
+            background: none;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: color 0.2s;
+            font-size: 16px;
+        }
+        
+        .note-btn:hover {
+            color: #9ca3af;
+        }
+        
+        .note-btn.has-note {
+            color: #374151;
+        }
+        
+        .gains-goals {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .gains-goals h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #111827;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: -0.01em;
+        }
+        
+        .gains-section, .goals-section {
+            margin-bottom: 20px;
+        }
+        
+        .gains-section:last-child, .goals-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .gains-section h4, .goals-section h4 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #6b7280;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+        }
+        
+        .list-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+            color: #1f2937;
+        }
+        
+        .list-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .list-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            width: 90%;
+            max-width: 420px;
+            color: #1f2937;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            letter-spacing: -0.01em;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 4px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            color: #374151;
+            background: #f3f4f6;
+        }
+        
+        .note-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 120px;
+            margin-bottom: 24px;
+            font-family: inherit;
+            line-height: 1.5;
+            color: #1f2937;
+        }
+        
+        .note-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .note-textarea::placeholder {
+            color: #9ca3af;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-save {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+        
+        .btn-save:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .btn-cancel {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        .full-screen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fafbfc;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .full-screen-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        .modal-header-full {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-title-full {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        .close-btn-full {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s ease;
+        }
+        
+        .close-btn-full:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+        
+        .notes-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .note-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .note-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+        
+        .note-card-content {
+            color: #6b7280;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        
+        .empty-note {
+            color: #9ca3af;
+            font-style: italic;
+        }
+        
+        .calendar-grid-365 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(12px, 1fr));
+            gap: 2px;
+            max-width: 100%;
+            margin-bottom: 24px;
+        }
+        
+        .calendar-day-365 {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .calendar-day-365:hover {
+            transform: scale(1.2);
+            z-index: 1;
+        }
+        
+        .day-complete {
+            background: #6b7280;
+        }
+        
+        .day-partial {
+            background: #d1d5db;
+        }
+        
+        .day-incomplete {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stats-legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .summary {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .summary-title {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 16px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+        .summary-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 500;
+            margin-top: 4px;
+            letter-spacing: 0.01em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="hamburger-menu">
+                <button class="hamburger-btn" onclick="toggleMenu()">
+                    <div class="hamburger-icon">
+                        <div class="hamburger-line"></div>
+                        <div class="hamburger-line"></div>
+                        <div class="hamburger-line"></div>
+                    </div>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-item" onclick="exportData()">Export Data</div>
+                    <div class="dropdown-item" onclick="importData()">Import Data</div>
+                    <div class="dropdown-item" onclick="showTodaysNotes()">Today's Notes</div>
+                    <div class="dropdown-item" onclick="showStats()">Stats</div>
+                    <div class="dropdown-item" onclick="clearToday()" style="color: #ef4444; border-top: 1px solid #f3f4f6; margin-top: 4px; padding-top: 12px;">Clear Today</div>
+                </div>
+            </div>
+            <h1>Daily Habit Tracker</h1>
+            <div class="challenge-info">
+                <span>Day <span id="yearDay">1</span> of 365</span>
+            </div>
+            <div class="date-nav">
+                <button class="nav-arrow" onclick="changeDate(-1)">‹</button>
+                <input type="date" id="dateSelector" class="date-picker">
+                <button class="nav-arrow" onclick="changeDate(1)">›</button>
+            </div>
+            <div style="text-align: center; margin-bottom: 12px;">
+                <button class="today-btn" onclick="goToToday()">Today</button>
+            </div>
+        </div>
+        
+        <div class="habits-list" id="habitsList">
+            <!-- Active Time -->
+            <div class="habit-item" id="habit-active" draggable="true" data-habit="active">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">30' Active Time (x2)</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('active1')" id="active1">1</div>
+                        <div class="checkbox" onclick="toggleCheckbox('active2')" id="active2">2</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('active')">🗒️</button>
+            </div>
+            
+            <!-- Water -->
+            <div class="habit-item" id="habit-water" draggable="true" data-habit="water">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">4L Water</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('water1')" id="water1">1</div>
+                        <div class="checkbox" onclick="toggleCheckbox('water2')" id="water2">2</div>
+                        <div class="checkbox" onclick="toggleCheckbox('water3')" id="water3">3</div>
+                        <div class="checkbox" onclick="toggleCheckbox('water4')" id="water4">4</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('water')">🗒️</button>
+            </div>
+            
+            <!-- No Alcohol -->
+            <div class="habit-item" id="habit-alcohol" draggable="true" data-habit="alcohol">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">No Alcohol</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('alcohol')" id="alcohol">✓</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('alcohol')">🗒️</button>
+            </div>
+            
+            <!-- Diet -->
+            <div class="habit-item" id="habit-diet" draggable="true" data-habit="diet">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">Diet</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('diet')" id="diet">✓</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('diet')">🗒️</button>
+            </div>
+            
+            <!-- Weight Check -->
+            <div class="habit-item" id="habit-weight" draggable="true" data-habit="weight">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">Weight Check</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('weightCheck')" id="weightCheck">✓</div>
+                        <input type="number" class="weight-input" id="weightValue" placeholder="0" step="0.1">
+                        <span style="font-size: 13px; color: #64748b;">lbs</span>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('weight')">🗒️</button>
+            </div>
+            
+            <!-- Reading -->
+            <div class="habit-item" id="habit-reading" draggable="true" data-habit="reading">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">15' Reading</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('reading')" id="reading">✓</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('reading')">🗒️</button>
+            </div>
+            
+            <!-- Scripture -->
+            <div class="habit-item" id="habit-scripture" draggable="true" data-habit="scripture">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">Scripture + Psalm</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('scripture')" id="scripture">✓</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('scripture')">🗒️</button>
+            </div>
+            
+            <!-- Prayer -->
+            <div class="habit-item" id="habit-prayer" draggable="true" data-habit="prayer">
+                <div class="habit-left">
+                    <span class="drag-handle">⋮⋮</span>
+                    <div class="habit-name">5' Prayer/Silence</div>
+                    <div class="habit-controls">
+                        <div class="checkbox" onclick="toggleCheckbox('prayer')" id="prayer">✓</div>
+                    </div>
+                </div>
+                <button class="note-btn" onclick="openNoteModal('prayer')">🗒️</button>
+            </div>
+        </div>
+        
+        <!-- Gains & Goals -->
+        <div class="gains-goals">
+            <h3>
+                Daily Reflection
+                <button class="note-btn" onclick="openNoteModal('reflection')">🗒️</button>
+            </h3>
+            <div class="gains-section">
+                <h4>3 Gains Today</h4>
+                <input type="text" class="list-input" id="gain1" placeholder="Gain 1">
+                <input type="text" class="list-input" id="gain2" placeholder="Gain 2">
+                <input type="text" class="list-input" id="gain3" placeholder="Gain 3">
+            </div>
+            <div class="goals-section">
+                <h4>3 Goals Tomorrow</h4>
+                <input type="text" class="list-input" id="goal1" placeholder="Goal 1">
+                <input type="text" class="list-input" id="goal2" placeholder="Goal 2">
+                <input type="text" class="list-input" id="goal3" placeholder="Goal 3">
+            </div>
+        </div>
+        
+        <!-- Summary -->
+        <div class="summary">
+            <div class="summary-title">Progress</div>
+            <div class="summary-stats">
+                <div class="stat">
+                    <div class="stat-number" id="completedCount">0</div>
+                    <div class="stat-label">Complete</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="percentComplete">0%</div>
+                    <div class="stat-label">Total</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Note Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Note</h3>
+                <button class="modal-close" onclick="closeNoteModal()">×</button>
+            </div>
+            <textarea class="note-textarea" id="noteText" placeholder="Add notes..."></textarea>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-save" onclick="saveNote()">Save</button>
+                <button class="modal-btn btn-cancel" onclick="closeNoteModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedDate = new Date().toISOString().split('T')[0];
+        let currentNoteHabit = null;
+        let draggedElement = null;
+        let habitOrder = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer'];
+        
+        const startDate = new Date('2024-10-15');
+        
+        function initApp() {
+            document.getElementById('dateSelector').value = selectedDate;
+            loadHabitOrder();
+            updateDayCounter();
+            loadDayData();
+            setupDragAndDrop();
+        }
+        
+        function loadHabitOrder() {
+            const saved = localStorage.getItem('habitOrder');
+            if (saved) {
+                habitOrder = JSON.parse(saved);
+                reorderHabits();
+            }
+        }
+        
+        function saveHabitOrder() {
+            localStorage.setItem('habitOrder', JSON.stringify(habitOrder));
+        }
+        
+        function reorderHabits() {
+            const container = document.getElementById('habitsList');
+            const habits = Array.from(container.children);
+            
+            // Reorder based on habitOrder array
+            habitOrder.forEach(habitId => {
+                const habit = habits.find(h => h.dataset.habit === habitId);
+                if (habit) {
+                    container.appendChild(habit);
+                }
+            });
+        }
+        
+        function setupDragAndDrop() {
+            const habitItems = document.querySelectorAll('.habit-item');
+            
+            habitItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+                item.addEventListener('dragover', handleDragOver);
+                item.addEventListener('drop', handleDrop);
+                item.addEventListener('dragenter', handleDragEnter);
+                item.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+        
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.outerHTML);
+        }
+        
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.habit-item').forEach(item => {
+                item.classList.remove('drag-over');
+            });
+            draggedElement = null;
+        }
+        
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+        
+        function handleDragEnter(e) {
+            if (this !== draggedElement) {
+                this.classList.add('drag-over');
+            }
+        }
+        
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+        
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+            if (draggedElement !== this) {
+                const container = document.getElementById('habitsList');
+                const allItems = Array.from(container.children);
+                const draggedIndex = allItems.indexOf(draggedElement);
+                const targetIndex = allItems.indexOf(this);
+                
+                if (draggedIndex < targetIndex) {
+                    container.insertBefore(draggedElement, this.nextSibling);
+                } else {
+                    container.insertBefore(draggedElement, this);
+                }
+                
+                // Update habit order array
+                const newOrder = Array.from(container.children).map(item => item.dataset.habit);
+                habitOrder = newOrder;
+                saveHabitOrder();
+            }
+            
+            this.classList.remove('drag-over');
+            return false;
+        }
+        
+        function updateDayCounter() {
+            const current = new Date(selectedDate);
+            
+            // Year day calculation (1-365/366)
+            const yearStart = new Date(current.getFullYear(), 0, 1);
+            const yearDay = Math.floor((current - yearStart) / (1000 * 60 * 60 * 24)) + 1;
+            document.getElementById('yearDay').textContent = yearDay;
+        }
+        
+        function changeDate(days) {
+            const current = new Date(selectedDate);
+            current.setDate(current.getDate() + days);
+            selectedDate = current.toISOString().split('T')[0];
+            document.getElementById('dateSelector').value = selectedDate;
+            updateDayCounter();
+            loadDayData();
+        }
+        
+        function goToToday() {
+            selectedDate = new Date().toISOString().split('T')[0];
+            document.getElementById('dateSelector').value = selectedDate;
+            updateDayCounter();
+            loadDayData();
+        }
+        
+        function loadDayData() {
+            const key = `day-${selectedDate}`;
+            const data = JSON.parse(localStorage.getItem(key) || '{}');
+            
+            // Load all checkboxes
+            const checkboxes = ['active1', 'active2', 'water1', 'water2', 'water3', 'water4', 
+                              'alcohol', 'diet', 'weightCheck', 'reading', 'scripture', 'prayer'];
+            
+            checkboxes.forEach(checkbox => {
+                const element = document.getElementById(checkbox);
+                if (data[checkbox]) {
+                    element.classList.add('complete');
+                } else {
+                    element.classList.remove('complete');
+                }
+            });
+            
+            // Load weight value
+            document.getElementById('weightValue').value = data.weightValue || '';
+            
+            // Load gains/goals
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`gain${i}`).value = data[`gain${i}`] || '';
+                document.getElementById(`goal${i}`).value = data[`goal${i}`] || '';
+            }
+            
+            updateHabitStatus();
+            updateSummary();
+            updateNoteButtons();
+        }
+        
+        function saveDayData() {
+            const key = `day-${selectedDate}`;
+            const data = {};
+            
+            // Save all checkboxes
+            const checkboxes = ['active1', 'active2', 'water1', 'water2', 'water3', 'water4', 
+                              'alcohol', 'diet', 'weightCheck', 'reading', 'scripture', 'prayer'];
+            
+            checkboxes.forEach(checkbox => {
+                data[checkbox] = document.getElementById(checkbox).classList.contains('complete');
+            });
+            
+            // Save weight value
+            data.weightValue = document.getElementById('weightValue').value;
+            
+            // Save gains/goals
+            for (let i = 1; i <= 3; i++) {
+                data[`gain${i}`] = document.getElementById(`gain${i}`).value;
+                data[`goal${i}`] = document.getElementById(`goal${i}`).value;
+            }
+            
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+        
+        function toggleCheckbox(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('complete');
+            saveDayData();
+            updateHabitStatus();
+            updateSummary();
+        }
+        
+        function updateHabitStatus() {
+            // Update active time habit
+            const active1 = document.getElementById('active1').classList.contains('complete');
+            const active2 = document.getElementById('active2').classList.contains('complete');
+            const activeHabit = document.getElementById('habit-active');
+            if (active1 && active2) {
+                activeHabit.classList.add('complete');
+            } else {
+                activeHabit.classList.remove('complete');
+            }
+            
+            // Update water habit
+            const water1 = document.getElementById('water1').classList.contains('complete');
+            const water2 = document.getElementById('water2').classList.contains('complete');
+            const water3 = document.getElementById('water3').classList.contains('complete');
+            const water4 = document.getElementById('water4').classList.contains('complete');
+            const waterHabit = document.getElementById('habit-water');
+            if (water1 && water2 && water3 && water4) {
+                waterHabit.classList.add('complete');
+            } else {
+                waterHabit.classList.remove('complete');
+            }
+            
+            // Update weight habit - auto-complete when weight value is entered
+            const weightValue = document.getElementById('weightValue').value.trim();
+            const weightCheck = document.getElementById('weightCheck');
+            const weightHabit = document.getElementById('habit-weight');
+            if (weightValue) {
+                weightCheck.classList.add('complete');
+                weightHabit.classList.add('complete');
+            } else {
+                weightCheck.classList.remove('complete');
+                weightHabit.classList.remove('complete');
+            }
+            
+            // Update other habits
+            ['alcohol', 'diet', 'reading', 'scripture', 'prayer'].forEach(habit => {
+                const checkbox = document.getElementById(habit).classList.contains('complete');
+                const habitElement = document.getElementById(`habit-${habit}`);
+                if (checkbox) {
+                    habitElement.classList.add('complete');
+                } else {
+                    habitElement.classList.remove('complete');
+                }
+            });
+        }
+        
+        function updateSummary() {
+            let completed = 0;
+            
+            // Check active time (both sessions)
+            const active1 = document.getElementById('active1').classList.contains('complete');
+            const active2 = document.getElementById('active2').classList.contains('complete');
+            if (active1 && active2) completed++;
+            
+            // Check water (all 4 liters)
+            const water1 = document.getElementById('water1').classList.contains('complete');
+            const water2 = document.getElementById('water2').classList.contains('complete');
+            const water3 = document.getElementById('water3').classList.contains('complete');
+            const water4 = document.getElementById('water4').classList.contains('complete');
+            if (water1 && water2 && water3 && water4) completed++;
+            
+            // Check alcohol
+            if (document.getElementById('alcohol').classList.contains('complete')) completed++;
+            
+            // Check weight (value entered = complete)
+            const weightValue = document.getElementById('weightValue').value.trim();
+            if (weightValue) completed++;
+            
+            // Check reading, scripture, prayer, diet
+            ['reading', 'scripture', 'prayer', 'diet'].forEach(habit => {
+                if (document.getElementById(habit).classList.contains('complete')) completed++;
+            });
+            
+            // Check gains/goals
+            let gainsComplete = true;
+            let goalsComplete = true;
+            for (let i = 1; i <= 3; i++) {
+                if (!document.getElementById(`gain${i}`).value.trim()) gainsComplete = false;
+                if (!document.getElementById(`goal${i}`).value.trim()) goalsComplete = false;
+            }
+            if (gainsComplete) completed++;
+            if (goalsComplete) completed++;
+            
+            const total = 10;
+            const percentage = Math.round((completed / total) * 100);
+            
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('percentComplete').textContent = percentage + '%';
+        }
+        
+        function openNoteModal(habit) {
+            currentNoteHabit = habit;
+            const key = `note-${selectedDate}-${habit}`;
+            const note = localStorage.getItem(key) || '';
+            
+            document.getElementById('modalTitle').textContent = 'Add Note';
+            document.getElementById('noteText').value = note;
+            document.getElementById('noteModal').style.display = 'block';
+        }
+        
+        function closeNoteModal() {
+            document.getElementById('noteModal').style.display = 'none';
+            currentNoteHabit = null;
+        }
+        
+        function saveNote() {
+            if (!currentNoteHabit) return;
+            
+            const note = document.getElementById('noteText').value;
+            const key = `note-${selectedDate}-${currentNoteHabit}`;
+            
+            if (note.trim()) {
+                localStorage.setItem(key, note);
+            } else {
+                localStorage.removeItem(key);
+            }
+            
+            updateNoteButtons();
+            closeNoteModal();
+        }
+        
+        function updateNoteButtons() {
+            const habits = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer', 'reflection'];
+            habits.forEach(habit => {
+                const key = `note-${selectedDate}-${habit}`;
+                const note = localStorage.getItem(key);
+                const btn = document.querySelector(`[onclick="openNoteModal('${habit}')"]`);
+                if (btn) {
+                    if (note && note.trim()) {
+                        btn.classList.add('has-note');
+                    } else {
+                        btn.classList.remove('has-note');
+                    }
+                }
+            });
+        }
+        
+        // Event listeners
+        document.getElementById('dateSelector').addEventListener('change', function(e) {
+            selectedDate = e.target.value;
+            updateDayCounter();
+            loadDayData();
+        });
+        
+        // Save weight value on input
+        document.getElementById('weightValue').addEventListener('input', () => {
+            saveDayData();
+            updateHabitStatus();
+            updateSummary();
+        });
+        
+        // Save gains/goals on input
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`gain${i}`).addEventListener('input', () => {
+                saveDayData();
+                updateSummary();
+            });
+            document.getElementById(`goal${i}`).addEventListener('input', () => {
+                saveDayData();
+                updateSummary();
+            });
+        }
+        
+        // Close modal on background click
+        document.getElementById('noteModal').addEventListener('click', function(e) {
+            if (e.target === this) closeNoteModal();
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.hamburger-menu')) {
+                document.getElementById('dropdownMenu').classList.remove('show');
+            }
+        });
+        
+        // Initialize
+        initApp();
+        
+        // FORCE OVERRIDE - Enhanced Daily Notes with navigation and search
+        window.showTodaysNotes = function() {
+            // Remove any existing modals completely
+            const existingModals = document.querySelectorAll('#notesModal, [id*="Modal"]');
+            existingModals.forEach(modal => {
+                if (modal.id === 'notesModal') {
+                    modal.remove();
+                }
+            });
+            
+            // Create the enhanced notes interface
+            const modal = document.createElement('div');
+            modal.id = 'notesModal';
+            modal.className = 'full-screen-modal';
+            modal.style.cssText = `
+                display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: #fafbfc; z-index: 2000; overflow-y: auto;
+            `;
+            
+            modal.innerHTML = `
+                <div style="max-width: 900px; margin: 0 auto; padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">
+                        <h2 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0;">
+                            Daily Notes
+                        </h2>
+                        <button onclick="document.getElementById('notesModal').remove()" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 14px; font-weight: 500; color: #6b7280;">
+                            Close
+                        </button>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" id="notesSearch" placeholder="Search notes..." style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;">
+                        <div style="margin-top: 8px; font-size: 12px; color: #6b7280;">
+                            <span id="searchResults"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Date Navigation -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px;">
+                        <button onclick="changeNotesDate(-1)" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: #6b7280; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">‹</button>
+                        <input type="date" id="notesDateSelector" style="background: #ffffff; border: 1px solid #e5e7eb; padding: 8px 12px; border-radius: 8px; font-size: 14px; color: #1f2937; font-weight: 500;">
+                        <button onclick="changeNotesDate(1)" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: #6b7280; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">›</button>
+                        <button onclick="goToNotesToday()" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 14px; color: #6b7280; font-weight: 500;">Today</button>
+                    </div>
+                    
+                    <!-- Current Date Display -->
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <span id="currentNotesDate" style="font-size: 18px; font-weight: 600; color: #374151;"></span>
+                        <span id="dayOfYear" style="font-size: 14px; color: #6b7280; margin-left: 12px;"></span>
+                    </div>
+                    
+                    <div id="notesEditingArea"></div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Initialize with current selected date
+            let notesViewDate = selectedDate;
+            document.getElementById('notesDateSelector').value = notesViewDate;
+            
+            // Set up event listeners
+            document.getElementById('notesDateSelector').addEventListener('change', function(e) {
+                notesViewDate = e.target.value;
+                loadNotesForDate(notesViewDate);
+            });
+            
+            document.getElementById('notesSearch').addEventListener('input', function(e) {
+                searchNotes(e.target.value);
+            });
+            
+            // Date navigation functions
+            window.changeNotesDate = function(days) {
+                const current = new Date(notesViewDate);
+                current.setDate(current.getDate() + days);
+                notesViewDate = current.toISOString().split('T')[0];
+                document.getElementById('notesDateSelector').value = notesViewDate;
+                loadNotesForDate(notesViewDate);
+            };
+            
+            window.goToNotesToday = function() {
+                notesViewDate = new Date().toISOString().split('T')[0];
+                document.getElementById('notesDateSelector').value = notesViewDate;
+                loadNotesForDate(notesViewDate);
+            };
+            
+            // Load notes for a specific date
+            window.loadNotesForDate = function(dateStr) {
+                const habits = [...habitOrder, 'reflection'];
+                const container = document.getElementById('notesEditingArea');
+                
+                if (!container) return;
+                
+                // Update date display
+                const dateObj = new Date(dateStr + 'T12:00:00');
+                const today = new Date();
+                let displayText = dateObj.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                if (dateStr === today.toISOString().split('T')[0]) {
+                    displayText += ' (Today)';
+                } else if (dateStr === new Date(today.getTime() - 24*60*60*1000).toISOString().split('T')[0]) {
+                    displayText += ' (Yesterday)';
+                }
+                
+                document.getElementById('currentNotesDate').textContent = displayText;
+                
+                // Calculate day of year
+                const yearStart = new Date(dateObj.getFullYear(), 0, 1);
+                const yearDay = Math.floor((dateObj - yearStart) / (1000 * 60 * 60 * 24)) + 1;
+                document.getElementById('dayOfYear').textContent = `Day ${yearDay} of ${dateObj.getFullYear()}`;
+                
+                container.innerHTML = '';
+                
+                habits.forEach((habit) => {
+                    const noteKey = `note-${dateStr}-${habit}`;
+                    const existingNote = localStorage.getItem(noteKey) || '';
+                    
+                    const noteSection = document.createElement('div');
+                    noteSection.style.cssText = `
+                        background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;
+                        padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+                    `;
+                    
+                    const habitTitle = document.createElement('h3');
+                    habitTitle.style.cssText = `
+                        margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #111827;
+                    `;
+                    habitTitle.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
+                    
+                    const noteTextarea = document.createElement('textarea');
+                    noteTextarea.value = existingNote;
+                    noteTextarea.placeholder = `Add your ${habit} notes here...`;
+                    noteTextarea.style.cssText = `
+                        width: 100%; min-height: 100px; padding: 12px; border: 1px solid #d1d5db;
+                        border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;
+                        line-height: 1.5; color: #374151; background: #ffffff;
+                    `;
+                    
+                    // Auto-save on any change
+                    noteTextarea.addEventListener('input', function() {
+                        const noteContent = this.value.trim();
+                        if (noteContent) {
+                            localStorage.setItem(noteKey, noteContent);
+                        } else {
+                            localStorage.removeItem(noteKey);
+                        }
+                        // Update main page if viewing current selected date
+                        if (dateStr === selectedDate) {
+                            updateNoteButtons();
+                        }
+                    });
+                    
+                    noteSection.appendChild(habitTitle);
+                    noteSection.appendChild(noteTextarea);
+                    container.appendChild(noteSection);
+                });
+            };
+            
+            // Search functionality
+            window.searchNotes = function(searchTerm) {
+                const resultsDiv = document.getElementById('searchResults');
+                
+                if (!searchTerm.trim()) {
+                    resultsDiv.textContent = '';
+                    loadNotesForDate(notesViewDate);
+                    return;
+                }
+                
+                const matches = [];
+                const habits = [...habitOrder, 'reflection'];
+                
+                // Search through all stored notes
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.startsWith('note-')) {
+                        const value = localStorage.getItem(key);
+                        if (value && value.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            const parts = key.split('-');
+                            const date = parts[1];
+                            const habit = parts.slice(2).join('-');
+                            matches.push({ date, habit, content: value });
+                        }
+                    }
+                }
+                
+                if (matches.length === 0) {
+                    resultsDiv.textContent = `No notes found containing "${searchTerm}"`;
+                    return;
+                }
+                
+                resultsDiv.textContent = `Found ${matches.length} note${matches.length === 1 ? '' : 's'} containing "${searchTerm}"`;
+                
+                // Display search results
+                const container = document.getElementById('notesEditingArea');
+                container.innerHTML = '';
+                
+                // Group by date
+                const groupedMatches = {};
+                matches.forEach(match => {
+                    if (!groupedMatches[match.date]) {
+                        groupedMatches[match.date] = [];
+                    }
+                    groupedMatches[match.date].push(match);
+                });
+                
+                // Sort dates (newest first)
+                const sortedDates = Object.keys(groupedMatches).sort((a, b) => b.localeCompare(a));
+                
+                sortedDates.forEach(date => {
+                    const dateSection = document.createElement('div');
+                    dateSection.style.cssText = `
+                        background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+                        padding: 20px; margin-bottom: 20px;
+                    `;
+                    
+                    const dateTitle = document.createElement('h3');
+                    dateTitle.style.cssText = `
+                        margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #111827;
+                        cursor: pointer; display: flex; align-items: center; gap: 8px;
+                    `;
+                    dateTitle.innerHTML = `${new Date(date + 'T12:00:00').toLocaleDateString('en-US', { 
+                        weekday: 'long', 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    })} <span style="font-size: 14px; color: #6b7280; font-weight: 400;">→ Click to edit</span>`;
+                    
+                    dateTitle.addEventListener('click', () => {
+                        document.getElementById('notesSearch').value = '';
+                        resultsDiv.textContent = '';
+                        notesViewDate = date;
+                        document.getElementById('notesDateSelector').value = notesViewDate;
+                        loadNotesForDate(notesViewDate);
+                    });
+                    
+                    dateSection.appendChild(dateTitle);
+                    
+                    groupedMatches[date].forEach(match => {
+                        const matchDiv = document.createElement('div');
+                        matchDiv.style.cssText = `
+                            background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;
+                            padding: 16px; margin-bottom: 12px;
+                        `;
+                        
+                        const habitName = document.createElement('div');
+                        habitName.style.cssText = `
+                            font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 14px;
+                        `;
+                        habitName.textContent = match.habit.charAt(0).toUpperCase() + match.habit.slice(1);
+                        
+                        const content = document.createElement('div');
+                        content.style.cssText = `
+                            color: #6b7280; line-height: 1.5; font-size: 14px;
+                        `;
+                        
+                        // Highlight search term
+                        const highlightedContent = match.content.replace(
+                            new RegExp(`(${searchTerm})`, 'gi'),
+                            '<mark style="background: #fef3c7; padding: 1px 2px;">$1</mark>'
+                        );
+                        content.innerHTML = highlightedContent;
+                        
+                        matchDiv.appendChild(habitName);
+                        matchDiv.appendChild(content);
+                        dateSection.appendChild(matchDiv);
+                    });
+                    
+                    container.appendChild(dateSection);
+                });
+            };
+            
+            // Initial load
+            loadNotesForDate(notesViewDate);
+            toggleMenu();
+        };
+        
+        // Menu functions
+        function toggleMenu() {
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+        
+        function exportData() {
+            const data = [];
+            const today = new Date();
+            const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+            
+            // Headers
+            data.push(['Date', 'Active1', 'Active2', 'Water1', 'Water2', 'Water3', 'Water4', 
+                      'Alcohol', 'Diet', 'WeightCheck', 'WeightValue', 'Reading', 'Scripture', 'Prayer',
+                      'Gain1', 'Gain2', 'Gain3', 'Goal1', 'Goal2', 'Goal3', 
+                      'ActiveNote', 'WaterNote', 'AlcoholNote', 'DietNote', 'WeightNote', 
+                      'ReadingNote', 'ScriptureNote', 'PrayerNote', 'ReflectionNote']);
+            
+            // Iterate through past year
+            for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                const dayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+                
+                const row = [
+                    dateStr,
+                    dayData.active1 || false,
+                    dayData.active2 || false,
+                    dayData.water1 || false,
+                    dayData.water2 || false,
+                    dayData.water3 || false,
+                    dayData.water4 || false,
+                    dayData.alcohol || false,
+                    dayData.diet || false,
+                    dayData.weightCheck || false,
+                    dayData.weightValue || '',
+                    dayData.reading || false,
+                    dayData.scripture || false,
+                    dayData.prayer || false,
+                    dayData.gain1 || '',
+                    dayData.gain2 || '',
+                    dayData.gain3 || '',
+                    dayData.goal1 || '',
+                    dayData.goal2 || '',
+                    dayData.goal3 || '',
+                    localStorage.getItem(`note-${dateStr}-active`) || '',
+                    localStorage.getItem(`note-${dateStr}-water`) || '',
+                    localStorage.getItem(`note-${dateStr}-alcohol`) || '',
+                    localStorage.getItem(`note-${dateStr}-diet`) || '',
+                    localStorage.getItem(`note-${dateStr}-weight`) || '',
+                    localStorage.getItem(`note-${dateStr}-reading`) || '',
+                    localStorage.getItem(`note-${dateStr}-scripture`) || '',
+                    localStorage.getItem(`note-${dateStr}-prayer`) || '',
+                    localStorage.getItem(`note-${dateStr}-reflection`) || ''
+                ];
+                data.push(row);
+            }
+            
+            // Convert to CSV
+            const csv = data.map(row => 
+                row.map(cell => 
+                    typeof cell === 'string' ? `"${cell.replace(/"/g, '""')}"` : cell
+                ).join(',')
+            ).join('\n');
+            
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `habit-tracker-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            toggleMenu();
+        }
+        
+        function importData() {
+            document.getElementById('fileInput').click();
+            toggleMenu();
+        }
+        
+        function handleFileImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const csv = e.target.result;
+                    const lines = csv.split('\n');
+                    const headers = lines[0].split(',').map(h => h.replace(/"/g, ''));
+                    
+                    for (let i = 1; i < lines.length; i++) {
+                        if (!lines[i].trim()) continue;
+                        
+                        const values = [];
+                        let current = '';
+                        let inQuotes = false;
+                        
+                        for (let j = 0; j < lines[i].length; j++) {
+                            const char = lines[i][j];
+                            if (char === '"') {
+                                inQuotes = !inQuotes;
+                            } else if (char === ',' && !inQuotes) {
+                                values.push(current);
+                                current = '';
+                            } else {
+                                current += char;
+                            }
+                        }
+                        values.push(current);
+                        
+                        if (values.length < headers.length) continue;
+                        
+                        const dateStr = values[0];
+                        const dayData = {};
+                        const notes = {};
+                        
+                        headers.forEach((header, index) => {
+                            const value = values[index];
+                            if (header === 'Date') return;
+                            
+                            if (header.endsWith('Note')) {
+                                const habitName = header.replace('Note', '').toLowerCase();
+                                if (value) {
+                                    localStorage.setItem(`note-${dateStr}-${habitName}`, value);
+                                }
+                            } else if (header === 'WeightValue') {
+                                dayData.weightValue = value;
+                            } else if (header.startsWith('Gain') || header.startsWith('Goal')) {
+                                dayData[header.toLowerCase()] = value;
+                            } else {
+                                dayData[header.toLowerCase()] = value === 'true';
+                            }
+                        });
+                        
+                        localStorage.setItem(`day-${dateStr}`, JSON.stringify(dayData));
+                    }
+                    
+                    alert('Data imported successfully!');
+                    loadDayData();
+                } catch (error) {
+                    alert('Error importing data. Please check the file format.');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+        
+        function showTodaysNotes() {
+            console.log('showTodaysNotes called');
+            
+            // Create modal if it doesn't exist
+            let modal = document.getElementById('notesModal');
+            if (!modal) {
+                console.log('Creating notesModal');
+                modal = document.createElement('div');
+                modal.id = 'notesModal';
+                modal.className = 'full-screen-modal';
+                modal.innerHTML = `
+                    <div class="full-screen-content">
+                        <div class="modal-header-full">
+                            <h2 class="modal-title-full">Today's Notes</h2>
+                            <button class="close-btn-full" onclick="closeNotesModal()">Close</button>
+                        </div>
+                        <div class="notes-grid" id="notesGrid"></div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            
+            modal.style.display = 'block';
+            
+            // Populate notes
+            const grid = document.getElementById('notesGrid');
+            if (!grid) {
+                console.error('Still no notesGrid after creation');
+                return;
+            }
+            
+            populateNotes(grid);
+            toggleMenu();
+        }
+        
+        function closeNotesModal() {
+            closeTodaysNotesModal();
+        }
+        
+        // ===== STATS MODAL FUNCTION (KEEP AS IS) =====
+        function showStats() {
+            console.log('showStats called');
+            
+            // Create modal if it doesn't exist
+            let modal = document.getElementById('statsModal');
+            if (!modal) {
+                console.log('Creating statsModal'); // This might be the issue
+                modal = document.createElement('div');
+                modal.id = 'statsModal';
+                modal.className = 'full-screen-modal';
+                modal.innerHTML = `
+                    <div class="full-screen-content">
+                        <div class="modal-header-full">
+                            <h2 class="modal-title-full">Habit Stats</h2>
+                            <button class="close-btn-full" onclick="closeStatsModal()">Close</button>
+                        </div>
+                        <div style="margin-bottom: 24px;">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+                                <button onclick="setStatsRange('default')" style="padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">±15 Days</button>
+                                <button onclick="setStatsRange('thisMonth')" style="padding: 6px 12px; background: #6b7280; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">This Month</button>
+                                <button onclick="setStatsRange('lastMonth')" style="padding: 6px 12px; background: #6b7280; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">Last Month</button>
+                                <button onclick="setStatsRange('thisYear')" style="padding: 6px 12px; background: #6b7280; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">This Year</button>
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 16px;">
+                                <label style="font-size: 14px; color: #6b7280;">From:</label>
+                                <input type="date" id="statsStartDate" style="padding: 6px 8px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 14px;">
+                                <label style="font-size: 14px; color: #6b7280;">To:</label>
+                                <input type="date" id="statsEndDate" style="padding: 6px 8px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 14px;">
+                                <button onclick="updateStats()" style="padding: 6px 12px; background: #10b981; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">Update</button>
+                            </div>
+                        </div>
+                        <div class="stats-legend">
+                            <div class="legend-item">
+                                <div class="legend-color day-complete"></div>
+                                <span>Complete</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color day-partial"></div>
+                                <span>Partial</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color day-incomplete"></div>
+                                <span>Incomplete</span>
+                            </div>
+                        </div>
+                        <div id="statsContent"></div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            
+            modal.style.display = 'block';
+            
+            // Set default range (±15 days from today)
+            setStatsRange('default');
+            toggleMenu();
+        }
+        
+        function setStatsRange(range) {
+            const today = new Date();
+            let startDate, endDate;
+            
+            switch(range) {
+                case 'default':
+                    // ±15 days from today
+                    startDate = new Date(today);
+                    startDate.setDate(today.getDate() - 15);
+                    endDate = new Date(today);
+                    endDate.setDate(today.getDate() + 15);
+                    break;
+                    
+                case 'thisMonth':
+                    // Current month
+                    startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+                    endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                    break;
+                    
+                case 'lastMonth':
+                    // Previous month
+                    startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+                    endDate = new Date(today.getFullYear(), today.getMonth(), 0);
+                    break;
+                    
+                case 'thisYear':
+                    // Current year
+                    startDate = new Date(today.getFullYear(), 0, 1);
+                    endDate = new Date(today.getFullYear(), 11, 31);
+                    break;
+            }
+            
+            // Update date inputs
+            document.getElementById('statsStartDate').value = startDate.toISOString().split('T')[0];
+            document.getElementById('statsEndDate').value = endDate.toISOString().split('T')[0];
+            
+            // Update button styles
+            document.querySelectorAll('#statsModal button').forEach(btn => {
+                if (btn.onclick && btn.onclick.toString().includes('setStatsRange')) {
+                    btn.style.background = '#6b7280';
+                }
+            });
+            
+            // Highlight active button
+            const buttonMap = {
+                'default': '±15 Days',
+                'thisMonth': 'This Month', 
+                'lastMonth': 'Last Month',
+                'thisYear': 'This Year'
+            };
+            
+            const activeText = buttonMap[range];
+            document.querySelectorAll('#statsModal button').forEach(btn => {
+                if (btn.textContent === activeText) {
+                    btn.style.background = '#3b82f6';
+                }
+            });
+            
+            // Update stats
+            updateStats();
+        }
+        
+        function updateStats() {
+            const startDate = new Date(document.getElementById('statsStartDate').value);
+            const endDate = new Date(document.getElementById('statsEndDate').value);
+            const container = document.getElementById('statsContent');
+            
+            if (!container) {
+                console.error('Still no statsContent after creation');
+                return;
+            }
+            
+            populateStatsRange(container, startDate, endDate);
+        }
+        
+        function populateStatsRange(container, startDate, endDate) {
+            const habits = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer'];
+            
+            container.innerHTML = '';
+            
+            // Add info text
+            const info = document.createElement('div');
+            info.style.textAlign = 'center';
+            info.style.marginBottom = '24px';
+            info.style.color = '#6b7280';
+            info.style.fontSize = '14px';
+            const dayCount = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+            info.innerHTML = `Showing ${dayCount} days (${startDate.toLocaleDateString()} to ${endDate.toLocaleDateString()})`;
+            container.appendChild(info);
+            
+            habits.forEach(habit => {
+                const section = document.createElement('div');
+                section.style.marginBottom = '32px';
+                
+                const title = document.createElement('h3');
+                title.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
+                title.style.marginBottom = '16px';
+                title.style.fontSize = '18px';
+                title.style.fontWeight = '600';
+                
+                const grid = document.createElement('div');
+                grid.className = 'calendar-grid-365';
+                
+                for (let d = new Date(startDate); d <= endDate; d = new Date(d.getTime() + 24 * 60 * 60 * 1000)) {
+                    const dateStr = d.toISOString().split('T')[0];
+                    const dayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+                    
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day-365';
+                    day.title = dateStr;
+                    
+                    let isComplete = false;
+                    if (habit === 'active') {
+                        isComplete = dayData.active1 && dayData.active2;
+                    } else if (habit === 'water') {
+                        isComplete = dayData.water1 && dayData.water2 && dayData.water3 && dayData.water4;
+                    } else if (habit === 'weight') {
+                        isComplete = dayData.weightCheck && dayData.weightValue && dayData.weightValue.trim() !== '';
+                    } else {
+                        isComplete = !!dayData[habit];
+                    }
+                    
+                    day.classList.add(isComplete ? 'day-complete' : 'day-incomplete');
+                    grid.appendChild(day);
+                }
+                
+                section.appendChild(title);
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+        
+        function closeStatsModal() {
+            const modal = document.getElementById('statsModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function clearToday() {
+            console.log('clearToday function called');
+            
+            const currentDate = selectedDate;
+            console.log('Selected date string:', currentDate);
+            
+            // Fix timezone issue - parse date correctly
+            const [year, month, day] = currentDate.split('-');
+            const displayDate = new Date(year, month - 1, day).toLocaleDateString();
+            console.log('Display date:', displayDate);
+            
+            // Create custom confirmation modal
+            showClearConfirmation(currentDate, displayDate);
+            toggleMenu();
+        }
+        
+        function showClearConfirmation(currentDate, displayDate) {
+            // Create custom confirmation modal
+            const modal = document.createElement('div');
+            modal.id = 'clearConfirmModal';
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+                background: rgba(0,0,0,0.5); z-index: 3000; 
+                display: flex; align-items: center; justify-content: center;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 12px; padding: 32px; max-width: 400px; width: 90%; text-align: center;">
+                    <h3 style="margin-bottom: 16px; color: #1f2937; font-size: 18px; font-weight: 600;">Clear Data</h3>
+                    <p style="margin-bottom: 24px; color: #6b7280; line-height: 1.5;">
+                        Are you sure you want to clear all data for <strong>${displayDate}</strong>?<br>
+                        This cannot be undone.
+                    </p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button onclick="confirmClear('${currentDate}')" style="padding: 10px 20px; background: #ef4444; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                            Clear Data
+                        </button>
+                        <button onclick="cancelClear()" style="padding: 10px 20px; background: #f3f4f6; color: #6b7280; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        function confirmClear(currentDate) {
+            console.log('User confirmed clear for:', currentDate);
+            
+            try {
+                const habits = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer', 'reflection'];
+                
+                // Clear day data
+                localStorage.removeItem(`day-${currentDate}`);
+                console.log(`Cleared day-${currentDate}`);
+                
+                // Clear all notes for this date
+                habits.forEach(habit => {
+                    const noteKey = `note-${currentDate}-${habit}`;
+                    localStorage.removeItem(noteKey);
+                    console.log(`Cleared ${noteKey}`);
+                });
+                
+                // Force reload the day data
+                console.log('Calling loadDayData...');
+                loadDayData();
+                console.log('loadDayData completed');
+                
+                // Remove confirmation modal
+                const modal = document.getElementById('clearConfirmModal');
+                if (modal) modal.remove();
+                
+                // Show success message with correct date
+                const [year, month, day] = currentDate.split('-');
+                const displayDate = new Date(year, month - 1, day).toLocaleDateString();
+                setTimeout(() => {
+                    alert(`Data for ${displayDate} has been cleared.`);
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error in confirmClear:', error);
+            }
+        }
+        
+        function cancelClear() {
+            console.log('User cancelled clear operation');
+            const modal = document.getElementById('clearConfirmModal');
+            if (modal) modal.remove();
+        }
+        
+        function populateStats(container) {
+            const today = new Date();
+            // Show full 365 days starting from today going back
+            const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+            const habits = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer'];
+            
+            container.innerHTML = '';
+            
+            // Add info text
+            const info = document.createElement('div');
+            info.style.textAlign = 'center';
+            info.style.marginBottom = '24px';
+            info.style.color = '#6b7280';
+            info.style.fontSize = '14px';
+            info.innerHTML = `Showing 365 days (${oneYearAgo.toLocaleDateString()} to ${today.toLocaleDateString()})`;
+            container.appendChild(info);
+            
+            habits.forEach(habit => {
+                const section = document.createElement('div');
+                section.style.marginBottom = '32px';
+                
+                const title = document.createElement('h3');
+                title.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
+                title.style.marginBottom = '16px';
+                title.style.fontSize = '18px';
+                title.style.fontWeight = '600';
+                
+                const grid = document.createElement('div');
+                grid.className = 'calendar-grid-365';
+                
+                for (let d = new Date(oneYearAgo); d <= today; d = new Date(d.getTime() + 24 * 60 * 60 * 1000)) {
+                    const dateStr = d.toISOString().split('T')[0];
+                    const dayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+                    
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day-365';
+                    day.title = dateStr;
+                    
+                    let isComplete = false;
+                    if (habit === 'active') {
+                        isComplete = dayData.active1 && dayData.active2;
+                    } else if (habit === 'water') {
+                        isComplete = dayData.water1 && dayData.water2 && dayData.water3 && dayData.water4;
+                    } else if (habit === 'weight') {
+                        isComplete = dayData.weightCheck && dayData.weightValue && dayData.weightValue.trim() !== '';
+                    } else {
+                        isComplete = !!dayData[habit];
+                    }
+                    
+                    day.classList.add(isComplete ? 'day-complete' : 'day-incomplete');
+                    grid.appendChild(day);
+                }
+                
+                section.appendChild(title);
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+        
+        function closeNotesModal() {
+            document.getElementById('notesModal').style.display = 'none';
+        }
+        
+        function populateNotes(grid) {
+            const today = new Date().toISOString().split('T')[0];
+            // Use the same habit order as the main page
+            const habits = [...habitOrder, 'reflection']; // Add reflection at the end
+            
+            grid.innerHTML = '';
+            
+            habits.forEach(habit => {
+                const note = localStorage.getItem(`note-${today}-${habit}`) || '';
+                const card = document.createElement('div');
+                card.className = 'note-card';
+                
+                const header = document.createElement('div');
+                header.style.display = 'flex';
+                header.style.justifyContent = 'space-between';
+                header.style.alignItems = 'center';
+                header.style.marginBottom = '12px';
+                
+                const title = document.createElement('div');
+                title.className = 'note-card-title';
+                title.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
+                title.style.margin = '0';
+                
+                const editBtn = document.createElement('button');
+                editBtn.textContent = 'Edit';
+                editBtn.style.cssText = `
+                    background: #3b82f6; color: white; border: none; 
+                    border-radius: 4px; padding: 4px 8px; font-size: 12px; 
+                    cursor: pointer; font-weight: 500;
+                `;
+                editBtn.onclick = () => openNoteModalFromTodaysNotes(habit);
+                
+                header.appendChild(title);
+                header.appendChild(editBtn);
+                
+                const content = document.createElement('div');
+                content.className = note ? 'note-card-content' : 'note-card-content empty-note';
+                content.textContent = note || 'No note added';
+                content.style.whiteSpace = 'pre-wrap';
+                
+                card.appendChild(header);
+                card.appendChild(content);
+                grid.appendChild(card);
+            });
+        }
+        
+        function openNoteModalFromTodaysNotes(habit) {
+            // Close the Today's Notes modal first
+            closeNotesModal();
+            
+            // Open the regular note modal
+            setTimeout(() => {
+                openNoteModal(habit);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
