@@ -698,6 +698,7 @@
                     <div class="dropdown-item" onclick="exportData()">Export Data</div>
                     <div class="dropdown-item" onclick="importData()">Import Data</div>
                     <div class="dropdown-item" onclick="showTodaysNotes()">Today's Notes</div>
+                    <div class="dropdown-item" onclick="showTimeline()">Timeline</div>
                     <div class="dropdown-item" onclick="showStats()">Stats</div>
                     <div class="dropdown-item" onclick="clearToday()" style="color: #ef4444; border-top: 1px solid #f3f4f6; margin-top: 4px; padding-top: 12px;">Clear Today</div>
                 </div>
@@ -1856,6 +1857,231 @@
         function closeSettingsModal() {
             const modal = document.getElementById('settingsModal');
             if (modal) modal.remove();
+        }
+
+        function showTimeline() {
+            const modal = document.createElement('div');
+            modal.id = 'timelineModal';
+            modal.className = 'full-screen-modal';
+            modal.style.display = 'block';
+
+            modal.innerHTML = `
+                <div class="full-screen-content">
+                    <div class="modal-header-full">
+                        <h2 class="modal-title-full">Timeline</h2>
+                        <button class="close-btn-full" onclick="closeTimeline()">Close</button>
+                    </div>
+
+                    <div style="margin-bottom: 24px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center;">
+                        <!-- Habit Selector -->
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <label style="font-size: 14px; font-weight: 500; color: #6b7280;">View:</label>
+                            <select id="timelineHabitSelector" onchange="loadTimelineData()" style="padding: 8px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white; color: #1f2937; font-weight: 500; cursor: pointer;">
+                                <option value="gains">Gains</option>
+                                <option value="goals">Goals</option>
+                                <option value="active">Active Time</option>
+                                <option value="water">Water</option>
+                                <option value="alcohol">No Alcohol</option>
+                                <option value="diet">Diet</option>
+                                <option value="weight">Weight</option>
+                                <option value="reading">Reading</option>
+                                <option value="scripture">Scripture</option>
+                                <option value="prayer">Prayer</option>
+                                <option value="reflection">Reflection</option>
+                            </select>
+                        </div>
+
+                        <!-- Time Range Buttons -->
+                        <div style="display: inline-flex; gap: 8px; background: #f3f4f6; padding: 4px; border-radius: 8px;">
+                            <button onclick="setTimelineRange(30)" id="timeline-30" style="padding: 8px 16px; border: none; border-radius: 6px; background: #3b82f6; color: white; cursor: pointer; font-size: 14px; font-weight: 500;">Last 30 Days</button>
+                            <button onclick="setTimelineRange(90)" id="timeline-90" style="padding: 8px 16px; border: none; border-radius: 6px; background: transparent; color: #6b7280; cursor: pointer; font-size: 14px; font-weight: 500;">Last 90 Days</button>
+                            <button onclick="setTimelineRange(365)" id="timeline-365" style="padding: 8px 16px; border: none; border-radius: 6px; background: transparent; color: #6b7280; cursor: pointer; font-size: 14px; font-weight: 500;">All Time</button>
+                        </div>
+                    </div>
+
+                    <div id="timelineContent" style="max-width: 800px; margin: 0 auto;"></div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Set default range
+            window.currentTimelineRange = 30;
+
+            // Load default view (gains, last 30 days)
+            loadTimelineData();
+
+            toggleMenu();
+        }
+
+        function closeTimeline() {
+            const modal = document.getElementById('timelineModal');
+            if (modal) modal.remove();
+        }
+
+        function setTimelineRange(days) {
+            // Update button styles
+            document.querySelectorAll('#timelineModal button[id^="timeline-"]').forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.color = '#6b7280';
+            });
+            document.getElementById(`timeline-${days}`).style.background = '#3b82f6';
+            document.getElementById(`timeline-${days}`).style.color = 'white';
+
+            // Store range and reload
+            window.currentTimelineRange = days;
+            loadTimelineData();
+        }
+
+        function loadTimelineData() {
+            const container = document.getElementById('timelineContent');
+            if (!container) return;
+
+            const habitType = document.getElementById('timelineHabitSelector').value;
+            const days = window.currentTimelineRange || 30;
+
+            const today = new Date();
+            const endDate = getTodayInTimezone();
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() - days);
+
+            // Collect timeline data
+            const timelineData = [];
+
+            for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                const dayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+
+                let content = null;
+
+                // Handle different habit types
+                if (habitType === 'gains') {
+                    const gains = [dayData.gain1, dayData.gain2, dayData.gain3].filter(g => g && g.trim());
+                    if (gains.length > 0) content = gains;
+                } else if (habitType === 'goals') {
+                    const goals = [dayData.goal1, dayData.goal2, dayData.goal3].filter(g => g && g.trim());
+                    if (goals.length > 0) content = goals;
+                } else {
+                    // For habit notes
+                    const note = localStorage.getItem(`note-${dateStr}-${habitType}`);
+                    if (note && note.trim()) content = note;
+                }
+
+                if (content) {
+                    timelineData.push({
+                        date: dateStr,
+                        content: content
+                    });
+                }
+            }
+
+            // Reverse to show newest first
+            timelineData.reverse();
+
+            // Get habit display info
+            const habitInfo = getHabitDisplayInfo(habitType);
+
+            // Build timeline HTML
+            if (timelineData.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; color: #9ca3af;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">${habitInfo.emoji}</div>
+                        <div style="font-size: 16px; font-weight: 500; margin-bottom: 8px;">No ${habitInfo.label.toLowerCase()} recorded yet</div>
+                        <div style="font-size: 14px;">Start tracking to see your history here!</div>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <div style="position: relative;">
+                    <!-- Timeline line -->
+                    <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, ${habitInfo.colorLight}, ${habitInfo.colorDark}); border-radius: 2px;"></div>
+            `;
+
+            timelineData.forEach((entry) => {
+                const dateObj = new Date(entry.date + 'T12:00:00');
+                const isToday = entry.date === endDate;
+                const dayOfWeek = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+                const monthDay = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const year = dateObj.getFullYear();
+
+                html += `
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 32px;">
+                        <!-- Timeline dot -->
+                        <div style="position: absolute; left: 12px; top: 8px; width: 19px; height: 19px; background: ${isToday ? habitInfo.colorDark : '#ffffff'}; border: 3px solid ${habitInfo.colorDark}; border-radius: 50%; box-shadow: 0 0 0 4px ${habitInfo.colorBg};"></div>
+
+                        <!-- Date badge -->
+                        <div style="display: inline-block; background: ${isToday ? habitInfo.colorDark : habitInfo.colorBg}; color: ${isToday ? '#ffffff' : habitInfo.colorText}; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; margin-bottom: 12px; border: 1px solid ${isToday ? habitInfo.colorDark : habitInfo.colorLight};">
+                            ${isToday ? '🌟 Today' : dayOfWeek} · ${monthDay}, ${year}
+                        </div>
+
+                        <!-- Content card -->
+                        <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                `;
+
+                // Display content based on type (array vs string)
+                if (Array.isArray(entry.content)) {
+                    entry.content.forEach((item, i) => {
+                        html += `
+                            <div style="display: flex; align-items: start; margin-bottom: ${i < entry.content.length - 1 ? '12px' : '0'};">
+                                <div style="flex-shrink: 0; width: 24px; height: 24px; background: ${habitInfo.colorDark}; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; margin-right: 12px;">
+                                    ${i + 1}
+                                </div>
+                                <div style="flex: 1; color: #1f2937; font-size: 15px; line-height: 1.6; padding-top: 2px;">
+                                    ${item}
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += `
+                        <div style="color: #1f2937; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">
+                            ${entry.content}
+                        </div>
+                    `;
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            // Add summary at the top
+            const totalItems = timelineData.reduce((sum, entry) => {
+                return sum + (Array.isArray(entry.content) ? entry.content.length : 1);
+            }, 0);
+
+            const summaryHtml = `
+                <div style="background: linear-gradient(135deg, ${habitInfo.colorDark} 0%, ${habitInfo.colorMid} 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <div style="font-size: 14px; font-weight: 500; opacity: 0.9; margin-bottom: 8px;">${habitInfo.label}</div>
+                    <div style="font-size: 36px; font-weight: 700; margin-bottom: 4px;">${totalItems}</div>
+                    <div style="font-size: 14px; opacity: 0.8;">${Array.isArray(timelineData[0]?.content) ? 'entries' : 'notes'} across ${timelineData.length} days</div>
+                </div>
+            `;
+
+            container.innerHTML = summaryHtml + html;
+        }
+
+        function getHabitDisplayInfo(habitType) {
+            const habitConfig = {
+                gains: { label: 'Total Gains', emoji: '🏆', colorDark: '#10b981', colorMid: '#059669', colorLight: '#86efac', colorBg: '#f0fdf4', colorText: '#166534' },
+                goals: { label: 'Total Goals', emoji: '🎯', colorDark: '#3b82f6', colorMid: '#2563eb', colorLight: '#93c5fd', colorBg: '#eff6ff', colorText: '#1e40af' },
+                active: { label: 'Active Time Notes', emoji: '🏃', colorDark: '#f59e0b', colorMid: '#d97706', colorLight: '#fbbf24', colorBg: '#fef3c7', colorText: '#92400e' },
+                water: { label: 'Water Notes', emoji: '💧', colorDark: '#06b6d4', colorMid: '#0891b2', colorLight: '#67e8f9', colorBg: '#cffafe', colorText: '#164e63' },
+                alcohol: { label: 'Alcohol Notes', emoji: '🚫', colorDark: '#ef4444', colorMid: '#dc2626', colorLight: '#fca5a5', colorBg: '#fee2e2', colorText: '#991b1b' },
+                diet: { label: 'Diet Notes', emoji: '🥗', colorDark: '#84cc16', colorMid: '#65a30d', colorLight: '#bef264', colorBg: '#ecfccb', colorText: '#3f6212' },
+                weight: { label: 'Weight Notes', emoji: '⚖️', colorDark: '#8b5cf6', colorMid: '#7c3aed', colorLight: '#c4b5fd', colorBg: '#ede9fe', colorText: '#5b21b6' },
+                reading: { label: 'Reading Notes', emoji: '📚', colorDark: '#ec4899', colorMid: '#db2777', colorLight: '#f9a8d4', colorBg: '#fce7f3', colorText: '#9f1239' },
+                scripture: { label: 'Scripture Notes', emoji: '📖', colorDark: '#6366f1', colorMid: '#4f46e5', colorLight: '#a5b4fc', colorBg: '#e0e7ff', colorText: '#3730a3' },
+                prayer: { label: 'Prayer Notes', emoji: '🙏', colorDark: '#14b8a6', colorMid: '#0d9488', colorLight: '#5eead4', colorBg: '#ccfbf1', colorText: '#134e4a' },
+                reflection: { label: 'Reflection Notes', emoji: '💭', colorDark: '#64748b', colorMid: '#475569', colorLight: '#94a3b8', colorBg: '#f1f5f9', colorText: '#1e293b' }
+            };
+
+            return habitConfig[habitType] || habitConfig.gains;
         }
         
         function exportData() {
