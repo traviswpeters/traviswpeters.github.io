@@ -2035,9 +2035,11 @@
                         `;
                     });
                 } else {
+                    // Escape HTML and preserve line breaks but not extra spacing
+                    const cleanContent = entry.content.trim().replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
                     html += `
-                        <div style="color: #1f2937; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">
-                            ${entry.content}
+                        <div style="color: #1f2937; font-size: 15px; line-height: 1.6;">
+                            ${cleanContent}
                         </div>
                     `;
                 }
