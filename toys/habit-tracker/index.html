@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>45-Intentional Tracker</title>
+    <title>Habit Tracker</title>
     <style>
         * {
             margin: 0;
@@ -693,6 +693,7 @@
                     </div>
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-item" onclick="showAbout()">About</div>
                     <div class="dropdown-item" onclick="exportData()">Export Data</div>
                     <div class="dropdown-item" onclick="importData()">Import Data</div>
                     <div class="dropdown-item" onclick="showTodaysNotes()">Today's Notes</div>
@@ -853,7 +854,10 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Hidden File Input for Import -->
+    <input type="file" id="fileInput" class="file-input" accept=".csv" onchange="handleFileImport(event)">
+
     <!-- Note Modal -->
     <div class="modal" id="noteModal">
         <div class="modal-content">
@@ -874,9 +878,9 @@
         let currentNoteHabit = null;
         let draggedElement = null;
         let habitOrder = ['active', 'water', 'alcohol', 'diet', 'weight', 'reading', 'scripture', 'prayer'];
-        
+
         const startDate = new Date('2024-10-15');
-        
+
         function initApp() {
             document.getElementById('dateSelector').value = selectedDate;
             loadHabitOrder();
@@ -1000,7 +1004,7 @@
             updateDayCounter();
             loadDayData();
         }
-        
+
         function goToToday() {
             selectedDate = new Date().toISOString().split('T')[0];
             document.getElementById('dateSelector').value = selectedDate;
@@ -1330,7 +1334,7 @@
                 document.getElementById('notesDateSelector').value = notesViewDate;
                 loadNotesForDate(notesViewDate);
             };
-            
+
             window.goToNotesToday = function() {
                 notesViewDate = new Date().toISOString().split('T')[0];
                 document.getElementById('notesDateSelector').value = notesViewDate;
@@ -1535,6 +1539,73 @@
         // Menu functions
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+
+        function showAbout() {
+            const modal = document.createElement('div');
+            modal.id = 'aboutModal';
+            modal.className = 'modal';
+            modal.style.display = 'block';
+
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3>About</h3>
+                        <button class="modal-close" onclick="closeAboutModal()">×</button>
+                    </div>
+                    <div style="color: #374151; line-height: 1.6;">
+                        <p style="margin-bottom: 16px; font-weight: 600; color: #111827;">
+                            Inspired by the desire for a central dashboard for habit tracking during a 45-day challenge (45-Intentional) focused on intentional living and daily habits. The habits we're commiting to include:
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Active Time:</strong> 60 minutes daily
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Water:</strong> 4L daily
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Diet:</strong> Commit to intentional consumption
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Alcohol:</strong> No alcohol
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Weight:</strong> Daily weight check + progress photo
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Reading:</strong> 15 minutes daily
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Scripture:</strong> 1 Psalm and/or 1 scripture
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #f3f4f6;">
+                                <strong style="color: #6b7280;">Prayer:</strong> 5 minutes (solo, focused)
+                            </li>
+                            <li style="padding: 8px 0;">
+                                <strong style="color: #6b7280;">Reflection:</strong> 3 gains, 3 goals daily
+                            </li>
+                        </ul>
+                        <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
+                            Track your progress, build consistency, and grow through intentional daily practices.
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeAboutModal();
+            });
+
+            toggleMenu();
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            if (modal) modal.remove();
         }
         
         function exportData() {
