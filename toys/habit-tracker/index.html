@@ -1406,23 +1406,23 @@
                 document.getElementById('dayOfYear').textContent = `Day ${yearDay} of ${dateObj.getFullYear()}`;
                 
                 container.innerHTML = '';
-                
+
                 habits.forEach((habit) => {
                     const noteKey = `note-${dateStr}-${habit}`;
                     const existingNote = localStorage.getItem(noteKey) || '';
-                    
+
                     const noteSection = document.createElement('div');
                     noteSection.style.cssText = `
                         background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;
                         padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
                     `;
-                    
+
                     const habitTitle = document.createElement('h3');
                     habitTitle.style.cssText = `
                         margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #111827;
                     `;
                     habitTitle.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
-                    
+
                     const noteTextarea = document.createElement('textarea');
                     noteTextarea.value = existingNote;
                     noteTextarea.placeholder = `Add your ${habit} notes here...`;
@@ -1431,7 +1431,7 @@
                         border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;
                         line-height: 1.5; color: #374151; background: #ffffff;
                     `;
-                    
+
                     // Auto-save on any change
                     noteTextarea.addEventListener('input', function() {
                         const noteContent = this.value.trim();
@@ -1445,11 +1445,102 @@
                             updateNoteButtons();
                         }
                     });
-                    
+
                     noteSection.appendChild(habitTitle);
                     noteSection.appendChild(noteTextarea);
                     container.appendChild(noteSection);
                 });
+
+                // Add Gains & Goals sections (editable)
+                const dayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+
+                // 3 Gains Today
+                const gainsSection = document.createElement('div');
+                gainsSection.style.cssText = `
+                    background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px;
+                    padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+                `;
+
+                const gainsTitle = document.createElement('h3');
+                gainsTitle.style.cssText = `
+                    margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #166534;
+                `;
+                gainsTitle.textContent = '3 Gains Today';
+                gainsSection.appendChild(gainsTitle);
+
+                // Create editable inputs for gains
+                for (let i = 1; i <= 3; i++) {
+                    const gainInput = document.createElement('input');
+                    gainInput.type = 'text';
+                    gainInput.value = dayData[`gain${i}`] || '';
+                    gainInput.placeholder = `Gain ${i}`;
+                    gainInput.style.cssText = `
+                        width: 100%; padding: 10px 12px; border: 1px solid #86efac;
+                        border-radius: 8px; font-size: 14px; margin-bottom: 8px;
+                        background: #ffffff; color: #166534;
+                    `;
+
+                    // Auto-save on input
+                    gainInput.addEventListener('input', function() {
+                        const currentDayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+                        currentDayData[`gain${i}`] = this.value;
+                        localStorage.setItem(`day-${dateStr}`, JSON.stringify(currentDayData));
+
+                        // Update main page if viewing current selected date
+                        if (dateStr === selectedDate) {
+                            document.getElementById(`gain${i}`).value = this.value;
+                            updateSummary();
+                        }
+                    });
+
+                    gainsSection.appendChild(gainInput);
+                }
+
+                container.appendChild(gainsSection);
+
+                // 3 Goals Tomorrow
+                const goalsSection = document.createElement('div');
+                goalsSection.style.cssText = `
+                    background: #eff6ff; border: 1px solid #93c5fd; border-radius: 12px;
+                    padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+                `;
+
+                const goalsTitle = document.createElement('h3');
+                goalsTitle.style.cssText = `
+                    margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #1e40af;
+                `;
+                goalsTitle.textContent = '3 Goals Tomorrow';
+                goalsSection.appendChild(goalsTitle);
+
+                // Create editable inputs for goals
+                for (let i = 1; i <= 3; i++) {
+                    const goalInput = document.createElement('input');
+                    goalInput.type = 'text';
+                    goalInput.value = dayData[`goal${i}`] || '';
+                    goalInput.placeholder = `Goal ${i}`;
+                    goalInput.style.cssText = `
+                        width: 100%; padding: 10px 12px; border: 1px solid #93c5fd;
+                        border-radius: 8px; font-size: 14px; margin-bottom: 8px;
+                        background: #ffffff; color: #1e40af;
+                    `;
+
+                    // Auto-save on input
+                    goalInput.addEventListener('input', function() {
+                        const currentDayData = JSON.parse(localStorage.getItem(`day-${dateStr}`) || '{}');
+                        currentDayData[`goal${i}`] = this.value;
+                        localStorage.setItem(`day-${dateStr}`, JSON.stringify(currentDayData));
+
+                        // Update main page if viewing current selected date
+                        if (dateStr === selectedDate) {
+                            document.getElementById(`goal${i}`).value = this.value;
+                            updateSummary();
+                        }
+                    });
+
+                    goalsSection.appendChild(goalInput);
+                }
+
+                container.appendChild(goalsSection);
             };
             
             // Search functionality
@@ -1912,45 +2003,6 @@
             event.target.value = '';
         }
         
-        function showTodaysNotes() {
-            console.log('showTodaysNotes called');
-            
-            // Create modal if it doesn't exist
-            let modal = document.getElementById('notesModal');
-            if (!modal) {
-                console.log('Creating notesModal');
-                modal = document.createElement('div');
-                modal.id = 'notesModal';
-                modal.className = 'full-screen-modal';
-                modal.innerHTML = `
-                    <div class="full-screen-content">
-                        <div class="modal-header-full">
-                            <h2 class="modal-title-full">Today's Notes</h2>
-                            <button class="close-btn-full" onclick="closeNotesModal()">Close</button>
-                        </div>
-                        <div class="notes-grid" id="notesGrid"></div>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-            }
-            
-            modal.style.display = 'block';
-            
-            // Populate notes
-            const grid = document.getElementById('notesGrid');
-            if (!grid) {
-                console.error('Still no notesGrid after creation');
-                return;
-            }
-            
-            populateNotes(grid);
-            toggleMenu();
-        }
-        
-        function closeNotesModal() {
-            closeTodaysNotesModal();
-        }
-        
         // ===== STATS MODAL FUNCTION (KEEP AS IS) =====
         function showStats() {
             console.log('showStats called');
@@ -2299,65 +2351,6 @@
             });
         }
         
-        function closeNotesModal() {
-            document.getElementById('notesModal').style.display = 'none';
-        }
-        
-        function populateNotes(grid) {
-            const today = getTodayInTimezone();
-            // Use the same habit order as the main page
-            const habits = [...habitOrder, 'reflection']; // Add reflection at the end
-            
-            grid.innerHTML = '';
-            
-            habits.forEach(habit => {
-                const note = localStorage.getItem(`note-${today}-${habit}`) || '';
-                const card = document.createElement('div');
-                card.className = 'note-card';
-                
-                const header = document.createElement('div');
-                header.style.display = 'flex';
-                header.style.justifyContent = 'space-between';
-                header.style.alignItems = 'center';
-                header.style.marginBottom = '12px';
-                
-                const title = document.createElement('div');
-                title.className = 'note-card-title';
-                title.textContent = habit.charAt(0).toUpperCase() + habit.slice(1);
-                title.style.margin = '0';
-                
-                const editBtn = document.createElement('button');
-                editBtn.textContent = 'Edit';
-                editBtn.style.cssText = `
-                    background: #3b82f6; color: white; border: none; 
-                    border-radius: 4px; padding: 4px 8px; font-size: 12px; 
-                    cursor: pointer; font-weight: 500;
-                `;
-                editBtn.onclick = () => openNoteModalFromTodaysNotes(habit);
-                
-                header.appendChild(title);
-                header.appendChild(editBtn);
-                
-                const content = document.createElement('div');
-                content.className = note ? 'note-card-content' : 'note-card-content empty-note';
-                content.textContent = note || 'No note added';
-                content.style.whiteSpace = 'pre-wrap';
-                
-                card.appendChild(header);
-                card.appendChild(content);
-                grid.appendChild(card);
-            });
-        }
-        
-        function openNoteModalFromTodaysNotes(habit) {
-            // Close the Today's Notes modal first
-            closeNotesModal();
-            
-            // Open the regular note modal
-            setTimeout(() => {
-                openNoteModal(habit);
-            }, 100);
-        }
     </script>
 </body>
 </html>
