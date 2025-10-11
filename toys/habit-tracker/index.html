@@ -1779,6 +1779,41 @@
                             </div>
                         </div>
 
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="font-size: 14px; margin-bottom: 12px; color: #6b7280; font-weight: 600;">Challenge Range</h4>
+
+                            <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                Challenge Name (optional)
+                            </label>
+                            <input type="text" id="settingsChallengeName" placeholder="e.g., 45-Intentional Challenge" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937; margin-bottom: 16px;">
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                        Start Date
+                                    </label>
+                                    <input type="date" id="settingsChallengeStart" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                        End Date
+                                    </label>
+                                    <input type="date" id="settingsChallengeEnd" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                    Number of Days
+                                </label>
+                                <input type="number" id="settingsChallengeDays" placeholder="e.g., 45" min="1" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                            </div>
+
+                            <div style="font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic;">
+                                Tip: Update either the dates or number of days - they'll sync automatically
+                            </div>
+                        </div>
+
                         <div style="margin-bottom: 24px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
                             <h4 style="font-size: 14px; margin-bottom: 8px; color: #6b7280; font-weight: 600;">Coming Soon</h4>
                             <ul style="list-style: none; padding: 0; margin: 0; color: #9ca3af; font-size: 13px;">
@@ -1820,8 +1855,50 @@
             document.getElementById('settingsTimezone').value = timezone;
             updateTimezonePreview();
 
+            // Load challenge settings
+            if (settings.challenge) {
+                document.getElementById('settingsChallengeName').value = settings.challenge.name || '';
+                document.getElementById('settingsChallengeStart').value = settings.challenge.startDate || '';
+                document.getElementById('settingsChallengeEnd').value = settings.challenge.endDate || '';
+                document.getElementById('settingsChallengeDays').value = settings.challenge.days || '';
+            }
+
             // Add event listener for timezone preview
             document.getElementById('settingsTimezone').addEventListener('change', updateTimezonePreview);
+
+            // Add event listeners for challenge auto-sync
+            document.getElementById('settingsChallengeStart').addEventListener('change', updateChallengeFromDates);
+            document.getElementById('settingsChallengeEnd').addEventListener('change', updateChallengeFromDates);
+            document.getElementById('settingsChallengeDays').addEventListener('input', updateChallengeFromDays);
+        }
+
+        function updateChallengeFromDates() {
+            const startDate = document.getElementById('settingsChallengeStart').value;
+            const endDate = document.getElementById('settingsChallengeEnd').value;
+
+            if (startDate && endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+                const diffTime = end - start;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 to include both start and end day
+
+                if (diffDays > 0) {
+                    document.getElementById('settingsChallengeDays').value = diffDays;
+                }
+            }
+        }
+
+        function updateChallengeFromDays() {
+            const startDate = document.getElementById('settingsChallengeStart').value;
+            const days = parseInt(document.getElementById('settingsChallengeDays').value);
+
+            if (startDate && days > 0) {
+                const start = new Date(startDate);
+                const end = new Date(start);
+                end.setDate(start.getDate() + days - 1); // -1 because we count the start day
+
+                document.getElementById('settingsChallengeEnd').value = end.toISOString().split('T')[0];
+            }
         }
 
         function updateTimezonePreview() {
@@ -1842,7 +1919,13 @@
         function saveSettings() {
             const settings = {
                 userName: document.getElementById('settingsUserName').value.trim(),
-                timezone: document.getElementById('settingsTimezone').value
+                timezone: document.getElementById('settingsTimezone').value,
+                challenge: {
+                    name: document.getElementById('settingsChallengeName').value.trim(),
+                    startDate: document.getElementById('settingsChallengeStart').value,
+                    endDate: document.getElementById('settingsChallengeEnd').value,
+                    days: parseInt(document.getElementById('settingsChallengeDays').value) || 0
+                }
             };
 
             localStorage.setItem('appSettings', JSON.stringify(settings));
@@ -1947,6 +2030,7 @@
 
             // Collect timeline data
             const timelineData = [];
+            const numericData = []; // For weight tracking
 
             for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
                 const dateStr = d.toISOString().split('T')[0];
@@ -1961,6 +2045,15 @@
                 } else if (habitType === 'goals') {
                     const goals = [dayData.goal1, dayData.goal2, dayData.goal3].filter(g => g && g.trim());
                     if (goals.length > 0) content = goals;
+                } else if (habitType === 'weight') {
+                    // Collect numeric weight data for graphing
+                    const weight = parseFloat(dayData.weightValue);
+                    if (!isNaN(weight) && weight > 0) {
+                        numericData.push({ date: dateStr, value: weight });
+                    }
+                    // Also get notes if any
+                    const note = localStorage.getItem(`note-${dateStr}-${habitType}`);
+                    if (note && note.trim()) content = note;
                 } else {
                     // For habit notes
                     const note = localStorage.getItem(`note-${dateStr}-${habitType}`);
@@ -1982,7 +2075,7 @@
             const habitInfo = getHabitDisplayInfo(habitType);
 
             // Build timeline HTML
-            if (timelineData.length === 0) {
+            if (timelineData.length === 0 && numericData.length === 0) {
                 container.innerHTML = `
                     <div style="text-align: center; padding: 60px 20px; color: #9ca3af;">
                         <div style="font-size: 48px; margin-bottom: 16px;">${habitInfo.emoji}</div>
@@ -2052,20 +2145,178 @@
 
             html += `</div>`;
 
-            // Add summary at the top
-            const totalItems = timelineData.reduce((sum, entry) => {
-                return sum + (Array.isArray(entry.content) ? entry.content.length : 1);
-            }, 0);
+            // Build summary and chart
+            let summaryHtml = '';
+            let chartHtml = '';
 
-            const summaryHtml = `
-                <div style="background: linear-gradient(135deg, ${habitInfo.colorDark} 0%, ${habitInfo.colorMid} 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <div style="font-size: 14px; font-weight: 500; opacity: 0.9; margin-bottom: 8px;">${habitInfo.label}</div>
-                    <div style="font-size: 36px; font-weight: 700; margin-bottom: 4px;">${totalItems}</div>
-                    <div style="font-size: 14px; opacity: 0.8;">${Array.isArray(timelineData[0]?.content) ? 'entries' : 'notes'} across ${timelineData.length} days</div>
+            // Generate chart for numeric data
+            if (numericData.length > 0) {
+                chartHtml = generateLineChart(numericData, habitInfo);
+
+                const latestWeight = numericData[numericData.length - 1].value;
+                const firstWeight = numericData[0].value;
+                const weightChange = latestWeight - firstWeight;
+                const changeText = weightChange > 0 ? `+${weightChange.toFixed(1)}` : weightChange.toFixed(1);
+                const changeColor = weightChange > 0 ? '#ef4444' : '#10b981';
+
+                summaryHtml = `
+                    <div style="background: linear-gradient(135deg, ${habitInfo.colorDark} 0%, ${habitInfo.colorMid} 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 500; opacity: 0.9; margin-bottom: 8px;">Current Weight</div>
+                                <div style="font-size: 36px; font-weight: 700; margin-bottom: 4px;">${latestWeight} lbs</div>
+                                <div style="font-size: 14px; opacity: 0.8;">${numericData.length} data points</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 500; opacity: 0.9; margin-bottom: 8px;">Change</div>
+                                <div style="font-size: 28px; font-weight: 700; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px;">
+                                    ${changeText} lbs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const totalItems = timelineData.reduce((sum, entry) => {
+                    return sum + (Array.isArray(entry.content) ? entry.content.length : 1);
+                }, 0);
+
+                summaryHtml = `
+                    <div style="background: linear-gradient(135deg, ${habitInfo.colorDark} 0%, ${habitInfo.colorMid} 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <div style="font-size: 14px; font-weight: 500; opacity: 0.9; margin-bottom: 8px;">${habitInfo.label}</div>
+                        <div style="font-size: 36px; font-weight: 700; margin-bottom: 4px;">${totalItems}</div>
+                        <div style="font-size: 14px; opacity: 0.8;">${Array.isArray(timelineData[0]?.content) ? 'entries' : 'notes'} across ${timelineData.length} days</div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = summaryHtml + chartHtml + html;
+        }
+
+        function generateLineChart(data, habitInfo) {
+            if (data.length === 0) return '';
+
+            const width = 760;
+            const height = 300;
+            const padding = { top: 40, right: 60, bottom: 60, left: 60 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+
+            // Find min/max for scaling
+            const values = data.map(d => d.value);
+            const minValue = Math.min(...values);
+            const maxValue = Math.max(...values);
+            const valueRange = maxValue - minValue;
+            const yMin = minValue - (valueRange * 0.1);
+            const yMax = maxValue + (valueRange * 0.1);
+
+            // Generate points for the line
+            const points = data.map((d, i) => {
+                const x = padding.left + (i / (data.length - 1)) * chartWidth;
+                const y = padding.top + chartHeight - ((d.value - yMin) / (yMax - yMin)) * chartHeight;
+                return { x, y, value: d.value, date: d.date };
+            });
+
+            // Generate path
+            const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+
+            // Generate area fill path
+            const areaD = `M ${padding.left} ${padding.top + chartHeight} L ${points.map(p => `${p.x} ${p.y}`).join(' L ')} L ${padding.left + chartWidth} ${padding.top + chartHeight} Z`;
+
+            // Generate grid lines (5 horizontal lines)
+            let gridLines = '';
+            for (let i = 0; i <= 4; i++) {
+                const y = padding.top + (chartHeight / 4) * i;
+                const value = yMax - ((yMax - yMin) / 4) * i;
+                gridLines += `
+                    <line x1="${padding.left}" y1="${y}" x2="${padding.left + chartWidth}" y2="${y}" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4,4"/>
+                    <text x="${padding.left - 10}" y="${y + 4}" text-anchor="end" fill="#6b7280" font-size="12">${value.toFixed(1)}</text>
+                `;
+            }
+
+            // Generate date labels (show every nth point)
+            const labelInterval = Math.max(1, Math.floor(data.length / 6));
+            let dateLabels = '';
+            data.forEach((d, i) => {
+                if (i % labelInterval === 0 || i === data.length - 1) {
+                    const x = padding.left + (i / (data.length - 1)) * chartWidth;
+                    const dateObj = new Date(d.date + 'T12:00:00');
+                    const label = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    dateLabels += `
+                        <text x="${x}" y="${padding.top + chartHeight + 25}" text-anchor="middle" fill="#6b7280" font-size="12">${label}</text>
+                    `;
+                }
+            });
+
+            const chartId = 'weightChart_' + Date.now();
+
+            return `
+                <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: relative;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 20px;">Weight Over Time</h3>
+
+                    <!-- Tooltip -->
+                    <div id="${chartId}_tooltip" style="position: absolute; background: rgba(0,0,0,0.85); color: white; padding: 8px 12px; border-radius: 6px; font-size: 13px; pointer-events: none; opacity: 0; transition: opacity 0.2s; white-space: nowrap; z-index: 100;"></div>
+
+                    <svg id="${chartId}" width="${width}" height="${height}" style="display: block; margin: 0 auto;">
+                        <!-- Grid lines -->
+                        ${gridLines}
+
+                        <!-- Area fill -->
+                        <path d="${areaD}" fill="${habitInfo.colorBg}" opacity="0.5"/>
+
+                        <!-- Line -->
+                        <path d="${pathD}" fill="none" stroke="${habitInfo.colorDark}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+                        <!-- Data points -->
+                        ${points.map((p, idx) => `
+                            <circle
+                                cx="${p.x}"
+                                cy="${p.y}"
+                                r="5"
+                                fill="#ffffff"
+                                stroke="${habitInfo.colorDark}"
+                                stroke-width="2"
+                                style="cursor: pointer; transition: r 0.2s;"
+                                onmouseenter="showWeightTooltip(event, '${chartId}_tooltip', '${p.date}', ${p.value})"
+                                onmouseleave="hideWeightTooltip('${chartId}_tooltip')"
+                                onmouseover="this.setAttribute('r', '7')"
+                                onmouseout="this.setAttribute('r', '5')"
+                            />
+                        `).join('')}
+
+                        <!-- Date labels -->
+                        ${dateLabels}
+                    </svg>
                 </div>
             `;
+        }
 
-            container.innerHTML = summaryHtml + html;
+        function showWeightTooltip(event, tooltipId, date, value) {
+            const tooltip = document.getElementById(tooltipId);
+            if (!tooltip) return;
+
+            const dateObj = new Date(date + 'T12:00:00');
+            const dateStr = dateObj.toLocaleDateString('en-US', {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+
+            tooltip.innerHTML = `<strong>${dateStr}</strong><br>${value} lbs`;
+            tooltip.style.opacity = '1';
+
+            // Position tooltip near mouse
+            const rect = tooltip.parentElement.getBoundingClientRect();
+            tooltip.style.left = (event.clientX - rect.left + 15) + 'px';
+            tooltip.style.top = (event.clientY - rect.top - 15) + 'px';
+        }
+
+        function hideWeightTooltip(tooltipId) {
+            const tooltip = document.getElementById(tooltipId);
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+            }
         }
 
         function getHabitDisplayInfo(habitType) {
