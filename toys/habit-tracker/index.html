@@ -694,6 +694,7 @@
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div class="dropdown-item" onclick="showAbout()">About</div>
+                    <div class="dropdown-item" onclick="showSettings()">Settings</div>
                     <div class="dropdown-item" onclick="exportData()">Export Data</div>
                     <div class="dropdown-item" onclick="importData()">Import Data</div>
                     <div class="dropdown-item" onclick="showTodaysNotes()">Today's Notes</div>
@@ -881,7 +882,32 @@
 
         const startDate = new Date('2024-10-15');
 
+        // Timezone helper functions
+        function getUserTimezone() {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            return settings.timezone || 'America/Los_Angeles';
+        }
+
+        function getTodayInTimezone() {
+            const timezone = getUserTimezone();
+            const now = new Date();
+
+            // Get the date string in the user's timezone
+            const dateString = now.toLocaleString('en-US', {
+                timeZone: timezone,
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+
+            // Convert from MM/DD/YYYY to YYYY-MM-DD
+            const [month, day, year] = dateString.split('/');
+            return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+        }
+
         function initApp() {
+            // Initialize with today's date in user's timezone
+            selectedDate = getTodayInTimezone();
             document.getElementById('dateSelector').value = selectedDate;
             loadHabitOrder();
             updateDayCounter();
@@ -1006,7 +1032,7 @@
         }
 
         function goToToday() {
-            selectedDate = new Date().toISOString().split('T')[0];
+            selectedDate = getTodayInTimezone();
             document.getElementById('dateSelector').value = selectedDate;
             updateDayCounter();
             loadDayData();
@@ -1336,7 +1362,7 @@
             };
 
             window.goToNotesToday = function() {
-                notesViewDate = new Date().toISOString().split('T')[0];
+                notesViewDate = getTodayInTimezone();
                 document.getElementById('notesDateSelector').value = notesViewDate;
                 loadNotesForDate(notesViewDate);
             };
@@ -1350,17 +1376,25 @@
                 
                 // Update date display
                 const dateObj = new Date(dateStr + 'T12:00:00');
-                const today = new Date();
-                let displayText = dateObj.toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+                const todayStr = getTodayInTimezone();
+
+                // Calculate yesterday in user's timezone
+                const [year, month, day] = todayStr.split('-');
+                const todayDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                const yesterdayDate = new Date(todayDate);
+                yesterdayDate.setDate(todayDate.getDate() - 1);
+                const yesterdayStr = yesterdayDate.toISOString().split('T')[0];
+
+                let displayText = dateObj.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                 });
-                
-                if (dateStr === today.toISOString().split('T')[0]) {
+
+                if (dateStr === todayStr) {
                     displayText += ' (Today)';
-                } else if (dateStr === new Date(today.getTime() - 24*60*60*1000).toISOString().split('T')[0]) {
+                } else if (dateStr === yesterdayStr) {
                     displayText += ' (Yesterday)';
                 }
                 
@@ -1605,6 +1639,131 @@
 
         function closeAboutModal() {
             const modal = document.getElementById('aboutModal');
+            if (modal) modal.remove();
+        }
+
+        function showSettings() {
+            const modal = document.createElement('div');
+            modal.id = 'settingsModal';
+            modal.className = 'modal';
+            modal.style.display = 'block';
+
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3>Settings</h3>
+                        <button class="modal-close" onclick="closeSettingsModal()">×</button>
+                    </div>
+                    <div style="color: #374151; line-height: 1.6;">
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="font-size: 14px; margin-bottom: 12px; color: #6b7280; font-weight: 600;">User Preferences</h4>
+
+                            <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                Your Name
+                            </label>
+                            <input type="text" id="settingsUserName" placeholder="Enter your name" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937; margin-bottom: 16px;">
+
+                            <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
+                                Timezone
+                            </label>
+                            <select id="settingsTimezone" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937; background: white;">
+                                <option value="UTC">UTC (Universal Time)</option>
+                                <option value="America/New_York">Eastern Time (ET)</option>
+                                <option value="America/Chicago">Central Time (CT)</option>
+                                <option value="America/Denver">Mountain Time (MT)</option>
+                                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                                <option value="America/Anchorage">Alaska Time (AKT)</option>
+                                <option value="America/Honolulu">Hawaii Time (HT)</option>
+                                <option value="Europe/London">London (GMT/BST)</option>
+                                <option value="Europe/Paris">Paris (CET/CEST)</option>
+                                <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                                <option value="Asia/Tokyo">Tokyo (JST)</option>
+                                <option value="Asia/Shanghai">Shanghai (CST)</option>
+                                <option value="Asia/Dubai">Dubai (GST)</option>
+                                <option value="Australia/Sydney">Sydney (AEDT/AEST)</option>
+                            </select>
+                            <div style="font-size: 12px; color: #6b7280; margin-top: 6px;">
+                                Current time in selected timezone: <span id="timezonePreview" style="font-weight: 500;"></span>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 24px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
+                            <h4 style="font-size: 14px; margin-bottom: 8px; color: #6b7280; font-weight: 600;">Coming Soon</h4>
+                            <ul style="list-style: none; padding: 0; margin: 0; color: #9ca3af; font-size: 13px;">
+                                <li style="padding: 4px 0;">• Customizable habits</li>
+                                <li style="padding: 4px 0;">• Theme customization</li>
+                                <li style="padding: 4px 0;">• Data backup options</li>
+                            </ul>
+                        </div>
+
+                        <div style="display: flex; gap: 12px;">
+                            <button onclick="saveSettings()" class="modal-btn btn-save" style="flex: 1;">Save</button>
+                            <button onclick="closeSettingsModal()" class="modal-btn btn-cancel" style="flex: 1;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Load existing settings
+            loadSettings();
+
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeSettingsModal();
+            });
+
+            toggleMenu();
+        }
+
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+            if (settings.userName) {
+                document.getElementById('settingsUserName').value = settings.userName;
+            }
+
+            // Load timezone (default to Pacific)
+            const timezone = settings.timezone || 'America/Los_Angeles';
+            document.getElementById('settingsTimezone').value = timezone;
+            updateTimezonePreview();
+
+            // Add event listener for timezone preview
+            document.getElementById('settingsTimezone').addEventListener('change', updateTimezonePreview);
+        }
+
+        function updateTimezonePreview() {
+            const timezone = document.getElementById('settingsTimezone').value;
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                timeZone: timezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true,
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            document.getElementById('timezonePreview').textContent = timeString;
+        }
+
+        function saveSettings() {
+            const settings = {
+                userName: document.getElementById('settingsUserName').value.trim(),
+                timezone: document.getElementById('settingsTimezone').value
+            };
+
+            localStorage.setItem('appSettings', JSON.stringify(settings));
+
+            // Reload the current view with new timezone
+            updateDayCounter();
+            loadDayData();
+
+            closeSettingsModal();
+        }
+
+        function closeSettingsModal() {
+            const modal = document.getElementById('settingsModal');
             if (modal) modal.remove();
         }
         
@@ -2145,7 +2304,7 @@
         }
         
         function populateNotes(grid) {
-            const today = new Date().toISOString().split('T')[0];
+            const today = getTodayInTimezone();
             // Use the same habit order as the main page
             const habits = [...habitOrder, 'reflection']; // Add reflection at the end
             
