@@ -706,8 +706,9 @@
             </div>
             <h1>Daily Habit Tracker</h1>
             <div class="challenge-info">
-                <span>Day <span id="yearDay">1</span> of 365</span>
+                <span>Day <span id="yearDay">1</span> of <span id="yearTotal">365</span></span>
             </div>
+            <div id="challengeSubtitle" style="text-align: center; font-size: 13px; color: #6b7280; font-weight: 500; margin-bottom: 12px; display: none;"></div>
             <div class="date-nav">
                 <button class="nav-arrow" onclick="changeDate(-1)">‹</button>
                 <input type="date" id="dateSelector" class="date-picker">
@@ -907,14 +908,50 @@
             return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
         }
 
+        function isChallengeActive() {
+            const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+
+            // Check if all challenge fields are set
+            if (!settings.challenge ||
+                !settings.challenge.name ||
+                !settings.challenge.name.trim() ||
+                !settings.challenge.startDate ||
+                !settings.challenge.endDate ||
+                !settings.challenge.days ||
+                settings.challenge.days <= 0) {
+                return false;
+            }
+
+            // Check if current date is within challenge timeframe
+            const today = getTodayInTimezone();
+            const startDate = settings.challenge.startDate;
+            const endDate = settings.challenge.endDate;
+
+            return today >= startDate && today <= endDate;
+        }
+
         function initApp() {
             // Initialize with today's date in user's timezone
             selectedDate = getTodayInTimezone();
             document.getElementById('dateSelector').value = selectedDate;
             loadHabitOrder();
             updateDayCounter();
+            updateChallengeSubtitle();
             loadDayData();
             setupDragAndDrop();
+        }
+
+        function updateChallengeSubtitle() {
+            const subtitleEl = document.getElementById('challengeSubtitle');
+
+            // Only show subtitle if challenge is active
+            if (isChallengeActive()) {
+                const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+                subtitleEl.textContent = settings.challenge.name;
+                subtitleEl.style.display = 'block';
+            } else {
+                subtitleEl.style.display = 'none';
+            }
         }
         
         function loadHabitOrder() {
@@ -1017,11 +1054,37 @@
         
         function updateDayCounter() {
             const current = new Date(selectedDate);
-            
-            // Year day calculation (1-365/366)
-            const yearStart = new Date(current.getFullYear(), 0, 1);
-            const yearDay = Math.floor((current - yearStart) / (1000 * 60 * 60 * 24)) + 1;
-            document.getElementById('yearDay').textContent = yearDay;
+
+            // Check if there's an active challenge using the helper function
+            if (isChallengeActive()) {
+                const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+                const challengeStart = new Date(settings.challenge.startDate);
+                const challengeDays = settings.challenge.days;
+
+                // Calculate current day in challenge
+                const diffTime = current - challengeStart;
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+                if (diffDays >= 1 && diffDays <= challengeDays) {
+                    // Within challenge range
+                    document.getElementById('yearDay').textContent = diffDays;
+                    document.getElementById('yearTotal').textContent = challengeDays;
+                } else if (diffDays < 1) {
+                    // Before challenge starts
+                    document.getElementById('yearDay').textContent = '—';
+                    document.getElementById('yearTotal').textContent = challengeDays;
+                } else {
+                    // After challenge ends
+                    document.getElementById('yearDay').textContent = challengeDays;
+                    document.getElementById('yearTotal').textContent = challengeDays;
+                }
+            } else {
+                // Default to year day calculation (1-365/366)
+                const yearStart = new Date(current.getFullYear(), 0, 1);
+                const yearDay = Math.floor((current - yearStart) / (1000 * 60 * 60 * 24)) + 1;
+                document.getElementById('yearDay').textContent = yearDay;
+                document.getElementById('yearTotal').textContent = '365';
+            }
         }
         
         function changeDate(days) {
@@ -1786,20 +1849,20 @@
                             <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
                                 Challenge Name (optional)
                             </label>
-                            <input type="text" id="settingsChallengeName" placeholder="e.g., 45-Intentional Challenge" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937; margin-bottom: 16px;">
+                            <input type="text" id="settingsChallengeName" placeholder="e.g., 45-Intentional Challenge" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937; margin-bottom: 16px;" oninput="updateChallengeStatus()">
 
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
                                 <div>
                                     <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
                                         Start Date
                                     </label>
-                                    <input type="date" id="settingsChallengeStart" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                                    <input type="date" id="settingsChallengeStart" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;" oninput="updateChallengeFromDates(); updateChallengeStatus()">
                                 </div>
                                 <div>
                                     <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
                                         End Date
                                     </label>
-                                    <input type="date" id="settingsChallengeEnd" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                                    <input type="date" id="settingsChallengeEnd" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;" oninput="updateChallengeFromDates(); updateChallengeStatus()">
                                 </div>
                             </div>
 
@@ -1807,7 +1870,11 @@
                                 <label style="display: block; margin-bottom: 8px; font-size: 14px; color: #374151; font-weight: 500;">
                                     Number of Days
                                 </label>
-                                <input type="number" id="settingsChallengeDays" placeholder="e.g., 45" min="1" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;">
+                                <input type="number" id="settingsChallengeDays" placeholder="e.g., 45" min="1" style="width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; color: #1f2937;" oninput="updateChallengeFromDays(); updateChallengeStatus()">
+                            </div>
+
+                            <div id="challengeStatus" style="margin-top: 16px; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 500; display: none;">
+                                <!-- Status will be dynamically updated -->
                             </div>
 
                             <div style="font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic;">
@@ -1871,6 +1938,9 @@
             document.getElementById('settingsChallengeStart').addEventListener('change', updateChallengeFromDates);
             document.getElementById('settingsChallengeEnd').addEventListener('change', updateChallengeFromDates);
             document.getElementById('settingsChallengeDays').addEventListener('input', updateChallengeFromDays);
+
+            // Update challenge status
+            updateChallengeStatus();
         }
 
         function updateChallengeFromDates() {
@@ -1899,6 +1969,63 @@
                 end.setDate(start.getDate() + days - 1); // -1 because we count the start day
 
                 document.getElementById('settingsChallengeEnd').value = end.toISOString().split('T')[0];
+            }
+        }
+
+        function updateChallengeStatus() {
+            const statusEl = document.getElementById('challengeStatus');
+            if (!statusEl) return;
+
+            const name = document.getElementById('settingsChallengeName').value.trim();
+            const startDate = document.getElementById('settingsChallengeStart').value;
+            const endDate = document.getElementById('settingsChallengeEnd').value;
+            const days = parseInt(document.getElementById('settingsChallengeDays').value);
+
+            // Check if all fields are filled
+            if (!name || !startDate || !endDate || !days || days <= 0) {
+                statusEl.style.display = 'none';
+                return;
+            }
+
+            // Check if current date is within challenge timeframe
+            const today = getTodayInTimezone();
+            const isActive = today >= startDate && today <= endDate;
+
+            statusEl.style.display = 'block';
+
+            if (isActive) {
+                // Challenge is active
+                const start = new Date(startDate);
+                const current = new Date(today);
+                const diffTime = current - start;
+                const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+                statusEl.style.background = '#d1fae5';
+                statusEl.style.border = '1px solid #6ee7b7';
+                statusEl.style.color = '#065f46';
+                statusEl.innerHTML = `✓ Challenge is <strong>ACTIVE</strong> (Day ${currentDay} of ${days})`;
+            } else if (today < startDate) {
+                // Challenge hasn't started yet
+                const start = new Date(startDate);
+                const current = new Date(today);
+                const diffTime = start - current;
+                const daysUntil = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                statusEl.style.background = '#dbeafe';
+                statusEl.style.border = '1px solid #93c5fd';
+                statusEl.style.color = '#1e40af';
+                statusEl.innerHTML = `⏳ Challenge starts in <strong>${daysUntil} day${daysUntil !== 1 ? 's' : ''}</strong>`;
+            } else {
+                // Challenge has ended
+                const end = new Date(endDate);
+                const current = new Date(today);
+                const diffTime = current - end;
+                const daysSince = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+                statusEl.style.background = '#fee2e2';
+                statusEl.style.border = '1px solid #fca5a5';
+                statusEl.style.color = '#991b1b';
+                statusEl.innerHTML = `✗ Challenge ended <strong>${daysSince} day${daysSince !== 1 ? 's' : ''} ago</strong>`;
             }
         }
 
@@ -1931,8 +2058,9 @@
 
             localStorage.setItem('appSettings', JSON.stringify(settings));
 
-            // Reload the current view with new timezone
+            // Reload the current view with new settings
             updateDayCounter();
+            updateChallengeSubtitle();
             loadDayData();
 
             closeSettingsModal();
@@ -1989,11 +2117,26 @@
 
             document.body.appendChild(modal);
 
-            // Set default range
-            window.currentTimelineRange = 30;
-
-            // Load default view (gains, last 30 days)
-            loadTimelineData();
+            // Check if there's an active challenge and set default range accordingly using the helper function
+            if (isChallengeActive()) {
+                const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+                const challengeDays = settings.challenge.days;
+                // Map challenge length to appropriate button
+                if (challengeDays <= 30) {
+                    window.currentTimelineRange = 30;
+                    setTimelineRange(30);
+                } else if (challengeDays <= 90) {
+                    window.currentTimelineRange = 90;
+                    setTimelineRange(90);
+                } else {
+                    window.currentTimelineRange = 365;
+                    setTimelineRange(365);
+                }
+            } else {
+                // Default to 30 days
+                window.currentTimelineRange = 30;
+                loadTimelineData();
+            }
 
             toggleMenu();
         }
@@ -2536,17 +2679,38 @@
             }
             
             modal.style.display = 'block';
-            
-            // Set default range (±15 days from today)
-            setStatsRange('default');
+
+            // Check if there's an active challenge using the helper function
+            if (isChallengeActive()) {
+                // Set to challenge range
+                setStatsRange('challenge');
+            } else {
+                // Set default range (±15 days from today)
+                setStatsRange('default');
+            }
             toggleMenu();
         }
         
         function setStatsRange(range) {
             const today = new Date();
             let startDate, endDate;
-            
+
             switch(range) {
+                case 'challenge':
+                    // Challenge range
+                    const settings = JSON.parse(localStorage.getItem('appSettings') || '{}');
+                    if (settings.challenge && settings.challenge.startDate && settings.challenge.endDate) {
+                        startDate = new Date(settings.challenge.startDate);
+                        endDate = new Date(settings.challenge.endDate);
+                    } else {
+                        // Fallback to default
+                        startDate = new Date(today);
+                        startDate.setDate(today.getDate() - 15);
+                        endDate = new Date(today);
+                        endDate.setDate(today.getDate() + 15);
+                    }
+                    break;
+
                 case 'default':
                     // ±15 days from today
                     startDate = new Date(today);
@@ -2554,19 +2718,19 @@
                     endDate = new Date(today);
                     endDate.setDate(today.getDate() + 15);
                     break;
-                    
+
                 case 'thisMonth':
                     // Current month
                     startDate = new Date(today.getFullYear(), today.getMonth(), 1);
                     endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
                     break;
-                    
+
                 case 'lastMonth':
                     // Previous month
                     startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
                     endDate = new Date(today.getFullYear(), today.getMonth(), 0);
                     break;
-                    
+
                 case 'thisYear':
                     // Current year
                     startDate = new Date(today.getFullYear(), 0, 1);
