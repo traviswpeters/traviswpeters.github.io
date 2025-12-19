@@ -1,0 +1,518 @@
+<style>
+  #particle-network-container {
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  #particle-network-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Optional: Make it full viewport height instead of 600px */
+  /* Uncomment the line below to make it fill the screen */
+  /* #particle-network-container { height: 100vh; } */
+</style>
+
+<div id="particle-network-container">
+  <canvas id="particle-canvas"></canvas>
+</div>
+
+<script>
+  (function() {
+    // === CONFIGURATION ===
+    const CONFIG = {
+      // Network growth
+      maxParticles: 150,
+      startingParticles: 20,
+      growthInterval: 500,
+      newNodeChance: 0.3,
+      minChildren: 2,
+      maxChildren: 7,
+
+      // Visual style
+      particleSize: [2, 4],
+      particleColor: 'rgba(220, 230, 255, 0.95)',
+      particleGlow: false,
+      glowIntensity: 0.3,
+
+      // Motion
+      driftSpeed: 0.15,
+      velocityInheritance: 0.7,
+
+      // Clustering
+      clusterRadius: 60,
+      clusterRadiusVariation: 40,
+
+      // Connections
+      maxConnectionLength: 200,
+      connectionColor: [180, 200, 255],
+      connectionOpacity: 0.25,
+      lineWidth: 0.6,
+      distanceFade: true,
+
+      // Interaction
+      mouseRadius: 120,
+      mouseColor: [140, 180, 255],
+      mouseOpacity: 0.4,
+      dragInfluence: true,
+      dragInfluenceStrength: 0.15,
+      disperseOnRelease: true,
+      disperseRadius: 70,
+
+      // Names
+      showNames: true,
+      nameOpacity: 0.25,
+      nameFont: '300 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif',
+      nameColor: [200, 215, 240]
+    };
+
+    // Name pool for random generation
+    const FIRST_NAMES = [
+      'James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda',
+      'David', 'Elizabeth', 'William', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica',
+      'Thomas', 'Sarah', 'Charles', 'Karen', 'Daniel', 'Nancy', 'Matthew', 'Lisa',
+      'Anthony', 'Betty', 'Mark', 'Margaret', 'Donald', 'Sandra', 'Steven', 'Ashley',
+      'Paul', 'Emily', 'Andrew', 'Kimberly', 'Joshua', 'Donna', 'Kenneth', 'Michelle',
+      'Kevin', 'Dorothy', 'Brian', 'Carol', 'George', 'Amanda', 'Timothy', 'Melissa',
+      'Ronald', 'Deborah', 'Edward', 'Stephanie', 'Jason', 'Rebecca', 'Jeffrey', 'Sharon',
+      'Ryan', 'Laura', 'Jacob', 'Cynthia', 'Gary', 'Kathleen', 'Nicholas', 'Amy',
+      'Eric', 'Angela', 'Jonathan', 'Shirley', 'Stephen', 'Anna', 'Larry', 'Brenda',
+      'Justin', 'Pamela', 'Scott', 'Emma', 'Brandon', 'Nicole', 'Benjamin', 'Helen',
+      'Samuel', 'Samantha', 'Raymond', 'Katherine', 'Gregory', 'Christine', 'Frank', 'Debra',
+      'Alexander', 'Rachel', 'Patrick', 'Carolyn', 'Jack', 'Janet', 'Dennis', 'Catherine',
+      'Jerry', 'Maria', 'Tyler', 'Heather', 'Aaron', 'Diane', 'Jose', 'Ruth',
+      'Adam', 'Julie', 'Nathan', 'Olivia', 'Henry', 'Joyce', 'Zachary', 'Virginia',
+      'Douglas', 'Grace', 'Peter', 'Victoria', 'Kyle', 'Kelly', 'Noah', 'Lauren'
+    ];
+
+    const LAST_INITIALS = [
+      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M',
+      'N', 'P', 'R', 'S', 'T', 'W', 'Y', 'Z'
+    ];
+
+    function generateName() {
+      const first = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+      const lastInitial = LAST_INITIALS[Math.floor(Math.random() * LAST_INITIALS.length)];
+      return `${first} ${lastInitial}.`;
+    }
+
+    // === STATE ===
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('particle-network-container');
+    let width, height;
+    let particles = [];
+    let mouse = { x: null, y: null };
+    let draggedParticle = null;
+    let dragOffset = { x: 0, y: 0 };
+    let growthTimer = null;
+    let recycleTimer = null;
+    let isGrowing = true;
+    let particlesEverCreated = 0;
+
+    // === INITIALIZATION ===
+    function resize() {
+      const rect = container.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+
+    function createParticle(x, y, vx = null, vy = null, connections = []) {
+      if (vx === null) {
+        vx = (Math.random() - 0.5) * CONFIG.driftSpeed;
+        vy = (Math.random() - 0.5) * CONFIG.driftSpeed;
+      }
+
+      return {
+        x, y, vx, vy,
+        radius: CONFIG.particleSize[0] + Math.random() * (CONFIG.particleSize[1] - CONFIG.particleSize[0]),
+        connections,
+        age: 0,
+        name: generateName()
+      };
+    }
+
+    function createParticles() {
+      particles = [];
+      particlesEverCreated = 0;
+
+      const cols = Math.ceil(Math.sqrt(CONFIG.startingParticles));
+      const rows = Math.ceil(CONFIG.startingParticles / cols);
+      const spacingX = width / (cols + 1);
+      const spacingY = height / (rows + 1);
+
+      for (let i = 0; i < CONFIG.startingParticles; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const x = spacingX * (col + 1) + (Math.random() - 0.5) * spacingX * 0.5;
+        const y = spacingY * (row + 1) + (Math.random() - 0.5) * spacingY * 0.5;
+        particles.push(createParticle(x, y));
+        particlesEverCreated++;
+      }
+    }
+
+    // === GROWTH LOGIC ===
+    function spawnCluster(parentIdx, numChildren) {
+      const parent = particles[parentIdx];
+      const newParticles = [];
+
+      for (let i = 0; i < numChildren; i++) {
+        if (particles.length + newParticles.length >= CONFIG.maxParticles) break;
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = CONFIG.clusterRadius + (Math.random() - 0.5) * CONFIG.clusterRadiusVariation;
+        const newX = parent.x + Math.cos(angle) * distance;
+        const newY = parent.y + Math.sin(angle) * distance;
+
+        const vx = parent.vx * CONFIG.velocityInheritance + (Math.random() - 0.5) * CONFIG.driftSpeed * 0.2;
+        const vy = parent.vy * CONFIG.velocityInheritance + (Math.random() - 0.5) * CONFIG.driftSpeed * 0.2;
+
+        newParticles.push(createParticle(
+          Math.max(0, Math.min(width, newX)),
+          Math.max(0, Math.min(height, newY)),
+          vx, vy, [parentIdx]
+        ));
+      }
+
+      particles.push(...newParticles);
+    }
+
+    function growNetwork() {
+      if (particlesEverCreated >= CONFIG.maxParticles) {
+        isGrowing = false;
+        return;
+      }
+
+      const spawnNew = Math.random() < CONFIG.newNodeChance;
+
+      if (spawnNew) {
+        particles.push(createParticle(Math.random() * width, Math.random() * height));
+        particlesEverCreated++;
+      } else {
+        const parentIdx = Math.floor(Math.random() * particles.length);
+        const numChildren = Math.floor(Math.random() * (CONFIG.maxChildren - CONFIG.minChildren + 1)) + CONFIG.minChildren;
+
+        const beforeCount = particles.length;
+        spawnCluster(parentIdx, numChildren);
+        particlesEverCreated += particles.length - beforeCount;
+      }
+    }
+
+    function removeOffscreenParticles() {
+      const margin = 200;
+      const beforeLength = particles.length;
+
+      particles = particles.filter(p =>
+        p.x >= -margin && p.x <= width + margin &&
+        p.y >= -margin && p.y <= height + margin
+      );
+
+      const removedCount = beforeLength - particles.length;
+      if (removedCount > 0 && !isGrowing && particlesEverCreated >= CONFIG.maxParticles) {
+        particlesEverCreated -= removedCount;
+        isGrowing = true;
+      }
+    }
+
+    function recycleParticles() {
+      removeOffscreenParticles();
+      if (particles.length < CONFIG.maxParticles && particlesEverCreated < CONFIG.maxParticles && !isGrowing) {
+        isGrowing = true;
+      }
+    }
+
+    function startGrowth() {
+      if (growthTimer) clearInterval(growthTimer);
+      growthTimer = setInterval(() => {
+        if (isGrowing) growNetwork();
+      }, CONFIG.growthInterval);
+
+      if (recycleTimer) clearInterval(recycleTimer);
+      recycleTimer = setInterval(recycleParticles, 5000);
+    }
+
+    // === DRAG LOGIC ===
+    function applyDragInfluence() {
+      if (!draggedParticle || !CONFIG.dragInfluence) return;
+
+      const draggedIdx = particles.indexOf(draggedParticle);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (p === draggedParticle) continue;
+
+        const isConnected = p.connections.includes(draggedIdx) || draggedParticle.connections.includes(i);
+        if (!isConnected) continue;
+
+        const dx = draggedParticle.x - p.x;
+        const dy = draggedParticle.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 0) {
+          const pullStrength = CONFIG.dragInfluenceStrength * Math.min(dist / 100, 1);
+          p.x += (dx / dist) * pullStrength * dist * 0.1;
+          p.y += (dy / dist) * pullStrength * dist * 0.1;
+        }
+      }
+    }
+
+    function disperseConnectedNodes() {
+      if (!CONFIG.disperseOnRelease) return;
+
+      const draggedIdx = particles.indexOf(draggedParticle);
+      const connectedNodes = [];
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (p === draggedParticle) continue;
+
+        const isConnected = p.connections.includes(draggedIdx) || draggedParticle.connections.includes(i);
+        if (isConnected) connectedNodes.push(p);
+      }
+
+      connectedNodes.forEach(node => {
+        const dx = node.x - draggedParticle.x;
+        const dy = node.y - draggedParticle.y;
+        const currentDist = Math.sqrt(dx * dx + dy * dy);
+
+        if (currentDist < CONFIG.disperseRadius) {
+          const currentAngle = Math.atan2(dy, dx);
+          const angleVariation = (Math.random() - 0.5) * 0.4;
+          const radiusVariation = (Math.random() - 0.5) * 20;
+
+          const targetX = draggedParticle.x + Math.cos(currentAngle + angleVariation) * (CONFIG.disperseRadius + radiusVariation);
+          const targetY = draggedParticle.y + Math.sin(currentAngle + angleVariation) * (CONFIG.disperseRadius + radiusVariation);
+
+          node.x += (targetX - node.x) * 0.3;
+          node.y += (targetY - node.y) * 0.3;
+        }
+
+        node.vx = (Math.random() - 0.5) * CONFIG.driftSpeed;
+        node.vy = (Math.random() - 0.5) * CONFIG.driftSpeed;
+      });
+    }
+
+    function releaseDrag() {
+      if (!draggedParticle) return;
+
+      disperseConnectedNodes();
+      draggedParticle.vx = (Math.random() - 0.5) * CONFIG.driftSpeed;
+      draggedParticle.vy = (Math.random() - 0.5) * CONFIG.driftSpeed;
+      draggedParticle = null;
+      canvas.style.cursor = 'default';
+    }
+
+    // === RENDERING ===
+    function drawConnections() {
+      ctx.lineWidth = CONFIG.lineWidth;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        for (const connectedIdx of p.connections) {
+          if (connectedIdx >= particles.length) continue;
+
+          const p2 = particles[connectedIdx];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < CONFIG.maxConnectionLength) {
+            let opacity = CONFIG.connectionOpacity;
+
+            if (CONFIG.distanceFade) {
+              opacity *= (1 - dist / CONFIG.maxConnectionLength);
+            }
+
+            opacity *= Math.min(p.age / 60, 1);
+
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(${CONFIG.connectionColor.join(',')}, ${opacity})`;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function updateParticle(p) {
+      if (draggedParticle === p && mouse.x !== null) {
+        p.x = mouse.x - dragOffset.x;
+        p.y = mouse.y - dragOffset.y;
+        p.vx = 0;
+        p.vy = 0;
+      } else {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const margin = 50;
+        if (p.x < -margin) p.x = width + margin;
+        if (p.x > width + margin) p.x = -margin;
+        if (p.y < -margin) p.y = height + margin;
+        if (p.y > height + margin) p.y = -margin;
+      }
+
+      if (p.age < 60) p.age++;
+    }
+
+    function drawParticle(p) {
+      const ageFactor = Math.min(p.age / 60, 1);
+
+      // Glow
+      if (CONFIG.particleGlow) {
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
+        gradient.addColorStop(0, `rgba(220, 230, 255, ${CONFIG.glowIntensity * ageFactor})`);
+        gradient.addColorStop(1, 'rgba(220, 230, 255, 0)');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = CONFIG.particleColor.replace('0.95', String(0.95 * ageFactor));
+      ctx.fill();
+
+      // Name
+      if (CONFIG.showNames && p.name) {
+        ctx.font = CONFIG.nameFont;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const nameOpacity = CONFIG.nameOpacity * ageFactor;
+
+        // Subtle text shadow for better readability
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+        ctx.shadowBlur = 2;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 1;
+
+        ctx.fillStyle = `rgba(${CONFIG.nameColor.join(',')}, ${nameOpacity})`;
+        ctx.fillText(p.name, p.x, p.y + p.radius + 12);
+
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+      }
+
+      // Drag highlight
+      if (draggedParticle === p) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius + 4, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${CONFIG.mouseColor.join(',')}, 0.8)`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.lineWidth = CONFIG.lineWidth;
+      }
+
+      // Mouse hover
+      if (mouse.x !== null && !draggedParticle) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < CONFIG.mouseRadius) {
+          const opacity = CONFIG.mouseOpacity * (1 - dist / CONFIG.mouseRadius) * ageFactor;
+
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(${CONFIG.mouseColor.join(',')}, ${opacity * 0.3})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius + 2, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${CONFIG.mouseColor.join(',')}, ${opacity})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.lineWidth = CONFIG.lineWidth;
+        }
+      }
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+      ctx.fillRect(0, 0, width, height);
+
+      drawConnections();
+      applyDragInfluence();
+
+      for (let i = 0; i < particles.length; i++) {
+        updateParticle(particles[i]);
+        drawParticle(particles[i]);
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    // === INTERACTION ===
+    function findParticleAtPosition(x, y) {
+      const rect = canvas.getBoundingClientRect();
+      const canvasX = x - rect.left;
+      const canvasY = y - rect.top;
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        const dx = p.x - canvasX;
+        const dy = p.y - canvasY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < p.radius + 5) return p;
+      }
+      return null;
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      createParticles();
+      isGrowing = true;
+      startGrowth();
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+
+      if (!draggedParticle) {
+        const particle = findParticleAtPosition(e.clientX, e.clientY);
+        canvas.style.cursor = particle ? 'grab' : 'default';
+      }
+    });
+
+    canvas.addEventListener('mousedown', e => {
+      const particle = findParticleAtPosition(e.clientX, e.clientY);
+      if (particle) {
+        const rect = canvas.getBoundingClientRect();
+        draggedParticle = particle;
+        dragOffset.x = (e.clientX - rect.left) - particle.x;
+        dragOffset.y = (e.clientY - rect.top) - particle.y;
+        canvas.style.cursor = 'grabbing';
+      }
+    });
+
+    canvas.addEventListener('mouseup', releaseDrag);
+
+    canvas.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+      releaseDrag();
+    });
+
+    // === START ===
+    resize();
+    createParticles();
+    startGrowth();
+    draw();
+  })();
+</script>

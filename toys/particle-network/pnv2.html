@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud of Witnesses</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0f; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles, mouse = { x: null, y: null, radius: 150 };
+
+    // === CONFIGURATION ===
+    const CONFIG = {
+      clusterCount: 8,          // number of clusters
+      nodesPerCluster: [3, 12], // min/max nodes per cluster
+      clusterSpread: 80,        // how spread out nodes are within a cluster
+      connectionDist: 100,      // max distance for connections
+      driftSpeed: 0.3,          // how fast particles drift
+      mouseConnectionDist: 180
+    };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function createClusters() {
+      particles = [];
+      const padding = 100;
+      
+      for (let c = 0; c < CONFIG.clusterCount; c++) {
+        // Random cluster center
+        const cx = padding + Math.random() * (width - padding * 2);
+        const cy = padding + Math.random() * (height - padding * 2);
+        
+        // Random node count for this cluster
+        const nodeCount = CONFIG.nodesPerCluster[0] + 
+          Math.floor(Math.random() * (CONFIG.nodesPerCluster[1] - CONFIG.nodesPerCluster[0]));
+        
+        for (let i = 0; i < nodeCount; i++) {
+          // Spawn nodes around cluster center (gaussian-ish distribution)
+          const angle = Math.random() * Math.PI * 2;
+          const dist = Math.random() * CONFIG.clusterSpread;
+          
+          particles.push({
+            x: cx + Math.cos(angle) * dist,
+            y: cy + Math.sin(angle) * dist,
+            vx: (Math.random() - 0.5) * CONFIG.driftSpeed,
+            vy: (Math.random() - 0.5) * CONFIG.driftSpeed,
+            radius: Math.random() * 2 + 1.5,
+            cluster: c
+          });
+        }
+      }
+      
+      // Add a few lone "wanderers" (disconnected individuals)
+      for (let i = 0; i < 5; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * CONFIG.driftSpeed,
+          vy: (Math.random() - 0.5) * CONFIG.driftSpeed,
+          radius: Math.random() * 2 + 1,
+          cluster: -1
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        
+        // Update position
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        // Bounce off edges
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+        
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.fill();
+        
+        // Connect to nearby particles (same cluster only, or very close)
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          // Only connect if same cluster OR extremely close (bridges form occasionally)
+          const sameCluster = p.cluster === p2.cluster && p.cluster !== -1;
+          const veryClose = dist < CONFIG.connectionDist * 0.4;
+          
+          if ((sameCluster || veryClose) && dist < CONFIG.connectionDist) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.4 * (1 - dist / CONFIG.connectionDist)})`;
+            ctx.stroke();
+          }
+        }
+        
+        // Connect to mouse
+        if (mouse.x !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < CONFIG.mouseConnectionDist) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(100, 180, 255, ${0.5 * (1 - dist / CONFIG.mouseConnectionDist)})`;
+            ctx.stroke();
+          }
+        }
+      }
+      
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => { resize(); createClusters(); });
+    window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+    resize();
+    createClusters();
+    draw();
+  </script>
+</body>
+</html>

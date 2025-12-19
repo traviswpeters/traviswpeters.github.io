@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Particle Network Visualizations</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #a0a0b0;
+      font-weight: 300;
+    }
+
+    .versions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .version-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .version-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(140, 180, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .version-card h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #8cb4ff;
+      margin-bottom: 1rem;
+    }
+
+    .version-card p {
+      color: #c0c0d0;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .version-card .features {
+      list-style: none;
+      margin: 1rem 0;
+      padding: 0;
+    }
+
+    .version-card .features li {
+      color: #a0a0b0;
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .version-card .features li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #8cb4ff;
+    }
+
+    .view-btn {
+      background: rgba(140, 180, 255, 0.2);
+      border: 1px solid rgba(140, 180, 255, 0.3);
+      color: #8cb4ff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .view-btn:hover {
+      background: rgba(140, 180, 255, 0.3);
+      border-color: rgba(140, 180, 255, 0.5);
+    }
+
+    .embed-section {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .embed-section h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #8cb4ff;
+      margin-bottom: 1rem;
+    }
+
+    .embed-section p {
+      color: #c0c0d0;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .embed-section a {
+      color: #8cb4ff;
+      text-decoration: none;
+    }
+
+    .embed-section a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      margin-top: 2rem;
+      color: #a0a0b0;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: #8cb4ff;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .versions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Particle Network</h1>
+    <p class="subtitle">Growing network visualizations with interactive nodes</p>
+  </header>
+
+  <div class="versions">
+    <a href="pnv1.html" class="version-card">
+      <h2>Version 1</h2>
+      <p>Simple particle network with basic growing behavior.</p>
+      <ul class="features">
+        <li>Basic particle spawning</li>
+        <li>Distance-based connections</li>
+        <li>Simple drift mechanics</li>
+        <li>Mouse hover effects</li>
+      </ul>
+      <div class="view-btn">View Demo</div>
+    </a>
+
+    <a href="pnv2.html" class="version-card">
+      <h2>Version 2</h2>
+      <p>Enhanced version with cluster growth and better visuals.</p>
+      <ul class="features">
+        <li>Cluster-based spawning</li>
+        <li>Velocity inheritance</li>
+        <li>Particle recycling</li>
+        <li>Distance fade effects</li>
+      </ul>
+      <div class="view-btn">View Demo</div>
+    </a>
+
+    <a href="pnv3.html" class="version-card">
+      <h2>Version 3 (Latest)</h2>
+      <p>Full-featured "Cloud of Witnesses" with names and drag interaction.</p>
+      <ul class="features">
+        <li>Generated names per node</li>
+        <li>Drag and drop nodes</li>
+        <li>Connected node influence</li>
+        <li>Cluster dispersion</li>
+        <li>Polished animations</li>
+      </ul>
+      <div class="view-btn">View Demo</div>
+    </a>
+  </div>
+
+  <div class="embed-section">
+    <h2>Squarespace Embed</h2>
+    <p>
+      Want to use this visualization on your own site? Check out the
+      <a href="squarespace-embed.html">Squarespace-ready embed version</a>
+      with instructions for easy integration into any website or CMS.
+    </p>
+  </div>
+
+  <a href="../" class="back-link">← Back to Toys</a>
+</body>
+</html>
